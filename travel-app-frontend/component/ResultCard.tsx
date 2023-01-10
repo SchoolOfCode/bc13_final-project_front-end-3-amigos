@@ -4,6 +4,7 @@ import image from 'next/image'
 type props = {
     title: string,
     user_id: number,
+    id: number,
     city: string, 
     country: string,
     suburb: string,
