@@ -40,10 +40,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Skeleton for the landing page. 
 
     Build pages files:
-        LANDING PAGE
-        Search box
-            Button
-            Text input
+        LANDING PAGE - done
+        Search box - done
+            Button - done
+            Text input - done
 
         Nav bar 
         Link nav bar to pages -done
