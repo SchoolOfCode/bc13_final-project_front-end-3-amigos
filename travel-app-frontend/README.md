@@ -46,7 +46,7 @@ Skeleton for the landing page.
             Text input
 
         Nav bar 
-        Link nav bar to pages
+        Link nav bar to pages -done
 
         RESULTS
             Search box
