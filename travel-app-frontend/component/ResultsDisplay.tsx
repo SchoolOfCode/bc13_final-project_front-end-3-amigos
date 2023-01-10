@@ -2,18 +2,18 @@ import React from 'react'
 import ResultCard from './ResultCard'
 
 
-type props = {
-    title: string,
-    user_id: number,
+type displayProps = {
     id: number,
-    city: string, 
-    country: string,
-    suburb: string,
-    description: string,
-    image: string
-}
+      user_id: number,
+      title: string,
+      city: string, 
+      country: string,
+      suburb: string,
+      description: string,
+      image: string
+  }
 
-export default function ResultsDisplay() {
+export default function ResultsDisplay(props: displayProps) {
 
     // array.map
     // returning individual resultscards componetns 
@@ -23,7 +23,7 @@ export default function ResultsDisplay() {
 
             
                 <div>
-                   <ResultCard /> 
+                   <ResultCard {...props}/> 
                 </div>
             
 

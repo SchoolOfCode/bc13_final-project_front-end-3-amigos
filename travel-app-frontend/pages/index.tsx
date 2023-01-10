@@ -3,14 +3,22 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import { SearchBox } from '../component/SearchBox'
+import {data} from '../data/data'
+import react, {useState} from 'react'
+import ResultsDisplay from '../component/ResultsDisplay'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const [reccs, setReccs] = useState(data)
+
+  
   return (
     <div>
       <SearchBox/>
-
+      <ResultsDisplay reccs={reccs}/>
+      
     </div>
   )
 }

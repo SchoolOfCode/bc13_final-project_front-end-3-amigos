@@ -1,10 +1,10 @@
 import React from 'react'
 import image from 'next/image'
 
-type props = {
-    title: string,
+type resultCardProps = {
+  id: number,
     user_id: number,
-    id: number,
+    title: string,
     city: string, 
     country: string,
     suburb: string,
@@ -12,7 +12,7 @@ type props = {
     image: string
 }
 
-export default function ResultCard({title, image, city}: props) {
+export default function ResultCard(props: resultCardProps) {
   return (
     <>
     <p>{title}</p>
