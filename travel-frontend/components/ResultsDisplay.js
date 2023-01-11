@@ -2,9 +2,9 @@ import React from "react";
 import ResultCard from "./ResultCard";
 
 export default function ResultsDisplay({ data }) {
-  // const { id, title, city, country, suburb, description, image } = props;
   return (
     <div>
+      {/* iterating through each item of data array[3] and rendering the required props  */}
       {data.map((item) => {
         return (
           <ResultCard
