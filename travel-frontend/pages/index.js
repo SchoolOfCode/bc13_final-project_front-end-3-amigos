@@ -12,8 +12,10 @@ import { useEffect, useState } from "react";
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  // useState to hold the data coming from fetch
+  // useState to hold the database data
   const [recData, setRecData] = useState([]);
+  // useState to hold API data
+  const [apiData, setApiData] = useState([]);
 
   /**
    * connect frontend with backend with connection string
@@ -33,6 +35,26 @@ export default function Home() {
     getData();
   }, []);
   console.log(recData);
+
+  /* fetch the data from API using Axios on submit from search bar
+    --> we get lat & lon from geo_name
+    --> use them on radius url for dynamic get 
+    --> we get xid's from radius url 
+    --> use them to get the features(data)
+    --> store the above data into a stste variable;
+    --> pass this as props to ApiResultsDisplay
+  */
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+  const GEO_NAME_URL = process.env.NEXT_PUBLIC_GEO_NAME_URL;
+
+  useEffect(() => {
+    async function getApiData() {
+      await axios.get(GEO_NAME_URL + API_KEY).then((response) => {
+        console.log(response.data);
+      });
+    }
+    getApiData();
+  }, []);
 
   return (
     <>
