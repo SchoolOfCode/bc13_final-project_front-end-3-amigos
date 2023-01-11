@@ -38,28 +38,63 @@ export default function Home() {
 
   /* fetch the data from API using Axios on submit from search bar
     --> we get lat & lon from geo_name
-    --> use them on radius url for dynamic get 
+      --> use them on radius url for dynamic get 
     --> we get xid's from radius url 
     --> use them to get the features(data)
-    --> store the above data into a stste variable;
+      --> store the above data into a state variable;
     --> pass this as props to ApiResultsDisplay
   */
-  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-  const GEO_NAME_URL = process.env.NEXT_PUBLIC_GEO_NAME_URL;
 
-  useEffect(() => {
-    async function getApiData() {
-      await axios.get(GEO_NAME_URL + API_KEY).then((response) => {
-        console.log(response.data);
-      });
+  async function getApiData(searchTerm) {
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+    const geoData = await axios.get(
+      `https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerm}&apikey=${API_KEY}`
+    );
+    console.log(geoData, "geoData");
+
+    // take out from geo_data only the lat and lon using object destructuring
+    const { lat, lon } = geoData.data;
+
+    // use lat and lon to get xid from radius url dynamically
+    const radiusData = await axios.get(
+      `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&limit=20&apikey=${API_KEY}`
+    );
+    console.log(radiusData, "radiusData");
+
+    // iterate the list through features to get all of the xid's
+    const xid = radiusData.data.features.map((id) => {
+      return id.properties.xid;
+    });
+    console.log(xid, "xid");
+
+    // use the xid to get
+    let places = [];
+
+    let index = 0;
+
+    while (index <= xid.length) {
+      const minIndex = index;
+      const maxIndex = minIndex + 5;
+
+      const xidSubset = xid.slice(minIndex, maxIndex);
+      index = maxIndex;
     }
-    getApiData();
-  }, []);
+
+    await new Promise((request) => {
+      setTimeout(request, 1000);
+    });
+    const xidData = await axios.get(
+      `https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=${API_KEY}`
+    );
+    places = [...places, ...xidData];
+    console.log(places);
+    console.log(xidData);
+  }
 
   return (
     <>
       <h1>Our app</h1>
-      <SearchBar />
+      <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       <ResultsDisplay data={recData} />
     </>
