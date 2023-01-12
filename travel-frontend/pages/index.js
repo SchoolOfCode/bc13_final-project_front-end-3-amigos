@@ -67,28 +67,55 @@ export default function Home() {
     });
     console.log(xid, "xid");
 
-    // use the xid to get
+    // create a new empty array to concatenate the xid data using the spread operator
     let places = [];
 
+    // start the first subset of xid at 0
     let index = 0;
 
+    // use while loop to keep to subset of 5 xid's for each request
     while (index <= xid.length) {
+      //minIndex is zero for first iteration
       const minIndex = index;
+      // add 5 to minIndex to group them into 5 xid's
       const maxIndex = minIndex + 5;
 
-      const xidSubset = xid.slice(minIndex, maxIndex);
+      // use slice method to start with minIndex and end right before maxIndex
+      let xidSubset = xid.slice(minIndex, maxIndex);
+
+      // assign maxIndex to index for next iteration(which will start with 5 and end with 10 and so on for each iteration)
       index = maxIndex;
+
+      // set an interval of 1 second between each request
+      await new Promise((request) => {
+        setTimeout(request, 1000);
+      });
+
+      //take the response from Api fetch and map over those 5 responses and render the data
+      const responses = await Promise.all(
+        xidSubset.map(async (xid) => {
+          // use one xid at a time to get the data
+          let xidData = `https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=${API_KEY}`;
+          const result = await axios.get(xidData);
+          // console.log(result, "api result");
+          return result;
+        })
+      );
+      console.log(responses);
+
+      /**
+       *  concatenate the xid data(responses) using the spread operator
+       *  after the first iteration will have 5 places inside the array so we have to spread it as well
+       *  at the end of iteration will have 20 places inside the array
+       */
+
+      places = [...places, ...responses];
+      // console.log(places, "places");
+      // console.log(responses, "responses");
     }
 
-    await new Promise((request) => {
-      setTimeout(request, 1000);
-    });
-    const xidData = await axios.get(
-      `https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=${API_KEY}`
-    );
-    places = [...places, ...xidData];
-    console.log(places);
-    console.log(xidData);
+    // setApiData to the final array of 20 places
+    setApiData(places);
   }
 
   return (
