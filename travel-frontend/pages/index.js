@@ -7,6 +7,7 @@ import SearchBar from "../components/SearchBar";
 import ResultsDisplay from "../components/ResultsDisplay";
 // import data from "../data/data";
 import { useEffect, useState } from "react";
+import ApiResultsDisplay from "../components/ApiResultsDisplay";
 
 // If loading a variable font, you don't need to specify the font weight
 // const inter = Inter({ subsets: ['latin'] })
@@ -124,6 +125,7 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       <ResultsDisplay data={recData} />
+      <ApiResultsDisplay apiData={apiData} />
     </>
   );
 }
