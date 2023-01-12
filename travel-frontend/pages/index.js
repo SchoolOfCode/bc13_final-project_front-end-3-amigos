@@ -99,7 +99,7 @@ export default function Home() {
           let xidData = `https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=${API_KEY}`;
           const result = await axios.get(xidData);
           // console.log(result, "api result");
-          return result;
+          return result.data;
         })
       );
       console.log(responses);
@@ -107,7 +107,7 @@ export default function Home() {
       /**
        *  concatenate the xid data(responses) using the spread operator
        *  after the first iteration will have 5 places inside the array so we have to spread it as well
-       *  at the end of iteration will have 20 places inside the array
+       *  at the end of iteration will have 20 places objects inside the array
        */
 
       places = [...places, ...responses];
@@ -118,14 +118,16 @@ export default function Home() {
     // setApiData to the final array of 20 places
     setApiData(places);
   }
+  console.log(apiData, "state api");
+  // console.log(apiData[0].data, "first try");
 
   return (
     <>
       <h1>Our app</h1>
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
-      <ResultsDisplay data={recData} />
-      <ApiResultsDisplay apiData={apiData} />
+      <ResultsDisplay recData={recData} />
+      {apiData && <ApiResultsDisplay apiData={apiData} />}
     </>
   );
 }
