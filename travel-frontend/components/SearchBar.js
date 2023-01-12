@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function SearchBar() {
+export default function SearchBar({ handleClick }) {
   // State variable to hold the value coming from input field
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -11,6 +11,8 @@ export default function SearchBar() {
     setSearchTerm(e.target.value);
   }
 
+  console.log(searchTerm);
+
   return (
     <div>
       <input
@@ -19,7 +21,12 @@ export default function SearchBar() {
         onChange={handleChange}
       ></input>
       {/* handleClick function to display data on the click of search button */}
-      <button type="submit" onClick={() => handleClick(searchTerm)}>
+      <button
+        type="submit"
+        onClick={() => {
+          handleClick(searchTerm);
+        }}
+      >
         Search
       </button>
     </div>
