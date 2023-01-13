@@ -123,7 +123,7 @@ export default function Home() {
 
   return (
     <>
-      <h1>Our app</h1>
+      <h1>AMIGO</h1>
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       <ResultsDisplay recData={recData} />
