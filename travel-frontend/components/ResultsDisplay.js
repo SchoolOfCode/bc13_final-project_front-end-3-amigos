@@ -9,6 +9,7 @@ export default function ResultsDisplay({ recData }) {
         return (
           <ResultCard
             key={item.id}
+            image={item.image}
             title={item.title}
             city={item.city}
             country={item.country}
