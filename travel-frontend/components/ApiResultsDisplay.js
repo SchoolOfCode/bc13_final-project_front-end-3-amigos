@@ -12,18 +12,30 @@ import React from "react";
 function ApiResultsDisplay({ apiData }) {
   return (
     <div>
-      {apiData.map((item) => {
-        return (
-          <ApiResultCard
-            title={item.name}
-            image={item.image}
-            city={item.data.address.city}
-            country={item.address.country}
-            suburb={item.address.suburb}
-            text={item.wikipedia_extracts.text}
-          />
-        );
-      })}
+      {apiData &&
+        apiData.map((item) => {
+          console.log(item.preview?.source, "image");
+
+          if (
+            item.name &&
+            item.address.city &&
+            item.address.country &&
+            item.address.suburb &&
+            item.wikipedia_extracts?.text &&
+            item.preview?.source
+          ) {
+            return (
+              <ApiResultCard
+                title={item.name}
+                city={item.address.city}
+                country={item.address.country}
+                suburb={item.address.suburb}
+                text={item.wikipedia_extracts.text}
+                image={item.preview.source}
+              />
+            );
+          }
+        })}
     </div>
   );
 }
