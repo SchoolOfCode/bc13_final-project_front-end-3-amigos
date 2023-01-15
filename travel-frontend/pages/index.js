@@ -23,8 +23,8 @@ export default function Home() {
                />
     </div>
       <SearchBar/>
-      <Carousel data={data} />
-      {/* <ResultsDisplay data ={data}/> */}
+      {/* <Carousel data={data} /> */}
+      <ResultsDisplay data ={data}/>
      
     </>
   )

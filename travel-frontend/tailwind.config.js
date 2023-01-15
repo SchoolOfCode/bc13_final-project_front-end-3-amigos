@@ -17,6 +17,9 @@ module.exports = {
 				"light-green": "#7DAB87",
 				"off-white": "#D9D9D9",
 			},
+			margin: {
+				'7%': '7%'
+			}
 		},
 	},
 	plugins: [],

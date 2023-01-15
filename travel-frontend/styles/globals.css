@@ -119,6 +119,44 @@ a {
   }
 }
 
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .card-display {
+    @apply grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6
+  }
+  .card-container {
+    @apply mt-10 rounded-lg  relative cursor-pointer items-center justify-center overflow-hidden  transition-shadow hover:shadow-xl hover:shadow-black/30
+  }
+  .single-card {
+   @apply  h-96 w-72 mx-auto
+  }
+  .card-image {
+   @apply  sm:h-full sm:w-full object-cover transition-transform duration-500  group-hover:scale-125
+  }
+  .card-gradient-bg {
+    @apply absolute  inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70
+  }
+  .card-info-transition {
+    @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
+  }
+  .card-title {
+    @apply text-3xl font-bold text-off-white mb-2 align-text-bottom mt-7%
+  }
+  .card-city {
+    @apply text-off-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-3
+  }
+  .card-location {
+    @apply text-off-white opacity-0 transition-opacity duration-300 group-hover:opacity-100
+  }
+  .card-desc {
+    @apply text-lg font-normal text-off-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto
+  }
+  .card-btn {
+   @apply  rounded-full bg-dark-green mt-3 py-2 px-3.5  text-sm capitalize text-white shadow shadow-black/60
+  }
+}
