@@ -1,34 +1,10 @@
 import React from "react";
-import { useState } from "react";
 
-export default function SearchBar({ handleClick }) {
-  // State variable to hold the value coming from input field
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // handleChange function to target the value thats put in input field
-  function handleChange(e) {
-    // set the value to setSearchTerm
-    setSearchTerm(e.target.value);
-  }
-
-  console.log(searchTerm);
-
-  return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search..."
-        onChange={handleChange}
-      ></input>
-      {/* handleClick function to display data on the click of search button */}
-      <button
-        type="submit"
-        onClick={() => {
-          handleClick(searchTerm);
-        }}
-      >
-        Search
-      </button>
-    </div>
-  );
+export default function SearchBar() {
+	return (
+		<div className="flex justify-center mt-48  lg:mx-auto">
+			<input className="bg-off-white lg:w-1/3 sm:rounded-l-lg pl-1 text-black placeholder-black" type="text" placeholder="Search..."></input>
+			<button className=" bg-dark-green text-off-white drop-shadow-lg sm:rounded-r-lg p-2">Search</button>
+		</div>
+	);
 }
