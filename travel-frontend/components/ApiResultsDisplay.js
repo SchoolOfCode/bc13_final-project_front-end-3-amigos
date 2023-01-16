@@ -26,6 +26,7 @@ function ApiResultsDisplay({ apiData }) {
           ) {
             return (
               <ApiResultCard
+              key={item.xid}
                 title={item.name}
                 city={item.address.city}
                 country={item.address.country}
