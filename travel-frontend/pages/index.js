@@ -13,6 +13,7 @@ import ApiResultsDisplay from "../components/ApiResultsDisplay";
 // const inter = Inter({ subsets: ['latin'] })
 
 // what's going on???
+console.log("what's going on?");
 
 export default function Home() {
   // useState to hold the database data
