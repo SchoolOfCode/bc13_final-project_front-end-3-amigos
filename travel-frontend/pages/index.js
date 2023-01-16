@@ -12,6 +12,8 @@ import { useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
+// what's going on???
+
 export default function Home() {
   const [recc, setRecc] = useState(data)
   return (
