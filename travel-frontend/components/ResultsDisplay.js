@@ -1,12 +1,12 @@
 import React from 'react'
 import ResultCard from './ResultCard'
 
-export default function ResultsDisplay(props) {
+export default function ResultsDisplay({recData}) {
   return (
 
     <div className="card-display">
       {/* iterating through each item of data array[3] and rendering the required props  */}
-      {recData.map((item) => {
+      {recData && recData.map((item) => {
         return (
           <ResultCard
             key={item.id}

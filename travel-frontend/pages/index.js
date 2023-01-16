@@ -7,7 +7,10 @@ import SearchBar from "../components/SearchBar";
 import ResultsDisplay from "../components/ResultsDisplay";
 import Carousel from "../components/Carousel";
 import data from "../data/data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ApiResultCard from "../components/ApiResultCard";
+import ApiResultsDisplay from "../components/ApiResultsDisplay";
+import axios from 'axios'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -106,10 +109,16 @@ export default function Home() {
   // console.log(apiData[0].data, "first try");
   return (
     <>
-      <h1>Our app</h1>
+      
+      {/* This div is just here as these styling props can't be given directly to Image component */}
+    <div className="bg-light-green -z-10 fixed w-full h-full ">
+    <Image src={backgroundImg} alt="Mountain landscape"  className="h-4/6"
+               priority={true}
+               />
+    </div>
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
-      <ResultsDisplay recData={recData} />
+      {recData && <ResultsDisplay recData={recData} />}
       {apiData && <ApiResultsDisplay apiData={apiData} />}
     </>
   );
