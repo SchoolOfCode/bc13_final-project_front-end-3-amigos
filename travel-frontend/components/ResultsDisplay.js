@@ -1,22 +1,12 @@
-import React from "react";
-import ResultCard from "./ResultCard";
+import React from 'react'
+import ResultCard from './ResultCard'
 
-export default function ResultsDisplay({ recData }) {
+export default function ResultsDisplay(props) {
   return (
-    <div>
-      {/* iterating through each item of data array[3] and rendering the required props  */}
-      {recData.map((item) => {
-        return (
-          <ResultCard
-            key={item.id}
-            title={item.title}
-            city={item.city}
-            country={item.country}
-            suburb={item.suburb}
-            description={item.description}
-          />
-        );
-      })}
+
+    <div className="card-display">
+    {props.data.map((item)=> {return <ResultCard id={item.id} title={item.title} city={item.city} country={item.country} suburb={item.suburb} description={item.description} image={item.image} />})}
+
     </div>
-  );
+  )
 }
