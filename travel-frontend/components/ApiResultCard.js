@@ -1,11 +1,14 @@
 import axios from "axios";
 import React from "react";
 
-// this button will take the data from the current card and send it off to the POST endpoint
-// how do we grab all the card data?
-//
-
+// Pull down URL to use inside of handleclick
 const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
+
+// Function that pulls data from the card and sends a post request to put it in the database.
+// PROBLEMS: 
+  // the key is currently undefined (but rest of the data coming through OK)
+  // SO: a) is it going to the database? and 
+  // b) if so, which values are missing/what is it being stored as? e.g., what ID is in there? 
 
 function handleClick({ key, title, city, country, suburb, text, image }) {
   const newFavourite = {
@@ -16,6 +19,7 @@ function handleClick({ key, title, city, country, suburb, text, image }) {
     suburb,
     text,
     image,
+
   }
   console.log("new Favourite:", newFavourite)
   axios.post(`${URL}/`, newFavourite);
