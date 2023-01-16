@@ -1,9 +1,10 @@
-import React from "react";
-import ResultCard from "./ResultCard";
+import React from 'react'
+import ResultCard from './ResultCard'
 
-export default function ResultsDisplay({ recData }) {
+export default function ResultsDisplay(props) {
   return (
-    <div>
+
+    <div className="card-display">
       {/* iterating through each item of data array[3] and rendering the required props  */}
       {recData.map((item) => {
         return (
@@ -18,6 +19,7 @@ export default function ResultsDisplay({ recData }) {
           />
         );
       })}
+
     </div>
-  );
+  )
 }
