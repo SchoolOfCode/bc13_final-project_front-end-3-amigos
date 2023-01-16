@@ -12,6 +12,8 @@ import ApiResultsDisplay from "../components/ApiResultsDisplay";
 // If loading a variable font, you don't need to specify the font weight
 // const inter = Inter({ subsets: ['latin'] })
 
+// what's going on???
+
 export default function Home() {
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
