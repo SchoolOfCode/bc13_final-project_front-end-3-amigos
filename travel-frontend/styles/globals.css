@@ -145,10 +145,10 @@ a {
     @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
   }
   .card-title {
-    @apply text-3xl font-bold text-off-white mb-2 align-text-bottom mt-7%
+    @apply text-3xl font-bold text-off-white mb-1 align-text-bottom mt-7%
   }
   .card-city {
-    @apply text-off-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-3
+    @apply text-off-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%
   }
   .card-location {
     @apply text-off-white opacity-0 transition-opacity duration-300 group-hover:opacity-100
