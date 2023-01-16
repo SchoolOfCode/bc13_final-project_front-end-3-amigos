@@ -1,8 +1,11 @@
 import axios from "axios";
 import React from "react";
+import Image from "next/image";
+import emptyHeart from '../public/empty-heart.png';
+import heart from '../public/love.png';
 
 // Pull down URL to use inside of handleclick
-const URL = 'https://final-project-backend-d6jk.onrender.com/userfavourites/4'
+const URL = 'https://final-project-backend-d6jk.onrender.com/userfavourites/'
 
 // Function that pulls data from the card and sends a post request to put it in the database.
 // PROBLEMS: 
@@ -34,6 +37,7 @@ const URL = 'https://final-project-backend-d6jk.onrender.com/userfavourites/4'
 }
 
 function ApiResultCard({ title, city, country, suburb, description, image }) {
+
   return (
     <div className="card-container group">
       <div className="single-card">
@@ -47,13 +51,10 @@ function ApiResultCard({ title, city, country, suburb, description, image }) {
           <p className="card-location">{suburb}</p>
           <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
-          <button
-            className="card-btn"
-            onClick={()=>handleClick({ title, city, country, suburb, description, image
+          <Image src={heart} alt="untoggled favourite button" width={40} height={40}
+          onClick={()=>handleClick({ title, city, country, suburb, description, image
             })}
-          >
-            FAVOURITE!
-          </button>
+           />
         </div>
       </div>
     </div>
