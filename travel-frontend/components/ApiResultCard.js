@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 
 // Pull down URL to use inside of handleclick
-const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
+const URL = 'https://final-project-backend-d6jk.onrender.com/userfavourites/4'
 
 // Function that pulls data from the card and sends a post request to put it in the database.
 // PROBLEMS: 
@@ -10,22 +10,30 @@ const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
   // SO: a) is it going to the database? and 
   // b) if so, which values are missing/what is it being stored as? e.g., what ID is in there? 
 
-function handleClick({ key, title, city, country, suburb, text, image }) {
+  
+  function handleClick({ title, city, country, suburb, description, image }) {
+  const user_id = 4
   const newFavourite = {
-    key,
+    user_id,
     title,
     city,
     country,
     suburb,
-    text,
+    description,
     image,
 
   }
   console.log("new Favourite:", newFavourite)
-  axios.post(`${URL}/`, newFavourite);
+ axios.post(`${URL}`, newFavourite).then(function (response) {
+  console.log(response);
+})
+.catch(function (error) {
+  console.log(error);
+});
+
 }
 
-function ApiResultCard({ key, title, city, country, suburb, text, image }) {
+function ApiResultCard({ title, city, country, suburb, description, image }) {
   return (
     <div className="card-container group">
       <div className="single-card">
@@ -37,11 +45,11 @@ function ApiResultCard({ key, title, city, country, suburb, text, image }) {
           <p className="card-city">{city}</p>
           <p className="card-location">{country}</p>
           <p className="card-location">{suburb}</p>
-          <p className="card-desc">{text}</p>
+          <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
           <button
             className="card-btn"
-            onClick={()=>handleClick({key, title, city, country, suburb, text, image
+            onClick={()=>handleClick({ title, city, country, suburb, description, image
             })}
           >
             FAVOURITE!

@@ -31,7 +31,7 @@ function ApiResultsDisplay({ apiData }) {
                 city={item.address.city}
                 country={item.address.country}
                 suburb={item.address.suburb}
-                text={item.wikipedia_extracts.text}
+                description={item.wikipedia_extracts.text}
                 image={item.preview.source}
               />
             );
