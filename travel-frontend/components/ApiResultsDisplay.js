@@ -11,7 +11,7 @@ import React from "react";
 
 function ApiResultsDisplay({ apiData }) {
   return (
-    <div>
+    <div className="card-display">
       {apiData &&
         apiData.map((item) => {
           console.log(item.preview?.source, "image");

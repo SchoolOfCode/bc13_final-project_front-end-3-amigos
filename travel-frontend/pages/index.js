@@ -118,7 +118,7 @@ export default function Home() {
     </div>
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
-      {recData && <ResultsDisplay recData={recData} />}
+      {/* {recData && <ResultsDisplay recData={recData} />} */}
       {apiData && <ApiResultsDisplay apiData={apiData} />}
     </>
   );
