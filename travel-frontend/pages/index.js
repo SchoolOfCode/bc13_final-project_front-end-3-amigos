@@ -42,12 +42,25 @@ export default function Home() {
   }
 
   /**
+   * create async fn for a post functionality for our user_favourites
+   * array.filter method to filter the data chosen by the user
+   * make a post request using axios.post to post the filtered data in to the user_favourite table
+   * 
+   */
+
+  async function postUserFavourites(data) {
+    const postURL = process.env.NEXT_PUBLIC_POST_URL;
+    return await axios.post(postURL, data)
+  }
+
+  /**
    * create an async fn to sign in with Google
    *    if user is not singed in than redirect to sign in with Google popup
    * if the user is signed in, it will run the post fn (postUserData) to add the user details in our user table
    */
 
-  async function googleLogin() {
+  async function googleLogin(xid) {
+    console.log(xid)
     console.log(user, "user");
     if (!user) {
       signInWithGoogle();
@@ -61,6 +74,8 @@ export default function Home() {
       const res = await postUserData(userData);
       console.log(res);
     }
+    let userFavourites = apiData.filter((item)=>{return item.xid === xid})
+    console.log(userFavourites)
   }
 
   /**
@@ -158,7 +173,7 @@ export default function Home() {
     // setApiData to the final array of 20 places
     setApiData(places);
   }
-  console.log(apiData, "final state api");
+  //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
   return (
     <>

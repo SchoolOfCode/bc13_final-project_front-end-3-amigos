@@ -26,7 +26,7 @@ function ApiResultsDisplay({ apiData, googleLogin }) {
           ) {
             return (
               <ApiResultCard
-              key={item.xid}
+                key={item.xid}
                 title={item.name}
                 city={item.address.city}
                 country={item.address.country}
