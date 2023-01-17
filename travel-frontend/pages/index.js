@@ -9,17 +9,19 @@ import Carousel from "../components/Carousel";
 import { getAuth } from "firebase/auth";
 
 import { useState, useEffect } from "react";
-import {app} from "../firebase/firebase.js"
+import { app } from "../firebase/firebase.js";
 import ApiResultsDisplay from "../components/ApiResultsDisplay";
 import axios from "axios";
 // import { auth } from "../firebase/firebase";
-import { useSignInWithGoogle, useSignInWithMicrosoft, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-
+import {
+  useSignInWithGoogle,
+  useSignInWithMicrosoft,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 
 const auth = getAuth(app);
 
 export default function Home() {
-  
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
   // useState to hold API data
@@ -27,21 +29,38 @@ export default function Home() {
 
   // declare the auth state
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  console.log(user, "user");
-  console.log(loading, "loading");
+
   /**
-   * create a fn to sign in with Google
-   * check if user is logged do nothing
-   *    if !user than sign in with Google
+   * post functionality to save the username's details(email, displayName=username) into our database
+   * create async/await fn and use axios to create the post request
+   *
    */
 
-  function googleLogin() {
-    console.log("googleLogin");
-    if(!user) {
-      signInWithGoogle();
+  async function postUserData(data) {
+    const postURL = process.env.NEXT_PUBLIC_POST_URL;
+    return await axios.post(postURL, data);
+  }
 
+  /**
+   * create an async fn to sign in with Google
+   *    if user is not singed in than redirect to sign in with Google popup
+   * if the user is signed in, it will run the post fn (postUserData) to add the user details in our user table
+   */
+
+  async function googleLogin() {
+    console.log(user, "user");
+    if (!user) {
+      signInWithGoogle();
     }
-    
+    if (user) {
+      let userData = {
+        username: user.user.displayName,
+        email: user.user.email,
+      };
+      console.log(userData);
+      const res = await postUserData(userData);
+      console.log(res);
+    }
   }
 
   /**
@@ -155,15 +174,9 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
-      {apiData && <ApiResultsDisplay googleLogin= {googleLogin} apiData={apiData} />}
-      <button 
-        onClick={() => {
-          console.log("hey");
-          googleLogin()
-        }}
-      >
-        Login
-      </button>
+      {apiData && (
+        <ApiResultsDisplay googleLogin={googleLogin} apiData={apiData} />
+      )}
     </>
   );
 }
