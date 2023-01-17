@@ -37,7 +37,9 @@ export default function Home() {
     }
     getData();
   }, []);
-  console.log(recData);
+
+  //console.log(recData);
+
   /* fetch the data from API using Axios on submit from search bar
     --> we get lat & lon from geo_name
       --> use them on radius url for dynamic get
@@ -51,19 +53,25 @@ export default function Home() {
     const geoData = await axios.get(
       `https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerm}&apikey=${API_KEY}`
     );
-    console.log(geoData, "geoData");
+
+    //console.log(geoData, "geoData");
+
     // take out from geo_data only the lat and lon using object destructuring
     const { lat, lon } = geoData.data;
     // use lat and lon to get xid from radius url dynamically
     const radiusData = await axios.get(
       `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&limit=20&apikey=${API_KEY}`
     );
-    console.log(radiusData, "radiusData");
+    
+    // console.log(radiusData, "radiusData");
+
     // iterate the list through features to get all of the xid's
     const xid = radiusData.data.features.map((id) => {
       return id.properties.xid;
     });
-    console.log(xid, "xid");
+   
+    // console.log(xid, "xid");
+
     // create a new empty array to concatenate the xid data using the spread operator
     let places = [];
     // start the first subset of xid at 0
@@ -92,7 +100,10 @@ export default function Home() {
           return result.data;
         })
       );
-      console.log(responses);
+      
+      console.log("batch location response:", responses);
+      
+
       /**
        *  concatenate the xid data(responses) using the spread operator
        *  after the first iteration will have 5 places inside the array so we have to spread it as well
@@ -105,7 +116,7 @@ export default function Home() {
     // setApiData to the final array of 20 places
     setApiData(places);
   }
-  console.log(apiData, "state api");
+  console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
   return (
     <>
