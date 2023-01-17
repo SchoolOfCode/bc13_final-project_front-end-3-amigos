@@ -36,7 +36,7 @@ const URL = 'https://final-project-backend-d6jk.onrender.com/userfavourites/'
 
 }
 
-function ApiResultCard({ title, city, country, suburb, description, image }) {
+function ApiResultCard({ title, city, country, suburb, description, image, googleLogin }) {
 
   return (
     <div className="card-container group">
@@ -52,8 +52,7 @@ function ApiResultCard({ title, city, country, suburb, description, image }) {
           <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
           <Image src={heart} alt="untoggled favourite button" width={40} height={40}
-          onClick={()=>handleClick({ title, city, country, suburb, description, image
-            })}
+          onClick={()=>{googleLogin()}}
            />
         </div>
       </div>

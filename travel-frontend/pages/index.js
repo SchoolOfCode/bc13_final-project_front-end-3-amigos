@@ -6,15 +6,20 @@ import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
 import ResultsDisplay from "../components/ResultsDisplay";
 import Carousel from "../components/Carousel";
+import { getAuth } from "firebase/auth";
 
 import { useState, useEffect } from "react";
-
+import {app} from "../firebase/firebase.js"
 import ApiResultsDisplay from "../components/ApiResultsDisplay";
 import axios from "axios";
-import { auth } from "../firebase/firebase";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+// import { auth } from "../firebase/firebase";
+import { useSignInWithGoogle, useSignInWithMicrosoft, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+
+
+const auth = getAuth(app);
 
 export default function Home() {
+  
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
   // useState to hold API data
@@ -32,8 +37,11 @@ export default function Home() {
 
   function googleLogin() {
     console.log("googleLogin");
-    const result = signInWithGoogle();
-    console.log(result);
+    if(!user) {
+      signInWithGoogle();
+
+    }
+    
   }
 
   /**
@@ -147,11 +155,11 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
-      {apiData && <ApiResultsDisplay apiData={apiData} />}
-      <button
+      {apiData && <ApiResultsDisplay googleLogin= {googleLogin} apiData={apiData} />}
+      <button 
         onClick={() => {
           console.log("hey");
-          googleLogin();
+          googleLogin()
         }}
       >
         Login
