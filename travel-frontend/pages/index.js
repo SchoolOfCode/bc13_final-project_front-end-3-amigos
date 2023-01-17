@@ -10,7 +10,7 @@ import Carousel from "../components/Carousel";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
-import ApiResultsDisplay from "../components/ApiResultsDisplay";
+import ApiResultsDisplay from "../components/ApiResultsCardContainer";
 import axios from "axios";
 // import { auth } from "../firebase/firebase";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
@@ -23,8 +23,11 @@ export default function Home() {
   // useState to hold API data
   const [apiData, setApiData] = useState([]);
 
-  //
+  // useState that watches if the user is logged in or not
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  // useState that holds the user id
+  const [userId, setUserId] = useState();
 
   // declare the auth state
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -73,22 +76,14 @@ export default function Home() {
         console.log(userData);
         const res = await postUserData(userData);
         console.log(res, "response 78");
-        console.log(res.data.payload, "payload");
+        setUserId(res.data.payload[0].id);
         setIsUserLoggedIn(true);
       }
+      let filterFavourites = apiData.filter((item) => {
+        return item.xid === xid;
+      });
+      console.log(filterFavourites);
     }
-    // let userData = {
-    //   username: user.user.displayName,
-    //   email: user.user.email,
-    // };
-    // console.log(userData);
-    // const res = await postUserData(userData);
-    // console.log(res);
-
-    // let userFavourites = apiData.filter((item) => {
-    //   return item.xid === xid;
-    // });
-    // console.log(userFavourites);
   }
   /**
    * connect frontend with backend with connection string
