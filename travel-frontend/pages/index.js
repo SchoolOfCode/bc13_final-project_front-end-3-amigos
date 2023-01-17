@@ -6,18 +6,14 @@ import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
 import ResultsDisplay from "../components/ResultsDisplay";
 import Carousel from "../components/Carousel";
-import { getAuth } from "firebase/auth";
 
 import { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
 import ApiResultsDisplay from "../components/ApiResultsDisplay";
 import axios from "axios";
 // import { auth } from "../firebase/firebase";
-import {
-  useSignInWithGoogle,
-  useSignInWithMicrosoft,
-  useSignInWithEmailAndPassword,
-} from "react-firebase-hooks/auth";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 const auth = getAuth(app);
 
@@ -26,6 +22,9 @@ export default function Home() {
   const [recData, setRecData] = useState([]);
   // useState to hold API data
   const [apiData, setApiData] = useState([]);
+
+  //
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   // declare the auth state
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -45,39 +44,52 @@ export default function Home() {
    * create async fn for a post functionality for our user_favourites
    * array.filter method to filter the data chosen by the user
    * make a post request using axios.post to post the filtered data in to the user_favourite table
-   * 
+   *
    */
 
   async function postUserFavourites(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
-    return await axios.post(postURL, data)
+    return await axios.post(postURL, data);
   }
 
   /**
    * create an async fn to sign in with Google
-   *    if user is not singed in than redirect to sign in with Google popup
+   * if user is not singed in than redirect to sign in with Google popup
    * if the user is signed in, it will run the post fn (postUserData) to add the user details in our user table
    */
 
   async function googleLogin(xid) {
-    console.log(xid)
+    console.log(xid);
     console.log(user, "user");
     if (!user) {
       signInWithGoogle();
     }
     if (user) {
-      let userData = {
-        username: user.user.displayName,
-        email: user.user.email,
-      };
-      console.log(userData);
-      const res = await postUserData(userData);
-      console.log(res);
+      if (!isUserLoggedIn) {
+        let userData = {
+          username: user.user.displayName,
+          email: user.user.email,
+        };
+        console.log(userData);
+        const res = await postUserData(userData);
+        console.log(res, "response 78");
+        console.log(res.data.payload, "payload");
+        setIsUserLoggedIn(true);
+      }
     }
-    let userFavourites = apiData.filter((item)=>{return item.xid === xid})
-    console.log(userFavourites)
-  }
+    // let userData = {
+    //   username: user.user.displayName,
+    //   email: user.user.email,
+    // };
+    // console.log(userData);
+    // const res = await postUserData(userData);
+    // console.log(res);
 
+    // let userFavourites = apiData.filter((item) => {
+    //   return item.xid === xid;
+    // });
+    // console.log(userFavourites);
+  }
   /**
    * connect frontend with backend with connection string
    * create .env file at the root level and save the backend url
