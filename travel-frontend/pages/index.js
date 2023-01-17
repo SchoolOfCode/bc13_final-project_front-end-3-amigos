@@ -6,20 +6,36 @@ import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
 import ResultsDisplay from "../components/ResultsDisplay";
 import Carousel from "../components/Carousel";
-import data from "../data/data";
+
 import { useState, useEffect } from "react";
-import ApiResultCard from "../components/ApiResultCard";
+
 import ApiResultsDisplay from "../components/ApiResultsDisplay";
-import axios from 'axios'
+import axios from "axios";
+import { auth } from "../firebase/firebase";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
-const inter = Inter({ subsets: ["latin"] });
-
-// what's going on???
 export default function Home() {
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
   // useState to hold API data
   const [apiData, setApiData] = useState([]);
+
+  // declare the auth state
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  console.log(user, "user");
+  console.log(loading, "loading");
+  /**
+   * create a fn to sign in with Google
+   * check if user is logged do nothing
+   *    if !user than sign in with Google
+   */
+
+  function googleLogin() {
+    console.log("googleLogin");
+    const result = signInWithGoogle();
+    console.log(result);
+  }
+
   /**
    * connect frontend with backend with connection string
    * create .env file at the root level and save the backend url
@@ -62,14 +78,14 @@ export default function Home() {
     const radiusData = await axios.get(
       `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&limit=20&apikey=${API_KEY}`
     );
-    
+
     // console.log(radiusData, "radiusData");
 
     // iterate the list through features to get all of the xid's
     const xid = radiusData.data.features.map((id) => {
       return id.properties.xid;
     });
-   
+
     // console.log(xid, "xid");
 
     // create a new empty array to concatenate the xid data using the spread operator
@@ -100,9 +116,8 @@ export default function Home() {
           return result.data;
         })
       );
-      
+
       console.log("batch location response:", responses);
-      
 
       /**
        *  concatenate the xid data(responses) using the spread operator
@@ -120,17 +135,27 @@ export default function Home() {
   // console.log(apiData[0].data, "first try");
   return (
     <>
-      
       {/* This div is just here as these styling props can't be given directly to Image component */}
-    <div className="bg-light-green -z-10 fixed w-full h-full ">
-    <Image src={backgroundImg} alt="Mountain landscape"  className="h-4/6"
-               priority={true}
-               />
-    </div>
+      <div className="bg-light-green -z-10 fixed w-full h-full ">
+        <Image
+          src={backgroundImg}
+          alt="Mountain landscape"
+          className="h-4/6"
+          priority={true}
+        />
+      </div>
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
       {apiData && <ApiResultsDisplay apiData={apiData} />}
+      <button
+        onClick={() => {
+          console.log("hey");
+          googleLogin();
+        }}
+      >
+        Login
+      </button>
     </>
   );
 }
