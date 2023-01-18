@@ -61,8 +61,8 @@ export default function Home() {
       if (!isUserLoggedIn) {
         // we are taking the metadata of the user and save it in this object
         let userData = {
-          username: user.user.displayName,
-          email: user.user.email,
+          username: user.displayName,
+          email: user.email,
         };
         console.log(userData.username);
         // this line is passing the userData as an argument of the postUserData fn, which will make the post in user table
