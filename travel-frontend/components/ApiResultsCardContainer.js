@@ -9,7 +9,7 @@ import ApiResultCard from "./ApiResultCardDisplay";
 
 import React from "react";
 
-function ApiResultsDisplay({ apiData, googleLogin }) {
+function ApiResultsDisplay({ apiData, postData}) {
   return (
     <div className="card-display">
       {apiData &&
@@ -32,7 +32,7 @@ function ApiResultsDisplay({ apiData, googleLogin }) {
                 suburb={item.address.suburb}
                 description={item.wikipedia_extracts.text}
                 image={item.preview.source}
-                googleLogin={googleLogin}
+                postData={postData}
               />
             );
           }
