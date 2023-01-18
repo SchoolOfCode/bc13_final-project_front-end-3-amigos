@@ -3,9 +3,10 @@ import Link from "next/Link";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { app } from "../firebase/firebase";
 
 export default function NavBar() {
-  const auth = getAuth();
+  const auth = getAuth(app);
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const router = useRouter();
 

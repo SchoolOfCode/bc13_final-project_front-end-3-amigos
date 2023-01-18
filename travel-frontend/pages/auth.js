@@ -1,12 +1,14 @@
 import React from 'react'
 import Register from '../components/Register'
+import LogIn from '../components/Login'
 
-const auth = () => {
+const authentication = () => {
     return (
         <div>
             <Register />
-        </div>
+            <LogIn />
+        </div>  
     )
 }
 
-export default auth
+export default authentication
