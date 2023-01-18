@@ -13,7 +13,7 @@ import { app } from "../firebase/firebase.js";
 import ApiResultsDisplay from "../components/ApiResultsCardContainer";
 import axios from "axios";
 // import { auth } from "../firebase/firebase";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const auth = getAuth(app);
 
@@ -29,8 +29,22 @@ export default function Home() {
   // useState that holds the user id
   const [userId, setUserId] = useState();
 
-  // declare the auth state
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  // declare the auth state to check the user status
+  const [user, loading, error] = useAuthState(auth);
+
+ /**
+  * - seperate the logic, have signin only in the Nav bar
+  * - conditional rendring for the Navbar (check)
+  * - Post functionality for the card to be implemented once the user is signed in
+  * - when you go to other pages there is a firebase error which needs to be fixed
+  * - fix the search bar bug 
+  * - fix the Navbar log in and log out
+  */
+
+
+
+
+
 
   /**
    * post functionality to save the username's details(email, displayName=username) into our database
@@ -56,16 +70,17 @@ export default function Home() {
   }
 
   /**
-   * create an async fn to sign in with Google
-   * if user is not singed in than redirect to sign in with Google popup
-   * if the user is signed in, it will run the post fn (postUserData) to add the user details in our user table
+   * create an async fn post data when you are logged in
+   * if user is not singed in give an alert to "sign in"
+   * if the user is signed in, it will run the post fn (postUserData) (postUserFavourites) 
+   * to add the user details in our user table and user_favourites table
    */
 
-  async function googleLogin(xid) {
+  async function postData(xid) {
     console.log(xid);
     console.log(user, "user");
     if (!user) {
-      signInWithGoogle();
+      alert('Please Sign In')
     }
     if (user) {
       if (!isUserLoggedIn) {
@@ -197,7 +212,7 @@ export default function Home() {
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
       {apiData && (
-        <ApiResultsDisplay googleLogin={googleLogin} apiData={apiData} />
+        <ApiResultsDisplay postData={postData} apiData={apiData} />
       )}
     </>
   );

@@ -13,7 +13,7 @@ const URL = "https://final-project-backend-d6jk.onrender.com/userfavourites/";
 // SO: a) is it going to the database? and
 // b) if so, which values are missing/what is it being stored as? e.g., what ID is in there?
 
-function handleClick({ id, title, city, country, suburb, description, image }) {
+function handleClick({ id, title, city, country, suburb, description, image}) {
   // const user_id = 4
   const newFavourite = {
     user_id,
@@ -43,7 +43,7 @@ function ApiResultCard({
   suburb,
   description,
   image,
-  googleLogin,
+  postData,
 }) {
   return (
     <div className="card-container group">
@@ -65,7 +65,7 @@ function ApiResultCard({
             width={40}
             height={40}
             onClick={() => {
-              googleLogin(id);
+              postData(id);
             }}
           />
         </div>

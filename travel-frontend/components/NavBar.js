@@ -3,10 +3,11 @@ import Link from "next/Link";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { app } from "../firebase/firebase.js";
 
 export default function NavBar() {
 
-  const auth = getAuth();
+  const auth = getAuth(app);
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const router = useRouter();
 
@@ -51,18 +52,9 @@ export default function NavBar() {
               About Us
             </Link>
           </li>
+          
           <li>
-
-            {" "}
-            <Link href="/login" className="align-middle">
-              Login
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link href="/logout" className="align-middle">
-              Logout
-            </Link>
+           
 
             {!user && (
               <button
