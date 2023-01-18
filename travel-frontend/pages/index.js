@@ -45,7 +45,7 @@ export default function Home() {
    * if the user is signed in, it will run the post fn (postUserData) (postUserFavourites)
    * to add the user details in our user table and user_favourites table
    */
-
+  // this is the branch!
   async function postData(xid) {
     // console.log(xid);
     console.log(user, "user");
