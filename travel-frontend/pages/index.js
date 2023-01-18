@@ -6,20 +6,90 @@ import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
 import ResultsDisplay from "../components/ResultsDisplay";
 import Carousel from "../components/Carousel";
-import data from "../data/data";
+
 import { useState, useEffect } from "react";
-import ApiResultCard from "../components/ApiResultCard";
+import { getAuth } from "firebase/auth";
+import { app } from "../firebase/firebase.js";
 import ApiResultsDisplay from "../components/ApiResultsDisplay";
-import axios from 'axios'
+import axios from "axios";
+// import { auth } from "../firebase/firebase";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
-const inter = Inter({ subsets: ["latin"] });
+const auth = getAuth(app);
 
-// what's going on???
 export default function Home() {
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
   // useState to hold API data
   const [apiData, setApiData] = useState([]);
+
+  //
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  // declare the auth state
+  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+  /**
+   * post functionality to save the username's details(email, displayName=username) into our database
+   * create async/await fn and use axios to create the post request
+   *
+   */
+
+  async function postUserData(data) {
+    const postURL = process.env.NEXT_PUBLIC_POST_URL;
+    return await axios.post(postURL, data);
+  }
+
+  /**
+   * create async fn for a post functionality for our user_favourites
+   * array.filter method to filter the data chosen by the user
+   * make a post request using axios.post to post the filtered data in to the user_favourite table
+   *
+   */
+
+  async function postUserFavourites(data) {
+    const postURL = process.env.NEXT_PUBLIC_POST_URL;
+    return await axios.post(postURL, data);
+  }
+
+  /**
+   * create an async fn to sign in with Google
+   * if user is not singed in than redirect to sign in with Google popup
+   * if the user is signed in, it will run the post fn (postUserData) to add the user details in our user table
+   */
+
+  async function googleLogin(xid) {
+    console.log(xid);
+    console.log(user, "user");
+    if (!user) {
+      signInWithGoogle();
+    }
+    if (user) {
+      if (!isUserLoggedIn) {
+        let userData = {
+          username: user.user.displayName,
+          email: user.user.email,
+        };
+        console.log(userData);
+        const res = await postUserData(userData);
+        console.log(res, "response 78");
+        console.log(res.data.payload, "payload");
+        setIsUserLoggedIn(true);
+      }
+    }
+    // let userData = {
+    //   username: user.user.displayName,
+    //   email: user.user.email,
+    // };
+    // console.log(userData);
+    // const res = await postUserData(userData);
+    // console.log(res);
+
+    // let userFavourites = apiData.filter((item) => {
+    //   return item.xid === xid;
+    // });
+    // console.log(userFavourites);
+  }
   /**
    * connect frontend with backend with connection string
    * create .env file at the root level and save the backend url
@@ -62,14 +132,14 @@ export default function Home() {
     const radiusData = await axios.get(
       `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&limit=20&apikey=${API_KEY}`
     );
-    
+
     // console.log(radiusData, "radiusData");
 
     // iterate the list through features to get all of the xid's
     const xid = radiusData.data.features.map((id) => {
       return id.properties.xid;
     });
-   
+
     // console.log(xid, "xid");
 
     // create a new empty array to concatenate the xid data using the spread operator
@@ -100,9 +170,8 @@ export default function Home() {
           return result.data;
         })
       );
-      
+
       console.log("batch location response:", responses);
-      
 
       /**
        *  concatenate the xid data(responses) using the spread operator
@@ -116,21 +185,25 @@ export default function Home() {
     // setApiData to the final array of 20 places
     setApiData(places);
   }
-  console.log(apiData, "final state api");
+  //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
   return (
     <>
-      
       {/* This div is just here as these styling props can't be given directly to Image component */}
-    <div className="bg-light-green -z-10 fixed w-full h-full ">
-    <Image src={backgroundImg} alt="Mountain landscape"  className="h-4/6"
-               priority={true}
-               />
-    </div>
+      <div className="bg-light-green -z-10 fixed w-full h-full ">
+        <Image
+          src={backgroundImg}
+          alt="Mountain landscape"
+          className="h-4/6"
+          priority={true}
+        />
+      </div>
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
-      {apiData && <ApiResultsDisplay apiData={apiData} />}
+      {apiData && (
+        <ApiResultsDisplay googleLogin={googleLogin} apiData={apiData} />
+      )}
     </>
   );
 }

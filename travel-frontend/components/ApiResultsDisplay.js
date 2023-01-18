@@ -9,7 +9,7 @@ import ApiResultCard from "./ApiResultCard";
 
 import React from "react";
 
-function ApiResultsDisplay({ apiData }) {
+function ApiResultsDisplay({ apiData, googleLogin }) {
   return (
     <div className="card-display">
       {apiData &&
@@ -26,13 +26,14 @@ function ApiResultsDisplay({ apiData }) {
           ) {
             return (
               <ApiResultCard
-              key={item.xid}
+                key={item.xid}
                 title={item.name}
                 city={item.address.city}
                 country={item.address.country}
                 suburb={item.address.suburb}
                 description={item.wikipedia_extracts.text}
                 image={item.preview.source}
+                googleLogin={googleLogin}
               />
             );
           }
