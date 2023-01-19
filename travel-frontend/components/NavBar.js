@@ -2,16 +2,20 @@ import React from "react";
 import Link from "next/Link";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { app } from "../firebase/firebase";
 
 import { app } from "../firebase/firebase";
 
 export default function NavBar() {
+
+  const auth = getAuth(app);
+  const [user, loading, error] = useAuthState(auth);
+
   // initialize firebase
   const auth = getAuth(app);
 
   // hook from react-firebase-hooks that allows us to log in with Google
-
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
   // use next router to reload the page once the user is signed out
@@ -51,13 +55,6 @@ export default function NavBar() {
               Journal
             </Link>
           </li>
-
-          <li>
-            {" "}
-            <Link href="/about" className="align-middle">
-              About Us
-            </Link>
-          </li>
           <li>
             {" "}
             <Link href="/login" className="align-middle">
@@ -78,7 +75,7 @@ export default function NavBar() {
             {!user && (
               <button
                 onClick={() => {
-                  signInWithGoogle();
+                  router.push("/auth");
                 }}
                 className="align-middle"
               >

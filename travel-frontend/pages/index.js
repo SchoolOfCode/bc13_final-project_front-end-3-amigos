@@ -13,6 +13,10 @@ import { app } from "../firebase/firebase.js";
 import ApiResultsCardContainer from "../components/ApiResultsCardContainer";
 import axios from "axios";
 // import { auth } from "../firebase/firebase";
+
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import Register from "../components/Register";
+
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const auth = getAuth(app);
@@ -201,7 +205,7 @@ export default function Home() {
   return (
     <>
       {/* This div is just here as these styling props can't be given directly to Image component */}
-      <div className="bg-light-green -z-10 fixed w-full h-full ">
+      <div className="fixed w-full h-full bg-light-green -z-10 ">
         <Image
           src={backgroundImg}
           alt="Mountain landscape"
@@ -212,6 +216,7 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
+      
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
