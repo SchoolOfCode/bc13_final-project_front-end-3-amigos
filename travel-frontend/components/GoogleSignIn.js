@@ -1,26 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
+import { getAuth } from "firebase/auth";
+import { useRouter } from "next/router";
 
 function GoogleSignIn() {
   const auth = getAuth(app);
+  const router = useRouter();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+  useEffect(() => {
+    function User() {
+      if (user) {
+        router.push("/");
+      }
+    }
+    User();
+  }, [user]);
 
   return (
     <div>
-      <div className="App">
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={() => signInWithGoogle()}>Sign In</button>
-      </div>
+      <button onClick={() => signInWithGoogle()}>Sign In With Google</button>
     </div>
   );
 }

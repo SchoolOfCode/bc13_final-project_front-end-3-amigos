@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/Link";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
-// import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
 
 export default function NavBar() {
   const auth = getAuth(app);
-  // const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [user, loading, error] = useAuthState(auth);
   const router = useRouter();
 
   return (
@@ -29,11 +29,7 @@ export default function NavBar() {
               Journal
             </Link>
           </li>
-          <li>
-            <Link href="/about" className="align-middle">
-              About Us
-            </Link>
-          </li>
+
           <li>
             {!user && (
               <button
