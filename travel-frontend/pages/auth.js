@@ -6,6 +6,7 @@ import { app } from "../firebase/firebase";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
 
+
 /**
  * Once a user has reigstered, 
  * render the sign in functionality 
@@ -15,6 +16,7 @@ import { useState } from "react";
  */
 
 const authentication = () => {
+
   const auth = getAuth(app);
   const [registered, setRegistered] = useState(true)
   const registeredUser = <div> <LogIn />
