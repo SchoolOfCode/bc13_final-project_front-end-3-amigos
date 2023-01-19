@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { getAuth } from '@firebase/auth'
 import { app } from '../firebase/firebase';
+import { useRouter } from 'next/router';
 
 const LogIn = () => {
+  const router = useRouter()
   const auth = getAuth(app);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,6 +15,16 @@ const LogIn = () => {
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
+
+  useEffect(() => {
+    function User() {
+      if (user) {
+        router.push("/");
+      }
+    }
+    User();
+  }, [user]);
+
 
   if (error) {
     return (
