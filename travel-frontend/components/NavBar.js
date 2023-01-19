@@ -69,7 +69,7 @@ export default function NavBar() {
             <Link href="/logout" className="align-middle">
               Logout
             </Link>
-
+            </li>
 
           <li>
             {/**if the user is not logged in the LOGIN button will be on navBar
