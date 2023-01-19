@@ -1,8 +1,6 @@
 import axios from "axios";
 import React from "react";
-import Image from "next/image";
-import emptyHeart from '../public/empty-heart.png';
-import heart from '../public/love.png';
+import FavouritesButton from "./FavouritesButton";
 
 // Pull down URL to use inside of handleclick
 const URL = 'https://final-project-backend-d6jk.onrender.com/userfavourites/'
@@ -36,7 +34,7 @@ const URL = 'https://final-project-backend-d6jk.onrender.com/userfavourites/'
 
 }
 
-function ApiResultCard({ key, title, city, country, suburb, description, image, googleLogin }) {
+function ApiResultCard({ title, city, country, suburb, description, image, googleLogin }) {
 
   return (
     <div className="card-container group">
@@ -51,9 +49,11 @@ function ApiResultCard({ key, title, city, country, suburb, description, image, 
           <p className="card-location">{suburb}</p>
           <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
-          <Image id={key} src={heart} alt="untoggled favourite button" width={40} height={40}
-          onClick={(id)=>{googleLogin(id)}}
-           />
+          <FavouritesButton />
+
+          {/* <Image id={key} src={heart} alt="untoggled favourite button" width={40} height={40}
+          onClick={(id)=>{googleLogin(id)}} 
+           />*/}
         </div>
       </div>
     </div>
