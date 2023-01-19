@@ -14,8 +14,6 @@ export default function NavBar() {
 
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
-
-
   // use next router to reload the page once the user is signed out
   const router = useRouter();
 
@@ -104,6 +102,7 @@ export default function NavBar() {
                 Logout
               </button>
             )}
+          </li>
           </li>
         </ul>
       </nav>
