@@ -7,11 +7,6 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
 
 export default function NavBar() {
-  const auth = getAuth(app);
-
-import { app } from "../firebase/firebase.js";
-
-export default function NavBar() {
   // initialize firebase
   const auth = getAuth(app);
 
