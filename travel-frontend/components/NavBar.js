@@ -5,38 +5,20 @@ import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
 
-import { app } from "../firebase/firebase";
-
 export default function NavBar() {
-
+  // initialize firebase
   const auth = getAuth(app);
   const [user, loading, error] = useAuthState(auth);
 
-  // initialize firebase
-  const auth = getAuth(app);
-
-  // hook from react-firebase-hooks that allows us to log in with Google
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-
   // use next router to reload the page once the user is signed out
   const router = useRouter();
-
 
   return (
     <div className="">
       <nav className="bg-dark-green ">
         <ul className="flex justify-evenly  h-12 text-off-white text-xl">
           <li>
-
             {" "}
-            <Link href="/" className="align-middle">
-              Home
-            </Link>
-          </li>
-          <li>
-            {" "}
-
-
             <Link href="/" className="align-middle">
               Logo
             </Link>
@@ -47,26 +29,11 @@ export default function NavBar() {
             </Link>
           </li>
           <li>
-
             {" "}
-
-
             <Link href="/journal" className="align-middle">
               Journal
             </Link>
           </li>
-          <li>
-            {" "}
-            <Link href="/login" className="align-middle">
-              Login
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link href="/logout" className="align-middle">
-              Logout
-            </Link>
-            </li>
 
           <li>
             {/**if the user is not logged in the LOGIN button will be on navBar
@@ -99,7 +66,6 @@ export default function NavBar() {
                 Logout
               </button>
             )}
-          </li>
           </li>
         </ul>
       </nav>
