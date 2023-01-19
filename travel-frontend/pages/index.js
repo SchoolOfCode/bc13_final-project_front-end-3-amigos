@@ -10,7 +10,7 @@ import Carousel from "../components/Carousel";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
-import ApiResultsDisplay from "../components/ApiResultsCardContainer";
+import ApiResultsCardContainer from "../components/ApiResultsCardContainer";
 import axios from "axios";
 // import { auth } from "../firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -212,7 +212,9 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
-      {apiData && <ApiResultsDisplay postData={postData} apiData={apiData} />}
+      {apiData && (
+        <ApiResultsCardContainer postData={postData} apiData={apiData} />
+      )}
     </>
   );
 }

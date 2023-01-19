@@ -5,11 +5,11 @@
  * data.data.wikipedia_extracts.text
  */
 
-import ApiResultCard from "./ApiResultCardDisplay";
+import ApiResultCard from "./ApiResultCard";
 
 import React from "react";
 
-function ApiResultsDisplay({ apiData, postData}) {
+function ApiResultsDisplay({ apiData, postData }) {
   return (
     <div className="card-display">
       {apiData &&
