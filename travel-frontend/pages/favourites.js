@@ -10,7 +10,6 @@ function Favourites() {
       const res = await axios.get(URL);
       console.log(res);
       setFav(res.data.payload);
-      console.log(fav);
     }
     favData();
   }, []);
@@ -19,14 +18,14 @@ function Favourites() {
   return (
     <div className="card-display">
       {fav &&
-        fav.map((item) => {
+        fav.map((i) => {
           return (
-            <div key={item.id}>
-              <img src={item.image} />
-              <p>{item.city}</p>
-              <p>{item.country}</p>
-              <p>{item.suburb}</p>
-              <p>{item.description}</p>
+            <div key={i.id}>
+              <img src={i.image} />
+              <p>{i.city}</p>
+              <p>{i.country}</p>
+              <p>{i.suburb}</p>
+              <p>{i.description}</p>
             </div>
           );
         })}
@@ -35,3 +34,33 @@ function Favourites() {
 }
 
 export default Favourites;
+
+// async function getStaticis() {
+//   const res = await fetch(URL);
+//   const data = res.json();
+
+//   return {
+//     is: { fav: data },
+//   };
+// }
+
+// function Favourites({ fav }) {
+//   console.log(fav);
+
+//   return (
+//     <div className="card-display">
+//       {fav &&
+//         fav.map((i) => {
+//           return (
+//             <div key={i.id}>
+//               <img src={i.image} />
+//               <p>{i.city}</p>
+//               <p>{i.country}</p>
+//               <p>{i.suburb}</p>
+//               <p>{i.description}</p>
+//             </div>
+//           );
+//         })}
+//     </div>
+//   );
+//       }
