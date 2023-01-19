@@ -3,10 +3,16 @@ import Link from "next/Link";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { app } from "../firebase/firebase.js";
 
 export default function NavBar() {
-  const auth = getAuth();
+  // initialize firebase
+  const auth = getAuth(app);
+
+  // hook from react-firebase-hooks that allows us to log in with Google
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+
+  // use next router to reload the page once the user is signed out
   const router = useRouter();
 
   return (
@@ -28,12 +34,10 @@ export default function NavBar() {
               Journal
             </Link>
           </li>
+
           <li>
-            <Link href="/about" className="align-middle">
-              About Us
-            </Link>
-          </li>
-          <li>
+            {/**if the user is not logged in the LOGIN button will be on navBar
+            and hide once user is logged in*/}
             {!user && (
               <button
                 onClick={() => {
@@ -47,14 +51,16 @@ export default function NavBar() {
           </li>
 
           <li>
+            {/* the LOGOUT button will be on navBar only if the user is logged in*/}
             {user && (
               <button
-                //   className="align-middle"
+                // when the LOGOUT button is clicked the user will be signed out and the home page will be reloaded to reset the states
                 onClick={() => {
                   signOut(auth).then(() => {
                     router.reload("/");
                   });
                 }}
+                className="align-middle"
               >
                 Logout
               </button>

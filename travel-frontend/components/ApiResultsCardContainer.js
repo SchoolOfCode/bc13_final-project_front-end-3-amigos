@@ -5,17 +5,15 @@
  * data.data.wikipedia_extracts.text
  */
 
-import ApiResultCard from "./ApiResultCard";
+import ApiResultCard from "./ApiResultCardDisplay";
 
 import React from "react";
 
-function ApiResultsDisplay({ apiData, googleLogin }) {
+function ApiResultsDisplay({ apiData, postData}) {
   return (
     <div className="card-display">
       {apiData &&
         apiData.map((item) => {
-          console.log(item.preview?.source, "image");
-
           if (
             item.name &&
             item.address.city &&
@@ -27,13 +25,14 @@ function ApiResultsDisplay({ apiData, googleLogin }) {
             return (
               <ApiResultCard
                 key={item.xid}
+                id={item.xid}
                 title={item.name}
                 city={item.address.city}
                 country={item.address.country}
                 suburb={item.address.suburb}
                 description={item.wikipedia_extracts.text}
                 image={item.preview.source}
-                googleLogin={googleLogin}
+                postData={postData}
               />
             );
           }

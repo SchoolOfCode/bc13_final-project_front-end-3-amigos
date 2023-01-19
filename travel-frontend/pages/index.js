@@ -10,10 +10,10 @@ import Carousel from "../components/Carousel";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
-import ApiResultsDisplay from "../components/ApiResultsDisplay";
+import ApiResultsDisplay from "../components/ApiResultsCardContainer";
 import axios from "axios";
 // import { auth } from "../firebase/firebase";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const auth = getAuth(app);
 
@@ -23,18 +23,68 @@ export default function Home() {
   // useState to hold API data
   const [apiData, setApiData] = useState([]);
 
-  //
+  // useState that watches if the user is logged in or not
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
-  // declare the auth state
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  // declare the auth state to check the user status
+  const [user, loading, error] = useAuthState(auth);
+
+  /**
+   * - seperate the logic, have signin only in the Nav bar ✅
+   * - conditional rendring for the Navbar (check)
+   * - Post functionality for the card to be implemented once the user is signed in
+   * - when you go to other pages there is a firebase error which needs to be fixed ✅
+   *        - add app as argument in getAuth()
+   * - fix the search bar bug
+   * - fix the Navbar log in and log out ✅
+   */
+
+  /**
+   * create an async fn post data when you are logged in
+   * if user is not singed in give an alert to "sign in"
+   * if the user is signed in, it will run the post fn (postUserData) (postUserFavourites)
+   * to add the user details in our user table and user_favourites table
+   */
+  // this is the branch!
+  async function postData(xid) {
+    // console.log(xid);
+    console.log(user, "user");
+    // if the user is not logged in and click on the heart button an alert box will popup
+    if (!user) {
+      alert("Please Sign In");
+    }
+    // user logged in
+    if (user) {
+      // this condition only post the user details once, when they log in
+      // once it has posted to user details in the user table, the state isUserLoggedIn changes to true
+      // the reason for this condition is, every time the heart is clicked it should not post user details every time but only once
+      if (!isUserLoggedIn) {
+        // we are taking the metadata of the user and save it in this object
+        let userData = {
+          username: user.displayName,
+          email: user.email,
+        };
+        console.log(userData.username);
+        // this line is passing the userData as an argument of the postUserData fn, which will make the post in user table
+        const res = await postUserData(userData);
+        // console.log(res, "response 78");
+        setIsUserLoggedIn(true);
+      }
+      // once the user clicks on heart
+      // we get the xid of that specific card
+      // and then filter the apiData(which holds the data coming from the API )
+      // let filterFavourites = apiData.filter((item) => {
+      //   return item.xid === xid;
+      // });
+      // console.log(filterFavourites);
+    }
+  }
 
   /**
    * post functionality to save the username's details(email, displayName=username) into our database
    * create async/await fn and use axios to create the post request
    *
    */
-
   async function postUserData(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
     return await axios.post(postURL, data);
@@ -46,50 +96,11 @@ export default function Home() {
    * make a post request using axios.post to post the filtered data in to the user_favourite table
    *
    */
-
   async function postUserFavourites(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
     return await axios.post(postURL, data);
   }
 
-  /**
-   * create an async fn to sign in with Google
-   * if user is not singed in than redirect to sign in with Google popup
-   * if the user is signed in, it will run the post fn (postUserData) to add the user details in our user table
-   */
-
-  async function googleLogin(xid) {
-    console.log(xid);
-    console.log(user, "user");
-    if (!user) {
-      signInWithGoogle();
-    }
-    if (user) {
-      if (!isUserLoggedIn) {
-        let userData = {
-          username: user.user.displayName,
-          email: user.user.email,
-        };
-        console.log(userData);
-        const res = await postUserData(userData);
-        console.log(res, "response 78");
-        console.log(res.data.payload, "payload");
-        setIsUserLoggedIn(true);
-      }
-    }
-    // let userData = {
-    //   username: user.user.displayName,
-    //   email: user.user.email,
-    // };
-    // console.log(userData);
-    // const res = await postUserData(userData);
-    // console.log(res);
-
-    // let userFavourites = apiData.filter((item) => {
-    //   return item.xid === xid;
-    // });
-    // console.log(userFavourites);
-  }
   /**
    * connect frontend with backend with connection string
    * create .env file at the root level and save the backend url
@@ -201,9 +212,7 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
-      {apiData && (
-        <ApiResultsDisplay googleLogin={googleLogin} apiData={apiData} />
-      )}
+      {apiData && <ApiResultsDisplay postData={postData} apiData={apiData} />}
     </>
   );
 }
