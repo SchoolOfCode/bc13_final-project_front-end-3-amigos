@@ -15,7 +15,7 @@ import { app } from "../firebase/firebase";
 import axios from "axios";
 import { async } from "@firebase/util";
 
- function FavouritesButton(newFavourite) {
+function FavouritesButton(newFavourite) {
   //console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
 
   const auth = getAuth(app);
@@ -76,9 +76,7 @@ import { async } from "@firebase/util";
     // TOGGLE HEART STATE
     setFavourite(!favourite);
     console.log("state toggled to:", favourite);
-  };
-  
-
+  }
 
   const currentlyAFavourite = (
     <Image
@@ -106,9 +104,7 @@ import { async } from "@firebase/util";
   // - IF the heart is FULL, click sends a DELETE request
 
   //const toggleFavourite = async () => {
-    // Set state for selected favourite
-
-    
+  // Set state for selected favourite
 
   // if (user) {
   //   setFavourite(async (favourite) => {
@@ -136,6 +132,7 @@ import { async } from "@firebase/util";
   //   });
   //}
 
+  // onClick if the hear is full send delete request else send post request
   return (
     <>
       <button onClick={toggleFavourite(newFavourite)}>
@@ -143,6 +140,6 @@ import { async } from "@firebase/util";
       </button>
     </>
   );
-  }
+}
 
 export default FavouritesButton;
