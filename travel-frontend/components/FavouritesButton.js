@@ -40,6 +40,7 @@ function FavouritesButton({
     description,
     image
   ) {
+    console.log("postRequest fired")
     const res = await axios.post(`${URL}`, {
       uid,
       xid: id,
@@ -78,7 +79,7 @@ function FavouritesButton({
   );
 
   const [favourite, setFavourite] = useState(false);
-
+console.log("favourite state initally:", favourite)
   // probably need to pass in XID for this
   const toggleFavourite = () => {
     // Set state for selected favourite
@@ -91,6 +92,7 @@ function FavouritesButton({
           console.log("unfavourited clicked!");
         }
         if (favourite === false) {
+          console.log("favourite state when clicked:", favourite)
           await postRequest(
             uid,
             id,
