@@ -25,16 +25,16 @@ function FavouritesButton(newFavourite) {
   const uid = "abc";
 
   async function postRequest(newFavourite) {
-    console.log("postRequest content:", newFavourite);
+    console.log("postRequest content:", newFavourite.props.xid);
     const res = await axios.post(`${URL}`, {
-      uid: newFavourite.uid,
-      xid: id,
-      title: newFavourite.title,
-      city: newFavourite.city,
-      country: newFavourite.country,
-      suburb: newFavourite.suburb,
-      description: newFavourite.description,
-      image: newFavourite.image,
+      uid: uid,
+      xid: newFavourite.props.xid,
+      title: newFavourite.props.title,
+      city: newFavourite.props.city,
+      country: newFavourite.props.country,
+      suburb: newFavourite.props.suburb,
+      description: newFavourite.props.description,
+      image: newFavourite.props.image,
     });
     console.log(res);
   }
@@ -59,16 +59,7 @@ function FavouritesButton(newFavourite) {
         await deleteRequest(id, uid);
         console.log("unfavourited clicked!");
       } else {
-        await postRequest(
-          uid,
-          id,
-          title,
-          city,
-          country,
-          suburb,
-          description,
-          image
-        );
+        await postRequest(newFavourite);
         console.log("Favourited clicked!");
       }
     }
@@ -136,7 +127,7 @@ function FavouritesButton(newFavourite) {
   // Check the functionalities.
   return (
     <>
-      <button onClick={toggleFavourite(newFavourite)}>
+      <button onClick={() => toggleFavourite(newFavourite)}>
         {favourite === true ? currentlyAFavourite : notAFavourite}
       </button>
     </>
