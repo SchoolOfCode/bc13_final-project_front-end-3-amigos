@@ -27,9 +27,9 @@ function FavouritesButton(newFavourite) {
 
   async function postRequest(newFavourite) {
     console.log("userUid in Post request:", uid);
-    console.log("postRequest content:", newFavourite.props);
+    console.log("postRequest content:", newFavourite.props, uid);
     const res = await axios.post(`${URL}`, {
-      uid: newFavourite.props.uid,
+      uid: uid,
       xid: newFavourite.props.xid,
       title: newFavourite.props.title,
       city: newFavourite.props.city,
@@ -47,7 +47,7 @@ function FavouritesButton(newFavourite) {
   async function deleteRequest(xid, uid) {
     console.log("delete request xid:", xid);
     console.log("userUid in Delete request:", uid);
-    const res = await axios.delete(`${URL}`, { data: { xid } });
+    const res = await axios.delete(`${URL}`, { data: { xid, uid } });
     console.log(res);
   }
 
