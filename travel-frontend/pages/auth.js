@@ -21,7 +21,7 @@ const authentication = () => {
 
   const auth = getAuth(app);
   const [registered, setRegistered] = useState(true)
-  const registeredUser = <div className='align-middle'> <LogIn />
+  const registeredUser = <div className='flex flex-col justify-center items-center'> <LogIn />
 <GoogleSignIn /> </div>;
   const unRegisteredUser = <div > <Register />  </div>
   const toggleRegistered = () => {
@@ -39,9 +39,11 @@ const authentication = () => {
     <Image alt='mountainous landscape' src={mountainBG} priority={true} className= 'w-full h-full -z-1' />
 
     </div>
-    <div className='flex justify-center mx-auto'>
+    <div className='grid h-screen place-items-center'>
+    <div className="flex flex-col justify-center items-center">
     {registered === true? registeredUser:unRegisteredUser}
-    {registered ===true? <button onClick={()=> toggleRegistered()}>Register</button>: <button onClick={()=> toggleRegistered()}>Log In</button>}
+    {registered ===true? <button className='register-button'  onClick={()=> toggleRegistered()}>Register</button>: <button onClick={()=> toggleRegistered()}>Log In</button>}
+    </div>
     </div>
     </>
     

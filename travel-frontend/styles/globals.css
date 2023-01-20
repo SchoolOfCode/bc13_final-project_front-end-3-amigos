@@ -126,6 +126,18 @@ a {
 @tailwind utilities;
 
 @layer components {
+  .form-control{
+    @apply bg-white bg-opacity-25 px-4 rounded-xl m-1 hover:bg-transparent hover:border-solid transition text-white placeholder-off-white
+  }
+  .auth-sign-in-button{
+    @apply rounded-xl cursor-pointer bg-light-green hover:bg-dark-green px-3 text-off-white m-1 w-52
+  }
+  .google-button{
+    @apply rounded-md cursor-pointer bg-google-red hover:bg-google-dark-red px-3 text-off-white m-1 
+  } 
+  .register-button{
+    @apply rounded-xl cursor-pointer bg-corn-silk hover:bg-google-dark-red px-3 text-off-white m-1
+  }
   .card-display {
     @apply grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6
   }

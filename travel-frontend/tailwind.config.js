@@ -14,6 +14,10 @@ module.exports = {
 				"dark-green": "#2C5746",
 				"light-green": "#7DAB87",
 				"off-white": "#D9D9D9",
+				"google-red": "#DC143C",
+				"google-dark-red": "#8B0000",
+				"google-orange":"#FF8C00",
+				"corn-silk":"#FFF8DC"
 			},
 			margin: {
 				'7%': '7%',

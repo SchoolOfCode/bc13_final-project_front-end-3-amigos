@@ -20,7 +20,7 @@ function GoogleSignIn() {
 
   return (
     <div>
-      <button onClick={() => signInWithGoogle()}>Sign In With Google</button>
+      <button className="google-button" onClick={() => signInWithGoogle()}>Sign In With Google</button>
     </div>
   );
 }

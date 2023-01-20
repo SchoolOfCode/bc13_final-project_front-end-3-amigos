@@ -44,20 +44,22 @@ const LogIn = () => {
     );
   }
   return (
-    <div className="App">
+    <div className="App flex flex-col justify-center items-center">
       <input
+        className='form-control'
         type="email"
         value={email}
         placeholder={"email"}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
+        className='form-control'
         type="password"
         value={password}
         placeholder={"password"}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={() => signInWithEmailAndPassword(email, password)}>
+      <button className='auth-sign-in-button' onClick={() => signInWithEmailAndPassword(email, password)}>
         Sign In
       </button>
     </div>
