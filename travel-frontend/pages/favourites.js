@@ -34,33 +34,3 @@ function Favourites() {
 }
 
 export default Favourites;
-
-// async function getStaticis() {
-//   const res = await fetch(URL);
-//   const data = res.json();
-
-//   return {
-//     is: { fav: data },
-//   };
-// }
-
-// function Favourites({ fav }) {
-//   console.log(fav);
-
-//   return (
-//     <div className="card-display">
-//       {fav &&
-//         fav.map((i) => {
-//           return (
-//             <div key={i.id}>
-//               <img src={i.image} />
-//               <p>{i.city}</p>
-//               <p>{i.country}</p>
-//               <p>{i.suburb}</p>
-//               <p>{i.description}</p>
-//             </div>
-//           );
-//         })}
-//     </div>
-//   );
-//       }
