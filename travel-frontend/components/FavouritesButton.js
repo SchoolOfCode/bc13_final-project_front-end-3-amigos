@@ -16,11 +16,11 @@ import axios from "axios";
 import { async } from "@firebase/util";
 
 function FavouritesButton(newFavourite) {
-  console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
+  //console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
 
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
-
+  const { id, title, city, country, suburb, description, image } = newFavourite;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   const uid = "abc";
 
@@ -73,7 +73,7 @@ function FavouritesButton(newFavourite) {
   );
 
   const [favourite, setFavourite] = useState(false);
-  console.log("favourite stateinitially");
+  //console.log("favourite state initially:", favourite);
   // probably need to pass in XID for this
   const toggleFavourite = () => {
     // Set state for selected favourite
@@ -82,7 +82,6 @@ function FavouritesButton(newFavourite) {
       setFavourite(async (favourite) => {
         if (favourite === true) {
           await deleteRequest(id, uid);
-
           console.log("unfavourited clicked!");
         }
         if (favourite === false) {
@@ -96,8 +95,7 @@ function FavouritesButton(newFavourite) {
             suburb,
             description,
             image
-          );
-
+          )
           console.log("Favourited!");
         }
 
