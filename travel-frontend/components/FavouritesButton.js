@@ -41,7 +41,9 @@ function FavouritesButton(newFavourite) {
 
   /**  Make an axios delete request with UID, Xid attached to the body &
                send to home endpoint*/
+  const { xid } = newFavourite.props;
   async function deleteRequest(xid, uid) {
+    console.log(xid, uid);
     const res = await axios.delete(`${URL}`, { data: { xid, uid } });
     console.log(res);
   }
