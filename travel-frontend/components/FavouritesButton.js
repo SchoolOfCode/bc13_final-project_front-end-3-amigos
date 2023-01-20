@@ -41,8 +41,8 @@ function FavouritesButton(newFavourite) {
 
   /**  Make an axios delete request with UID, Xid attached to the body &
                send to home endpoint*/
-  async function deleteRequest(id, uid) {
-    const res = await axios.delete(`${URL}`, { data: { id, uid } });
+  async function deleteRequest(xid, uid) {
+    const res = await axios.delete(`${URL}`, { data: { xid, uid } });
     console.log(res);
   }
 
@@ -56,7 +56,7 @@ function FavouritesButton(newFavourite) {
     // IF/ELSE STATEMENT FOR POST & DELETE
     if (user) {
       if (favourite === true) {
-        await deleteRequest(id, uid);
+        await deleteRequest(xid, uid);
         console.log("unfavourited clicked!");
       } else {
         await postRequest(newFavourite);
