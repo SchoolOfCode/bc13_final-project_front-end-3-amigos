@@ -132,7 +132,7 @@ function FavouritesButton(newFavourite) {
   //   });
   //}
 
-  // onClick if the hear is full send delete request else send post request
+  // onClick if the heart is full send delete request else send post request.
   return (
     <>
       <button onClick={toggleFavourite(newFavourite)}>
