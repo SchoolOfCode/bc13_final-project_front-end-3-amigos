@@ -42,7 +42,7 @@ function FavouritesButton({
   ) {
     const res = await axios.post(`${URL}`, {
       uid,
-      id,
+      xid: id,
       title,
       city,
       country,
