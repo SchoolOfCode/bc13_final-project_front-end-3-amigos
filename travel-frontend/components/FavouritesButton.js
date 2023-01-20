@@ -74,34 +74,45 @@ function FavouritesButton(newFavourite) {
 
   const [favourite, setFavourite] = useState(false);
   //console.log("favourite state initially:", favourite);
-  // probably need to pass in XID for this
+ 
+// IN THE HANDLECLICK WE WANT:
+// - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
+// - IF the heart is empty, the click sends off a POST request
+// - IF the heart is FULL, click sends a DELETE request
+
   const toggleFavourite = () => {
     // Set state for selected favourite
 
-    if (user) {
-      setFavourite(async (favourite) => {
-        if (favourite === true) {
-          await deleteRequest(id, uid);
-          console.log("unfavourited clicked!");
-        }
-        if (favourite === false) {
-          console.log("favourite clicked");
-          await postRequest(
-            uid,
-            id,
-            title,
-            city,
-            country,
-            suburb,
-            description,
-            image
-          )
-          console.log("Favourited!");
-        }
+    // IF STATEMENT FOR POST
 
-        // switched favourite state boolean
-        return !favourite;
-      });
+    // IF STATEMENT FOR DELETE
+
+    // TOGGLE HEART STATE
+
+    // if (user) {
+    //   setFavourite(async (favourite) => {
+    //     if (favourite === true) {
+    //       await deleteRequest(id, uid);
+    //       console.log("unfavourited clicked!");
+    //     }
+    //     if (favourite === false) {
+    //       console.log("favourite clicked");
+    //       await postRequest(
+    //         uid,
+    //         id,
+    //         title,
+    //         city,
+    //         country,
+    //         suburb,
+    //         description,
+    //         image
+    //       )
+    //       console.log("Favourited!");
+    //     }
+
+    //     // switched favourite state boolean
+    //     return !favourite;
+    //   });
     }
     if (!user) {
       alert("please log in");
