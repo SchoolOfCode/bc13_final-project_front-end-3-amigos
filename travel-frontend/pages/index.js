@@ -116,7 +116,7 @@ export default function Home() {
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   useEffect(() => {
     async function getData() {
-      await axios.get(URL).then((response) => {
+      await axios.get(URL + "abc").then((response) => {
         setRecData(response.data.payload);
       });
     }
@@ -216,7 +216,7 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
-      
+
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
