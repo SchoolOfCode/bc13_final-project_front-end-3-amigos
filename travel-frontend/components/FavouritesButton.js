@@ -22,7 +22,7 @@ function FavouritesButton(newFavourite) {
   const [user] = useAuthState(auth);
   // const { id, title, city, country, suburb, description, image } = newFavourite;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-  const uid = user.uid;
+  const uid = "CRu3z10cjYY5SAbo686JevypZTn2";
   console.log("userUid:", uid);
 
   async function postRequest(newFavourite) {
@@ -45,8 +45,8 @@ function FavouritesButton(newFavourite) {
   /**  Make an axios delete request with UID, Xid attached to the body &
                send to home endpoint*/
   const { xid } = newFavourite.props.xid;
-  async function deleteRequest(xid) {
-    console.log("userUid in Delete request:", uid);
+  async function deleteRequest(xid, uid) {
+    console.log("userUid in Delete request:", uid, "");
     console.log(xid, uid);
     const res = await axios.delete(`${URL}`, { data: { xid } });
     console.log(res);
