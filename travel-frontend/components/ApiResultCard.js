@@ -51,6 +51,7 @@ function ApiResultCard({
     description,
     image,
   };
+  console.log("new favourite in API RESULT CARD:", newFavourite)
 
   return (
     <div className="card-container group">

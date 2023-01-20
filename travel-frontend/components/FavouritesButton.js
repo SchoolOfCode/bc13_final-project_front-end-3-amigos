@@ -15,15 +15,9 @@ import { app } from "../firebase/firebase";
 import axios from "axios";
 import { async } from "@firebase/util";
 
-function FavouritesButton({
-  id,
-  title,
-  city,
-  country,
-  suburb,
-  description,
-  image,
-}) {
+function FavouritesButton(newFavourite) {
+  console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
+
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
 
@@ -40,7 +34,7 @@ function FavouritesButton({
     description,
     image
   ) {
-    console.log("postRequest fired")
+    console.log("postRequest fired");
     const res = await axios.post(`${URL}`, {
       uid,
       xid: id,
@@ -79,7 +73,7 @@ function FavouritesButton({
   );
 
   const [favourite, setFavourite] = useState(false);
-console.log("favourite stateinitially")
+  console.log("favourite stateinitially");
   // probably need to pass in XID for this
   const toggleFavourite = () => {
     // Set state for selected favourite
@@ -92,7 +86,7 @@ console.log("favourite stateinitially")
           console.log("unfavourited clicked!");
         }
         if (favourite === false) {
-          console.log("favourite clicked")
+          console.log("favourite clicked");
           await postRequest(
             uid,
             id,
