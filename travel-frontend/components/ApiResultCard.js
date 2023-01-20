@@ -43,6 +43,16 @@ function ApiResultCard({
   image,
   googleLogin,
 }) {
+  const newFavourite = {
+    id,
+    title,
+    city,
+    country,
+    suburb,
+    description,
+    image,
+  };
+
   return (
     <div className="card-container group">
       <div className="single-card">
@@ -56,17 +66,7 @@ function ApiResultCard({
           <p className="card-location">{suburb}</p>
           <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
-          <FavouritesButton
-            key={item.xid}
-            id={item.xid}
-            title={item.name}
-            city={item.address.city}
-            country={item.address.country}
-            suburb={item.address.suburb}
-            description={item.wikipedia_extracts.text}
-            image={item.preview.source}
-            postData={postData}
-          />
+          <FavouritesButton props={newFavourite} />
 
           {/* <Image id={key} src={heart} alt="untoggled favourite button" width={40} height={40}
           onClick={(id)=>{googleLogin(id)}} 
