@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { getAuth } from '@firebase/auth'
 import { app } from '../firebase/firebase';
+import axios from 'axios';
 /* 
 PLAN:
 have a form for register
@@ -10,6 +11,12 @@ send data (username, email, password) to db
 
 anotheremail@email.com Password3000 Tom303
 */
+
+/* 
+use axios to create a post request to our db with registered user info 
+
+*/
+
 
 
 function Register() {
@@ -44,6 +51,22 @@ function Register() {
       }
 
       console.log(email, password, username)
+      
+
+    async function sendRegistrationDetails(data){
+        const postURL = process.env.NEXT_PUBLIC_POST_URL
+        return await axios.post(postURL, data )
+    }
+    async function postData(){
+        let userObj = {email, username}
+        await sendRegistrationDetails(userObj)
+    }
+
+    function Register(){
+        createUserWithEmailAndPassword(email, password, username)
+        postData()
+    }
+
   return (
     <div>
     <input
@@ -65,7 +88,7 @@ function Register() {
         onChange={(e) => setPassword(e.target.value)}
       />
       
-      <button onClick={() => createUserWithEmailAndPassword(email, password)}>
+      <button onClick={() => Register}>
         Register
       </button>
 

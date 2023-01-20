@@ -8,14 +8,16 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				"hero" : "url('https://www.deviantart.com/antivvibu/art/Minimalist-Vector-Landscape-769629587')",
-				"next" : "url('/right-arrow.png')",
-				"prev" : "url('/left-arrow.png')"
+				"auth-bg" : "url('../public/mouintain-bg.jpg')",
 			},
 			colors: {
 				"dark-green": "#2C5746",
 				"light-green": "#7DAB87",
 				"off-white": "#D9D9D9",
+				"google-red": "#DC143C",
+				"google-dark-red": "#8B0000",
+				"google-orange":"#FF8C00",
+				"corn-silk":"#FFF8DC"
 			},
 			margin: {
 				'7%': '7%',
