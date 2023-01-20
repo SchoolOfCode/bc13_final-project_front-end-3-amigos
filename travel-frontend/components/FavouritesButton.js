@@ -20,30 +20,21 @@ function FavouritesButton(newFavourite) {
 
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
-  const { id, title, city, country, suburb, description, image } = newFavourite;
+  // const { id, title, city, country, suburb, description, image } = newFavourite;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   const uid = "abc";
 
-  async function postRequest(
-    uid,
-    id,
-    title,
-    city,
-    country,
-    suburb,
-    description,
-    image
-  ) {
-    console.log("postRequest fired");
+  async function postRequest(newFavourite) {
+    console.log("postRequest content:", newFavourite);
     const res = await axios.post(`${URL}`, {
-      uid,
+      uid: newFavourite.uid,
       xid: id,
-      title,
-      city,
-      country,
-      suburb,
-      description,
-      image,
+      title: newFavourite.title,
+     city:  newFavourite.city,
+      country: newFavourite.country,
+      suburb: newFavourite.suburb,
+      description: newFavourite.description,
+      image: newFavourite.image,
     });
     console.log(res);
   }
@@ -109,8 +100,7 @@ function FavouritesButton(newFavourite) {
 
     // TOGGLE HEART STATE
     setFavourite(!favourite);
-
-    //console.log(user);
+    console.log("state toggled to:", favourite);
   };
 
   // if (user) {
@@ -141,7 +131,7 @@ function FavouritesButton(newFavourite) {
 
   return (
     <>
-      <button onClick={() => toggleFavourite()}>
+      <button onClick={async () => await toggleFavourite(newFavourite)}>
         {favourite === true ? currentlyAFavourite : notAFavourite}
       </button>
     </>
