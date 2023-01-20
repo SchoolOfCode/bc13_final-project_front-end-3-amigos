@@ -39,7 +39,7 @@ export default function NavBar() {
             {/**if the user is not logged in the LOGIN button will be on navBar
             and hide once user is logged in*/}
 
-            {!user && (
+            {!user ? 
               <button
                 onClick={() => {
                   router.push("/auth");
@@ -47,14 +47,7 @@ export default function NavBar() {
                 className="align-middle"
               >
                 Login
-              </button>
-            )}
-          </li>
-
-          <li>
-            {/* the LOGOUT button will be on navBar only if the user is logged in*/}
-            {user && (
-              <button
+              </button> : <button
                 // when the LOGOUT button is clicked the user will be signed out and the home page will be reloaded to reset the states
                 onClick={() => {
                   signOut(auth).then(() => {
@@ -65,8 +58,10 @@ export default function NavBar() {
               >
                 Logout
               </button>
-            )}
+            }
           </li>
+
+        
         </ul>
       </nav>
     </div>
