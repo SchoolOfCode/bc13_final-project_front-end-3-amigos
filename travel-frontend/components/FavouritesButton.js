@@ -15,7 +15,7 @@ import { app } from "../firebase/firebase";
 import axios from "axios";
 import { async } from "@firebase/util";
 
-function FavouritesButton(newFavourite) {
+async function FavouritesButton(newFavourite) {
   //console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
 
   const auth = getAuth(app);
@@ -30,7 +30,7 @@ function FavouritesButton(newFavourite) {
       uid: newFavourite.uid,
       xid: id,
       title: newFavourite.title,
-     city:  newFavourite.city,
+      city: newFavourite.city,
       country: newFavourite.country,
       suburb: newFavourite.suburb,
       description: newFavourite.description,
@@ -46,34 +46,9 @@ function FavouritesButton(newFavourite) {
     console.log(res);
   }
 
-  const currentlyAFavourite = (
-    <Image
-      src={fullHeart}
-      className="p-1 rounded-full bg-opacity-70 bg-off-white"
-      width={40}
-      alt="a clicked favourite button"
-    />
-  );
-  const notAFavourite = (
-    <Image
-      src={emptyHeart}
-      className="p-1 rounded-full bg-opacity-70 bg-off-white"
-      width={40}
-      alt="an unclicked favourite button"
-    />
-  );
+  // DeFINE MEGA FUNCTION OF TOGGLEFAVOURITE!
 
-  const [favourite, setFavourite] = useState(false);
-  //console.log("favourite state initially:", favourite);
-
-  // IN THE HANDLECLICK WE WANT:
-  // - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
-  // - IF the heart is empty, the click sends off a POST request
-  // - IF the heart is FULL, click sends a DELETE request
-
-  const toggleFavourite = async () => {
-    // Set state for selected favourite
-
+  async function toggleFavourite(newFavourite) {
     if (!user) {
       alert("please log in");
     }
@@ -102,6 +77,38 @@ function FavouritesButton(newFavourite) {
     setFavourite(!favourite);
     console.log("state toggled to:", favourite);
   };
+  
+
+
+  const currentlyAFavourite = (
+    <Image
+      src={fullHeart}
+      className="p-1 rounded-full bg-opacity-70 bg-off-white"
+      width={40}
+      alt="a clicked favourite button"
+    />
+  );
+  const notAFavourite = (
+    <Image
+      src={emptyHeart}
+      className="p-1 rounded-full bg-opacity-70 bg-off-white"
+      width={40}
+      alt="an unclicked favourite button"
+    />
+  );
+
+  const [favourite, setFavourite] = useState(false);
+  //console.log("favourite state initially:", favourite);
+
+  // IN THE HANDLECLICK WE WANT:
+  // - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
+  // - IF the heart is empty, the click sends off a POST request
+  // - IF the heart is FULL, click sends a DELETE request
+
+  //const toggleFavourite = async () => {
+    // Set state for selected favourite
+
+    
 
   // if (user) {
   //   setFavourite(async (favourite) => {
@@ -131,11 +138,11 @@ function FavouritesButton(newFavourite) {
 
   return (
     <>
-      <button onClick={async () => await toggleFavourite(newFavourite)}>
+      <button onClick={await toggleFavourite(newFavourite)}>
         {favourite === true ? currentlyAFavourite : notAFavourite}
       </button>
     </>
   );
-}
+  }
 
 export default FavouritesButton;
