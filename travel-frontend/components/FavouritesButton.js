@@ -15,7 +15,7 @@ import { app } from "../firebase/firebase";
 import axios from "axios";
 import { async } from "@firebase/util";
 
-async function FavouritesButton(newFavourite) {
+ function FavouritesButton(newFavourite) {
   //console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
 
   const auth = getAuth(app);
@@ -138,7 +138,7 @@ async function FavouritesButton(newFavourite) {
 
   return (
     <>
-      <button onClick={await toggleFavourite(newFavourite)}>
+      <button onClick={toggleFavourite(newFavourite)}>
         {favourite === true ? currentlyAFavourite : notAFavourite}
       </button>
     </>
