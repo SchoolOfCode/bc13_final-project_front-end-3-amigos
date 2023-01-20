@@ -13,6 +13,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase";
 import axios from "axios";
+import { async } from "@firebase/util";
 
 function FavouritesButton({
   id,
@@ -83,11 +84,23 @@ function FavouritesButton({
     // Set state for selected favourite
 
     if (user) {
-      setFavourite((favourite) => {
+      setFavourite(async (favourite) => {
         if (favourite === true) {
+          await postRequest(
+            uid,
+            id,
+            title,
+            city,
+            country,
+            suburb,
+            description,
+            image
+          );
           console.log("unfavourited clicked!");
         }
         if (favourite === false) {
+          await deleteRequest(id, uid);
+
           console.log("Favourited!");
         }
 
