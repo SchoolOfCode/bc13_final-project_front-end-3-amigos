@@ -11,27 +11,27 @@ const URL = "https://final-project-backend-d6jk.onrender.com/userfavourites/";
 // SO: a) is it going to the database? and
 // b) if so, which values are missing/what is it being stored as? e.g., what ID is in there?
 
-function handleClick({ title, city, country, suburb, description, image }) {
-  const user_id = 4;
-  const newFavourite = {
-    user_id,
-    title,
-    city,
-    country,
-    suburb,
-    description,
-    image,
-  };
-  console.log("new Favourite:", newFavourite);
-  axios
-    .post(`${URL}`, newFavourite)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
+// function handleClick({ title, city, country, suburb, description, image }) {
+//   const user_id = 4;
+//   const newFavourite = {
+//     user_id,
+//     title,
+//     city,
+//     country,
+//     suburb,
+//     description,
+//     image,
+//   };
+//   console.log("new Favourite:", newFavourite);
+//   axios
+//     .post(`${URL}`, newFavourite)
+//     .then(function (response) {
+//       console.log(response);
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// }
 
 function ApiResultCard({
   id,
@@ -41,7 +41,6 @@ function ApiResultCard({
   suburb,
   description,
   image,
-  googleLogin,
 }) {
   const newFavourite = {
     id,
@@ -67,10 +66,6 @@ function ApiResultCard({
           <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
           <FavouritesButton props={newFavourite} />
-
-          {/* <Image id={key} src={heart} alt="untoggled favourite button" width={40} height={40}
-          onClick={(id)=>{googleLogin(id)}} 
-           />*/}
         </div>
       </div>
     </div>

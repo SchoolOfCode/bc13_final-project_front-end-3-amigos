@@ -79,7 +79,7 @@ function FavouritesButton({
   );
 
   const [favourite, setFavourite] = useState(false);
-console.log("favourite state initally:", favourite)
+console.log("favourite stateinitially")
   // probably need to pass in XID for this
   const toggleFavourite = () => {
     // Set state for selected favourite
@@ -92,7 +92,7 @@ console.log("favourite state initally:", favourite)
           console.log("unfavourited clicked!");
         }
         if (favourite === false) {
-          console.log("favourite state when clicked:", favourite)
+          console.log("favourite clicked")
           await postRequest(
             uid,
             id,
