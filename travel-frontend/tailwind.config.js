@@ -8,9 +8,7 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: {
-				"hero" : "url('https://www.deviantart.com/antivvibu/art/Minimalist-Vector-Landscape-769629587')",
-				"next" : "url('/right-arrow.png')",
-				"prev" : "url('/left-arrow.png')"
+				"auth-bg" : "url('../public/mouintain-bg.jpg')",
 			},
 			colors: {
 				"dark-green": "#2C5746",

@@ -5,6 +5,8 @@ import GoogleSignIn from "../components/GoogleSignIn";
 import { app } from "../firebase/firebase";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
+import Image from "next/image";
+import mountainBG from '../public/mouintain-bg.jpg'
 
 
 /**
@@ -19,9 +21,9 @@ const authentication = () => {
 
   const auth = getAuth(app);
   const [registered, setRegistered] = useState(true)
-  const registeredUser = <div> <LogIn />
+  const registeredUser = <div className='align-middle'> <LogIn />
 <GoogleSignIn /> </div>;
-  const unRegisteredUser = <div> <Register />  </div>
+  const unRegisteredUser = <div > <Register />  </div>
   const toggleRegistered = () => {
     if (registered) {
       setRegistered(false)  
@@ -30,10 +32,20 @@ const authentication = () => {
     }
   }
   return (
-    <div>
-    {registered === true? registeredUser:unRegisteredUser}
-    {registered ===true? <button onClick={()=> toggleRegistered()}>Register</button>: <button onClick={()=> toggleRegistered()}>Log In</button>} 
+    
+
+    <>
+    <div className="fixed w-full h-full -z-10 ">
+    <Image alt='mountainous landscape' src={mountainBG} priority={true} className= 'w-full h-full -z-1' />
+
     </div>
+    <div className='flex justify-center mx-auto'>
+    {registered === true? registeredUser:unRegisteredUser}
+    {registered ===true? <button onClick={()=> toggleRegistered()}>Register</button>: <button onClick={()=> toggleRegistered()}>Log In</button>}
+    </div>
+    </>
+    
+    
   );
 };
 
