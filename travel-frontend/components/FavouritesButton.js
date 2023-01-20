@@ -28,7 +28,7 @@ function FavouritesButton({
   const [user] = useAuthState(auth);
 
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-  const uid = user.uid;
+  const uid = "abc";
 
   async function postRequest(
     uid,
