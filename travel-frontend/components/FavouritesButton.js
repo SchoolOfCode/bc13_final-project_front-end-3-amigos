@@ -86,6 +86,11 @@ function FavouritesButton({
     if (user) {
       setFavourite(async (favourite) => {
         if (favourite === true) {
+          await deleteRequest(id, uid);
+
+          console.log("unfavourited clicked!");
+        }
+        if (favourite === false) {
           await postRequest(
             uid,
             id,
@@ -96,10 +101,6 @@ function FavouritesButton({
             description,
             image
           );
-          console.log("unfavourited clicked!");
-        }
-        if (favourite === false) {
-          await deleteRequest(id, uid);
 
           console.log("Favourited!");
         }
