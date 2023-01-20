@@ -74,51 +74,70 @@ function FavouritesButton(newFavourite) {
 
   const [favourite, setFavourite] = useState(false);
   //console.log("favourite state initially:", favourite);
- 
-// IN THE HANDLECLICK WE WANT:
-// - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
-// - IF the heart is empty, the click sends off a POST request
-// - IF the heart is FULL, click sends a DELETE request
 
-  const toggleFavourite = () => {
+  // IN THE HANDLECLICK WE WANT:
+  // - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
+  // - IF the heart is empty, the click sends off a POST request
+  // - IF the heart is FULL, click sends a DELETE request
+
+  const toggleFavourite = async () => {
     // Set state for selected favourite
 
-    // IF STATEMENT FOR POST
-
-    // IF STATEMENT FOR DELETE
-
-    // TOGGLE HEART STATE
-
-    // if (user) {
-    //   setFavourite(async (favourite) => {
-    //     if (favourite === true) {
-    //       await deleteRequest(id, uid);
-    //       console.log("unfavourited clicked!");
-    //     }
-    //     if (favourite === false) {
-    //       console.log("favourite clicked");
-    //       await postRequest(
-    //         uid,
-    //         id,
-    //         title,
-    //         city,
-    //         country,
-    //         suburb,
-    //         description,
-    //         image
-    //       )
-    //       console.log("Favourited!");
-    //     }
-
-    //     // switched favourite state boolean
-    //     return !favourite;
-    //   });
-    }
     if (!user) {
       alert("please log in");
     }
-    console.log(user);
+
+    // IF/ELSE STATEMENT FOR POST & DELETE
+    if (user) {
+      if (favourite === true) {
+        await deleteRequest(id, uid);
+        console.log("unfavourited clicked!");
+      } else {
+        await postRequest(
+          uid,
+          id,
+          title,
+          city,
+          country,
+          suburb,
+          description,
+          image
+        );
+        console.log("Favourited clicked!");
+      }
+    }
+
+    // TOGGLE HEART STATE
+    setFavourite(!favourite);
+
+    //console.log(user);
   };
+
+  // if (user) {
+  //   setFavourite(async (favourite) => {
+  //     if (favourite === true) {
+  //       await deleteRequest(id, uid);
+  //       console.log("unfavourited clicked!");
+  //     }
+  //     if (favourite === false) {
+  //       console.log("favourite clicked");
+  //       await postRequest(
+  //         uid,
+  //         id,
+  //         title,
+  //         city,
+  //         country,
+  //         suburb,
+  //         description,
+  //         image
+  //       )
+  //       console.log("Favourited!");
+  //     }
+
+  //     // switched favourite state boolean
+  //     return !favourite;
+  //   });
+  //}
 
   return (
     <>
