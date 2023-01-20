@@ -133,6 +133,7 @@ function FavouritesButton(newFavourite) {
   //}
 
   // onClick if the heart is full send delete request else send post request.
+  // Check the functionalities.
   return (
     <>
       <button onClick={toggleFavourite(newFavourite)}>
