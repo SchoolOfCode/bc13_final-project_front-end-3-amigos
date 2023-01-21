@@ -4,6 +4,9 @@ import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
+import Image from "next/image";
+import logo from "../public/logo.svg"
+
 
 export default function NavBar() {
   // initialize firebase
@@ -18,10 +21,14 @@ export default function NavBar() {
       <nav className="bg-dark-green ">
         <ul className="flex justify-evenly  h-12 text-off-white text-xl">
           <li>
-            {" "}
-            <Link href="/" className="align-middle">
-              Logo
-            </Link>
+            <Link href="/">
+            <Image  src={logo} width={30} alt="sombrero" className="align-middle"/>
+            </Link> 
+            
+
+            
+            
+            
           </li>
           <li>
             <Link href="/favourites" className="align-middle">
