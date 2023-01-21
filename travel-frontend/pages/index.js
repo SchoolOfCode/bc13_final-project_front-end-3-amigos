@@ -5,7 +5,7 @@ import PhotoBG from "../public/Blue-Lagoon-in-Malta-6.png";
 import { Inter, M_PLUS_1 } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
-import ResultsDisplay from "../components/ResultsDisplay";
+
 import Carousel from "../components/Carousel";
 
 import { useState, useEffect } from "react";
