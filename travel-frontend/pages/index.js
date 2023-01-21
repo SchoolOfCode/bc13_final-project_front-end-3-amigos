@@ -138,6 +138,7 @@ export default function Home() {
     --> pass this as props to ApiResultsDisplay
   */
   async function getApiData(searchTerm) {
+    //setting the state to false so that the loader is shown
     setIsLoading(false);
     const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
     const geoData = await axios.get(
@@ -204,6 +205,7 @@ export default function Home() {
     }
     // setApiData to the final array of 20 places
     setApiData(places);
+    //setting the state to true so that loader is not shown
     setIsLoading(true);
   }
   //console.log(apiData, "final state api");
@@ -222,7 +224,7 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
-
+      {/* conditional rednring so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
 
       {apiData && (
