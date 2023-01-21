@@ -214,16 +214,13 @@ export default function Home() {
 
   return (
     <>
-    
-   
-      <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-7% bg-main-bg" >
+      <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-12% sm:-mt-7% bg-main-bg">
         {/* <Image
           src={PhotoBG}
           alt="Mountain landscape"
           className="object-cover w-full -mt-20 h-2/4 "
           priority={true}
         /> */}
- 
       </div>
       <div className="typewriter">
         <Typewriter
