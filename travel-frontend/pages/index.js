@@ -13,10 +13,9 @@ import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
 import ApiResultsCardContainer from "../components/ApiResultsCardContainer";
 import axios from "axios";
+import Typewriter from 'typewriter-effect';
 // import { auth } from "../firebase/firebase";
 
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import Register from "../components/Register";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loader from "../components/Loader";
@@ -211,6 +210,9 @@ export default function Home() {
   }
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
+
+  const typewriter = new Typewriter({loop:true, delay: 75})
+
   return (
     <>
       {/* This div is just here as these styling props can't be given directly to Image component */}
@@ -222,6 +224,15 @@ export default function Home() {
           priority={true}
         />
       </div>
+      <div>
+      <Typewriter
+      options={{
+      strings: ['Vamos Amigos!!', `Let's go!!`, 'Yallah!!', 'Sa Mergem!!', 'Andiamo!!' ],
+      autoStart: true,
+      loop: true,
+      }}/>
+      </div>
+      
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
