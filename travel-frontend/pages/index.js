@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import backgroundImg from "../public/minimalistBG.jpg";
-import PhotoBG from '../public/Blue-Lagoon-in-Malta-6.png';
+import PhotoBG from "../public/Blue-Lagoon-in-Malta-6.png";
 import { Inter, M_PLUS_1 } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
@@ -13,9 +13,8 @@ import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
 import ApiResultsCardContainer from "../components/ApiResultsCardContainer";
 import axios from "axios";
-import Typewriter from 'typewriter-effect';
+import Typewriter from "typewriter-effect";
 // import { auth } from "../firebase/firebase";
-
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loader from "../components/Loader";
@@ -211,28 +210,36 @@ export default function Home() {
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
 
-  const typewriter = new Typewriter({loop:true, delay: 75})
+  const typewriter = new Typewriter({ loop: true, delay: 75 });
 
   return (
     <>
       {/* This div is just here as these styling props can't be given directly to Image component */}
-      <div className="fixed w-full h-full bg-light-green -z-10 ">
+      <div className="fixed  w-full h-full -z-10 ">
         <Image
           src={PhotoBG}
           alt="Mountain landscape"
-          className="object-cover w-full -mt-12 h-2/4 "
+          className="object-cover w-full  -mt-20 h-2/4 "
           priority={true}
         />
       </div>
-      <div>
-      <Typewriter
-      options={{
-      strings: ['Vamos Amigos!!', `Let's go!!`, 'Yallah!!', 'Sa Mergem!!', 'Andiamo!!' ],
-      autoStart: true,
-      loop: true,
-      }}/>
+      <div className="typewriter">
+        <Typewriter
+          options={{
+            strings: [
+              "Vamos Amigos!!",
+              `Let's go!!`,
+              "Yallah!!",
+              "Să mergem!!",
+              "Andiamo!!",
+              "Vamos lá!!!",
+            ],
+            autoStart: true,
+            loop: true,
+          }}
+        />
       </div>
-      
+
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}

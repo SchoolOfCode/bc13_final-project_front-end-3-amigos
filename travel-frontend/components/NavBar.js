@@ -17,8 +17,8 @@ export default function NavBar() {
 
   return (
     <div className="">
-      <nav >
-        <ul className="flex justify-between h-12 text-xl text-off-white">
+      <nav>
+        <ul className="flex justify-between h-12 text-xl text-google-red">
           <li>
             <Link href="/">
               <Image
