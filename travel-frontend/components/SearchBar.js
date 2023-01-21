@@ -16,7 +16,7 @@ export default function SearchBar({ handleClick }) {
         onClick={() => {
           handleClick(searchTerm);
         }}
-        className="w-auto p-2 ml-2 text-white bg-dark-green drop-shadow-lg sm:rounded-lg"
+        className="font-bold standard-btn"
       >
         Search
       </button>

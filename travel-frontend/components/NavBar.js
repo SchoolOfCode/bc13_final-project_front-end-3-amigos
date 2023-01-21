@@ -18,7 +18,7 @@ export default function NavBar() {
   return (
     <div className="">
       <nav>
-        <ul className="flex justify-between h-12 text-xl text-google-red">
+        <ul className="flex justify-between h-12 text-xl ">
           <li>
             <Link href="/">
               <Image
@@ -31,16 +31,20 @@ export default function NavBar() {
           </li>
           {user && (
             <div className="flex space-x-10 ">
-              <li className="absolute inset-y-0 mt-5 right-40">
+              <li className="absolute inset-y-0 mt-5 right-40 ">
                 <Link href="/favourites" className="font-bold align-left">
+                <button className='standard-btn'>
                   Favourites
+                  </button>
                 </Link>
               </li>
 
-              <li className="absolute inset-y-0 mt-5 right-80">
+              <li className="absolute inset-y-0 mt-5 right-80 ">
                 {" "}
                 <Link href="/journal" className="font-bold align-left">
+                <button className='standard-btn'>
                   Journal
+              </button>
                 </Link>
               </li>
             </div>
@@ -55,7 +59,7 @@ export default function NavBar() {
                 onClick={() => {
                   router.push("/auth");
                 }}
-                className="my-auto mt-5 mr-10 font-bold align-middle"
+                className="my-auto mt-5 ml-2 mr-10 font-bold standard-btn"
               >
                 Login
               </button>
@@ -67,7 +71,7 @@ export default function NavBar() {
                     router.reload("/");
                   });
                 }}
-                className="my-auto mt-5 mr-10 font-bold align-middle"
+                className="my-auto mt-5 mr-10 font-bold align-middle standard-btn"
               >
                 Logout
               </button>
