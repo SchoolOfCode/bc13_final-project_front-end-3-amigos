@@ -3,12 +3,12 @@ import React, { useState } from "react";
 export default function SearchBar({ handleClick }) {
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <div className="flex justify-center mt-5% lg:mx-auto">
+    <div className="search-bar-container">
       <input
         onChange={(e) => {
           setSearchTerm(e.target.value);
         }}
-        className="pl-1 text-black placeholder-black bg-white lg:w-1/3 sm:rounded-lg"
+        className="search-bar"
         type="text"
         placeholder="Donde?"
       ></input>
