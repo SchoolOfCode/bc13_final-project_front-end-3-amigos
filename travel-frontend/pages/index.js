@@ -214,14 +214,16 @@ export default function Home() {
 
   return (
     <>
-      {/* This div is just here as these styling props can't be given directly to Image component */}
-      <div className="fixed  w-full h-full -z-10 ">
-        <Image
+    
+   
+      <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-7% bg-main-bg" >
+        {/* <Image
           src={PhotoBG}
           alt="Mountain landscape"
-          className="object-cover w-full  -mt-20 h-2/4 "
+          className="object-cover w-full -mt-20 h-2/4 "
           priority={true}
-        />
+        /> */}
+ 
       </div>
       <div className="typewriter">
         <Typewriter
