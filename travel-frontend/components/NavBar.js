@@ -17,29 +17,29 @@ export default function NavBar() {
 
   return (
     <div className="">
-      <nav className="bg-dark-green ">
-        <ul className="flex justify-between  h-12 text-off-white text-xl">
+      <nav >
+        <ul className="flex justify-between h-12 text-xl text-off-white">
           <li>
             <Link href="/">
               <Image
                 src={logo}
-                width={50}
+                width={60}
                 alt="sombrero"
-                className="align-middle ml-10 mt-5"
+                className="mt-5 ml-10 align-middle"
               />
             </Link>
           </li>
           {user && (
-            <div className="flex space-x-10  ">
-              <li className="absolute inset-y-0 right-40 mt-5">
-                <Link href="/favourites" className="align-left">
+            <div className="flex space-x-10 ">
+              <li className="absolute inset-y-0 mt-5 right-40">
+                <Link href="/favourites" className="font-bold align-left">
                   Favourites
                 </Link>
               </li>
 
-              <li className="absolute inset-y-0 right-80 mt-5">
+              <li className="absolute inset-y-0 mt-5 right-80">
                 {" "}
-                <Link href="/journal" className="align-left">
+                <Link href="/journal" className="font-bold align-left">
                   Journal
                 </Link>
               </li>
@@ -55,7 +55,7 @@ export default function NavBar() {
                 onClick={() => {
                   router.push("/auth");
                 }}
-                className="align-middle my-auto mr-10 mt-5"
+                className="my-auto mt-5 mr-10 font-bold align-middle"
               >
                 Login
               </button>
@@ -67,7 +67,7 @@ export default function NavBar() {
                     router.reload("/");
                   });
                 }}
-                className="align-middle my-auto mr-10 mt-5"
+                className="my-auto mt-5 mr-10 font-bold align-middle"
               >
                 Logout
               </button>

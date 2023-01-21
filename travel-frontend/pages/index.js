@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import backgroundImg from "../public/minimalistBG.jpg";
+import PhotoBG from '../public/Blue-Lagoon-in-Malta-6.png';
 import { Inter, M_PLUS_1 } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
@@ -215,9 +216,9 @@ export default function Home() {
       {/* This div is just here as these styling props can't be given directly to Image component */}
       <div className="fixed w-full h-full bg-light-green -z-10 ">
         <Image
-          src={backgroundImg}
+          src={PhotoBG}
           alt="Mountain landscape"
-          className="h-4/6"
+          className="object-cover w-full -mt-12 h-2/4 "
           priority={true}
         />
       </div>
