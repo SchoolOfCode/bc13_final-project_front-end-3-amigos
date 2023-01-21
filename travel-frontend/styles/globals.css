@@ -107,8 +107,7 @@ a {
 } */
 
 .fade-anim img {
-  animation: fadeAnim 0.5s
-  ease-out;
+  animation: fadeAnim 0.5s ease-out;
 }
 @keyframes fadeAnim {
   from {
@@ -119,56 +118,74 @@ a {
   }
 }
 
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-  .form-control{
-    @apply bg-white bg-opacity-25 px-4 rounded-xl m-1 hover:bg-transparent hover:border-solid transition text-white placeholder-off-white
+  .form-control {
+    @apply bg-white bg-opacity-25 px-4 rounded-xl m-1 hover:bg-transparent hover:border-solid transition text-white placeholder-off-white;
   }
-  .auth-sign-in-button{
-    @apply rounded-xl cursor-pointer bg-light-green hover:bg-dark-green px-3 text-off-white m-1 w-52
+  .auth-sign-in-button {
+    @apply rounded-xl cursor-pointer bg-light-green hover:bg-dark-green px-3 text-off-white m-1 w-52;
   }
-  .google-button{
-    @apply rounded-md cursor-pointer bg-google-red hover:bg-google-dark-red px-3 text-off-white m-1 
-  } 
-  .register-button{
-    @apply rounded-xl cursor-pointer bg-corn-silk hover:bg-google-dark-red px-3 text-off-white m-1
+  .google-button {
+    @apply rounded-md cursor-pointer bg-google-red hover:bg-google-dark-red px-3 text-off-white m-1;
+  }
+  .register-button {
+    @apply rounded-xl cursor-pointer bg-corn-silk hover:bg-google-dark-red px-3 text-off-white m-1;
   }
   .card-display {
-    @apply grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6
+    @apply grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6;
   }
   .card-container {
-    @apply mt-10 rounded-lg  relative cursor-pointer items-center justify-center overflow-hidden  transition-shadow hover:shadow-xl hover:shadow-black/30
+    @apply mt-10 rounded-lg  relative cursor-pointer items-center justify-center overflow-hidden  transition-shadow hover:shadow-xl hover:shadow-black/30;
   }
   .single-card {
-   @apply  h-96 w-72 mx-auto
+    @apply h-96 w-72 mx-auto;
   }
   .card-image {
-   @apply  sm:h-full sm:w-full object-cover transition-transform duration-500  group-hover:scale-125
+    @apply sm:h-full sm:w-full object-cover transition-transform duration-500  group-hover:scale-125;
   }
   .card-gradient-bg {
-    @apply absolute  inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70
+    @apply absolute  inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70;
   }
   .card-info-transition {
-    @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
+    @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0;
   }
   .card-title {
-    @apply text-3xl font-bold text-off-white mb-1 align-text-bottom mt-7%
+    @apply text-3xl font-bold text-off-white mb-1 align-text-bottom mt-7%;
   }
   .card-city {
-    @apply text-off-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%
+    @apply text-off-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%;
   }
   .card-location {
-    @apply text-off-white opacity-0 transition-opacity duration-300 group-hover:opacity-100
+    @apply text-off-white opacity-0 transition-opacity duration-300 group-hover:opacity-100;
   }
   .card-desc {
-    @apply text-lg font-normal text-off-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto
+    @apply text-lg font-normal text-off-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto;
   }
   .card-btn {
-   @apply  rounded-full bg-dark-green mt-3 py-2 px-3.5  text-sm capitalize text-white shadow shadow-black/60
+    @apply rounded-full bg-dark-green mt-3 py-2 px-3.5  text-sm capitalize text-white shadow shadow-black/60;
   }
 }

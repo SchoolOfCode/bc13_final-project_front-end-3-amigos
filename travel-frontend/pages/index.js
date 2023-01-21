@@ -18,6 +18,7 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import Register from "../components/Register";
 
 import { useAuthState } from "react-firebase-hooks/auth";
+import Loader from "../components/Loader";
 
 const auth = getAuth(app);
 
@@ -32,6 +33,9 @@ export default function Home() {
 
   // declare the auth state to check the user status
   const [user, loading, error] = useAuthState(auth);
+
+  // state for the loader
+  const [isLoading, setIsLoading] = useState(true);
 
   /**
    * - seperate the logic, have signin only in the Nav bar ✅
@@ -134,6 +138,7 @@ export default function Home() {
     --> pass this as props to ApiResultsDisplay
   */
   async function getApiData(searchTerm) {
+    setIsLoading(false);
     const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
     const geoData = await axios.get(
       `https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerm}&apikey=${API_KEY}`
@@ -199,6 +204,7 @@ export default function Home() {
     }
     // setApiData to the final array of 20 places
     setApiData(places);
+    setIsLoading(true);
   }
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
@@ -216,6 +222,8 @@ export default function Home() {
       <SearchBar handleClick={getApiData} />
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
+
+      {!isLoading && <Loader />}
 
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
