@@ -19,8 +19,8 @@ function GoogleSignIn() {
 
 
   // 
-  async function registerUser(displayName, email, password, uid) {
-    await signInWithGoogle();
+   function registerUser(displayName, email, password, uid) {
+     signInWithGoogle();
     console.log("post registration user details", user);
     const userDetails = {
       username: user.displayName,
