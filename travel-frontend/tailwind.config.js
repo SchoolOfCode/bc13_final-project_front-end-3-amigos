@@ -50,7 +50,7 @@ module.exports = {
           },
           textColor: {
             skin: {
-              base: 'var(--color-text-base)',
+              base: '#000000',
               muted: 'var(--color-text-muted)',
               inverted: 'var(--color-text-inverted)'
             }
@@ -88,24 +88,16 @@ module.exports = {
       },
       themes: [
         {
-          // name your theme anything that could be a valid css selector
-          // remember what you named your theme because you will use it as a class to enable the theme
-          name: 'minimal-theme',
-          // put any overrides your theme has here
-          // just as if you were to extend tailwind's theme like normal https://tailwindcss.com/docs/theme#extending-the-default-theme
+        name: 'minimal-theme',
           extend: {
             backgroundImage:  {
-    
-              
               'main-bg': "url('/minimalistBG.jpg')",
-              
-    
           },
           backgroundColor:{
             'button-fill': '#2C5746',
-            'main-fill': '#FCEFF9',
+            'main-fill': '##7DAB87',
             'other-fill': '#2C5746',
-            'card-background':''
+            'card-background':'#2C5746'
             // skin: {
             //   fill:'var(--color-button-fill)',
             //   'button-accent':'var(--color-button-accent)',
@@ -116,7 +108,7 @@ module.exports = {
             // }
           },
           colors: {
-            "ctc":'#000000'
+            "ctc":'#2C5746'
           },
           }
         }
