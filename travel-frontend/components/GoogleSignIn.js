@@ -7,19 +7,28 @@ import axios from "axios";
 
 // this is called onClick, and a) signs in the user to google, and b) posts user details, and c) pushes the user to the home route
 
-async function postUserDetails(userDetails) {
-  const res = await axios.post(`${URL}`, userDetails);
-  console.log("user details post response", res);
-}
-
 function GoogleSignIn() {
   const auth = getAuth(app);
   const router = useRouter();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   console.log(user);
+  // console.log(user.user.displayName);
+
+  async function postUserDetails(userDetails) {
+    console.log("postUserDetails(userDetails) is fired");
+    const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+    const res = await axios.post(`${URL}`, {
+      username: user.user.displayName,
+      email: user.user.email,
+      uid: user.user.uid,
+      password: "null",
+    });
+    console.log("postUserDetails:-", URL, userDetails);
+    console.log("user details post response", res);
+  }
   // adding useEffect
   useEffect(() => {
-    function User() {
+    async function User() {
       if (user) {
         console.log("user @ UseEffect:", user.user.email);
         console.log("user @ UseEffect:", user.user.displayName);
@@ -31,55 +40,14 @@ function GoogleSignIn() {
           password: "null",
         };
         console.log(userDetails);
-        postUserDetails(userDetails);
+        await postUserDetails(userDetails);
+        console.log("registration complete");
         router.push("/");
       }
     }
     User();
   }, [user]);
-  console.log(user);
-
-  // function userReg(user) {
-  //   const { displayName } = user;
-  //   console.log(user);
-  //   // const userDetails = {
-  //   //   username: user.displayName,
-  //   //   email: user.email,
-  //   //   uid: user.uid,
-  //   };
-  //   userReg();
-  //   console.log(userDetails);
-  // }
-
-  // function registerUser(displayName, email, password, uid) {
-  //   signInWithGoogle();
-  //   console.log("post registration user details", user);
-  //   const userDetails = {
-  //     username: displayName,
-  //     email: email,
-  //     password: "abc",
-  //     uid: uid,
-  //   };
-  //   console.log(userDetails);
-  // }
-
-  //   postUserDetails(userDetails);
-
-  // }
-
-  // useEffect(() => {
-  //   async function User() {
-  //     if (user) {
-  //       console.log(user);
-  //       /** if the user is logged in - take user details and post it to database
-
-  //       const userDetails = {username:user.displayName, email:user.email, password:"abc", uid:user.uid}
-  //       router.push("/");
-  //     }
-  //   };
-  //   User();
-  // }, [user]);
-  // await postUserDetails(userDetails)
+  // console.log(user.user.email);
 
   return (
     <div>
