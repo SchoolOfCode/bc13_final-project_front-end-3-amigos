@@ -24,21 +24,22 @@ function GoogleSignIn() {
         router.push("/");
       }
     }
-  });
+    User();
+  }, [user]);
 
   //
-  function registerUser(displayName, email, password, uid) {
-    signInWithGoogle();
-    console.log("post registration user details", user);
-    const userDetails = {
-      username: user.displayName,
-      email: user.email,
-      password: "abc",
-      uid: user.uid,
-    };
-    postUserDetails(userDetails);
-    router.push("/");
-  }
+  // function registerUser(displayName, email, password, uid) {
+  //   signInWithGoogle();
+  //   console.log("post registration user details", user);
+  //   const userDetails = {
+  //     username: user.displayName,
+  //     email: user.email,
+  //     password: "abc",
+  //     uid: user.uid,
+  //   };
+  //   postUserDetails(userDetails);
+
+  // }
 
   // useEffect(() => {
   //   async function User() {
