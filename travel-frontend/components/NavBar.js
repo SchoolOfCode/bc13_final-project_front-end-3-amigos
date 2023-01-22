@@ -16,7 +16,7 @@ export default function NavBar() {
   const router = useRouter();
 
   return (
-    <div className="">
+  
       <nav>
         <ul className="flex justify-between h-12 text-xl ">
           <li>
@@ -79,6 +79,6 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
-    </div>
+
   );
 }

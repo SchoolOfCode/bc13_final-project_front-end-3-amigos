@@ -5,7 +5,6 @@ import PhotoBG from "../public/Blue-Lagoon-in-Malta-6.png";
 import { Inter, M_PLUS_1 } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
-import ResultsDisplay from "../components/ResultsDisplay";
 import Carousel from "../components/Carousel";
 
 import { useState, useEffect } from "react";
@@ -210,18 +209,11 @@ export default function Home() {
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
 
-  const typewriter = new Typewriter({ loop: true, delay: 75 });
+  
 
   return (
-    <>
-      <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-12% sm:-mt-7% bg-main-bg">
-        {/* <Image
-          src={PhotoBG}
-          alt="Mountain landscape"
-          className="object-cover w-full -mt-20 h-2/4 "
-          priority={true}
-        /> */}
-      </div>
+    <div className="background-image-styling">
+
       <div className="typewriter">
         <Typewriter
           options={{
@@ -248,6 +240,6 @@ export default function Home() {
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
-    </>
+    </div>
   );
 }
