@@ -32,19 +32,30 @@ function GoogleSignIn() {
 
         async function postUserDetails(userDetails) {
           console.log("postUserDetails(userDetails) is fired", userDetails);
-          const URL = process.env.NEXT_PUBLIC_POSTGRES_URL + "abc";
+          const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
           console.log(URL);
           // const URL = `postgres://xwrxqxhr:wCU0PAsKZeTaKCaGCueQHoyKuJHh0wNn@mel.db.elephantsql.com/xwrxqxhr`;
-          const res = await axios.post(`${URL}`, {
-            username: user.user.displayName,
-            email: user.user.email,
-            uid: user.user.uid,
-            password: "null",
-          });
-          console.log("postUserDetailsafter post request:-", URL, userDetails);
-          console.log("user details post response", res);
+
+          const headers = {
+            "Content-Type": "application/json",
+          };
+          const res = await axios.post(
+            URL,
+            userDetails,
+            // {
+            //   username: user.user.displayName,
+            //   email: user.user.email,
+            //   uid: user.user.uid,
+            //   password: null,
+            // },
+            {
+              headers: headers,
+            }
+          );
+
+          console.log("userfavourites post response", res);
         }
-        postUserDetails(userDetails);
+        await postUserDetails(userDetails);
         console.log("registration complete");
 
         router.push("/");
