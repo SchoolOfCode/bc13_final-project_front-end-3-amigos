@@ -8,7 +8,7 @@ import axios from "axios";
 
 async function postUserDetails(userDetails) {    
   const res = await axios.post(`${URL}`, userDetails)
-  console.log(res)
+  console.log("user details post response", res)
   }
 
 function GoogleSignIn() {
@@ -17,23 +17,18 @@ function GoogleSignIn() {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
   useEffect(() => {
-    function User() {
+    async function User() {
       if (user) {
         console.log(user);
         /** if the user is logged in - take user details and post it to database
    */
-const userDetails = {username:user.displayName,email:user.email,password:"abc",uid:user.uid}
+        const userDetails = {username:user.displayName, email:user.email, password:"abc", uid:user.uid}
         await postUserDetails(userDetails)
         router.push("/");
-        
-        
-    }
+      }
+    };
     User();
-  }, [user]});
-}
-
-
-  
+  }, [user]);
 
   return (
     <div>
