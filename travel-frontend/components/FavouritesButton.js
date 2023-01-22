@@ -22,7 +22,7 @@ function FavouritesButton(newFavourite) {
   const [user] = useAuthState(auth);
   // const { id, title, city, country, suburb, description, image } = newFavourite;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-  // const uid = user.uid;
+  const uid = user.uid;
   // console.log("userUid:", uid);
 
   async function postRequest(newFavourite) {

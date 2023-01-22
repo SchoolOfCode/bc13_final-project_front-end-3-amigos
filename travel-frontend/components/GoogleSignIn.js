@@ -21,6 +21,17 @@ function GoogleSignIn() {
   useEffect(() => {
     function User() {
       if (user) {
+        console.log("user @ UseEffect:", user.user.email);
+        console.log("user @ UseEffect:", user.user.displayName);
+        console.log("user @ UseEffect:", user.user.uid);
+        const userDetails = {
+          username: user.user.displayName,
+          email: user.user.email,
+          uid: user.user.uid,
+          password: "null",
+        };
+        console.log(userDetails);
+        postUserDetails(userDetails);
         router.push("/");
       }
     }
@@ -28,17 +39,17 @@ function GoogleSignIn() {
   }, [user]);
   console.log(user);
 
-  function userReg({ user }) {
-    console.log(user);
-    signInWithGoogle();
-    const userDetails = {
-      username: user.displayName,
-      email: user.email,
-      uid: user.uid,
-    };
-    userReg();
-    console.log(userDetails);
-  }
+  // function userReg(user) {
+  //   const { displayName } = user;
+  //   console.log(user);
+  //   // const userDetails = {
+  //   //   username: user.displayName,
+  //   //   email: user.email,
+  //   //   uid: user.uid,
+  //   };
+  //   userReg();
+  //   console.log(userDetails);
+  // }
 
   // function registerUser(displayName, email, password, uid) {
   //   signInWithGoogle();
