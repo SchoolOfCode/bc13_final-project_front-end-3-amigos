@@ -16,7 +16,7 @@ function GoogleSignIn() {
   const auth = getAuth(app);
   const router = useRouter();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-
+  console.log(user);
   // adding useEffect
   useEffect(() => {
     function User() {
@@ -26,17 +26,32 @@ function GoogleSignIn() {
     }
     User();
   }, [user]);
+  console.log(user);
 
-  //
+  function userReg({ user }) {
+    console.log(user);
+    signInWithGoogle();
+    const userDetails = {
+      username: user.displayName,
+      email: user.email,
+      uid: user.uid,
+    };
+    userReg();
+    console.log(userDetails);
+  }
+
   // function registerUser(displayName, email, password, uid) {
   //   signInWithGoogle();
   //   console.log("post registration user details", user);
   //   const userDetails = {
-  //     username: user.displayName,
-  //     email: user.email,
+  //     username: displayName,
+  //     email: email,
   //     password: "abc",
-  //     uid: user.uid,
+  //     uid: uid,
   //   };
+  //   console.log(userDetails);
+  // }
+
   //   postUserDetails(userDetails);
 
   // }
@@ -46,7 +61,7 @@ function GoogleSignIn() {
   //     if (user) {
   //       console.log(user);
   //       /** if the user is logged in - take user details and post it to database
-  //  */
+
   //       const userDetails = {username:user.displayName, email:user.email, password:"abc", uid:user.uid}
   //       router.push("/");
   //     }
@@ -57,7 +72,7 @@ function GoogleSignIn() {
 
   return (
     <div>
-      <button className="google-button" onClick={() => registerUser()}>
+      <button className="google-button" onClick={() => signInWithGoogle()}>
         Sign In With Google
       </button>
     </div>
