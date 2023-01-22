@@ -3,6 +3,13 @@ import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
 import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
+import axios from "axios";
+
+
+async function postUserDetails(userDetails) {    
+  const res = await axios.post(`${URL}`, userDetails)
+  console.log(res)
+  }
 
 function GoogleSignIn() {
   const auth = getAuth(app);
@@ -12,14 +19,21 @@ function GoogleSignIn() {
   useEffect(() => {
     function User() {
       if (user) {
+        console.log(user);
+        /** if the user is logged in - take user details and post it to database
+   */
+const userDetails = {username:user.displayName,email:user.email,password:"abc",uid:user.uid}
+        await postUserDetails(userDetails)
         router.push("/");
-      }
+        
+        
     }
     User();
-  }, [user]);
+  }, [user]});
+}
 
-  /** if the user is logged in - take user details and post it to database
-   */
+
+  
 
   return (
     <div>
