@@ -17,10 +17,18 @@ function GoogleSignIn() {
   const router = useRouter();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
+  // adding useEffect
+  useEffect(() => {
+    function User() {
+      if (user) {
+        router.push("/");
+      }
+    }
+  });
 
-  // 
-   function registerUser(displayName, email, password, uid) {
-     signInWithGoogle();
+  //
+  function registerUser(displayName, email, password, uid) {
+    signInWithGoogle();
     console.log("post registration user details", user);
     const userDetails = {
       username: user.displayName,
@@ -31,7 +39,6 @@ function GoogleSignIn() {
     postUserDetails(userDetails);
     router.push("/");
   }
-  
 
   // useEffect(() => {
   //   async function User() {
