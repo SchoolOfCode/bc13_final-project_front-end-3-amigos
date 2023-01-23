@@ -21,7 +21,7 @@ function FavouritesButton(newFavourite) {
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
   // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-  const URL = process.env.NEXT_PUBLIC_LOCAL_BACKEND;
+  const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
 
   const uid = user.uid;
   // console.log("userUid:", uid);
