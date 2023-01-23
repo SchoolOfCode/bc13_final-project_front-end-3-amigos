@@ -28,8 +28,8 @@ function GoogleSignIn() {
 
         async function postUserDetails(userDetails) {
           // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-          const URL = process.env.NEXT_PUBLIC_LOCAL_BACKEND;
-          const usersApiUrl = URL + "/users";
+          const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+          const usersApiUrl = URL;
 
           // const URL = `postgres://xwrxqxhr:wCU0PAsKZeTaKCaGCueQHoyKuJHh0wNn@mel.db.elephantsql.com/xwrxqxhr`;
 

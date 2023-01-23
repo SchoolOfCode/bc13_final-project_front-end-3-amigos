@@ -14,9 +14,9 @@ function Favourites() {
 
   useEffect(() => {
     async function favData() {
-      const URL = process.env.NEXT_PUBLIC_LOCAL_BACKEND;
+      const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
 
-      const userFavouritesApi = `${URL}/users/${uid}/favourites`;
+      const userFavouritesApi = `${URL}${uid}/favourites`;
       // process.env.NEXT_PUBLIC_POSTGRES_URL + "CRu3z10cjYY5SAbo686JevypZTn2";
       const res = await axios.get(userFavouritesApi);
       // console.log(res);
