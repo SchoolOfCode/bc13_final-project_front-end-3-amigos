@@ -18,10 +18,6 @@ function GoogleSignIn() {
   useEffect(() => {
     async function User() {
       if (user) {
-        console.log("user @ UseEffect email:", user.user.email);
-        console.log("user @ UseEffect username:", user.user.displayName);
-        console.log("user @ UseEffect uid:", user.user.uid);
-
         const userDetails = {
           username: user.user.displayName,
           email: user.user.email,
@@ -31,16 +27,19 @@ function GoogleSignIn() {
         console.log(userDetails);
 
         async function postUserDetails(userDetails) {
-          console.log("postUserDetails(userDetails) is fired", userDetails);
-          const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-          console.log(URL);
+          // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+          const URL = process.env.NEXT_PUBLIC_LOCAL_BACKEND;
+          const usersApiUrl = URL + "/users";
+
           // const URL = `postgres://xwrxqxhr:wCU0PAsKZeTaKCaGCueQHoyKuJHh0wNn@mel.db.elephantsql.com/xwrxqxhr`;
+
+          console.log(URL);
 
           const headers = {
             "Content-Type": "application/json",
           };
           const res = await axios.post(
-            URL,
+            usersApiUrl,
             userDetails,
             // {
             //   username: user.user.displayName,

@@ -20,23 +20,22 @@ function FavouritesButton(newFavourite) {
 
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
-  // const { id, title, city, country, suburb, description, image } = newFavourite;
-  const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+  // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+  const URL = process.env.NEXT_PUBLIC_LOCAL_BACKEND;
+
   const uid = user.uid;
   // console.log("userUid:", uid);
+  const favouritesApiUrl = `${URL}/users/${uid}/favourites`;
 
   async function postRequest(newFavourite) {
-    console.log("userUid in Post request:", uid);
-    console.log("postRequest content:", newFavourite.props, uid);
-    const res = await axios.post(`${URL}`, {
-      uid: uid,
-      xid: newFavourite.props.xid,
-      title: newFavourite.props.title,
-      city: newFavourite.props.city,
-      country: newFavourite.props.country,
-      suburb: newFavourite.props.suburb,
-      description: newFavourite.props.description,
-      image: newFavourite.props.image,
+    // console.log("userUid in Post request:", uid);
+    // console.log("postRequest content:", newFavourite.props, uid);
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    const res = await axios.post(favouritesApiUrl, newFavourite.props, {
+      headers: headers,
     });
     console.log(res);
   }
@@ -47,7 +46,7 @@ function FavouritesButton(newFavourite) {
   async function deleteRequest(xid, uid) {
     console.log("delete request xid:", xid);
     console.log("userUid in Delete request:", uid);
-    const res = await axios.delete(`${URL}`, { data: { xid, uid } });
+    const res = await axios.delete(`${favouritesApiUrl}/${xid}`);
     console.log(res);
   }
 
@@ -98,35 +97,6 @@ function FavouritesButton(newFavourite) {
   // - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
   // - IF the heart is empty, the click sends off a POST request
   // - IF the heart is FULL, click sends a DELETE request
-
-  //const toggleFavourite = async () => {
-  // Set state for selected favourite
-
-  // if (user) {
-  //   setFavourite(async (favourite) => {
-  //     if (favourite === true) {
-  //       await deleteRequest(id, uid);
-  //       console.log("unfavourited clicked!");
-  //     }
-  //     if (favourite === false) {
-  //       console.log("favourite clicked");
-  //       await postRequest(
-  //         uid,
-  //         id,
-  //         title,
-  //         city,
-  //         country,
-  //         suburb,
-  //         description,
-  //         image
-  //       )
-  //       console.log("Favourited!");
-  //     }
-
-  //     // switched favourite state boolean
-  //     return !favourite;
-  //   });
-  //}
 
   // onClick if the heart is full send delete request else send post request.
   // Check the functionalities.
