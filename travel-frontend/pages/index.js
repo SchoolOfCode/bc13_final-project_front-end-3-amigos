@@ -5,7 +5,7 @@ import PhotoBG from "../public/Blue-Lagoon-in-Malta-6.png";
 import { Inter, M_PLUS_1 } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
-import ResultsDisplay from "../components/ResultsDisplay";
+
 import Carousel from "../components/Carousel";
 
 import { useState, useEffect } from "react";
@@ -116,15 +116,17 @@ export default function Home() {
    * render data on the landing page
    * pass data as props to ResultCard component
    */
-  const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-  useEffect(() => {
-    async function getData() {
-      await axios.get(URL + "abc").then((response) => {
-        setRecData(response.data.payload);
-      });
-    }
-    getData();
-  }, []);
+  
+  // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+ 
+  // useEffect(() => {
+  //   async function getData() {
+  //     await axios.get(URL + "abc").then((response) => {
+  //       setRecData(response.data.payload);
+  //     });
+  //   }
+  //   getData();
+  // }, []);
 
   //console.log(recData);
 

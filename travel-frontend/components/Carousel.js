@@ -3,7 +3,7 @@ import Image from 'next/image'
 import havanaPic from '../public/Havana-1957-09.jpg';
 import bermudaPic from "../public/Bermuda Triangle of Romania.jpg";
 import panoPic from '../public/1_panoptican.jpg';
-import ResultCard from './ResultCard';
+
 
 const featuredPlaces = [
     havanaPic,
