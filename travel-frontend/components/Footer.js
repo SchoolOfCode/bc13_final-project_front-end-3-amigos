@@ -25,7 +25,7 @@ function Footer() {
           {/* Tariq */}
           <a
             className="flex items-center justify-between space-x-1 "
-            href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
+            href="https://www.linkedin.com/in/tariq-amin/"
           >
             <p>Tariq</p>
             <FaLinkedin />
