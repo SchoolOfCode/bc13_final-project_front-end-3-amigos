@@ -55,7 +55,6 @@ function Favourites() {
   return (
     <div>
       <FavResultCardContainer fav={fav} deleteFavourite={deleteFavourite} />
-
       <Footer />
     </div>
   );
