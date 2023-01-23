@@ -20,39 +20,37 @@ function FavouritesButton(newFavourite) {
 
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
-  // const { id, title, city, country, suburb, description, image } = newFavourite;
+  // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-  // const uid = user.uid;
+
+  const uid = user.uid;
   // console.log("userUid:", uid);
+  const favouritesApiUrl = `${URL}${uid}/favourites`;
 
   async function postRequest(newFavourite) {
-    console.log("userUid in Post request:", uid);
-    console.log("postRequest content:", newFavourite.props, uid);
-    const res = await axios.post(`${URL}`, {
-      uid: uid,
-      xid: newFavourite.props.xid,
-      title: newFavourite.props.title,
-      city: newFavourite.props.city,
-      country: newFavourite.props.country,
-      suburb: newFavourite.props.suburb,
-      description: newFavourite.props.description,
-      image: newFavourite.props.image,
+    // console.log("userUid in Post request:", uid);
+    // console.log("postRequest content:", newFavourite.props, uid);
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    const res = await axios.post(favouritesApiUrl, newFavourite.props, {
+      headers: headers,
     });
     console.log(res);
   }
 
-  /**  Make an axios delete request with UID, Xid attached to the body &
-               send to home endpoint*/
+  // Make an axios delete request with UID, XID, UID attached to the body and XID in the path
+
   const xid = newFavourite.props.xid;
   async function deleteRequest(xid, uid) {
     console.log("delete request xid:", xid);
     console.log("userUid in Delete request:", uid);
-    const res = await axios.delete(`${URL}`, { data: { xid, uid } });
+    const res = await axios.delete(`${favouritesApiUrl}/${xid}`);
     console.log(res);
   }
 
-  // DeFINE MEGA FUNCTION OF TOGGLEFAVOURITE!
-
+// Toggle favourite function 
   async function toggleFavourite(newFavourite) {
     if (!user) {
       alert("please log in");
@@ -92,44 +90,8 @@ function FavouritesButton(newFavourite) {
   );
 
   const [favourite, setFavourite] = useState(false);
-  //console.log("favourite state initially:", favourite);
 
-  // IN THE HANDLECLICK WE WANT:
-  // - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
-  // - IF the heart is empty, the click sends off a POST request
-  // - IF the heart is FULL, click sends a DELETE request
 
-  //const toggleFavourite = async () => {
-  // Set state for selected favourite
-
-  // if (user) {
-  //   setFavourite(async (favourite) => {
-  //     if (favourite === true) {
-  //       await deleteRequest(id, uid);
-  //       console.log("unfavourited clicked!");
-  //     }
-  //     if (favourite === false) {
-  //       console.log("favourite clicked");
-  //       await postRequest(
-  //         uid,
-  //         id,
-  //         title,
-  //         city,
-  //         country,
-  //         suburb,
-  //         description,
-  //         image
-  //       )
-  //       console.log("Favourited!");
-  //     }
-
-  //     // switched favourite state boolean
-  //     return !favourite;
-  //   });
-  //}
-
-  // onClick if the heart is full send delete request else send post request.
-  // Check the functionalities.
   return (
     <>
       <button onClick={() => toggleFavourite(newFavourite)}>
