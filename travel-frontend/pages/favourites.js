@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
-import ApiResultsCardContainer from "../components/Favourites/ApiResultsCardContainer";
+import FavResultCardContainer from "../components/Favourites/FavResultsCardContainer";
 
 
 function Favourites() {
@@ -16,7 +16,6 @@ function Favourites() {
   
   useEffect(() => {
       async function favData() {
-   
         const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
         const res = await axios.get(URL+ `abc/favourites`);
         console.log(res);
@@ -29,21 +28,8 @@ function Favourites() {
 console.log(fav);
 
   return (
-    <ApiResultsCardContainer fav={fav}/> 
-    // <div className="card-display">
-    //   {fav &&
-    //     fav.map((i) => {
-    //       return (
-    //         <div key={i.id}>
-    //           <img src={i.image} />
-    //           <p>{i.city}</p>
-    //           <p>{i.country}</p>
-    //           <p>{i.suburb}</p>
-    //           <p>{i.description}</p>
-    //         </div>
-    //       );
-    //     })}
-    // </div>
+    <FavResultCardContainer fav={fav}/> 
+   
   );
 }
 

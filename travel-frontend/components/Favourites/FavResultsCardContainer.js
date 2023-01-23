@@ -1,11 +1,6 @@
-/**import apiData from index.js as a prop.
- * map over the data to display on the page.
- * will be needing address.city,country,suburb,
- * data.data.name,image
- * data.data.wikipedia_extracts.text
- */
 
-import ApiResultCard from "./ApiResultCard";
+
+import FavResultCard from "./FavResultCard";
 
 import React from "react";
 
@@ -16,7 +11,7 @@ function ApiResultsDisplay({ fav }) {
         fav.map((item) => {
            
             return (
-              <ApiResultCard
+              <FavResultCard
                 key={item.xid}
                 id={item.xid}
                 title={item.title}
