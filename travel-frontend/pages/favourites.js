@@ -10,16 +10,18 @@ function Favourites() {
 
   const auth = getAuth(app);
   // anytime get the current user at any time with firebase.auth().currentUser.
+  console.log(auth)
   const uid = auth.currentUser.uid;
+console.log("uid:", uid)
 
   useEffect(() => {
     async function favData() {
       const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
 
       const userFavouritesApi = `${URL}${uid}/favourites`;
-      // process.env.NEXT_PUBLIC_POSTGRES_URL + "CRu3z10cjYY5SAbo686JevypZTn2";
+
       const res = await axios.get(userFavouritesApi);
-      // console.log(res);
+
       setFav(res.data.payload);
     }
     favData();
