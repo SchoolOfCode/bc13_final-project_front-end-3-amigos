@@ -22,12 +22,13 @@ function FavouritesButton(newFavourite) {
   const [user] = useAuthState(auth);
   // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-  if (user) {
+  // if (user) {
     const uid = user.uid;
     // console.log("userUid:", uid);
     const favouritesApiUrl = `${URL}${uid}/favourites`;
 
     async function postRequest(newFavourite) {
+      const uid = user.uid;
       // console.log("userUid in Post request:", uid);
       // console.log("postRequest content:", newFavourite.props, uid);
       const headers = {
@@ -49,7 +50,7 @@ function FavouritesButton(newFavourite) {
       const res = await axios.delete(`${favouritesApiUrl}/${xid}`);
       console.log(res);
     }
-
+  // }
     // Toggle favourite function
     async function toggleFavourite(newFavourite) {
       if (!user) {
@@ -71,7 +72,7 @@ function FavouritesButton(newFavourite) {
       setFavourite(!favourite);
       console.log("state toggled to:", favourite);
     }
-  }
+  
   const currentlyAFavourite = (
     <Image
       src={fullHeart}
