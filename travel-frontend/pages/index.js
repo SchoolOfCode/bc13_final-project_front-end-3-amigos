@@ -119,7 +119,7 @@ export default function Home() {
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   useEffect(() => {
     async function getData() {
-      await axios.get(URL + "abc").then((response) => {
+      await axios.get(URL + "abc/favourites").then((response) => {
         setRecData(response.data.payload);
       });
     }
@@ -189,9 +189,8 @@ export default function Home() {
           // console.log(result, "api result");
           return result.data;
         })
-       
       );
-      console.log("responses:", responses)
+      console.log("responses:", responses);
       //console.log("batch location response:", responses);
 
       /**
