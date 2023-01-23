@@ -26,7 +26,7 @@ export default function Home() {
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
   // useState to hold API data
-  const [apiData, setApiData] = useState('');
+  const [apiData, setApiData] = useState("");
 
   // useState that watches if the user is logged in or not
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -129,7 +129,6 @@ export default function Home() {
     getData();
   }, []);
 
-
   //console.log(recData);
 
   /* fetch the data from API using Axios on submit from search bar
@@ -229,7 +228,7 @@ export default function Home() {
 
       <div className="font-bold typewriter font-explora">
         <Typewriter
-        className='font-explora'
+          className="font-explora"
           options={{
             strings: [
               "Vamos Amigos!!",
@@ -252,12 +251,9 @@ export default function Home() {
       {/* conditional rednring so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
 
-
-      {(!apiData)? <Carousel />:<ApiResultsCardContainer postData={postData} apiData={apiData} /> }
-      
+      {!apiData ? <Carousel /> : <ApiResultsCardContainer apiData={apiData} />}
 
       <Footer />
     </div>
-      
   );
 }
