@@ -51,7 +51,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      lobster: ["Lobster", "cursive"],
+      explora: ["Explora", "cursive"],
+
     },
   },
   plugins: [],
