@@ -25,7 +25,7 @@ function FavouritesButton(newFavourite) {
 
   const uid = user.uid;
   // console.log("userUid:", uid);
-  const favouritesApiUrl = `${URL}/users/${uid}/favourites`;
+  const favouritesApiUrl = `${URL}${uid}/favourites`;
 
   async function postRequest(newFavourite) {
     // console.log("userUid in Post request:", uid);
@@ -40,8 +40,8 @@ function FavouritesButton(newFavourite) {
     console.log(res);
   }
 
-  /**  Make an axios delete request with UID, Xid attached to the body &
-               send to home endpoint*/
+  // Make an axios delete request with UID, XID, UID attached to the body and XID in the path
+
   const xid = newFavourite.props.xid;
   async function deleteRequest(xid, uid) {
     console.log("delete request xid:", xid);
@@ -50,8 +50,7 @@ function FavouritesButton(newFavourite) {
     console.log(res);
   }
 
-  // DeFINE MEGA FUNCTION OF TOGGLEFAVOURITE!
-
+// Toggle favourite function 
   async function toggleFavourite(newFavourite) {
     if (!user) {
       alert("please log in");
@@ -91,15 +90,8 @@ function FavouritesButton(newFavourite) {
   );
 
   const [favourite, setFavourite] = useState(false);
-  //console.log("favourite state initially:", favourite);
 
-  // IN THE HANDLECLICK WE WANT:
-  // - 'favourite' state to be toggled so it renders and functions differently the next time it's clicked
-  // - IF the heart is empty, the click sends off a POST request
-  // - IF the heart is FULL, click sends a DELETE request
 
-  // onClick if the heart is full send delete request else send post request.
-  // Check the functionalities.
   return (
     <>
       <button onClick={() => toggleFavourite(newFavourite)}>
