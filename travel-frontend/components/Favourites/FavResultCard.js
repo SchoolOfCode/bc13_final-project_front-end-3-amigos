@@ -3,14 +3,15 @@ import React from "react";
 import FavouritesButton from "./FavouritesButton";
 
 function ApiResultCard({
-  id,
+  xid,
   title,
   city,
   country,
   suburb,
   description,
   image,
-  uid
+  uid,
+  deleteFavourite
 }) {
   
   
@@ -28,7 +29,7 @@ function ApiResultCard({
           <p className="card-location">{suburb}</p>
           <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
-          <FavouritesButton />
+          <FavouritesButton deleteFavourite={deleteFavourite} xid={xid}/>
         </div>
       </div>
     </div>

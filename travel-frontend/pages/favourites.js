@@ -13,7 +13,6 @@ function Favourites() {
   const [fav, setFav] = useState([]);
   console.log(user)
   
-  
   useEffect(() => {
       async function favData() {
         const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
@@ -24,11 +23,18 @@ function Favourites() {
       favData();
   }, []);
 
+  async function deleteFavourite(uid, xid){
+    // const removeFavourite = await axios.delete(URL + `abc/favourites/${xid}`)
+    // const getNewData = await axios.get(URL + `abc/favourites`)
+    // console.log(getNewData);
+    console.log(xid);
+  }
+  
 
 console.log(fav);
 
   return (
-    <FavResultCardContainer fav={fav}/> 
+    <FavResultCardContainer fav={fav} deleteFavourite={deleteFavourite}/> 
    
   );
 }

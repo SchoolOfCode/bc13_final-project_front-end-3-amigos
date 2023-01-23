@@ -4,7 +4,7 @@ import FavResultCard from "./FavResultCard";
 
 import React from "react";
 
-function ApiResultsDisplay({ fav }) {
+function ApiResultsDisplay({ fav, deleteFavourites }) {
   return (
     <div className="card-display">
       {fav &&
@@ -21,6 +21,7 @@ function ApiResultsDisplay({ fav }) {
                 description={item.description}
                 image={item.image}
                 uid={item.uid}
+                deleteFavourites={deleteFavourites}
               />
             );
             
