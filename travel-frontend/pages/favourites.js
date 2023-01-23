@@ -20,7 +20,7 @@ function Favourites() {
   useEffect(() => {
       async function favData() {
         const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
-        const res = await axios.get(URL+ `abc/favourites`);
+        const res = await axios.get(URL+ `${user.uid}/favourites`);
         console.log(res);
         setFav(res.data.payload);
       }
@@ -31,8 +31,8 @@ function Favourites() {
   async function deleteFavourite(xid){
     const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
     const cardXid =xid.target.id
-    const removeFavourite = await axios.delete(URL + `abc/favourites/${cardXid}`)
-    const getNewData = await axios.get(URL + `abc/favourites`)
+    const removeFavourite = await axios.delete(URL + `${user.uid}/favourites/${cardXid}`)
+    const getNewData = await axios.get(URL + `${user.uid}/favourites`)
     setFav(getNewData.data.payload);
     console.log(xid.target.id);
   }
@@ -46,7 +46,7 @@ console.log(fav);
     async function favData() {
       const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
 
-      const userFavouritesApi = `${URL}${uid}/favourites`;
+      const userFavouritesApi = `${URL}${user.uid}/favourites`;
 
       const res = await axios.get(userFavouritesApi);
 
