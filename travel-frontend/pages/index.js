@@ -53,39 +53,39 @@ export default function Home() {
    * to add the user details in our user table and user_favourites table
    */
   // this is the branch!
-  async function postData(xid) {
-    // console.log(xid);
-    console.log(user, "user");
-    // if the user is not logged in and click on the heart button an alert box will popup
-    if (!user) {
-      alert("Please Sign In");
-    }
-    // user logged in
-    if (user) {
-      // this condition only post the user details once, when they log in
-      // once it has posted to user details in the user table, the state isUserLoggedIn changes to true
-      // the reason for this condition is, every time the heart is clicked it should not post user details every time but only once
-      if (!isUserLoggedIn) {
-        // we are taking the metadata of the user and save it in this object
-        let userData = {
-          username: user.displayName,
-          email: user.email,
-        };
-        console.log(userData.username);
-        // this line is passing the userData as an argument of the postUserData fn, which will make the post in user table
-        const res = await postUserData(userData);
-        // console.log(res, "response 78");
-        setIsUserLoggedIn(true);
-      }
-      // once the user clicks on heart
-      // we get the xid of that specific card
-      // and then filter the apiData(which holds the data coming from the API )
-      // let filterFavourites = apiData.filter((item) => {
-      //   return item.xid === xid;
-      // });
-      // console.log(filterFavourites);
-    }
-  }
+  // async function postData(xid) {
+  //   // console.log(xid);
+  //   console.log(user, "user");
+  //   // if the user is not logged in and click on the heart button an alert box will popup
+  //   if (!user) {
+  //     alert("Please Sign In");
+  //   }
+  //   // user logged in
+  //   if (user) {
+  //     // this condition only post the user details once, when they log in
+  //     // once it has posted to user details in the user table, the state isUserLoggedIn changes to true
+  //     // the reason for this condition is, every time the heart is clicked it should not post user details every time but only once
+  //     if (!isUserLoggedIn) {
+  //       // we are taking the metadata of the user and save it in this object
+  //       let userData = {
+  //         username: user.displayName,
+  //         email: user.email,
+  //       };
+  //       console.log(userData.username);
+  //       // this line is passing the userData as an argument of the postUserData fn, which will make the post in user table
+  //       const res = await postUserData(userData);
+  //       // console.log(res, "response 78");
+  //       setIsUserLoggedIn(true);
+  //     }
+  //     // once the user clicks on heart
+  //     // we get the xid of that specific card
+  //     // and then filter the apiData(which holds the data coming from the API )
+  //     // let filterFavourites = apiData.filter((item) => {
+  //     //   return item.xid === xid;
+  //     // });
+  //     // console.log(filterFavourites);
+  //   }
+  // }
 
   /**
    * post functionality to save the username's details(email, displayName=username) into our database
@@ -95,6 +95,7 @@ export default function Home() {
   async function postUserData(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
     return await axios.post(postURL, data);
+    //console.log(data);
   }
 
   /**
@@ -116,17 +117,17 @@ export default function Home() {
    * render data on the landing page
    * pass data as props to ResultCard component
    */
-  
-  // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
- 
-  // useEffect(() => {
-  //   async function getData() {
-  //     await axios.get(URL + "abc").then((response) => {
-  //       setRecData(response.data.payload);
-  //     });
-  //   }
-  //   getData();
-  // }, []);
+
+  const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+  useEffect(() => {
+    async function getData() {
+      await axios.get(URL + "abc/favourites").then((response) => {
+        setRecData(response.data.payload);
+      });
+    }
+    getData();
+  }, []);
+
 
   //console.log(recData);
 
@@ -192,8 +193,8 @@ export default function Home() {
           return result.data;
         })
       );
-
-      console.log("batch location response:", responses);
+      console.log("responses:", responses);
+      //console.log("batch location response:", responses);
 
       /**
        *  concatenate the xid data(responses) using the spread operator
@@ -247,9 +248,7 @@ export default function Home() {
       {/* conditional rednring so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
 
-      {apiData && (
-        <ApiResultsCardContainer postData={postData} apiData={apiData} />
-      )}
+      {apiData && <ApiResultsCardContainer apiData={apiData} />}
     </>
   );
 }
