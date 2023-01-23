@@ -94,7 +94,7 @@ export default function Home() {
   async function postUserData(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
     return await axios.post(postURL, data);
-    console.log(data);
+    //console.log(data);
   }
 
   /**
@@ -119,7 +119,7 @@ export default function Home() {
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   useEffect(() => {
     async function getData() {
-      await axios.get(URL + "abc").then((response) => {
+      await axios.get(URL + "abc/favourites").then((response) => {
         setRecData(response.data.payload);
       });
     }
@@ -190,8 +190,8 @@ export default function Home() {
           return result.data;
         })
       );
-
-      console.log("batch location response:", responses);
+      console.log("responses:", responses);
+      //console.log("batch location response:", responses);
 
       /**
        *  concatenate the xid data(responses) using the spread operator
