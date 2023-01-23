@@ -22,56 +22,56 @@ function FavouritesButton(newFavourite) {
   const [user] = useAuthState(auth);
   // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+  if (user) {
+    const uid = user.uid;
+    // console.log("userUid:", uid);
+    const favouritesApiUrl = `${URL}${uid}/favourites`;
 
-  const uid = user.uid;
-  // console.log("userUid:", uid);
-  const favouritesApiUrl = `${URL}${uid}/favourites`;
+    async function postRequest(newFavourite) {
+      // console.log("userUid in Post request:", uid);
+      // console.log("postRequest content:", newFavourite.props, uid);
+      const headers = {
+        "Content-Type": "application/json",
+      };
 
-  async function postRequest(newFavourite) {
-    // console.log("userUid in Post request:", uid);
-    // console.log("postRequest content:", newFavourite.props, uid);
-    const headers = {
-      "Content-Type": "application/json",
-    };
-
-    const res = await axios.post(favouritesApiUrl, newFavourite.props, {
-      headers: headers,
-    });
-    console.log(res);
-  }
-
-  // Make an axios delete request with UID, XID, UID attached to the body and XID in the path
-
-  const xid = newFavourite.props.xid;
-  async function deleteRequest(xid, uid) {
-    console.log("delete request xid:", xid);
-    console.log("userUid in Delete request:", uid);
-    const res = await axios.delete(`${favouritesApiUrl}/${xid}`);
-    console.log(res);
-  }
-
-// Toggle favourite function 
-  async function toggleFavourite(newFavourite) {
-    if (!user) {
-      alert("please log in");
+      const res = await axios.post(favouritesApiUrl, newFavourite.props, {
+        headers: headers,
+      });
+      console.log(res);
     }
 
-    // IF/ELSE STATEMENT FOR POST & DELETE
-    if (user) {
-      if (favourite === true) {
-        await deleteRequest(xid, uid);
-        console.log("unfavourited clicked!");
-      } else {
-        await postRequest(newFavourite);
-        console.log("Favourited clicked!");
+    // Make an axios delete request with UID, XID, UID attached to the body and XID in the path
+
+    const xid = newFavourite.props.xid;
+    async function deleteRequest(xid, uid) {
+      console.log("delete request xid:", xid);
+      console.log("userUid in Delete request:", uid);
+      const res = await axios.delete(`${favouritesApiUrl}/${xid}`);
+      console.log(res);
+    }
+
+    // Toggle favourite function
+    async function toggleFavourite(newFavourite) {
+      if (!user) {
+        alert("please log in");
       }
+
+      // IF/ELSE STATEMENT FOR POST & DELETE
+      if (user) {
+        if (favourite === true) {
+          await deleteRequest(xid, uid);
+          console.log("unfavourited clicked!");
+        } else {
+          await postRequest(newFavourite);
+          console.log("Favourited clicked!");
+        }
+      }
+
+      // TOGGLE HEART STATE
+      setFavourite(!favourite);
+      console.log("state toggled to:", favourite);
     }
-
-    // TOGGLE HEART STATE
-    setFavourite(!favourite);
-    console.log("state toggled to:", favourite);
   }
-
   const currentlyAFavourite = (
     <Image
       src={fullHeart}
@@ -90,7 +90,6 @@ function FavouritesButton(newFavourite) {
   );
 
   const [favourite, setFavourite] = useState(false);
-
 
   return (
     <>
