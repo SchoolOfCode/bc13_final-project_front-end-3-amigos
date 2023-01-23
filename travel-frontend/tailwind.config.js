@@ -50,7 +50,7 @@ module.exports = {
           },
           textColor: {
             skin: {
-              base: '#000000',
+              base: '#ffffff',
               muted: 'var(--color-text-muted)',
               inverted: 'var(--color-text-inverted)'
             }
@@ -106,6 +106,11 @@ module.exports = {
             //   'button-muted':'var(--color-button-muted)',
             //   'image-source':'var(--image-source)',
             // }
+          },
+          textColor: {
+            skin: {
+              base: '#ffffff',
+            }
           },
           colors: {
             "ctc":'#2C5746'

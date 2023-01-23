@@ -6,6 +6,7 @@ import { Inter, M_PLUS_1 } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
 import Carousel from "../components/Carousel";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
@@ -240,6 +241,7 @@ export default function Home() {
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
+      <ThemeSwitcher />
     </div>
   );
 }
