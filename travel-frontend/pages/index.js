@@ -214,7 +214,7 @@ export default function Home() {
   const typewriter = new Typewriter({ loop: true, delay: 75 });
 
   return (
-    <>
+    <div className='flex flex-col min-h-screen'>
       <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-12% sm:-mt-7% bg-main-bg">
         {/* <Image
           src={PhotoBG}
@@ -223,6 +223,7 @@ export default function Home() {
           priority={true}
         /> */}
       </div>
+  
       <div className="typewriter">
         <Typewriter
           options={{
@@ -239,8 +240,9 @@ export default function Home() {
           }}
         />
       </div>
-
+<div>
       <SearchBar handleClick={getApiData} />
+      </div>
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
       {/* conditional rednring so when the user searches the loader is shown*/}
@@ -249,7 +251,11 @@ export default function Home() {
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
+      {/* <Carousel /> */}
+ 
+
       <Footer />
-    </>
+   
+    </div>
   );
 }

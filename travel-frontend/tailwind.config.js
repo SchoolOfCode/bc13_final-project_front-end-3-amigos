@@ -27,6 +27,7 @@ module.exports = {
         "google-dark-red": "#8B0000",
         "google-orange": "#FF8C00",
         "corn-silk": "#FFF8DC",
+        "coral":'#F87575'
       },
       margin: {
         "4%": "4%",

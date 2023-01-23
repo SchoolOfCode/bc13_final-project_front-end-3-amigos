@@ -2,13 +2,13 @@ import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 function Footer() {
   return (
-    <div className="w-full  py-6 px-2  inset-x-0 bottom-0 bg-gray-800 bg-opacity-30 mt-3 ">
-      <div className="flex relative max-w-[1240px] px-2 py-4 m-2 justify-center sm:flex-row text-center text-white items-center">
+    <div className="inset-x-0 bottom-0 w-full px-2 mt-auto  bg-coral h-28">
+      <div className="flex  relative  max-w-[1240px] px-2 py-2 m-2 justify-center sm:flex-row text-center text-white items-center">
         <p>© Three Amigos</p>
-        <div className="absolute inset-0 flex justify-center mt-7% mb-7% space-x-5  ">
+        <div className="absolute inset-0 flex justify-center m-5% space-x-5 ">
           {/*  Tom */}
           <a
-            className="flex  justify-between space-x-1 items-center "
+            className="flex items-center justify-between space-x-1 "
             href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
           >
             <p>Tom</p>
@@ -16,7 +16,7 @@ function Footer() {
           </a>
           {/* Beatrice */}
           <a
-            className="flex  justify-between space-x-1 items-center "
+            className="flex items-center justify-between space-x-1 "
             href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
           >
             <p>Beatrice</p>
@@ -24,7 +24,7 @@ function Footer() {
           </a>
           {/* Tariq */}
           <a
-            className="flex  justify-between space-x-1 items-center "
+            className="flex items-center justify-between space-x-1 "
             href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
           >
             <p>Tariq</p>
@@ -32,7 +32,7 @@ function Footer() {
           </a>
           {/* Victoria */}
           <a
-            className="flex  justify-between space-x-1 items-center "
+            className="flex items-center justify-between space-x-1 "
             href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
           >
             <p>Victoria</p>
@@ -40,7 +40,7 @@ function Footer() {
           </a>
           {/* Ryan */}
           <a
-            className="flex  justify-between space-x-1 items-center "
+            className="flex items-center justify-between space-x-1 "
             href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
           >
             <p>Ryan</p>
@@ -48,7 +48,7 @@ function Footer() {
           </a>
           {/* Jo */}
           <a
-            className="flex  justify-between space-x-1 items-center "
+            className="flex items-center justify-between space-x-1 "
             href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
           >
             <p>Jo</p>
