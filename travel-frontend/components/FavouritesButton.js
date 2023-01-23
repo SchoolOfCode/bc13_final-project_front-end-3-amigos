@@ -23,12 +23,13 @@ function FavouritesButton(newFavourite) {
   // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   // if (user) {
-    const uid = user.uid;
+    // const uid = user.uid;
     // console.log("userUid:", uid);
-    const favouritesApiUrl = `${URL}${uid}/favourites`;
-
+    
     async function postRequest(newFavourite) {
       const uid = user.uid;
+      const favouritesApiUrl = `${URL}${uid}/favourites`;
+
       // console.log("userUid in Post request:", uid);
       // console.log("postRequest content:", newFavourite.props, uid);
       const headers = {
@@ -38,14 +39,16 @@ function FavouritesButton(newFavourite) {
       const res = await axios.post(favouritesApiUrl, newFavourite.props, {
         headers: headers,
       });
-      console.log(res);
+      // console.log(res);
     }
 
     // Make an axios delete request with UID, XID, UID attached to the body and XID in the path
 
     const xid = newFavourite.props.xid;
-    async function deleteRequest(xid, uid) {
-      console.log("delete request xid:", xid);
+    async function deleteRequest(xid) {
+      // console.log("delete request xid:", xid);
+      const uid = user.uid;
+      const favouritesApiUrl = `${URL}${uid}/favourites`;
       console.log("userUid in Delete request:", uid);
       const res = await axios.delete(`${favouritesApiUrl}/${xid}`);
       console.log(res);
@@ -60,17 +63,18 @@ function FavouritesButton(newFavourite) {
       // IF/ELSE STATEMENT FOR POST & DELETE
       if (user) {
         if (favourite === true) {
-          await deleteRequest(xid, uid);
+          await deleteRequest(xid);
           console.log("unfavourited clicked!");
         } else {
           await postRequest(newFavourite);
           console.log("Favourited clicked!");
         }
-      }
-
-      // TOGGLE HEART STATE
+             // TOGGLE HEART STATE
       setFavourite(!favourite);
       console.log("state toggled to:", favourite);
+      }
+
+ 
     }
   
   const currentlyAFavourite = (
