@@ -22,6 +22,7 @@ function ApiResultsDisplay({ apiData, postData }) {
             item.wikipedia_extracts?.text &&
             item.preview?.source
           ) {
+            
             return (
               <ApiResultCard
                 key={item.xid}
@@ -33,6 +34,7 @@ function ApiResultsDisplay({ apiData, postData }) {
                 description={item.wikipedia_extracts.text}
                 image={item.preview.source}
                 postData={postData}
+                wikipedia={item.wikipedia}
               />
             );
           }
