@@ -1,18 +1,46 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ApiResultCard from "../components/ApiResultCard";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import { getAuth } from "firebase/auth";
-import { app } from "../firebase/firebase";
+import { app } from "../firebase/firebase.js";
+import { useAuthState } from "react-firebase-hooks/auth";
+import FavResultCardContainer from "../components/Favourites/FavResultsCardContainer";
+
+
+
 
 function Favourites() {
-  const [fav, setFav] = useState([]);
-
   const auth = getAuth(app);
-  // anytime get the current user at any time with firebase.auth().currentUser.
-  console.log(auth)
-  const uid = auth.currentUser.uid;
-console.log("uid:", uid)
+  const [user, loading, error] = useAuthState(auth);
+
+
+  const [fav, setFav] = useState([]);
+  console.log(user)
+  
+  useEffect(() => {
+      async function favData() {
+        const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
+        const res = await axios.get(URL+ `abc/favourites`);
+        console.log(res);
+        setFav(res.data.payload);
+      }
+      favData();
+  }, []);
+
+  console.log(fav)
+  async function deleteFavourite(xid){
+    const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
+    const cardXid =xid.target.id
+    const removeFavourite = await axios.delete(URL + `abc/favourites/${cardXid}`)
+    const getNewData = await axios.get(URL + `abc/favourites`)
+    setFav(getNewData.data.payload);
+    console.log(xid.target.id);
+  }
+  
+
+console.log(fav);
+
+ 
 
   useEffect(() => {
     async function favData() {
@@ -28,21 +56,10 @@ console.log("uid:", uid)
   }, []);
   // console.log(fav);
 
+
   return (
-    <div className="card-display">
-      {fav &&
-        fav.map((i) => {
-          return (
-            <div key={i.id}>
-              <img src={i.image} />
-              <p>{i.city}</p>
-              <p>{i.country}</p>
-              <p>{i.suburb}</p>
-              <p>{i.description}</p>
-            </div>
-          );
-        })}
-    </div>
+    <FavResultCardContainer fav={fav} deleteFavourite={deleteFavourite}/> 
+   
   );
 }
 
