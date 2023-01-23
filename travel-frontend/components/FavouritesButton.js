@@ -39,7 +39,7 @@ function FavouritesButton(newFavourite) {
       const res = await axios.post(favouritesApiUrl, newFavourite.props, {
         headers: headers,
       });
-      // console.log(res);
+      console.log(res);
     }
 
     // Make an axios delete request with UID, XID, UID attached to the body and XID in the path
