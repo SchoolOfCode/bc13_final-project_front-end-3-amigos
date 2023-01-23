@@ -39,14 +39,10 @@ function Footer() {
             <FaLinkedin />
           </a>
           {/* Ryan */}
-          <a 
-            className="flex items-center justify-between space-x-1 "
-            href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
-          >
           <a
             className="flex items-center justify-between space-x-1 "
             href="https://www.linkedin.com/in/ryan-donaghue-48b958185/"
-          />
+          >
             <p>Ryan</p>
             <FaLinkedin />
           </a>
