@@ -5,7 +5,7 @@ import PhotoBG from "../public/Blue-Lagoon-in-Malta-6.png";
 import { Inter, M_PLUS_1 } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
-import ResultsDisplay from "../components/ResultsDisplay";
+
 import Carousel from "../components/Carousel";
 
 import { useState, useEffect } from "react";
@@ -18,6 +18,7 @@ import Typewriter from "typewriter-effect";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loader from "../components/Loader";
+import Footer from "../components/Footer";
 
 const auth = getAuth(app);
 
@@ -248,6 +249,7 @@ export default function Home() {
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
+      <Footer />
     </>
   );
 }
