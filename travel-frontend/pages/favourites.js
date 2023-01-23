@@ -23,11 +23,14 @@ function Favourites() {
       favData();
   }, []);
 
-  async function deleteFavourite(uid, xid){
-    // const removeFavourite = await axios.delete(URL + `abc/favourites/${xid}`)
-    // const getNewData = await axios.get(URL + `abc/favourites`)
-    // console.log(getNewData);
-    console.log(xid);
+  console.log(fav)
+  async function deleteFavourite(xid){
+    const URL = process.env.NEXT_PUBLIC_POSTGRES_URL
+    const cardXid =xid.target.id
+    const removeFavourite = await axios.delete(URL + `abc/favourites/${cardXid}`)
+    const getNewData = await axios.get(URL + `abc/favourites`)
+    setFav(getNewData.data.payload);
+    console.log(xid.target.id);
   }
   
 

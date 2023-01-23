@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import FavouritesButton from "./FavouritesButton";
 
-function ApiResultCard({
+function FavResultCard({
   xid,
   title,
   city,
@@ -36,4 +36,4 @@ function ApiResultCard({
   );
 }
 
-export default ApiResultCard;
+export default FavResultCard;
