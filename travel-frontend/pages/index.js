@@ -214,7 +214,7 @@ export default function Home() {
   const typewriter = new Typewriter({ loop: true, delay: 75 });
 
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className="flex flex-col min-h-screen     font-lobster">
       <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-12% sm:-mt-7% bg-main-bg">
         {/* <Image
           src={PhotoBG}
@@ -223,15 +223,15 @@ export default function Home() {
           priority={true}
         /> */}
       </div>
-  
-      <div className="typewriter">
+
+      <div className="typewriter ">
         <Typewriter
           options={{
             strings: [
               "Vamos Amigos!!",
               `Let's go!!`,
               "Yallah!!",
-              "Să mergem!!",
+              "Haideee!!",
               "Andiamo!!",
               "Vamos lá!!!",
             ],
@@ -240,8 +240,8 @@ export default function Home() {
           }}
         />
       </div>
-<div>
-      <SearchBar handleClick={getApiData} />
+      <div>
+        <SearchBar handleClick={getApiData} />
       </div>
       {/* passing the state variable as a prop */}
       {/* {recData && <ResultsDisplay recData={recData} />} */}
@@ -252,10 +252,8 @@ export default function Home() {
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
       {/* <Carousel /> */}
- 
 
       <Footer />
-   
     </div>
   );
 }

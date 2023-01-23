@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+// const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   // compiles CSS on the fly 'Just in Time'
   mode: "jit",
@@ -19,6 +21,7 @@ module.exports = {
         "auth-bg": "url('../public/mouintain-bg.jpg')",
         "main-bg": "url('/Blue-Lagoon-in-Malta-6.png')",
       },
+
       colors: {
         "dark-green": "#2C5746",
         "light-green": "#7DAB87",
@@ -27,7 +30,7 @@ module.exports = {
         "google-dark-red": "#8B0000",
         "google-orange": "#FF8C00",
         "corn-silk": "#FFF8DC",
-        "coral":'#F87575'
+        coral: "#F87575",
       },
       margin: {
         "4%": "4%",
@@ -46,6 +49,9 @@ module.exports = {
         "63%": "63%",
         "100%": "100%",
       },
+    },
+    fontFamily: {
+      lobster: ["Lobster", "cursive"],
     },
   },
   plugins: [],

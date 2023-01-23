@@ -30,13 +30,17 @@
   }
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Lobster&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-  .footer-pos-adjust{
-    min-height: 70%; min-height: -webkit-calc(100% - 7rem); min-height: -moz-calc(100% - 7rem);
+  .footer-pos-adjust {
+    min-height: 70%;
+    min-height: -webkit-calc(100% - 7rem);
+    min-height: -moz-calc(100% - 7rem);
     min-height: calc(100% - 7rem);
   }
   .form-control {
@@ -89,7 +93,7 @@
     @apply text-white text-4xl sm:text-6xl mt-20 ml-7%;
   }
   .standard-btn {
-    @apply w-auto p-2 ml-2 text-white rounded-lg bg-dark-green;
+    @apply w-auto p-2 ml-2 text-white rounded-lg bg-coral;
   }
   .search-bar {
     @apply pl-1 text-black placeholder-black bg-white rounded-lg lg:w-1/3;
