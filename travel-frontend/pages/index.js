@@ -94,7 +94,7 @@ export default function Home() {
   async function postUserData(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
     return await axios.post(postURL, data);
-    console.log(data);
+    //console.log(data);
   }
 
   /**
@@ -189,9 +189,10 @@ export default function Home() {
           // console.log(result, "api result");
           return result.data;
         })
+       
       );
-
-      console.log("batch location response:", responses);
+      console.log("responses:", responses)
+      //console.log("batch location response:", responses);
 
       /**
        *  concatenate the xid data(responses) using the spread operator

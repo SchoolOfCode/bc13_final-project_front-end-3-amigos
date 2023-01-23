@@ -41,6 +41,7 @@ function ApiResultCard({
   suburb,
   description,
   image,
+  wikipedia
 }) {
   const newFavourite = {
     xid: id,
@@ -49,7 +50,7 @@ function ApiResultCard({
     country,
     suburb,
     description,
-    image,
+    image
   };
   // console.log("new favourite in API RESULT CARD:", newFavourite);
 
@@ -65,7 +66,7 @@ function ApiResultCard({
           <p className="card-location">{country}</p>
           <p className="card-location">{suburb}</p>
           <p className="card-desc">{description}</p>
-          <button className="card-btn">See More</button>
+          <button className="card-btn" href={wikipedia}>See More</button>
           <FavouritesButton props={newFavourite} />
         </div>
       </div>
