@@ -2,6 +2,7 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import { Component } from 'react'
 
+
 export default function App({ Component, pageProps }) {
   return (
   <Layout>

@@ -16,9 +16,11 @@ export default function NavBar() {
   const router = useRouter();
 
   return (
-  
+
+    <div className=" font-montserrat">
+
       <nav>
-        <ul className="flex justify-between h-12 text-xl ">
+        <ul className="flex justify-between h-12  ">
           <li>
             <Link href="/">
               <Image
@@ -33,18 +35,14 @@ export default function NavBar() {
             <div className="flex space-x-10 ">
               <li className="absolute inset-y-0 mt-5 right-40 ">
                 <Link href="/favourites" className="font-bold align-left">
-                <button className='standard-btn'>
-                  Favourites
-                  </button>
+                  <button className="standard-btn">Favourites</button>
                 </Link>
               </li>
 
               <li className="absolute inset-y-0 mt-5 right-80 ">
                 {" "}
                 <Link href="/journal" className="font-bold align-left">
-                <button className='standard-btn'>
-                  Journal
-              </button>
+                  <button className="standard-btn">Journal</button>
                 </Link>
               </li>
             </div>
