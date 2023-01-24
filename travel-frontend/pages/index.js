@@ -1,20 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import backgroundImg from "../public/minimalistBG.jpg";
-import PhotoBG from "../public/Blue-Lagoon-in-Malta-6.png";
-import { Inter, M_PLUS_1 } from "@next/font/google";
-import styles from "../styles/Home.module.css";
 import SearchBar from "../components/SearchBar";
-
 import Carousel from "../components/Carousel";
-
-import { useState, useEffect } from "react";
-import { getAuth } from "firebase/auth";
-import { app } from "../firebase/firebase.js";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+import { useState } from "react";
 import ApiResultsCardContainer from "../components/ApiResultsCardContainer";
 import axios from "axios";
 import Typewriter from "typewriter-effect";
-// import { auth } from "../firebase/firebase";
 
 import { useAuthState } from "react-firebase-hooks/auth";
 import Loader from "../components/Loader";
@@ -25,6 +15,8 @@ const auth = getAuth(app);
 export default function Home() {
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
+  // Theme siwtching state
+  const [isDefault, setIsDefault] = useState(true)
   // useState to hold API data
   const [apiData, setApiData] = useState("");
 
@@ -213,20 +205,14 @@ export default function Home() {
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
 
-  const typewriter = new Typewriter({ loop: true, delay: 75 });
+  
 
   return (
-    <div className="flex flex-col min-h-screen ">
-      <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-12% sm:-mt-7% bg-main-bg">
-        {/* <Image
-          src={PhotoBG}
-          alt="Mountain landscape"
-          className="object-cover w-full -mt-20 h-2/4 "
-          priority={true}
-        /> */}
-      </div>
 
+    <div className={isDefault?"background-image-styling flex-col min-h-screen":"background-image-styling flex-col min-h-screen minimal-theme" }>
+   
       <div className="font-bold typewriter font-explora">
+
         <Typewriter
           className="font-explora"
           options={{
@@ -251,9 +237,14 @@ export default function Home() {
       {/* conditional rednring so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
 
+
+  
+      <ThemeSwitcher stateChanger={setIsDefault} />
+
       {!apiData ? <Carousel /> : <ApiResultsCardContainer apiData={apiData} />}
 
       <Footer />
+
     </div>
   );
 }

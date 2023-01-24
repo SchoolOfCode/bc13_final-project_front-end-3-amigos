@@ -54,6 +54,7 @@ export default function Carousel() {
 
   return (
     <>
+
       <div className=" absolute w-full top-1/2 transform -translate-y-1/2 px-3 flex justify-center items-center bg-off-white bg-opacity-50 mt-44">
         <Image
           src={featuredPlaces[currentIndex]}
@@ -74,6 +75,7 @@ export default function Carousel() {
           />
         </div>
       </div>
+
     </>
   );
 }
