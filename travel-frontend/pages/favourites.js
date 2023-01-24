@@ -6,12 +6,14 @@ import { app } from "../firebase/firebase.js";
 import { useAuthState } from "react-firebase-hooks/auth";
 import FavResultCardContainer from "../components/Favourites/FavResultsCardContainer";
 import Footer from "../components/Footer.js";
+import DynamicSearchBar from "../components/Favourites/DynamicSearch.js";
 
 function Favourites() {
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
 
   const [fav, setFav] = useState([]);
+  const [filterData, setFilterData] = useState([]);
   console.log(user);
 
   
@@ -43,8 +45,25 @@ function Favourites() {
   }, [user]);
   // console.log(fav);
 
+
+  function handleSearch(e){
+    const value = e.target.value
+     setFilterData(
+      fav.filter((item)=>{
+        return(
+          item.city.toLowerCase().includes(
+            value.toLowerCase()
+          )
+        )
+      })
+     ) 
+    console.log(filterData)
+  }
+
+
   return (
     <div>
+    <DynamicSearchBar handleSearch={handleSearch}/>
       <FavResultCardContainer fav={fav} deleteFavourite={deleteFavourite} />
       <Footer />
     </div>
