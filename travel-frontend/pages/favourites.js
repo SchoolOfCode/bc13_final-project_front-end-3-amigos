@@ -9,20 +9,12 @@ import Footer from "../components/Footer.js";
 
 function Favourites() {
   const auth = getAuth(app);
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const [fav, setFav] = useState([]);
   console.log(user);
 
-  useEffect(() => {
-    async function favData() {
-      const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-      const res = await axios.get(URL + `${user.uid}/favourites`);
-      console.log(res);
-      setFav(res.data.payload);
-    }
-    favData();
-  }, []);
+  
 
   console.log(fav);
   async function deleteFavourite(xid) {
@@ -40,16 +32,15 @@ function Favourites() {
 
   useEffect(() => {
     async function favData() {
-      const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
-
-      const userFavouritesApi = `${URL}${user.uid}/favourites`;
-
-      const res = await axios.get(userFavouritesApi);
-
-      setFav(res.data.payload);
+      if(user) {
+        const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
+        const userFavouritesApi = `${URL}${user.uid}/favourites`;
+        const res = await axios.get(userFavouritesApi);
+        setFav(res.data.payload);
+      }
     }
     favData();
-  }, []);
+  }, [user]);
   // console.log(fav);
 
   return (

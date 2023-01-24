@@ -64,8 +64,8 @@ export default function NavBar() {
                 // when the LOGOUT button is clicked the user will be signed out and the home page will be reloaded to reset the states
                 onClick={() => {
                   signOut(auth).then(() => {
+                    // router.push("/");
                     router.push("/");
-                    router.reload("/");
                   });
                 }}
                 className="my-auto mt-5 mr-10 font-bold align-middle standard-btn"
