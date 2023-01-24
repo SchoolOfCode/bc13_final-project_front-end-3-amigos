@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/Link";
+import Link from "next/link";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -16,9 +16,11 @@ export default function NavBar() {
   const router = useRouter();
 
   return (
-    <div className=" font-montserrat">
+
+
+
       <nav>
-        <ul className="flex justify-between h-12  ">
+        <ul className="flex justify-between h-12 font-montserrat">
           <li>
             <Link href="/">
               <Image
@@ -76,6 +78,7 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
-    </div>
+   
+
   );
 }

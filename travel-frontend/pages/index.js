@@ -6,8 +6,14 @@ import axios from "axios";
 import Typewriter from "typewriter-effect";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
+import ThemeSwitcher from "../components/ThemeSwitcher";
+
+
 
 export default function Home() {
+
+  // Theme switching state
+  const [isDefault, setIsDefault] = useState(true)
   // useState to hold API data
   const [apiData, setApiData] = useState("");
 
@@ -96,12 +102,11 @@ export default function Home() {
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
 
-  const typewriter = new Typewriter({ loop: true, delay: 75 });
+  
 
   return (
-    <div className="flex flex-col min-h-screen ">
-      <div className="absolute w-full bg-no-repeat pb-2/3 xl:pb-1/3 bg-cover -z-10 h-1/2 -mt-12% sm:-mt-7% bg-main-bg"></div>
-
+    <div className={isDefault?"background-image-styling  ":"background-image-styling minimal-theme " }>
+   
       <div className="font-bold typewriter font-explora">
         <Typewriter
           className="font-explora"
@@ -112,20 +117,26 @@ export default function Home() {
               "Yallah!!",
               "Haideee!!",
               "Andiamo!!",
-              "Vamos lá!!!",
+              "Vamos lá!!",
             ],
             autoStart: true,
             loop: true,
           }}
         />
-      </div>
+        </div>
       <div>
         <SearchBar handleClick={getApiData} />
       </div>
       {/* conditional rednring so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
+
+  
+      <ThemeSwitcher stateChanger={setIsDefault} />
+
+
       {!apiData ? <Carousel /> : <ApiResultsCardContainer apiData={apiData} />}
       <Footer />
+
     </div>
   );
 }
