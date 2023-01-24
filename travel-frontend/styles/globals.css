@@ -50,8 +50,8 @@
 
       /* ThemeSwitcher Light Mode */
     --Themer-bg--light: var(--Themer-hue) 30% 94%;
-    --Themer-text--light: var(--Themer-hue) 40% 5%;
-    --Themer-accent--light: var(--Themer-hue) 55% 50%;
+    --Themer-text--light: var(--Themer-hue) 40% 20%;
+    --Themer-accent--light: var(--Themer-hue) 90% 72%;
     /* Delete button colour */
     --Themer-accent1--light: 10 80% 60%;
     --Themer-muted--light: var(--Themer-hue) 30% 99%;
@@ -152,7 +152,7 @@
   place-items: center;
   gap: 0.5em;
   background-color: hsl(var(--Themer-accent));
-  color: hsl(var(--Themer-bg));
+  color: hsl(var(--Themer-text));
   text-decoration: none;
   padding: 0.5em;
   border-radius: var(--Themer-radius);
@@ -381,7 +381,7 @@
     @apply text-white text-4xl sm:text-6xl mt-20 ml-7%;
   }
   .standard-btn {
-    @apply w-auto p-2 ml-2 text-white rounded-lg Themer-btns;
+    @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-text))] rounded-lg Themer-btns;
   }
   .search-bar {
     @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg lg:w-1/3;

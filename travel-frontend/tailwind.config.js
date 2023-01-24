@@ -51,12 +51,6 @@ module.exports = {
               base: '#ffffff',
             }
           },
-          backgroundColor:{
-            'button-fill': '#F87575',
-            'main-fill': '#7DAB87',
-            'other-fill': '#2C5746',
-
-          },
           height: {
             '50%':'55%',
             '35':'35rem'
@@ -69,7 +63,6 @@ module.exports = {
             "google-dark-red": "#8B0000",
             "google-orange": "#FF8C00",
             "corn-silk": "#FFF8DC",
-            "ctc":'hsl(var(--Themer-accent))'
           },
          
         }
@@ -81,17 +74,8 @@ module.exports = {
             backgroundImage:  {
               'main-bg': "url('/minimalistBG.jpg')",
           },
-          backgroundColor:{
-            'button-fill': '#2C5746',
-            'main-fill': '##7DAB87',
-            'other-fill': '#2C5746',
-            'card-background':'#2C5746'
-          },
-          textColor: {
-            skin: {
-              base: '#ffffff',
-            }
-          },
+    
+          
           colors: {
             "ctc":'#2C5746'
           },
