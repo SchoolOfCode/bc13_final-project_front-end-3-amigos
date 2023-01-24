@@ -24,6 +24,8 @@ const auth = getAuth(app);
 export default function Home() {
   // useState to hold the database data
   const [recData, setRecData] = useState([]);
+  // Theme siwtching state
+  const [isDefault, setIsDefault] = useState(true)
   // useState to hold API data
   const [apiData, setApiData] = useState([]);
 
@@ -213,7 +215,7 @@ export default function Home() {
   
 
   return (
-    <div className="background-image-styling">
+    <div className={isDefault?"background-image-styling":"background-image-styling minimal-theme" }>
 
       <div className="typewriter">
         <Typewriter
@@ -241,7 +243,7 @@ export default function Home() {
       {apiData && (
         <ApiResultsCardContainer postData={postData} apiData={apiData} />
       )}
-      <ThemeSwitcher />
+      <ThemeSwitcher stateChanger={setIsDefault} />
     </div>
   );
 }

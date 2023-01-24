@@ -51,23 +51,13 @@ module.exports = {
           textColor: {
             skin: {
               base: '#ffffff',
-              muted: 'var(--color-text-muted)',
-              inverted: 'var(--color-text-inverted)'
             }
           },
           backgroundColor:{
             'button-fill': '#F87575',
             'main-fill': '#7DAB87',
             'other-fill': '#2C5746',
-            'card-background':'#95CCD8'
-            // skin: {
-            //   fill:'var(--color-button-fill)',
-            //   'button-accent':'var(--color-button-accent)',
-            //   'card-fill':'var(--color-card-background)',
-            //   'button-accent-hover':'var(--color-button-accent-hover)',
-            //   'button-muted':'var(--color-button-muted)',
-            //   'image-source':'var(--image-source)',
-            // }
+
           },
           height: {
             '50%':'55%',
@@ -81,7 +71,7 @@ module.exports = {
             "google-dark-red": "#8B0000",
             "google-orange": "#FF8C00",
             "corn-silk": "#FFF8DC",
-            "ctc":'#95CCD8'
+            "ctc":'hsl(var(--Themer-accent))'
           },
          
         }

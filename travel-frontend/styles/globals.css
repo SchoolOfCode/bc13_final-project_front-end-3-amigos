@@ -28,7 +28,7 @@
     --color-main-light: #D9D9D9;
 
     /* World SVG CSS */
-    --hue-loader: 0deg;
+    --hue-loader: var(--Themer-hue);
     --base-bg-sat-loader: 90%;
     --base-bg-lum-loader: 72%;
     --base-bg-loader: hsl(var(--hue-loader), var(--base-bg-loader-sat-loader), var(--base-bg-lum-loader));
@@ -55,7 +55,7 @@
     /* Delete button colour */
     --Themer-accent1--light: 10 80% 60%;
     --Themer-muted--light: var(--Themer-hue) 30% 99%;
-      /* ThemeSwitcher Light Mode */
+      /* ThemeSwitcher Dark Mode */
     --Themer-bg--dark: var(--Themer-hue) 15% 10%;
     --Themer-text--dark: var(--Themer-hue) 30% 88%;
     --Themer-accent--dark: var(--Themer-hue) 50% 50%;
@@ -67,19 +67,19 @@
   /* Themer dark root */
   :root[color-scheme='dark'] {
     --Themer-bg: var(--Themer-bg--dark);
-    --Themer-text: var(--Themer-bg--dark);
-    --Themer-accent: var(--Themer-bg--dark);
-    --Themer-accent1: var(--Themer-bg--dark);
-    --Themer-muted: var(--Themer-bg--dark);
+    --Themer-text: var(--Themer-text--dark);
+    --Themer-accent: var(--Themer-accent--dark);
+    --Themer-accent1: var(--Themer-accent1--dark);
+    --Themer-muted: var(--Themer-muted--dark);
     color-scheme: dark;
 
   }
   :root[color-scheme='light'] {
     --Themer-bg: var(--Themer-bg--light);
-    --Themer-text: var(--Themer-bg--light);
-    --Themer-accent: var(--Themer-bg--light);
-    --Themer-accent1: var(--Themer-bg--light);
-    --Themer-muted: var(--Themer-bg--light);
+    --Themer-text: var(--Themer-text--light);
+    --Themer-accent: var(--Themer-accent--light);
+    --Themer-accent1: var(--Themer-accent1--light);
+    --Themer-muted: var(--Themer-muted--light);
     color-scheme: light;
 
   }
@@ -92,8 +92,8 @@
   }
 
   ::selection {
-    background: hsl(var(--accent) / 0.8);
-    color: hsl(var(--bg));
+    background: hsl(var(--Themer-accent) / 0.8);
+    color: hsl(var( --Themer-bg));
   }
 
 
@@ -140,7 +140,7 @@
     padding: 1em 2em;
     width: 100%;
     display: grid;
-    --_size: 1.5rem;
+    --Themer-size: 1.5rem;
     place-items: center;
   }
   
@@ -151,15 +151,15 @@
   display: flex;
   place-items: center;
   gap: 0.5em;
-  background-color: hsl(var(--accent));
-  color: hsl(var(--bg));
+  background-color: hsl(var(--Themer-accent));
+  color: hsl(var(--Themer-bg));
   text-decoration: none;
   padding: 0.5em;
-  border-radius: var(--_radius);
-  box-shadow: 0.05em 0.1em 0.9em hsl(var(--accent) / 0.3),
-    0 0 0 -0.1em hsl(var(--bg)), 0 0 0 -0.2em hsl(var(--accent));
-  transition: box-shadow var(--_tspeed_fast) var(--_ttype_squish),
-    background-color var(--_tspeed_fast) var(--_ttype_squish);
+  border-radius: var(--Themer-radius);
+  box-shadow: 0.05em 0.1em 0.9em hsl(var(--Themer-accent) / 0.3),
+    0 0 0 -0.1em hsl(var(--Themer-bg)), 0 0 0 -0.2em hsl(var(--Themer-accent));
+  transition: box-shadow var(--Themer-tspeed-fast) var(--Themer-ttype-squish),
+    background-color var(--Themer-tspeed-fast) var(--Themer-ttype-squish);
   }
   
   .Themer-picker:focus {
@@ -200,17 +200,17 @@
     width: calc(var(--wrapperSize) * 0.35);
     border: none;
     box-shadow:
-      0 0 0 .25em hsl(var(--muted)),
-      0 0 0 -.4em hsl(var(--accent) / 0.8);
+      0 0 0 .25em hsl(var(--Themer-muted)),
+      0 0 0 -.4em hsl(var(--Themer-accent) / 0.8);
     border-radius: 100vmax;
-    background-color: hsl(var(--accent));
-    cursor: ew-resize;
+    background-color: hsl(var(--Themer-accent));
+    cursor: pointer;
   }
   
   .Themer-picker:focus::-webkit-slider-thumb {
     box-shadow:
-      0 0 0 .25em hsl(var(--muted)),
-      0 0 0 .45em hsl(var(--accent) / 0.8);
+      0 0 0 .25em hsl(var(--Themer-muted)),
+      0 0 0 .45em hsl(var(--Themer-accent) / 0.8);
   }
   
   .Themer-close {
@@ -249,8 +249,8 @@
     --color-button-muted: #6366f1;
     --color-main-dark: #2C5746;
     --color-main-light: #D9D9D9;
-    
-    --hue-loader: 156deg;
+    /* World SVG CSS Dark */
+    --hue-loader: var(--Themer-hue);
     --base-bg-sat-loader: 33%;
     --base-bg-lum-loader: 26%;
     --base-bg-loader: hsl(var(--hue-loader), var(--base-bg-sat-loader), var(--base-bg-lum-loader));
@@ -275,10 +275,10 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --Themer-bg: var(--Themer-bg--dark);
-      --Themer-text: var(--Themer-bg--dark);
-      --Themer-accent: var(--Themer-bg--dark);
-      --Themer-accent1: var(--Themer-bg--dark);
-      --Themer-muted: var(--Themer-bg--dark);
+      --Themer-text: var(--Themer-text--dark);
+      --Themer-accent: var(--Themer-accent--dark);
+      --Themer-accent1: var(--Themer-accent1--dark);
+      --Themer-muted: var(--Themer-muted--dark);
       color-scheme: dark;
 
     }
@@ -286,10 +286,10 @@
   @media (prefers-color-scheme: light) {
     :root {
       --Themer-bg: var(--Themer-bg--light);
-      --Themer-text: var(--Themer-bg--light);
-      --Themer-accent: var(--Themer-bg--light);
+      --Themer-text: var(--Themer-text--light);
+      --Themer-accent: var(--Themer-accent--light);
       --Themer-accent1: var(--Themer-bg--light);
-      --Themer-muted: var(--Themer-bg--light);
+      --Themer-muted: var(--Themer-muted--light);
       color-scheme: light;
 
     }
@@ -321,7 +321,8 @@
       @apply  transition-transform duration-500  group-hover:scale-125
      }
      .card-gradient-bg:hover {
-      @apply  group-hover:from-ctc/70 group-hover:via-ctc/60 group-hover:to-ctc/70
+      background-color: hsl(var(--Themer-accent)/ 0.5);
+      @apply  from-transparent/70 group-hover:via-transparent/60 group-hover:to-transparent/70
     }
     .card-info-transition:hover {
       @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
@@ -369,7 +370,7 @@
     @apply mt-35%   md:mt-0  h-50% rounded-xl sm:h-full mx-auto sm:w-full md:object-cover transition-transform duration-500  group-hover:scale-125;
   }
   .card-gradient-bg {
-    @apply absolute inset-0 md:bg-card-background md:bg-opacity-10 bg-gradient-to-b from-transparent via-transparent to-ctc
+    @apply absolute inset-0 bg-[color:hsl(var(--Themer-accent)/0.5)] md:bg-opacity-10 md:bg-gradient-to-b md:from-transparent md:via-transparent md:to-[color:hsl(var(--Themer-accent))]
   }
 
   /* use below class for mob view no transition */
@@ -393,13 +394,13 @@
     @apply mt-10 text-skin-base    md:mt-0  text-lg font-normal   text-ellipsis overflow-y-auto
   }
   .card-btn {
-    @apply bg-button-fill font-bold rounded-full   mt-3 mb-1 py-2 px-3.5  text-sm capitalize text-white shadow shadow-black/60
+    @apply Themer-btns font-bold rounded-full   mt-3 mb-1 py-2 px-3.5  text-sm capitalize text-white shadow shadow-black/60
   }
   .typewriter {
     @apply text-white text-4xl sm:text-6xl mt-20 ml-7%;
   }
   .standard-btn {
-    @apply w-auto p-2 ml-2 text-white rounded-lg bg-button-fill;
+    @apply w-auto p-2 ml-2 text-white rounded-lg Themer-btns;
   }
   .search-bar {
     @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg lg:w-1/3;

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-function ThemeSwitcher() {
+function ThemeSwitcher({stateChanger}) {
     const [hue, setHue] = useState('240')
     const [theme, setTheme] = useState('light')
     const [isColorPicking, setIsColorPicking] = useState(false)
@@ -8,6 +8,7 @@ function ThemeSwitcher() {
 /* Easiest way to handle a change in a piece of state in UI with React is by using a useEffect */
 useEffect(() => {
     document.documentElement.setAttribute('color-scheme', theme)
+    
 }, [theme]);
 
 useEffect(() => {
@@ -29,7 +30,11 @@ const xMarkIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
 </svg>
 
+const handleClick= ()=>{
+    setTheme(theme=== 'light' ? 'dark' : 'light')
+    theme === 'light'?stateChanger(false):stateChanger(true)
 
+}
 
   return (
     <aside className='Themer-wrapper' >
@@ -59,7 +64,7 @@ const xMarkIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
                 <button
                 aria-label={`Change theme to ${theme === "light"? "dark": "light"} mode`}
                 role='switch'
-                onClick={() => {setTheme(theme=== 'light' ? 'dark' : 'light')}}>
+                onClick={handleClick}>
                 {theme === 'dark'? sunIcon : moonIcon}</button>
                 <button
                 aria-label='Enable color picking mode'
