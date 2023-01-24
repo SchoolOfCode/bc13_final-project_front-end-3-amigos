@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import FavouritesButton from "./FavouritesButton";
 
@@ -11,11 +10,8 @@ function FavResultCard({
   description,
   image,
   uid,
-  deleteFavourite
+  deleteFavourite,
 }) {
-  
-  
-
   return (
     <div className="card-container group">
       <div className="single-card">
@@ -29,7 +25,7 @@ function FavResultCard({
           <p className="card-location">{suburb}</p>
           <p className="card-desc">{description}</p>
           <button className="card-btn">See More</button>
-          <FavouritesButton deleteFavourite={deleteFavourite} xid={xid}/>
+          <FavouritesButton deleteFavourite={deleteFavourite} xid={xid} />
         </div>
       </div>
     </div>
