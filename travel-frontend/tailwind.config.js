@@ -24,7 +24,6 @@ module.exports = {
 
       backgroundImage: {
         "auth-bg": "url('../public/mouintain-bg.jpg')",
-        "main-bg": "url('/Blue-Lagoon-in-Malta-6.png')",
       },
 
       colors: {
@@ -67,7 +66,7 @@ module.exports = {
       defaultTheme: {
  extend: {
           backgroundImage:  {
-              'main-bg':"url('/Blue-Lagoon-in-Malta-6.png')",
+            'main-bg':"url('/Blue-Lagoon-in-Malta-6.png')",
           },
           textColor: {
             skin: {

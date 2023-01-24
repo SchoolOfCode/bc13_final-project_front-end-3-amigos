@@ -209,7 +209,7 @@ export default function Home() {
 
   return (
 
-    <div className={isDefault?"background-image-styling  ":"background-image-styling flex-col min-h-screen minimal-theme " }>
+    <div className={isDefault?"background-image-styling  ":"background-image-styling minimal-theme " }>
    
       <div className="font-bold typewriter font-explora">
         <Typewriter
