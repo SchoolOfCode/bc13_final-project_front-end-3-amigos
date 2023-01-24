@@ -49,7 +49,7 @@ function Favourites() {
 
   function handleSearch(e){
       let value = e.target.value 
-      const data = fav.filter((item)=>{return item.city.toLowerCase().toString().includes(value.toString().toLowerCase())})
+      const data = fav.filter((item)=>{return item.city.toLowerCase().toString().includes(value.toString().toLowerCase()) })
       setFilterData(data)
      }
      console.log(filterData)
@@ -62,7 +62,7 @@ function Favourites() {
   return (
     <div>
     <DynamicSearchBar handleSearch={handleSearch}/>
-      <FavResultCardContainer fav={fav} deleteFavourite={deleteFavourite} />
+      {fav && <FavResultCardContainer fav={filterData ? filterData : fav} deleteFavourite={deleteFavourite} />}
       <Footer />
     </div>
   );
