@@ -14,11 +14,12 @@ function Favourites() {
 
   const [fav, setFav] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  console.log(user);
+  
+  // console.log(user);
 
   
 
-  console.log(fav);
+  // console.log(fav);
   async function deleteFavourite(xid) {
     const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
     const cardXid = xid.target.id;
@@ -27,10 +28,10 @@ function Favourites() {
     );
     const getNewData = await axios.get(URL + `${user.uid}/favourites`);
     setFav(getNewData.data.payload);
-    console.log(xid.target.id);
+    // console.log(xid.target.id);
   }
 
-  console.log(fav);
+  // console.log(fav);
 
   useEffect(() => {
     async function favData() {
@@ -47,18 +48,15 @@ function Favourites() {
 
 
   function handleSearch(e){
-    const value = e.target.value
-     setFilterData(
-      fav.filter((item)=>{
-        return(
-          item.city.toLowerCase().includes(
-            value.toLowerCase()
-          )
-        )
-      })
-     ) 
-    console.log(filterData)
-  }
+      let value = e.target.value 
+      const data = fav.filter((item)=>{return item.city.toLowerCase().toString().includes(value.toString().toLowerCase())})
+      setFilterData(data)
+     }
+     console.log(filterData)
+     
+    
+  
+ 
 
 
   return (

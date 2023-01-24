@@ -3,7 +3,7 @@ import Image from "next/image";
 import fullHeart from "../../public/love.png";
 
 function FavouritesButton({ deleteFavourite, xid }) {
-  console.log(xid);
+  // console.log(xid);
   const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
   return (
     <>
