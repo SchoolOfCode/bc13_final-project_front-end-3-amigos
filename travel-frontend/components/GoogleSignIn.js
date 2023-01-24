@@ -27,30 +27,17 @@ function GoogleSignIn() {
         console.log(userDetails);
 
         async function postUserDetails(userDetails) {
-          // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
           const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
           const usersApiUrl = URL;
-
-          // const URL = `postgres://xwrxqxhr:wCU0PAsKZeTaKCaGCueQHoyKuJHh0wNn@mel.db.elephantsql.com/xwrxqxhr`;
 
           console.log(URL);
 
           const headers = {
             "Content-Type": "application/json",
           };
-          const res = await axios.post(
-            usersApiUrl,
-            userDetails,
-            // {
-            //   username: user.user.displayName,
-            //   email: user.user.email,
-            //   uid: user.user.uid,
-            //   password: null,
-            // },
-            {
-              headers: headers,
-            }
-          );
+          const res = await axios.post(usersApiUrl, userDetails, {
+            headers: headers,
+          });
 
           console.log("userfavourites post response", res);
         }
@@ -62,7 +49,6 @@ function GoogleSignIn() {
     }
     User();
   }, [user]);
-  // console.log(user.user.email);
   console.log(user);
 
   return (
