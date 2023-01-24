@@ -42,9 +42,7 @@ module.exports = {
   plugins: [
     require('tailwindcss-themer')({
       defaultTheme: {
-        // put the default values of any config you want themed
-        // just as if you were to extend tailwind's theme like normal https://tailwindcss.com/docs/theme#extending-the-default-theme
-        extend: {
+ extend: {
           backgroundImage:  {
               'main-bg':"url('/Blue-Lagoon-in-Malta-6.png')",
           },
@@ -88,14 +86,6 @@ module.exports = {
             'main-fill': '##7DAB87',
             'other-fill': '#2C5746',
             'card-background':'#2C5746'
-            // skin: {
-            //   fill:'var(--color-button-fill)',
-            //   'button-accent':'var(--color-button-accent)',
-            //   'card-fill':'var(--color-card-background)',
-            //   'button-accent-hover':'var(--color-button-accent-hover)',
-            //   'button-muted':'var(--color-button-muted)',
-            //   'image-source':'var(--image-source)',
-            // }
           },
           textColor: {
             skin: {

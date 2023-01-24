@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 function ThemeSwitcher({stateChanger}) {
-    const [hue, setHue] = useState('240')
+    const [hue, setHue] = useState('340')
     const [theme, setTheme] = useState('light')
     const [isColorPicking, setIsColorPicking] = useState(false)
 
