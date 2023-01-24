@@ -55,23 +55,23 @@ export default function Carousel() {
   return (
     <>
 
-      <div className=" absolute w-full top-1/2 transform -translate-y-1/2 px-3 flex justify-center items-center bg-off-white bg-opacity-50 mt-44">
+      <div className="flex items-center justify-center w-full px-3 transform -translate-y-1/2 bg-opacity-50 top-1/2 bg-off-white mt-2/3">
         <Image
           src={featuredPlaces[currentIndex]}
           alt="Places to visit"
           ref={carouselRef}
-          className=" cursor-pointer rounded-md sm:h-2/3 sm:w-4/5 sm:aspect-video lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70 justify-center"
+          className="justify-center rounded-md cursor-pointer sm:h-2/3 sm:w-4/5 sm:aspect-video lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70"
         />
-        <div className=" absolute w-full top-1/2 transform -translate-y-1/2 px-3 flex justify-between items-center">
+        <div className="absolute flex items-center justify-between w-full px-3 transform -translate-y-1/2 top-1/2">
           <img
             src="/left-arrow.png"
             onClick={handleOnClickPrev}
-            className="opacity-80 h-12  pl-1  hover:opacity-50 transition cursor-pointer"
+            className="h-12 pl-1 transition cursor-pointer opacity-80 hover:opacity-50"
           />
           <img
             src="/right-arrow.png"
             onClick={handleOnClickNext}
-            className="opacity-80 h-12  pl-1  hover:opacity-50 transition cursor-pointer"
+            className="h-12 pl-1 transition cursor-pointer opacity-80 hover:opacity-50"
           />
         </div>
       </div>

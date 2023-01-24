@@ -17,10 +17,10 @@ export default function NavBar() {
 
   return (
 
-    <div className=" font-montserrat">
+
 
       <nav>
-        <ul className="flex justify-between h-12  ">
+        <ul className="flex justify-between h-12 font-montserrat">
           <li>
             <Link href="/">
               <Image
@@ -77,6 +77,7 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
+   
 
   );
 }

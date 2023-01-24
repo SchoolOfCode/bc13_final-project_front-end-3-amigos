@@ -249,6 +249,16 @@
 
 }
 
+
+  
+
+
+@import url('https://fonts.googleapis.com/css2?family=Explora&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer components {
 
   /* Themer media queries */
@@ -327,13 +337,7 @@
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Explora&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
   .footer-pos-adjust {
     min-height: 70%;
     min-height: -webkit-calc(100% - 7rem);
@@ -397,7 +401,6 @@
     @apply text-white text-4xl sm:text-6xl mt-20 ml-7%;
   }
   .standard-btn {
-
     @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-text))] rounded-lg Themer-btns;
   }
   .search-bar {
@@ -409,3 +412,4 @@
   }
   
 }
+
