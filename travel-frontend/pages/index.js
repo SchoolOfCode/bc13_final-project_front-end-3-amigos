@@ -1,7 +1,7 @@
 import SearchBar from "../components/SearchBar";
 import Carousel from "../components/Carousel";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ApiResultsCardContainer from "../components/ApiResultsCardContainer";
 import axios from "axios";
 import Typewriter from "typewriter-effect";
@@ -10,7 +10,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 export default function Home() {
   // useState to hold the database data
@@ -24,7 +24,7 @@ export default function Home() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   // declare the auth state to check the user status
-  const [user, loading, error] = useAuthState(auth);
+  // const [user, loading, error] = useAuthState(auth);
 
   // state for the loader
   const [isLoading, setIsLoading] = useState(true);
@@ -209,10 +209,9 @@ export default function Home() {
 
   return (
 
-    <div className={isDefault?"background-image-styling flex-col min-h-screen":"background-image-styling flex-col min-h-screen minimal-theme" }>
+    <div className={isDefault?"background-image-styling  ":"background-image-styling flex-col min-h-screen minimal-theme " }>
    
       <div className="font-bold typewriter font-explora">
-
         <Typewriter
           className="font-explora"
           options={{
@@ -228,7 +227,7 @@ export default function Home() {
             loop: true,
           }}
         />
-      </div>
+        </div>
       <div>
         <SearchBar handleClick={getApiData} />
       </div>
