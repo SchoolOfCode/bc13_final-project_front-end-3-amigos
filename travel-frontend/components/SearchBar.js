@@ -7,7 +7,6 @@ export default function SearchBar({ handleClick }) {
     if (event.key === "Enter") {
       setSearchTerm(event.target.value);
       handleClick(event.target.value);
-      console.log("User pressed:", event.key);
     }
   };
   return (
