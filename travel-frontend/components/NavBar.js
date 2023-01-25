@@ -9,7 +9,7 @@ import { app } from "../firebase/firebase";
 import Image from "next/image";
 import logo from "../public/logo.svg";
 
-function Hamburger() {
+function NavBar() {
   const [nav, setNav] = useState(false);
   const auth = getAuth(app);
   const [user, loading, error] = useAuthState(auth);
@@ -21,7 +21,7 @@ function Hamburger() {
   };
 
   return (
-    <div className="fixed left-0 top-0 w-full z-10 ease-in duration-300">
+    <div className="fixed  left-0 top-0 w-full z-10 ease-in duration-300">
       <div className=" -mr-63% m-auto flex justify-between items-center p-4 text-white">
         <Link href="/">
           <Image
@@ -35,20 +35,20 @@ function Hamburger() {
         <ul className="hidden sm:flex ">
           {user && (
             <ul className="  items-center justify-center space-y-5  mt-auto md:flex md:space-x-6 md:space-y-0">
-              <li className="text-coral font-semibold text-lg p-4 hover:text-zinc-600">
+              <li className="text-coral font-semibold text-lg p-4 hover:text-white ">
                 <Link href="/favourites">FAVOURITES</Link>
               </li>
-              <li className="text-coral font-semibold text-lg p-4  hover:text-zinc-600">
+              <li className="text-coral font-semibold text-lg p-4  hover:text-white">
                 <Link href="/journal">JOURNAL</Link>
               </li>
             </ul>
           )}
           {!user ? (
-            <li className="text-coral font-semibold text-lg p-4  hover:text-zinc-600">
+            <li className="text-coral font-semibold text-lg p-4  hover:text-white">
               <Link href="/auth">LOGIN</Link>
             </li>
           ) : (
-            <li className="text-coral font-semibold text-lg p-4 hover:text-zinc-600">
+            <li className="text-coral font-semibold text-lg p-4 hover:text-white">
               <button
                 onClick={() => {
                   signOut(auth).then(() => {
@@ -73,7 +73,7 @@ function Hamburger() {
           {nav ? (
             <AiOutlineClose size={20} className=" text-white" />
           ) : (
-            <AiOutlineMenu size={20} className=" text-zinc-900" />
+            <AiOutlineMenu size={20} className=" text-white" />
           )}
         </div>
         <div>
@@ -122,4 +122,4 @@ function Hamburger() {
   );
 }
 
-export default Hamburger;
+export default NavBar;
