@@ -14,10 +14,8 @@ function Favourites() {
 
   const [fav, setFav] = useState([]);
   const [filterData, setFilterData] = useState([]);
-  
-  // console.log(user);
 
-  
+  // console.log(user);
 
   // console.log(fav);
   async function deleteFavourite(xid) {
@@ -35,34 +33,39 @@ function Favourites() {
 
   useEffect(() => {
     async function favData() {
-      if(user) {
+      if (user) {
         const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
         const userFavouritesApi = `${URL}${user.uid}/favourites`;
         const res = await axios.get(userFavouritesApi);
         setFav(res.data.payload);
+        setFilterData(res.data.payload);
       }
     }
     favData();
   }, [user]);
   // console.log(fav);
 
-
-  function handleSearch(e){
-      let value = e.target.value 
-      const data = fav.filter((item)=>{return item.city.toLowerCase().toString().includes(value.toString().toLowerCase()) })
-      setFilterData(data)
-     }
-     console.log(filterData)
-     
-    
-  
- 
-
+  function handleSearch(e) {
+    let value = e.target.value;
+    const data = fav.filter((item) => {
+      return item.city
+        .toLowerCase()
+        .toString()
+        .includes(value.toString().toLowerCase());
+    });
+    setFilterData(data);
+  }
+  console.log(filterData);
 
   return (
     <div>
-    <DynamicSearchBar handleSearch={handleSearch}/>
-      {fav && <FavResultCardContainer fav={filterData && filterData } deleteFavourite={deleteFavourite} />}
+      <DynamicSearchBar handleSearch={handleSearch} />
+      {fav && (
+        <FavResultCardContainer
+          fav={filterData && filterData}
+          deleteFavourite={deleteFavourite}
+        />
+      )}
       <Footer />
     </div>
   );
