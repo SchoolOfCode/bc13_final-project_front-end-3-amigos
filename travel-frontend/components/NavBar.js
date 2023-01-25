@@ -44,11 +44,11 @@ function NavBar() {
             </ul>
           )}
           {!user ? (
-            <li className="text-coral font-semibold text-lg p-4  hover:text-white">
+            <li className="font-semibold text-lg p-4   mt-2 h-10 standard-btn">
               <Link href="/auth">LOGIN</Link>
             </li>
           ) : (
-            <li className="text-coral font-semibold text-lg p-4 hover:text-white">
+            <li className="font-semibold text-lg mt-2 h-10 standard-btn hover:text-white">
               <button
                 onClick={() => {
                   signOut(auth).then(() => {
@@ -101,7 +101,7 @@ function NavBar() {
                   <Link href="/auth">LOGIN</Link>
                 </li>
               ) : (
-                <li className="text-white font-semibold text-lg mt-5 hover:text-zinc-600">
+                <li className="text-white font-semibold text-lg mt-5 ">
                   <button
                     className=""
                     onClick={() => {
