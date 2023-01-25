@@ -13,10 +13,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase";
 import axios from "axios";
+import { FaIoxhost } from "react-icons/fa";
 
 function FavouritesButton(newFavourite) {
   //console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
-
+  console.log("newFavourite:", newFavourite);
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
   // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
@@ -25,20 +26,34 @@ function FavouritesButton(newFavourite) {
   // const uid = user.uid;
   // console.log("userUid:", uid);
 
+  async function checkData(uid, xid) {
+    const res = await axios.get(`${URL}/${uid}/favourites/${xid}`);
+    console.log("fetch response:", res.data.payload);
+    if (res.data.payload.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   async function postRequest(newFavourite) {
     const uid = user.uid;
     const favouritesApiUrl = `${URL}${uid}/favourites`;
-
-    // console.log("userUid in Post request:", uid);
+    // console.log(newFavourite);
+    console.log("userXid in Post request:", xid);
     // console.log("postRequest content:", newFavourite.props, uid);
     const headers = {
       "Content-Type": "application/json",
     };
-
-    const res = await axios.post(favouritesApiUrl, newFavourite.props, {
-      headers: headers,
-    });
-    console.log(res);
+    const dataExists = await checkData(uid, xid);
+    console.log("checkData:", dataExists);
+    console.log("XID after calling fn:", xid);
+    if (dataExists === false) {
+      const res = await axios.post(favouritesApiUrl, newFavourite.props, {
+        headers: headers,
+      });
+      console.log(res);
+    }
   }
 
   // Make an axios delete request with UID, XID, UID attached to the body and XID in the path

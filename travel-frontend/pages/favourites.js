@@ -26,6 +26,7 @@ function Favourites() {
     );
     const getNewData = await axios.get(URL + `${user.uid}/favourites`);
     setFav(getNewData.data.payload);
+    setFilterData(getNewData.data.payload);
     // console.log(xid.target.id);
   }
 
@@ -43,7 +44,7 @@ function Favourites() {
     }
     favData();
   }, [user]);
-  // console.log(fav);
+  console.log(fav);
 
   function handleSearch(e) {
     let value = e.target.value;
