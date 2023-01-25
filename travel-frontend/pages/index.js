@@ -27,12 +27,17 @@ export default function Home() {
   */
   async function getApiData(searchTerm) {
     //setting the state to false so that the loader is shown
+
     if (searchTerm.length > 1) {
       setIsLoading(false);
-      const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-      const geoData = await axios.get(
-        `https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerm}&apikey=${API_KEY}`
-      );
+      try {
+        const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+        const geoData = await axios.get(
+          `https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerm}&apikey=${API_KEY}`
+        );
+
+      
+     
 
       //console.log(geoData, "geoData");
 
@@ -89,25 +94,29 @@ export default function Home() {
          *  at the end of iteration will have 20 places objects inside the array
          */
         places = [...places, ...responses];
+        
+        }
+        const finalResult = places.filter((item) => {
+          return (
+            item.wikipedia_extracts && item.preview && item.name && item.address
+          );
+        });
+        console.log("finalResult", finalResult);
 
+      // setApiData to the final array of 20 places
+      setApiData(finalResult);
+      //setting the state to true so that loader is not shown
+      
         // Iterate over the places array, check that each item has both an image key and a wikipediaextracts key - maybe more faterwards
         // if so, push it to a new array that is then returned
 
         // console.log(responses, "responses");
       }
-
-      const finalResult = places.filter((item) => {
-        return (
-          item.wikipedia_extracts && item.preview && item.name && item.address
-        );
-      });
-
-      console.log("finalResult", finalResult);
-
-      // setApiData to the final array of 20 places
-      setApiData(finalResult);
-      //setting the state to true so that loader is not shown
-      setIsLoading(true);
+      catch (e) {
+        alert('No Result Found')
+      } 
+      setIsLoading(true); 
+      
     }
   }
   //console.log(apiData, "final state api");
