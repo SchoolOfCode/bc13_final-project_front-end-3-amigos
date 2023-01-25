@@ -62,7 +62,7 @@ function Favourites() {
   return (
     <div>
     <DynamicSearchBar handleSearch={handleSearch}/>
-      {fav && <FavResultCardContainer fav={filterData ? filterData : fav} deleteFavourite={deleteFavourite} />}
+      {fav && <FavResultCardContainer fav={filterData && filterData } deleteFavourite={deleteFavourite} />}
       <Footer />
     </div>
   );
