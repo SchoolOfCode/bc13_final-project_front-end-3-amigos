@@ -33,13 +33,13 @@ export default function NavBar() {
           </li>
           {user && (
             <div className="flex space-x-10 ">
-              <li className="absolute inset-y-0 mt-5 right-40 ">
+              <li className="absolute inset-y-0 mt-5 max-h-10 right-40 ">
                 <Link href="/favourites" className="font-bold align-left">
                   <button className="standard-btn">Favourites</button>
                 </Link>
               </li>
 
-              <li className="absolute inset-y-0 mt-5 right-80 ">
+              <li className="absolute inset-y-0 mt-5 max-h-10 right-80 ">
                 {" "}
                 <Link href="/journal" className="font-bold align-left">
                   <button className="standard-btn">Journal</button>
