@@ -35,9 +35,9 @@ function ApiResultCard({
           <p className="card-desc">{description}</p>
 
           <div className='flex mb-1 space-x-14'>
-          <button className="card-btn">See More</button>
+          {/* <button className="card-btn">See More</button> */}
 
-       <button><a href={wikipedia} target="_blank">See more</a></button>
+       <button className="card-btn"><a href={wikipedia} target="_blank">See more</a></button>
 
           <FavouritesButton props={newFavourite} />
           </div>
