@@ -2,9 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import havanaPic from "../public/Havana-1957-09.jpg";
 import bermudaPic from "../public/Bermuda Triangle of Romania.jpg";
-
 import panoPic from "../public/1_panoptican.jpg";
-
+import {BsArrowRightCircleFill, BsArrowLeftCircleFill} from "react-icons/bs"
 const featuredPlaces = [havanaPic, bermudaPic, panoPic];
 
 let count = 0;
@@ -53,29 +52,39 @@ export default function Carousel() {
   };
 
   return (
-    <>
+ 
+      <div className="relative flex min mt-[90vw] sm:mt-[57vw] md:mt-[48vw] lg:mt-[67vh] xl:mt-[40vw] 2xl:mt-[36vw]  items-center justify-center w-full h-full px-5 transform -translate-y-1/2 bg-opacity-50 bg-off-white ">
 
-      <div className="flex items-center justify-center w-full px-3 transform -translate-y-1/2 bg-opacity-50 top-1/2 bg-off-white mt-2/3">
+<div className="relative left-0 w-full h-10 ">
+                  <BsArrowLeftCircleFill
+            src="/left-arrow.png"
+            alt="left arrow"
+            onClick={handleOnClickPrev}
+            className="z-10 object-contain ml-4 text-2xl transition cursor-pointer lg:text-4xl sm:text-4xl opacity-80 hover:opacity-50"
+          />
+          
+          </div>
+          
+          <div className="relative w-full">
         <Image
           src={featuredPlaces[currentIndex]}
           alt="Places to visit"
           ref={carouselRef}
-          className="justify-center rounded-md cursor-pointer sm:h-2/3 sm:w-4/5 sm:aspect-video lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70"
+          className="z-0 object-fill min-w-[90vw] min-h-[20vh] rounded-md cursor-pointer aspect-video sm:min-w-[90vw]  lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70"
         />
-        <div className="absolute flex items-center justify-between w-full px-3 transform -translate-y-1/2 top-1/2">
-          <img
-            src="/left-arrow.png"
-            onClick={handleOnClickPrev}
-            className="h-12 pl-1 transition cursor-pointer opacity-80 hover:opacity-50"
-          />
-          <img
+  </div>
+
+
+<div className="relative w-full h-10">
+          <BsArrowRightCircleFill
             src="/right-arrow.png"
             onClick={handleOnClickNext}
-            className="h-12 pl-1 transition cursor-pointer opacity-80 hover:opacity-50"
+            alt="right arrow"
+            className="z-10 object-contain mr-4 text-2xl transition cursor-pointer lg:text-4xl sm:text-4xl opacity-80 hover:opacity-50"
           />
-        </div>
+          </div>
+ 
       </div>
 
-    </>
   );
 }

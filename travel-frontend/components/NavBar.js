@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { useState } from "react";
 import { getAuth, signOut } from "firebase/auth";
@@ -8,48 +8,45 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
 import Image from "next/image";
 import logo from "../public/logo.svg";
-
 function NavBar() {
-  const [nav, setNav] = useState(false);
+  const [burgerMenu, setBurgerMenu] = useState(false);
   const auth = getAuth(app);
   const [user, loading, error] = useAuthState(auth);
-
   const router = useRouter();
-
-  const handleNav = () => {
-    setNav(!nav);
+  const handleHamburger = () => {
+    setBurgerMenu(!burgerMenu);
   };
-
+/*
+PLAN:
+to render login with no user on navbar with NORMAL DEVICE
+to render favourites when user exits on normal device
+to render Hamburger menu on small screen
+to show login with no User on MOBILE DEVICE
+to show favourites with user on MOBILE DEVICE
+*/
   return (
-    <div className="fixed  left-0 top-0 w-full z-10 ease-in duration-300">
-      <div className=" -mr-63% m-auto flex justify-between items-center p-4 text-white">
-        <Link href="/">
+    <nav>
+    <div className="fixed top-0 right-0 z-10 items-center w-screen ">
+      <div className="relative flex items-center justify-between text-white">
+        <Link href="/" >
           <Image
             src={logo}
             width={60}
             alt="sombrero"
-            className="mt-1 ml-10 align-middle"
+            className="mt-[1vh] ml-10 align-middle"
           />
         </Link>
-
-        <ul className="hidden sm:flex ">
-          {user && (
-            <ul className="  items-center justify-center space-y-5  mt-auto md:flex md:space-x-6 md:space-y-0">
-              <li className="text-coral font-semibold text-lg p-4 hover:text-white ">
-                <Link href="/favourites">FAVOURITES</Link>
+{/* if user is logged in and normal screen  */}
+          {user ? (
+            <ul className='justify-between hidden my-auto md:flex '>
+              <li className="absolute inset-y-0 mt-[1vw] mx-5 text-lg font-bold m max-h-10 right-[15vw] right-15  ">
+                <Link className="align-left text-coral hover:text-black" href="/favourites">FAVOURITES</Link>
               </li>
-              <li className="text-coral font-semibold text-lg p-4  hover:text-white">
-                <Link href="/journal">JOURNAL</Link>
+              <li className="absolute inset-y-0 mt-[1vw] mx-5  max-h-10 right-[30vw] font-bold text-lg  text-coral hover:text-zinc-600 ">
+                <Link className="align-left" href="/journal">JOURNAL</Link>
               </li>
-            </ul>
-          )}
-          {!user ? (
-            <li className="font-semibold text-lg p-4   mt-2 h-10 standard-btn">
-              <Link href="/auth">LOGIN</Link>
-            </li>
-          ) : (
-            <li className="font-semibold text-lg mt-2 h-10 standard-btn hover:text-white">
               <button
+              className="absolute inset-y-0 my-auto mt-[1vw] font-bold h-7 right-10 standard-btn"
                 onClick={() => {
                   signOut(auth).then(() => {
                     router.push("/");
@@ -58,52 +55,55 @@ function NavBar() {
               >
                 LOGOUT
               </button>
+            </ul>
+          ) :
+          (
+            <ul className="hidden md:absolute md:inset-y-0 md:right-0 md:flex ">
+            <li className="p-4 my-auto mt-5 mr-10 text-lg font-semibold align-middle standard-btn hover:text-gray-700">
+              <Link href="/auth">LOGIN</Link>
             </li>
+            </ul>
           )}
-        </ul>
-
         {/**
          * Mobile Button
          * anything above small is going to be hidden, otherwise it will show
          */}
-        <div className="block sm:hidden z-10" onClick={handleNav}>
+        <div className="absolute inset-y-0 right-0 z-10 md:hidden" onClick={handleHamburger}>
           {/**
-           * conditional operator to see if nav is true or not
+           * conditional operator to see if burgerMenu is true or not
            */}
-          {nav ? (
-            <AiOutlineClose size={20} className=" text-white" />
+          {burgerMenu ? (
+            <AiOutlineClose size={40} className="m-2 text-coral"  />
           ) : (
-            <AiOutlineMenu size={20} className=" text-white" />
+            <AiOutlineMenu size={40} className="m-2 text-coral" />
           )}
         </div>
         <div>
-          {/* Mobile menu */}
           <div
             className={
-              nav
-                ? "sm:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300"
-                : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
+              burgerMenu
+                ? "  md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300  "
+                : "  md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300 "
             }
           >
-            <ul onClick={handleNav}>
+            <ul onClick={handleHamburger}>
               {user && (
-                <ul className="  items-center justify-center space-y-5  mt-auto md:flex md:space-x-1 md:space-y-0">
-                  <li className="text-white font-semibold text-lg hover:text-zinc-600">
+                <ul className="items-center justify-center mt-auto space-y-5 md:flex md:space-x-6 md:space-y-0">
+                  <li className="text-lg font-semibold text-white hover:text-zinc-600">
                     <Link href="/favourites">FAVOURITES</Link>
                   </li>
-                  <li className="text-white font-semibold text-lg  hover:text-zinc-600">
+                  <li className="text-lg font-semibold text-white hover:text-zinc-600">
                     <Link href="/journal">JOURNAL</Link>
                   </li>
                 </ul>
               )}
               {!user ? (
-                <li className="text-white font-semibold text-lg  hover:text-zinc-600">
+                <li className="text-lg font-semibold text-white hover:text-zinc-600">
                   <Link href="/auth">LOGIN</Link>
                 </li>
               ) : (
-                <li className="text-white font-semibold text-lg mt-5 ">
+                <li className="text-lg font-semibold text-white hover:text-zinc-600">
                   <button
-                    className=""
                     onClick={() => {
                       signOut(auth).then(() => {
                         router.push("/");
@@ -119,7 +119,7 @@ function NavBar() {
         </div>
       </div>
     </div>
+    </nav>
   );
 }
-
 export default NavBar;

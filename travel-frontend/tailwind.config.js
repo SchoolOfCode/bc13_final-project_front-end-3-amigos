@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-
+const defaultTheme = require('tailwindcss/defaultTheme')
 // const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   future: {
@@ -13,6 +13,11 @@ module.exports = {
   content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        'xs': '320px',
+        'mob':'370px',
+        ...defaultTheme.screens,
+      },
       spacing: {
         "2/3": "50%",
         "1/3": "33.3333%",
