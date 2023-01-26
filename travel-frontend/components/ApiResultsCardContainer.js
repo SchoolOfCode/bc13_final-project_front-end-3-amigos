@@ -14,14 +14,8 @@ function ApiResultsDisplay({ apiData, postData }) {
     <div className="card-display">
       {apiData &&
         apiData.map((item) => {
-          if (
-            item.name &&
-            item.address.city &&
-            item.address.country &&
-            item.address.suburb &&
-            item.wikipedia_extracts?.text &&
-            item.preview?.source
-          ) {
+      
+          {
             
             return (
               <ApiResultCard

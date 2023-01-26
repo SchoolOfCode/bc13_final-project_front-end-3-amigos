@@ -1,20 +1,16 @@
-import React, {useState, useEffect} from 'react'
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { getAuth } from '@firebase/auth'
-import { app } from '../firebase/firebase';
-import { useRouter } from 'next/router';
+import React, { useState, useEffect } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { getAuth } from "@firebase/auth";
+import { app } from "../firebase/firebase";
+import { useRouter } from "next/router";
 
 const LogIn = () => {
-  const router = useRouter()
+  const router = useRouter();
   const auth = getAuth(app);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [
-    signInWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(auth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
 
   useEffect(() => {
     function User() {
@@ -24,7 +20,6 @@ const LogIn = () => {
     }
     User();
   }, [user]);
-
 
   if (error) {
     return (
@@ -46,25 +41,27 @@ const LogIn = () => {
   return (
     <div className="App flex flex-col justify-center items-center">
       <input
-        className='form-control'
+        className="form-control"
         type="email"
         value={email}
         placeholder={"email"}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        className='form-control'
+        className="form-control"
         type="password"
         value={password}
         placeholder={"password"}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button className='auth-sign-in-button' onClick={() => signInWithEmailAndPassword(email, password)}>
+      <button
+        className="auth-sign-in-button bg-red"
+        onClick={() => signInWithEmailAndPassword(email, password)}
+      >
         Sign In
       </button>
     </div>
   );
 };
 
-
-export default LogIn
+export default LogIn;

@@ -7,16 +7,13 @@ import Typewriter from "typewriter-effect";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-
 export default function Home() {
   // Theme switching state
   const [isDefault, setIsDefault] = useState(true);
   // useState to hold API data
   const [apiData, setApiData] = useState("");
-
   // state for the loader
   const [isLoading, setIsLoading] = useState(true);
-
   /* fetch the data from API using Axios on submit from search bar
     --> we get lat & lon from geo_name
       --> use them on radius url for dynamic get
@@ -33,25 +30,19 @@ export default function Home() {
       const geoData = await axios.get(
         `https://api.opentripmap.com/0.1/en/places/geoname?name=${searchTerm}&apikey=${API_KEY}`
       );
-
       //console.log(geoData, "geoData");
-
       // take out from geo_data only the lat and lon using object destructuring
       const { lat, lon } = geoData.data;
       // use lat and lon to get xid from radius url dynamically
       const radiusData = await axios.get(
         `https://api.opentripmap.com/0.1/en/places/radius?radius=1000&lon=${lon}&lat=${lat}&limit=20&apikey=${API_KEY}`
       );
-
       // console.log(radiusData, "radiusData");
-
       // iterate the list through features to get all of the xid's
       const xid = radiusData.data.features.map((id) => {
         return id.properties.xid;
       });
-
       // console.log(xid, "xid");
-
       // create a new empty array to concatenate the xid data using the spread operator
       let places = [];
       // start the first subset of xid at 0
@@ -82,28 +73,22 @@ export default function Home() {
         );
         console.log("responses:", responses);
         //console.log("batch location response:", responses);
-
         /**
          *  concatenate the xid data(responses) using the spread operator
          *  after the first iteration will have 5 places inside the array so we have to spread it as well
          *  at the end of iteration will have 20 places objects inside the array
          */
         places = [...places, ...responses];
-
         // Iterate over the places array, check that each item has both an image key and a wikipediaextracts key - maybe more faterwards
         // if so, push it to a new array that is then returned
-
         // console.log(responses, "responses");
       }
-
       const finalResult = places.filter((item) => {
         return (
           item.wikipedia_extracts && item.preview && item.name && item.address
         );
       });
-
       console.log("finalResult", finalResult);
-
       // setApiData to the final array of 20 places
       setApiData(finalResult);
       //setting the state to true so that loader is not shown
@@ -112,9 +97,7 @@ export default function Home() {
   }
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
-
   return (
-
     <div
       className={
         isDefault
@@ -122,7 +105,6 @@ export default function Home() {
           : "background-image-styling minimal-theme "
       }
     >
-
     <div className="overflow-x-hidden">
       <div className="font-bold typewriter font-explora">
         <Typewriter
@@ -146,13 +128,13 @@ export default function Home() {
       </div>
       {/* conditional rednring so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
-
       <ThemeSwitcher stateChanger={setIsDefault} />
-
       {!apiData ? <Carousel /> : <ApiResultsCardContainer apiData={apiData} />}
       <Footer />
     </div>
     </div>
-
   );
 }
+white_check_mark
+eyes
+raised_hands
