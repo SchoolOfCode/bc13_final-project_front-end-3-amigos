@@ -26,6 +26,7 @@ function Favourites() {
     );
     const getNewData = await axios.get(URL + `${user.uid}/favourites`);
     setFav(getNewData.data.payload);
+    setFilterData(getNewData.data.payload);
     // console.log(xid.target.id);
   }
 
@@ -55,7 +56,7 @@ function Favourites() {
     });
     setFilterData(data);
   }
-  console.log(filterData);
+  // console.log(filterData);
 
   return (
     <div>

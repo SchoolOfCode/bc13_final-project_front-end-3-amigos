@@ -6,7 +6,7 @@ export default function DynamicSearchBar({handleSearch}) {
       }}
         className="search-bar"
         type="text"
-        placeholder="Donde?"
+        placeholder="Browse your Favourites..."
       ></input>
     </div>
   );

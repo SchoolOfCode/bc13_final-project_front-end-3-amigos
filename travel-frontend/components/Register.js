@@ -44,8 +44,6 @@ function Register() {
     );
   }
 
-  console.log(email, password, username);
-
   async function sendRegistrationDetails(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
     return await axios.post(postURL, data);
@@ -60,7 +58,8 @@ function Register() {
     postData();
   }
 
-  return (
+  return ( 
+
     <div className="flex flex-col  items-center">
       <input
         type="text"
@@ -83,7 +82,6 @@ function Register() {
         onChange={(e) => setPassword(e.target.value)}
         className="form-control"
       />
-
       <button onClick={() => Register} className="register-button">
         Register
       </button>
