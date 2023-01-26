@@ -40,10 +40,10 @@ to show favourites with user on MOBILE DEVICE
           {user ? (
             <ul className='justify-between hidden my-auto md:flex '>
               <li className="absolute inset-y-0 mt-[1vw] mx-5 text-lg font-bold m max-h-10 right-[15vw] right-15  ">
-                <Link className="align-left text-coral hover:text-black" href="/favourites">FAVOURITES</Link>
+                <Link className="align-left text-coral hover:text-white" href="/favourites">FAVOURITES</Link>
               </li>
-              <li className="absolute inset-y-0 mt-[1vw] mx-5  max-h-10 right-[30vw] font-bold text-lg  text-coral hover:text-zinc-600 ">
-                <Link className="align-left" href="/journal">JOURNAL</Link>
+              <li className="absolute inset-y-0 mt-[1vw] mx-5  max-h-10 right-[30vw] font-bold text-lg  text-coral  ">
+                <Link className="align-left hover:text-white" href="/journal">JOURNAL</Link>
               </li>
               <button
               className="absolute inset-y-0 my-auto mt-[1vw] font-bold h-7 right-10 standard-btn"
