@@ -53,7 +53,7 @@ function GoogleSignIn() {
 
   return (
     <div>
-      <button className="google-button" onClick={() => signInWithGoogle()}>
+      <button className="google-button " onClick={() => signInWithGoogle()}>
         Sign In With Google
       </button>
     </div>

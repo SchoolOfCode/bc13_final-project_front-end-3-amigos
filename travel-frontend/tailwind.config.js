@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-
+const defaultTheme = require('tailwindcss/defaultTheme')
 // const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   future: {
     // allows hover only on supported devices i.e. not touchscreen/mobile
-		hoverOnlyWhenSupported: true,
-	  },
+    hoverOnlyWhenSupported: true,
+  },
   // compiles CSS on the fly 'Just in Time'
   mode: "jit",
   // Removes any unused styles at production reducing file sizes
@@ -13,6 +13,11 @@ module.exports = {
   content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {
+      screens: {
+        'xs': '320px',
+        'mob':'370px',
+        ...defaultTheme.screens,
+      },
       spacing: {
         "2/3": "50%",
         "1/3": "33.3333%",
@@ -23,7 +28,7 @@ module.exports = {
       },
 
       backgroundImage: {
-        "auth-bg": "url('../public/mouintain-bg.jpg')",
+        "auth-bg": "url('/auth.jpg')",
       },
 
       colors: {
@@ -58,24 +63,23 @@ module.exports = {
     },
     fontFamily: {
       explora: ["Explora", "cursive"],
-
     },
   },
   plugins: [
-    require('tailwindcss-themer')({
+    require("tailwindcss-themer")({
       defaultTheme: {
- extend: {
-          backgroundImage:  {
-            'main-bg':"url('/Blue-Lagoon-in-Malta-6.png')",
+        extend: {
+          backgroundImage: {
+            "main-bg": "url('/Blue-Lagoon-in-Malta-6.png')",
           },
           textColor: {
             skin: {
-              base: '#ffffff',
-            }
+              base: "#ffffff",
+            },
           },
           height: {
-            '50%':'55%',
-            '35':'35rem'
+            "50%": "55%",
+            35: "35rem",
           },
           colors: {
             "dark-green": "#2C5746",
@@ -86,24 +90,22 @@ module.exports = {
             "google-orange": "#FF8C00",
             "corn-silk": "#FFF8DC",
           },
-         
-        }
+        },
       },
       themes: [
         {
-        name: 'minimal-theme',
+          name: "minimal-theme",
           extend: {
-            backgroundImage:  {
-              'main-bg': "url('/minimalistBG.jpg')",
+            backgroundImage: {
+              "main-bg": "url('/minimalistBG.jpg')",
+            },
+
+            colors: {
+              ctc: "#2C5746",
+            },
           },
-    
-          
-          colors: {
-            "ctc":'#2C5746'
-          },
-          }
-        }
-      ]
-    })
+        },
+      ],
+    }),
   ],
 };

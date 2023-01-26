@@ -2,21 +2,22 @@ import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 function Footer() {
   return (
-    <div className="inset-x-0 bottom-0 w-full px-2 mt-auto bg-coral h-28">
-      <div className="flex  relative  max-w-[1240px] px-2 py-2 m-2 justify-center sm:flex-row text-center text-white items-center">
-        <p>© Three Amigos</p>
-        <div className="absolute inset-0 flex justify-center m-5% space-x-5 ">
-          {/*  Tom */}
+    <footer className="flex flex-col min-w-full cursor-pointer xs:mt-[10vw] mob:mt=[1.5vw] bg-coral">
+      <div className="flex flex-row justify-center p-1 m-2 text-center text-white ">
+        <p className="">© Three Amigos</p>
+        </div>
+        <div className="mob:justify-around mob:space-x-[0.1em] pb-3 text-white  xs:px-2 mob:flex xs:grid-cols-2 xs:grid xs:gap-[2vw] ">
+          {/*  Tom  absolute inset-0 flex justify-around m-5% space-x-5  */}
           <a
-            className="flex items-center justify-between space-x-1 "
+            className="flex items-center justify-around cursor-pointer sm:space-mob:space-x-[0.1em] "
             href="https://www.linkedin.com/in/thomas-fowler1/"
           >
-            <p>Tom</p>
-            <FaLinkedin />
+            <p >Tom</p>
+            <FaLinkedin  />
           </a>
           {/* Beatrice */}
           <a
-            className="flex items-center justify-between space-x-1 "
+            className="flex items-center justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]"
             href="https://www.linkedin.com/in/beatrice-stanila-82219b144/"
           >
             <p>Beatrice</p>
@@ -24,7 +25,7 @@ function Footer() {
           </a>
           {/* Tariq */}
           <a
-            className="flex items-center justify-between space-x-1 "
+            className="flex items-center justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]"
             href="https://www.linkedin.com/in/tariq-amin/"
           >
             <p>Tariq</p>
@@ -32,7 +33,7 @@ function Footer() {
           </a>
           {/* Victoria */}
           <a
-            className="flex items-center justify-between space-x-1 "
+            className="flex items-center justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]"
             href="https://www.linkedin.com/in/victoria-lampard-83018072/"
           >
             <p>Victoria</p>
@@ -40,7 +41,7 @@ function Footer() {
           </a>
           {/* Ryan */}
           <a
-            className="flex items-center justify-between space-x-1 "
+            className="flex items-center justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]  "
             href="https://www.linkedin.com/in/ryan-donaghue-48b958185/"
           >
             <p>Ryan</p>
@@ -48,15 +49,14 @@ function Footer() {
           </a>
           {/* Jo */}
           <a
-            className="flex items-center justify-between space-x-1 "
+            className="flex items-center justify-around cursor-pointer sm:space-x-1 "
             href="https://www.linkedin.com/in/jyotshna-polavarapu-13430718/"
           >
-            <p>Jo</p>
+            <p className="xs:mx-5 mob:mx-0">Jo</p>
             <FaLinkedin />
           </a>
         </div>
-      </div>
-    </div>
+    </footer>
   );
 }
 export default Footer;

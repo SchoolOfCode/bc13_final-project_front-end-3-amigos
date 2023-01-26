@@ -6,48 +6,75 @@ import { app } from "../firebase/firebase";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import Image from "next/image";
-import mountainBG from '../public/mouintain-bg.jpg'
-
+import authBg from "../public/auth.jpg";
 
 /**
- * Once a user has reigstered, 
- * render the sign in functionality 
- * remove registration fields 
+ * Once a user has reigstered,
+ * render the sign in functionality
+ * remove registration fields
  * Add a register link for non-registered users
- * useState hook for toggling registered users 
+ * useState hook for toggling registered users
  */
 
 const authentication = () => {
-
   const auth = getAuth(app);
-  const [registered, setRegistered] = useState(true)
-  const registeredUser = <div className='flex flex-col justify-center items-center'> <LogIn />
-<GoogleSignIn /> </div>;
-  const unRegisteredUser = <div > <Register />  </div>
+  const [registered, setRegistered] = useState(true);
+  const registeredUser = (
+    <div className="flex flex-col justify-center  items-center">
+      <LogIn className="auth-sign-in-button" />
+      <GoogleSignIn />{" "}
+    </div>
+  );
+  const unRegisteredUser = (
+    <div>
+      <Register />{" "}
+    </div>
+  );
   const toggleRegistered = () => {
     if (registered) {
-      setRegistered(false)  
-    } if (!registered){
-      setRegistered(true)
+      setRegistered(false);
     }
-  }
+    if (!registered) {
+      setRegistered(true);
+    }
+  };
   return (
-    
-
     <>
-    <div className="fixed w-full h-full -z-10 ">
-    <Image alt='mountainous landscape' src={mountainBG} priority={true} className= 'w-full h-full -z-1' />
-
-    </div>
-    <div className='grid h-screen place-items-center'>
-    <div className="flex flex-col justify-center items-center">
-    {registered === true? registeredUser:unRegisteredUser}
-    {registered ===true? <button className='register-button'  onClick={()=> toggleRegistered()}>Register</button>: <button onClick={()=> toggleRegistered()}>Log In</button>}
-    </div>
-    </div>
+      <div className="fixed w-screen h-screen -z-10  ">
+        <Image
+          alt="mountainous landscape"
+          priority={true}
+          src={authBg}
+          className="w-full h-full -z-1  "
+        />
+      </div>
+      <div className="grid h-screen place-items-center">
+        <div className="flex flex-col  justify-center items-center">
+          {registered === true ? registeredUser : unRegisteredUser}
+          {registered === true ? (
+            <>
+              <p className="pt-5">Don't have an account yet?</p>
+              <button
+                className="register-button"
+                onClick={() => toggleRegistered()}
+              >
+                Register Here
+              </button>
+            </>
+          ) : (
+            <>
+              <p className="pt-5">Already registered?</p>
+              <button
+                onClick={() => toggleRegistered()}
+                className="auth-sign-in-button"
+              >
+                Log In
+              </button>
+            </>
+          )}
+        </div>
+      </div>
     </>
-    
-    
   );
 };
 

@@ -44,8 +44,6 @@ function Register() {
     );
   }
 
-  // console.log(email, password, username)
-
   async function sendRegistrationDetails(data) {
     const postURL = process.env.NEXT_PUBLIC_POST_URL;
     return await axios.post(postURL, data);
@@ -60,28 +58,33 @@ function Register() {
     postData();
   }
 
-  return (
-    <div>
+  return ( 
+
+    <div className="flex flex-col  items-center">
       <input
         type="text"
         value={username}
         placeholder="username"
         onChange={(e) => setUsername(e.target.value)}
+        className="form-control"
       />
       <input
         type="email"
         value={email}
         placeholder="email"
         onChange={(e) => setEmail(e.target.value)}
+        className="form-control"
       />
       <input
         type="password"
         value={password}
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
+        className="form-control"
       />
-
-      <button onClick={() => Register}>Register</button>
+      <button onClick={() => Register} className="register-button">
+        Register
+      </button>
     </div>
   );
 }
