@@ -11,7 +11,7 @@ function GoogleSignIn() {
   const auth = getAuth(app);
   const router = useRouter();
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  console.log(user);
+  // console.log(user);
   // console.log(user.user.displayName);
 
   // adding useEffect
@@ -24,13 +24,13 @@ function GoogleSignIn() {
           uid: user.user.uid,
           password: null,
         };
-        console.log(userDetails);
+        // console.log(userDetails);
 
         async function postUserDetails(userDetails) {
           const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
           const usersApiUrl = URL;
 
-          console.log(URL);
+          // console.log(URL);
 
           const headers = {
             "Content-Type": "application/json",
@@ -39,17 +39,17 @@ function GoogleSignIn() {
             headers: headers,
           });
 
-          console.log("userfavourites post response", res);
+          // console.log("userfavourites post response", res);
         }
         await postUserDetails(userDetails);
-        console.log("registration complete");
+        // console.log("registration complete");
 
         router.push("/");
       }
     }
     User();
   }, [user]);
-  console.log(user);
+  // console.log(user);
 
   return (
     <div>

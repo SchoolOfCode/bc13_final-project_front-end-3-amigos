@@ -28,7 +28,7 @@ function FavouritesButton(newFavourite) {
 
   async function checkData(uid, xid) {
     const res = await axios.get(`${URL}/${uid}/favourites/${xid}`);
-    console.log("fetch response:", res.data.payload);
+    // console.log("fetch response:", res.data.payload);
     if (res.data.payload.length === 0) {
       return false;
     } else {
@@ -40,19 +40,19 @@ function FavouritesButton(newFavourite) {
     const uid = user.uid;
     const favouritesApiUrl = `${URL}${uid}/favourites`;
     // console.log(newFavourite);
-    console.log("userXid in Post request:", xid);
+    // console.log("userXid in Post request:", xid);
     // console.log("postRequest content:", newFavourite.props, uid);
     const headers = {
       "Content-Type": "application/json",
     };
     const dataExists = await checkData(uid, xid);
-    console.log("checkData:", dataExists);
-    console.log("XID after calling fn:", xid);
+    // console.log("checkData:", dataExists);
+    // console.log("XID after calling fn:", xid);
     if (dataExists === false) {
       const res = await axios.post(favouritesApiUrl, newFavourite.props, {
         headers: headers,
       });
-      console.log(res);
+      // console.log(res);
     }
   }
 
@@ -63,9 +63,9 @@ function FavouritesButton(newFavourite) {
     // console.log("delete request xid:", xid);
     const uid = user.uid;
     const favouritesApiUrl = `${URL}${uid}/favourites`;
-    console.log("userUid in Delete request:", uid);
+    // console.log("userUid in Delete request:", uid);
     const res = await axios.delete(`${favouritesApiUrl}/${xid}`);
-    console.log(res);
+    // console.log(res);
   }
   // }
   // Toggle favourite function
@@ -78,14 +78,14 @@ function FavouritesButton(newFavourite) {
     if (user) {
       if (favourite === true) {
         await deleteRequest(xid);
-        console.log("unfavourited clicked!");
+        // console.log("unfavourited clicked!");
       } else {
         await postRequest(newFavourite);
-        console.log("Favourited clicked!");
+        // console.log("Favourited clicked!");
       }
       // TOGGLE HEART STATE
       setFavourite(!favourite);
-      console.log("state toggled to:", favourite);
+      // console.log("state toggled to:", favourite);
     }
   }
 

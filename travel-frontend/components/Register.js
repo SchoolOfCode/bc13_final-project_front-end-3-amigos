@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import { getAuth } from '@firebase/auth'
-import { app } from '../firebase/firebase';
-import axios from 'axios';
+import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { getAuth } from "@firebase/auth";
+import { app } from "../firebase/firebase";
+import axios from "axios";
 /* 
 PLAN:
 have a form for register
@@ -17,65 +17,58 @@ use axios to create a post request to our db with registered user info
 
 */
 
-
-
 function Register() {
-    const auth = getAuth(app);
+  const auth = getAuth(app);
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-    const [
-      createUserWithEmailAndPassword,
-      user,
-      loading,
-      error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
 
-    if (error) {
-        return (
-          <div>
-            <p>Error: {error.message}</p>
-          </div>
-        );
-      }
-      if (loading) {
-        return <p>Loading...</p>;
-      }
-      if (user) {
-        return (
-          <div>
-            <p>Registered User: {user.user.email}</p>
-          </div>
-        );
-      }
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user) {
+    return (
+      <div>
+        <p>Registered User: {user.user.email}</p>
+      </div>
+    );
+  }
 
-      console.log(email, password, username)
-      
+  // console.log(email, password, username)
 
-    async function sendRegistrationDetails(data){
-        const postURL = process.env.NEXT_PUBLIC_POST_URL
-        return await axios.post(postURL, data )
-    }
-    async function postData(){
-        let userObj = {email, username}
-        await sendRegistrationDetails(userObj)
-    }
+  async function sendRegistrationDetails(data) {
+    const postURL = process.env.NEXT_PUBLIC_POST_URL;
+    return await axios.post(postURL, data);
+  }
+  async function postData() {
+    let userObj = { email, username };
+    await sendRegistrationDetails(userObj);
+  }
 
-    function Register(){
-        createUserWithEmailAndPassword(email, password, username)
-        postData()
-    }
+  function Register() {
+    createUserWithEmailAndPassword(email, password, username);
+    postData();
+  }
 
   return (
     <div>
-    <input
+      <input
         type="text"
         value={username}
         placeholder="username"
         onChange={(e) => setUsername(e.target.value)}
       />
-    <input
+      <input
         type="email"
         value={email}
         placeholder="email"
@@ -87,14 +80,10 @@ function Register() {
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      
-      <button onClick={() => Register}>
-        Register
-      </button>
 
-
+      <button onClick={() => Register}>Register</button>
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;

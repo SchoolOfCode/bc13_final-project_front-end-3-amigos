@@ -44,7 +44,7 @@ function Favourites() {
     }
     favData();
   }, [user]);
-  console.log(fav);
+  // console.log(fav);
 
   function handleSearch(e) {
     let value = e.target.value;
@@ -56,7 +56,7 @@ function Favourites() {
     });
     setFilterData(data);
   }
-  console.log(filterData);
+  // console.log(filterData);
 
   return (
     <div>
