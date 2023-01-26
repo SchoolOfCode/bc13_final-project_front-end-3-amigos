@@ -135,6 +135,3 @@ export default function Home() {
     </div>
   );
 }
-white_check_mark
-eyes
-raised_hands
