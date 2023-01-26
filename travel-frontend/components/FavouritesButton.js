@@ -17,7 +17,7 @@ import { FaIoxhost } from "react-icons/fa";
 
 function FavouritesButton(newFavourite) {
   //console.log("new favourite in FAV BUTTON 🚨:", newFavourite);
-  console.log("newFavourite:", newFavourite);
+  // console.log("newFavourite:", newFavourite);
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
   // const URL = process.env.NEXT_PUBLIC_POSTGRES_URL;
