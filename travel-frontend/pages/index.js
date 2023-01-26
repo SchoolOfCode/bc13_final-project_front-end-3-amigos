@@ -17,6 +17,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   // create state for if there's a search error
   const [searchError, setSearchError] = useState(false)
+  // create state to hold error text
+  //const [errorText, setErrorText] = useState("")
 
   /* fetch the data from API using Axios on submit from search bar
     --> we get lat & lon from geo_name
@@ -108,8 +110,8 @@ export default function Home() {
 
       catch (e) {
         alert('No Result Found');
-        setSearchError(true);
-        // clear input box 
+        //setSearchError(true);
+        // setErrorText("No results found!")
       } 
       setIsLoading(true);  
     }
@@ -143,7 +145,7 @@ console.log("apidata length:", apiData.length)
         />
       </div>
       <div>
-        <SearchBar handleClick={getApiData} searchError = {searchError} />
+        <SearchBar handleClick={getApiData} searchError = {searchError}  />
       </div>
       {/* conditional rednring so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
