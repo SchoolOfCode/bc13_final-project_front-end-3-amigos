@@ -136,12 +136,14 @@
     position: fixed;
     bottom: 9%;
     left: 0;
+    z-index: 100;
     --wrapperSize: clamp(4em, 3vmax, 7em);
     padding: 1em 2em;
-    width: 100%;
+    width: 100vw;
     display: grid;
     --Themer-size: 1.5rem;
     place-items: center;
+    @apply sm:bottom-[9%]  xs:bottom-[39vw] mob:bottom-[18vw]
   }
   
   .Themer-btns {
@@ -312,8 +314,8 @@
       @apply  transition-transform duration-500  group-hover:scale-125
      }
      .card-gradient-bg:hover {
-      background-color: hsl(var(--Themer-accent)/ 0.5);
-      @apply  from-transparent/70 group-hover:via-transparent/60 group-hover:to-transparent/70
+      background-color: hsl(var(--Themer-accent)/ 0.3);
+      @apply  from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30
     }
     .card-info-transition:hover {
       @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
@@ -331,9 +333,9 @@
 }
 
 
-
+/* hero styling */
 .background-image-styling {
-  @apply  bg-main-bg absolute w-full bg-no-repeat pb-2/3  bg-cover -z-10 max-h-[43vh]  -mt-12% sm:-mt-7%
+  @apply    bg-main-bg absolute w-screen bg-no-repeat   bg-cover -z-10 max-h-[60vh]   xl:min-h-[70vh]
 }
 
 
@@ -346,16 +348,16 @@
   }
 
   .form-control {
-    @apply px-4 m-1 transition bg-white bg-opacity-25 text-skin-base rounded-xl hover:bg-transparent hover:border-solid placeholder-off-white;
+    @apply h-10 px-4 m-1 mb-2 text-black placeholder-black transition bg-white bg-opacity-25 rounded-xl hover:bg-gray-300 hover:border-solid;
   }
   .auth-sign-in-button {
-    @apply px-3 m-1 cursor-pointer rounded-xl bg-light-green hover:bg-dark-green text-skin-base w-52;
+    @apply h-10 px-3 m-1 mb-2 cursor-pointer rounded-xl bg-emerald-600 hover:bg-dark-green text-skin-base w-52;
   }
   .google-button {
-    @apply px-3 m-1 rounded-md cursor-pointer bg-google-red hover:bg-google-dark-red text-skin-base;
+    @apply h-10 px-3 m-1 mb-2 cursor-pointer rounded-xl bg-google-red hover:bg-google-dark-red text-skin-base w-52;
   }
   .register-button {
-    @apply px-3 m-1 cursor-pointer rounded-xl bg-corn-silk hover:bg-google-dark-red text-skin-base;
+    @apply h-10 px-3 m-1 mb-2 cursor-pointer rounded-xl bg-zinc-700 hover:bg-google-dark-red text-skin-base w-52;
   }
   .card-display {
     @apply z-10 mt-35% sm:mt-35% md:mt-24% lg:mt-14% xl:mt-10% 2xl:mt-14% grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
@@ -371,7 +373,7 @@
     @apply mt-35%   md:mt-0  h-50% rounded-xl sm:h-full mx-auto sm:w-full md:object-cover transition-transform duration-500  group-hover:scale-125;
   }
   .card-gradient-bg {
-    @apply absolute inset-0 bg-[color:hsl(var(--Themer-accent)/0.5)] md:bg-opacity-10 md:bg-gradient-to-b md:from-transparent md:via-transparent md:to-[color:hsl(var(--Themer-accent))]
+    @apply absolute inset-0 bg-[color:hsl(var(--Themer-accent)/0.1)] md:bg-opacity-10 md:bg-gradient-to-b md:from-transparent md:via-transparent md:to-[color:hsl(var(--Themer-accent))]
   }
 
   /* use below class for mob view no transition */
@@ -398,7 +400,7 @@
     @apply Themer-btns font-bold rounded-full   mt-3 mb-1 py-2 px-3.5  text-sm capitalize text-white shadow shadow-black/60
   }
   .typewriter {
-    @apply text-white text-4xl sm:text-6xl mt-20 ml-7%;
+    @apply text-white mb-[5vw]  text-4xl sm:text-6xl mt-[20vw]  sm:mt-[15vw] ml-7%;
   }
   .standard-btn {
     @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-text))] rounded-lg Themer-btns;
@@ -408,7 +410,7 @@
   }
   
   .search-bar-container {
-    @apply   pt-20% flex justify-center sm:pt-10% lg:mt-5% lg:mx-auto xl:-mt-5%;
+    @apply    flex justify-center mx-auto ;
   }
   
 }
