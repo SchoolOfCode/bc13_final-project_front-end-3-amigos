@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Amigo
 
-## Getting Started
+<hr></hr>
 
-First, run the development server:
+Amigo is a travel companion app that helps users to connect to the local culture of a city by suggesting non-touristic places that are usually not found in a typical travel app.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<p>Have a look<a href="https://amigostravel.netlify.app/"> here</a>!</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<img src="./public/ipad.png" alt="desktop">
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+[**Technology**](#technology)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+[**Libraries Used**](#libraries-used)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[**Features**](#features)
 
-## Learn More
+[**Deployment**](#deployment)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technology
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The frontend for Amigo is built using Next.js and JavaScript. For styling we have used TailwindCSS, for registration and log in we used Firebase Authentication, and testing was done with Jest and React-Testing-Libraries. All points of interest comes from the <a href="https://opentripmap.io/product">OpenTripMap API</a>. The data is stored in our backend database (<a href="https://github.com/SchoolOfCode/bc13_final-project_back-end-3-amigos">Backend Repo</a>).
 
-## Deploy on Vercel
+<hr>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Libraries Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **[Axios](https://www.npmjs.com/package/axios):** Promise based HTTP client for the browser and node.js. It was used for CRUD operations in the frontend.
+- **[Typewriter](https://www.npmjs.com/package/typewriter):** We used typewriter to give the illusion of the text being typed on our landing page.
+- **[React-Icons](https://www.npmjs.com/package/moment):** We used react-icons for creating the hamburger menu in the mobile version of the app.
+- **[React-Firebase-Hooks](https://www.npmjs.com/package/react-firebase-hooks):** It used for authorization
+- **[qs](https://www.npmjs.com/package/qs):** qs allowed for parsing of query strings throughout the application
+- **[TailwindCSS-Themer](https://www.npmjs.com/package/tailwindcss-themer):**
+  Automatically generate variants for various themes
+
+<hr>
+
+## Features
+
+- Search for sites of interest through the OpenTripMap API
+- When data is being fetched from the API there is a loader that comes up to inform user that is loading
+- If no results found it will inform the user
+- If user is not logged in a message will popup to log in
+- Add recommended sites to your personal favourite dashboard after log in
+- User has the option to delete a favourite sites from favourite dashboard
+- On the favourite dashboard user can search for their saved sites by city
+
+<hr>
+
+## Deployment
+
+Frontend was deployed using Netlify. The reason for choosing Netlify was because we are using Next.js and they have good support for it.
+
+<img src="./public/netlify.png" alt="deploy">
