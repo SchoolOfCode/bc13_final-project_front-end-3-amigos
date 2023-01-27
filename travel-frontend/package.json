@@ -2,12 +2,14 @@
   "name": "travel-frontend",
   "version": "0.1.0",
   "private": true,
+  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch  node_modules/jest/bin/jest.js"
+    
   },
   "dependencies": {
     "@next/font": "^13.1.1",
