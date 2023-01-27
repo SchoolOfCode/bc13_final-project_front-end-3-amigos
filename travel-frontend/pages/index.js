@@ -7,6 +7,7 @@ import Typewriter from "typewriter-effect";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import Hero from "../components/Hero";
 export default function Home() {
   // Theme switching state
   const [isDefault, setIsDefault] = useState(true);
@@ -107,18 +108,17 @@ export default function Home() {
   }
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
+  /*  */
   console.log("apidata length:", apiData.length);
   return (
-    <div
-      className={
-        isDefault
-          ? "background-image-styling  "
-          : "background-image-styling minimal-theme "
-      }
+    <html className= "html">
+    <body
     >
-      <div className="font-bold typewriter font-explora">
+  <Hero isDefault={isDefault}
+          />
+  <SearchBar handleClick={getApiData} searchError={searchError} />
+      <div className={isDefault? " typewriter-container": " typewriter-container text-black"}>
         <Typewriter
-          className="font-explora"
           options={{
             strings: [
               "Vamos Amigos!!",
@@ -134,9 +134,9 @@ export default function Home() {
         />
       </div>
       <div>
-        <SearchBar handleClick={getApiData} searchError={searchError} />
+        
       </div>
-      {/* conditional rednring so when the user searches the loader is shown*/}
+      {/* conditional rendering so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
       <ThemeSwitcher stateChanger={setIsDefault} />
       {apiData.length === 0 ? (
@@ -144,7 +144,11 @@ export default function Home() {
       ) : (
         <ApiResultsCardContainer apiData={apiData} />
       )}
+
+
       <Footer />
-    </div>
+
+    </body>
+    </html>
   );
 }

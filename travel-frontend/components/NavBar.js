@@ -25,9 +25,9 @@ to show login with no User on MOBILE DEVICE
 to show favourites with user on MOBILE DEVICE
 */
   return (
-    <nav>
-    <div className="fixed top-0 right-0 z-10 items-center w-screen ">
-      <div className="relative flex items-center justify-between text-white">
+    <nav className="nav-container ">
+
+      <div className="nav-bar-item-container">
         <Link href="/" >
           <Image
             src={logo}
@@ -118,7 +118,7 @@ to show favourites with user on MOBILE DEVICE
           </div>
         </div>
       </div>
-    </div>
+
     </nav>
   );
 }

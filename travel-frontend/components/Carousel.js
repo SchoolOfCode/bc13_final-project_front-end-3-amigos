@@ -53,7 +53,7 @@ export default function Carousel() {
 
   return (
  
-      <div className="relative flex min mt-[90vw] sm:mt-[57vw] md:mt-[48vw] lg:mt-[67vh] xl:mt-[40vw] 2xl:mt-[36vw]  items-center justify-center w-full h-full px-5 transform -translate-y-1/2 bg-opacity-50 bg-off-white ">
+      <div className="carousel-container ">
 
 <div className="relative left-0 w-full h-10 ">
                   <BsArrowLeftCircleFill
