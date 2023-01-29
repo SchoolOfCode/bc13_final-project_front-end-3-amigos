@@ -32,6 +32,7 @@ to show favourites with user on MOBILE DEVICE
           <Image
             src={logo}
             width={60}
+            priority={true}
             alt="sombrero"
             className="mt-[1vh] ml-10 align-middle"
           />

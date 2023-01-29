@@ -62,7 +62,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      explora: ["Explora", "cursive"],
+      courgette: ['Courgette','cursive']
     },
   },
   plugins: [

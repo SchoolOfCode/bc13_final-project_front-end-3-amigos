@@ -111,22 +111,21 @@ export default function Home() {
   /*  */
   console.log("apidata length:", apiData.length);
   return (
-    <html className= "html">
-    <body
+    <div className= "html-div">
+    <main className="main"
     >
-  <Hero isDefault={isDefault}
-          />
+  <Hero isDefault={isDefault}/>
   <SearchBar handleClick={getApiData} searchError={searchError} />
       <div className={isDefault? " typewriter-container": " typewriter-container text-black"}>
         <Typewriter
           options={{
             strings: [
-              "Vamos Amigos!!",
-              `Let's go!!`,
-              "Yallah!!",
-              "Haideee!!",
-              "Andiamo!!",
-              "Vamos lá!!",
+              "Vamos Amigos...",
+              `Let's go...`,
+              "Yallah...",
+              "Haideee...",
+              "Andiamo...",
+              "Vamos lá...",
             ],
             autoStart: true,
             loop: true,
@@ -148,7 +147,7 @@ export default function Home() {
 
       <Footer />
 
-    </body>
-    </html>
+    </main>
+    </div>
   );
 }
