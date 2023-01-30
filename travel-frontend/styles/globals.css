@@ -62,6 +62,7 @@
   :root[color-scheme='dark'] {
     --Themer-bg: var(--Themer-bg--dark);
     --Themer-text: var(--Themer-text--dark);
+    --Themer-contrast: var(--Themer-text--light);
     --Themer-accent: var(--Themer-accent--dark);
     --Themer-accent-contrast: var(--Themer-accent--light);
     --Themer-accent1: var(--Themer-accent1--dark);
@@ -72,6 +73,7 @@
   :root[color-scheme='light'] {
     --Themer-bg: var(--Themer-bg--light);
     --Themer-text: var(--Themer-text--light);
+    --Themer-contrast: var(--Themer-text--dark);
     --Themer-accent: var(--Themer-accent--light);
     --Themer-accent-contrast: var(--Themer-accent--dark);
     --Themer-accent1: var(--Themer-accent1--light);
@@ -91,7 +93,6 @@
   div.notice {
     font-size: 7em;
     text-align: center;
-    @apply mt-[70%] md:mt-[30%]
     
   }
   .world {
@@ -147,6 +148,7 @@
   transition: box-shadow var(--Themer-tspeed-fast) var(--Themer-ttype-squish),
     background-color var(--Themer-tspeed-fast) var(--Themer-ttype-squish);
   }
+
   .Themer-picker:focus {
     outline: none;
   }
@@ -202,19 +204,7 @@
     transform: translate(-50%, -50%);
   }
   .minimal-theme {
-  
-  
-    /*
-    Example of colours needed
-    --color-card-background: #95CCD8;
-    --color-button-fill: #F87575;
-    --color-background-fill: #FCEFF9;
-    --color-fill: #4338CA;
-    --color-button-accent: ##F87575;
-    --color-accent-accent-hover: #EEF2FF;
-    --color-button-muted: #6366F1;
-    --color-main-dark: #2C5746;
-   */
+
     /* World SVG CSS Dark */
     --hue-loader: var(--Themer-hue);
     --base-bg-sat-loader: 33%;
@@ -229,7 +219,7 @@
     --module-bg-loader: hsl(var(--hue-loader), var(--module-bg-sat-loader), var(--module-bg-lum-loader));
   }
 }
-@import url('https://fonts.googleapis.com/css2?family=Explora&display=swap');
+
 
 
 /* 
@@ -237,12 +227,15 @@ TODO:  Fix Footer ✅
 TODO:  add minimal theme to hero again ✅
 TODO: Set navbar & footer colours to edited hues ? ✅
 TODO: typewriter left padding and font &...? ✅
-TODO:  Change card display on xs: screen Also no hover on all smaller screens 
-TODO:  Style loader more
+TODO:  Style loader more ✅
 TODO: Style Carousel some more ✅
-TODO: Put all CSS in this file
+TODO: change burger menu colour to theme ✅
+TODO: Move NavBar styling into CSS  ✅
+TODO: Put all CSS in this file ✅
 TODO: Put a coming soon thing on journal
-TODO: Change Sombrero to Amigos logo
+TODO: Change Sombrero to Amigos logo ✅
+TODO: Save theming preference into local storage ✅
+TODO:  Change card display on xs: screen Also no hover on all smaller screens 
 
 
 
@@ -315,6 +308,9 @@ TODO: Change Sombrero to Amigos logo
     .card-desc:hover {
       @apply text-lg font-normal text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto
     }
+    .nav-bar-buttons:hover{
+      @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))]
+    }
 }
 
 .html-div {
@@ -327,15 +323,47 @@ TODO: Change Sombrero to Amigos logo
 
 /* hero styling */
 .hero-styling {
- @apply bg-main-bg w-screen bg-no-repeat bg-cover -z-10 xs:min-h-[50vh]  lg:min-h-[80vh] xl:min-h-[90vh]
+ @apply bg-main-bg w-screen bg-no-repeat bg-cover -z-10 xs:min-h-[50vmax]  
 }
 
 .nav-container {
-  @apply fixed top-0 right-0 z-10 items-center w-screen bg-[color:hsl(var(--Themer-nav))]  
+  @apply fixed top-0 right-0 z-10  items-center w-screen bg-[color:hsl(var(--Themer-nav))]  
 }
 
 .nav-bar-item-container {
-  @apply relative flex items-center justify-between text-[color:hsl(var(--Themer-text))] 
+  @apply relative flex pb-[1vh] items-center justify-between text-[color:hsl(var(--Themer-text))] 
+}
+
+.nav-bar-logo{
+  @apply py-[1vh] ml-10 align-middle  mr-[40vmin] 
+}
+
+.nav-bar-hamburger {
+  @apply absolute inset-y-0 right-0 z-10 lg:hidden pb-[1vh]
+}
+
+.nav-bar-lg-menu {
+  @apply ml-[60vw] py-2  justify-between w-full hidden my-auto lg:flex items-center
+}
+
+.nav-bar-lg-menu-logged-out{
+  @apply hidden lg:absolute lg:inset-y-0 lg:right-0 lg:flex
+}
+
+.nav-bar-buttons{
+  @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-contrast))] rounded-lg  my-auto  font-bold  max-h-10 bg-[hsl(var(--Themer-accent-contrast))]
+}
+
+.burger-overlay{
+ @apply  md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
+}
+
+.burger-overlay-hidden{
+  @apply md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300
+}
+
+.burger-overlay-links{
+  @apply text-lg font-semibold text-white
 }
 
   /*
@@ -359,7 +387,7 @@ TODO: Change Sombrero to Amigos logo
     @apply h-10 px-3 m-1 mb-2 cursor-pointer rounded-xl bg-zinc-700 hover:bg-google-dark-red text-skin-base w-52;
   }
   .card-display {
-    @apply z-10 mt-[80%] mob:mt-[65%]  sm:mt-35% md:mt-24% lg:mt-14% xl:mt-10% 2xl:mt-14% grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+    @apply z-10 mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
   }
   .card-container {
     @apply relative items-center justify-center mt-10 overflow-hidden transition-shadow rounded-lg cursor-pointer bg-opacity-70 md:bg-none md:bg-opacity-0 ;
@@ -401,18 +429,18 @@ TODO: Change Sombrero to Amigos logo
     @apply Themer-btns font-bold rounded-full xs:mt-[1%]   sm:mt-3 sm:mb-1 py-2 px-3.5  text-sm capitalize text-[color:hsl(var(--Themer-text))] shadow shadow-black/60
   }
   .typewriter-container {
-    @apply mt-[-20vh]  lg:mt-[-40vh]  text-4xl font-bold text-white font-courgette sm:text-6xl ml-[7%] ;
+    @apply absolute inset-x-0 top-[10vmax]  text-4xl font-bold text-white font-courgette sm:text-6xl ml-[7%] ;
   }
 
   .carousel-container {
-    @apply relative   flex mt-[115%] mob:mt-[100%] md:mt-[60%] xl:mt-[50%] items-center justify-center w-full h-full px-[1%] transform -translate-y-1/2 bg-opacity-50 bg-[hsl(var(--Themer-bg))]
+    @apply relative   flex mt-[30vmax]  items-center justify-center w-full h-full px-[1%] transform -translate-y-1/2 bg-opacity-50 bg-[hsl(var(--Themer-bg))]
   }
 
   .carousel-left-arrow-container{
-    @apply relative  w-full h-10 mt-[-10%] md:mt-[1%]
+    @apply relative  w-full h-10 mt-[-10vh]  sm:my-[auto]
   }
   .carousel-right-arrow-container{
-    @apply relative w-full h-10 mt-[-10%] md:mt-[1%]
+    @apply relative w-full h-10 mt-[-10vh]  sm:my-[auto]
   }
 
   .carousel-left-arrow{
@@ -422,7 +450,7 @@ TODO: Change Sombrero to Amigos logo
     @apply border-solid border-2 border-[hsl(var(--Themer-accent-contrast))]  -ml-[35%] z-10 object-contain mx-1 rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50
   }
   .carousel-image{
-    @apply relative w-full mt-[10%] mx-auto -z-10 pt-[1%] pb-[28%] md:pb-[11%] lg:pb-[5%]
+    @apply relative w-full mt-[10%] mx-auto -z-10 pt-[1%] pb-[35%] sm:pb-[17%]  md:pb-[14%] lg:pb-[5%]
   }
   .carousel-title-container{
     @apply absolute inset-x-0 top-0 flex justify-center 
@@ -433,7 +461,7 @@ TODO: Change Sombrero to Amigos logo
   }
 
   .carousel-recommended-container {
-    @apply absolute inset-x-0   bottom-0    
+    @apply absolute inset-x-0   bottom-0 
   }
 
   .carousel-recommended-desc {
@@ -469,12 +497,12 @@ TODO: Change Sombrero to Amigos logo
   }
 
   .standard-btn {
-    @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-text))] rounded-lg Themer-btns;
+    @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-text))] rounded-lg Themer-btns ;
   }
   .search-bar {
     @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg lg:w-1/3;
   }
   .search-bar-container {
-    @apply  z-50 flex justify-center mx-auto -mt-[25vh] ;
+    @apply  absolute inset-x-0 top-[25vmax]  flex justify-center mx-auto ;
   }
 }

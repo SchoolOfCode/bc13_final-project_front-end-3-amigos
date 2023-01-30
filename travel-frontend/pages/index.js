@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import Hero from "../components/Hero";
+
 export default function Home() {
   // Theme switching state
   const [isDefault, setIsDefault] = useState(true);

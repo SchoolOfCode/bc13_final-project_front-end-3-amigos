@@ -7,7 +7,8 @@ import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { app } from "../firebase/firebase";
 import Image from "next/image";
-import logo from "../public/logo.svg";
+import logo from "../public/AmiLogo.svg";
+
 function NavBar() {
   const [burgerMenu, setBurgerMenu] = useState(false);
   const auth = getAuth(app);
@@ -31,23 +32,22 @@ to show favourites with user on MOBILE DEVICE
         <Link href="/" >
           <Image
             src={logo}
-            width={60}
-            priority={true}
-            alt="sombrero"
-            className="mt-[1vh] ml-10 align-middle"
+            width={110}
+            alt="Amigos sombrero"
+            className=" nav-bar-logo"
           />
         </Link>
 {/* if user is logged in and normal screen  */}
           {user ? (
-            <ul className='justify-between hidden my-auto md:flex '>
-              <li className="absolute inset-y-0 mt-[1vw] mx-5 text-lg font-bold m max-h-10 right-[15vw] right-15  ">
-                <Link className="align-left text-coral hover:text-white" href="/favourites">FAVOURITES</Link>
-              </li>
-              <li className="absolute inset-y-0 mt-[1vw] mx-5  max-h-10 right-[30vw] font-bold text-lg  text-coral  ">
-                <Link className="align-left hover:text-white" href="/journal">JOURNAL</Link>
-              </li>
+            <div className='nav-bar-lg-menu '>
+              <button className=" nav-bar-buttons">
+                <Link className="align-left " href="/favourites">FAVOURITES</Link>
+              </button>
+              <button className="nav-bar-buttons ">
+                <Link className="align-left " href="/journal">JOURNAL</Link>
+              </button>
               <button
-              className="absolute inset-y-0 my-auto mt-[1vw] font-bold h-7 right-10 standard-btn"
+              className="nav-bar-buttons "
                 onClick={() => {
                   signOut(auth).then(() => {
                     router.push("/");
@@ -56,54 +56,54 @@ to show favourites with user on MOBILE DEVICE
               >
                 LOGOUT
               </button>
-            </ul>
+            </div>
           ) :
           (
-            <ul className="hidden md:absolute md:inset-y-0 md:right-0 md:flex ">
-            <li className="p-4 my-auto mt-5 mr-10 text-lg font-semibold align-middle standard-btn hover:text-gray-700">
+            <div className="nav-bar-lg-menu-logged-out ">
+            <button className="nav-bar-buttons">
               <Link href="/auth">LOGIN</Link>
-            </li>
-            </ul>
+            </button>
+            </div>
           )}
         {/**
          * Mobile Button
          * anything above small is going to be hidden, otherwise it will show
          */}
-        <div className="absolute inset-y-0 right-0 z-10 md:hidden" onClick={handleHamburger}>
+        <div className="nav-bar-hamburger" onClick={handleHamburger}>
           {/**
            * conditional operator to see if burgerMenu is true or not
            */}
           {burgerMenu ? (
-            <AiOutlineClose size={40} className="m-2 text-coral"  />
+            <AiOutlineClose size={40} className="m-2 text-white"  />
           ) : (
-            <AiOutlineMenu size={40} className="m-2 text-coral" />
+            <AiOutlineMenu size={40} className="m-2 text-[var(--Themer-text)]" />
           )}
         </div>
         <div>
           <div
             className={
               burgerMenu
-                ? "  md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300  "
-                : "  md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300 "
+                ? "  burger-overlay  "
+                : "  burger-overlay-hidden "
             }
           >
-            <ul onClick={handleHamburger}>
+            <div className="flex flex-col items-center justify-center space-y-5 " onClick={handleHamburger}>
               {user && (
-                <ul className="items-center justify-center mt-auto space-y-5 md:flex md:space-x-6 md:space-y-0">
-                  <li className="text-lg font-semibold text-white hover:text-zinc-600">
-                    <Link href="/favourites">FAVOURITES</Link>
-                  </li>
-                  <li className="text-lg font-semibold text-white hover:text-zinc-600">
-                    <Link href="/journal">JOURNAL</Link>
-                  </li>
-                </ul>
+                <>
+                  <a href="/favourites" className="burger-overlay-links">
+                    FAVOURITES
+                  </a>
+                  <a href="/journal" className="burger-overlay-links">
+                    JOURNAL
+                  </a>
+                  </>
               )}
               {!user ? (
-                <li className="text-lg font-semibold text-white hover:text-zinc-600">
-                  <Link href="/auth">LOGIN</Link>
-                </li>
+
+                <a href="/auth" className="burger-overlay-links">LOGIN</a>
+
               ) : (
-                <li className="text-lg font-semibold text-white hover:text-zinc-600">
+                <div className="burger-overlay-links">
                   <button
                     onClick={() => {
                       signOut(auth).then(() => {
@@ -113,9 +113,9 @@ to show favourites with user on MOBILE DEVICE
                   >
                     LOGOUT
                   </button>
-                </li>
+                </div>
               )}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

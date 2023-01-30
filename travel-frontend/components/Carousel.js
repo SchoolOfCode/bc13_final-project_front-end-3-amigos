@@ -67,7 +67,7 @@ export default function Carousel() {
  
       <div className="carousel-container ">
 <div className="carousel-title-container" >
-<h2 className="carousel-title">Reccomendations</h2>
+<h2 className="carousel-title">Recommendations</h2>
 </div>
 
 
@@ -85,6 +85,7 @@ export default function Carousel() {
         <Image
           src={featuredPlaces[currentIndex].Image}
           alt="Places to visit"
+          priority={true}
           ref={carouselRef}
           className="z-0 object-fill min-w-[90vw] min-h-[20vh] rounded-md cursor-pointer aspect-video sm:min-w-[90vw]  lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70"
         />
