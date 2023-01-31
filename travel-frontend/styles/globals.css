@@ -512,4 +512,17 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   .search-bar-container {
     @apply  absolute inset-x-0 top-[25vmax]  flex justify-center mx-auto ;
   }
+
+  .fav-search-bar-container {
+    @apply  absolute inset-x-0 top-0 flex justify-center mx-auto ;
+  }
+
+  .fav-search-bar {
+    @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg lg:w-1/3;
+  }
+  
+
+  .fav-card-display {
+    @apply z-10 mt-[50vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+  }
 }

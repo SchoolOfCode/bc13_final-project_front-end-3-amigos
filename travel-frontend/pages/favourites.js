@@ -59,7 +59,7 @@ function Favourites() {
   // console.log(filterData);
 
   return (
-    <div className="mx-auto search-container">
+    <div className="w-full h-full ">
       <DynamicSearchBar   handleSearch={handleSearch} />
       {fav && (
         <FavResultCardContainer
@@ -67,7 +67,7 @@ function Favourites() {
           deleteFavourite={deleteFavourite}
         />
       )}
-      <Footer className='absolute inset-0 bottom-' />
+      <Footer  />
     </div>
   );
 }
