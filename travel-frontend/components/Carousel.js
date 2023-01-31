@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import havanaPic from "../public/Havana-1957-09.jpg";
+import havanaPic from "../public/Havana-1957-09.webp";
 import bermudaPic from "../public/Bermuda Triangle of Romania.jpg";
-import panoPic from "../public/1_panoptican.jpg";
+import panoPic from "../public/1_panoptican.webp";
 import {BsArrowRightCircleFill, BsArrowLeftCircleFill} from "react-icons/bs"
 const featuredPlaces = [
   {
@@ -70,37 +70,29 @@ export default function Carousel() {
 <h2 className="carousel-title">Recommendations</h2>
 </div>
 
-
-<div className="carousel-left-arrow-container ">
-                  <BsArrowLeftCircleFill
-            src="/left-arrow.png"
+<div className="carousel-arrow-container">
+<BsArrowLeftCircleFill
             alt="left arrow"
             onClick={handleOnClickPrev}
             className="carousel-left-arrow"
           />
-          </div>
-          
-          
-          <div className="carousel-image">
-        <Image
-          src={featuredPlaces[currentIndex].Image}
-          alt="Places to visit"
-          priority={true}
-          ref={carouselRef}
-          className="z-0 object-fill min-w-[90vw] min-h-[20vh] rounded-md cursor-pointer aspect-video sm:min-w-[90vw]  lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70"
-        />
-  </div>
-
-
-<div className="carousel-right-arrow-container">
           <BsArrowRightCircleFill
-            src="/right-arrow.png"
             onClick={handleOnClickNext}
             alt="right arrow"
             className="carousel-right-arrow"
           />
-          </div>
- 
+</div>
+
+
+          <div className="carousel-image-container">
+        <Image
+          src={featuredPlaces[currentIndex].Image}
+          alt="Places to visit"
+          priority
+          ref={carouselRef}
+          className="carousel-image"
+        />
+  </div>
  <div className="carousel-recommended-container">
 <p className="carousel-recommended-desc">{featuredPlaces[currentIndex].Desc}</p>
  </div>

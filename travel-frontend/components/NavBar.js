@@ -33,6 +33,7 @@ to show favourites with user on MOBILE DEVICE
           <Image
             src={logo}
             width={110}
+            priority
             alt="Amigos sombrero"
             className=" nav-bar-logo"
           />

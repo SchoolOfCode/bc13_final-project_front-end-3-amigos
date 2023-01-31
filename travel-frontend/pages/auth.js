@@ -43,7 +43,7 @@ const authentication = () => {
       <div className="fixed w-screen h-screen -z-10 ">
         <Image
           alt="mountainous landscape"
-          priority={true}
+          priority
           src={authBg}
           className="w-full h-full -z-1 "
         />

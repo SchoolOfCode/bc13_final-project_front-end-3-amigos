@@ -7,11 +7,9 @@ import Typewriter from "typewriter-effect";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-import Hero from "../components/Hero";
+import Image from "next/image";
 
 export default function Home() {
-  // Theme switching state
-  const [isDefault, setIsDefault] = useState(true);
   // useState to hold API data
   const [apiData, setApiData] = useState("");
   // state for the loader
@@ -113,11 +111,15 @@ export default function Home() {
   console.log("apidata length:", apiData.length);
   return (
     <div className= "html-div">
-    <main className="main"
-    >
-  <Hero isDefault={isDefault}/>
+    <main>
+    {/* <Image
+     className="hero-styling"
+     priority
+     
+      /> */}
+  <div className="hero-styling" ></div>
   <SearchBar handleClick={getApiData} searchError={searchError} />
-      <div className={isDefault? " typewriter-container": " typewriter-container text-black"}>
+      <div className="typewriter-container">
         <Typewriter
           options={{
             strings: [
@@ -138,7 +140,7 @@ export default function Home() {
       </div>
       {/* conditional rendering so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
-      <ThemeSwitcher stateChanger={setIsDefault} />
+      <ThemeSwitcher />
       {apiData.length === 0 ? (
         <Carousel />
       ) : (

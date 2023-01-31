@@ -1,7 +1,7 @@
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 function Footer() {
-  {/* xs:mt-[10vw] mob:mt=[1.5vw] */}
+
   return (
     <footer className="footer">
       <div className="footer-items-container ">

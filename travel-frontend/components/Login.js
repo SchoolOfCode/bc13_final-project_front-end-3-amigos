@@ -4,7 +4,7 @@ import { getAuth } from "@firebase/auth";
 import { app } from "../firebase/firebase";
 import { useRouter } from "next/router";
 
-const LogIn = () => {
+export default function LogIn() {
   const router = useRouter();
   const auth = getAuth(app);
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ const LogIn = () => {
     );
   }
   return (
-    <div className="App flex flex-col justify-center items-center">
+    <div className="flex flex-col items-center justify-center App">
       <input
         className="form-control"
         type="email"
@@ -64,4 +64,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+

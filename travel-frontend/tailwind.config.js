@@ -16,6 +16,7 @@ module.exports = {
       screens: {
         'xs': '320px',
         'mob':'370px',
+        'fol4':'1812px',
         ...defaultTheme.screens,
       },
       spacing: {
@@ -70,7 +71,7 @@ module.exports = {
       defaultTheme: {
         extend: {
           backgroundImage: {
-            "main-bg": "url('/Blue-Lagoon-in-Malta-6.png')",
+            "main-bg": "url('/Blue-Lagoon.webp')",
           },
           textColor: {
             skin: {
@@ -97,7 +98,7 @@ module.exports = {
           name: "minimal-theme",
           extend: {
             backgroundImage: {
-              "main-bg": "url('/minimalistBG.jpg')",
+              "main-bg": "url('/darkMode.webp')",
             },
 
             colors: {

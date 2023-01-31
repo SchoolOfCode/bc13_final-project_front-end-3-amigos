@@ -1,3 +1,4 @@
+
 .fade-anim img {
   animation: fadeAnim 0.5s ease-out;
 }
@@ -53,7 +54,7 @@
     /* ThemeSwitcher Dark Mode */
     --Themer-bg--dark: var(--Themer-hue) 15% 10%;
     --Themer-text--dark: var(--Themer-hue) 30% 88%;
-    --Themer-accent--dark: var(--Themer-hue) 50% 50%;
+    --Themer-accent--dark: var(--Themer-hue) 80% 40%;
     --Themer-accent1--dark: 10 55% 50%;
     --Themer-muted--dark: var(--Themer-hue) 20% 4%;
     --Themer-nav--dark: var(--Themer-hue) 60% 20%;
@@ -69,6 +70,7 @@
     --Themer-muted: var(--Themer-muted--dark);
     --Themer-nav: var(--Themer-nav--dark);
     color-scheme: dark;
+    @apply minimal-theme
   }
   :root[color-scheme='light'] {
     --Themer-bg: var(--Themer-bg--light);
@@ -80,6 +82,7 @@
     --Themer-muted: var(--Themer-muted--light);
     --Themer-nav: var(--Themer-nav--light);
     color-scheme: light;
+ 
   }
   body {
     background-color: hsl(var(--Themer-bg));
@@ -129,7 +132,7 @@
     display: grid;
     --Themer-size: 1.5rem;
     place-items: center;
-    @apply sm:bottom-[9%]  xs:bottom-[39vw] mob:bottom-[18vw]
+    @apply sm:bottom-[9%]   xs:bottom-[39vw] mob:bottom-[25vw]
   }
   .Themer-btns {
     display: flex;
@@ -235,6 +238,7 @@ TODO: Put all CSS in this file ✅
 TODO: Put a coming soon thing on journal
 TODO: Change Sombrero to Amigos logo ✅
 TODO: Save theming preference into local storage ✅
+TODO: If theme is saved as dark in local storage on refresh BG image should also be dark
 TODO:  Change card display on xs: screen Also no hover on all smaller screens 
 
 
@@ -317,9 +321,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   @apply min-w-full min-h-full overflow-x-hidden
 }
 
-.main-div {
-  @apply flex flex-col min-h-full
-}
+
 
 /* hero styling */
 .hero-styling {
@@ -343,7 +345,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 }
 
 .nav-bar-lg-menu {
-  @apply ml-[60vw] py-2  justify-between w-full hidden my-auto lg:flex items-center
+  @apply ml-[10vw] py-2 lg:absolute  lg:top-0 lg:right-0  justify-between w-[30vw] hidden my-auto lg:flex items-center
 }
 
 .nav-bar-lg-menu-logged-out{
@@ -433,24 +435,29 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .carousel-container {
-    @apply relative   flex mt-[30vmax]  items-center justify-center w-full h-full px-[1%] transform -translate-y-1/2 bg-opacity-50 bg-[hsl(var(--Themer-bg))]
+    @apply relative   flex mt-[30vmax]  items-center justify-center w-full  px-[1%] transform -translate-y-1/2 bg-opacity-50 bg-[hsl(var(--Themer-bg))]
   }
 
-  .carousel-left-arrow-container{
-    @apply relative  w-full h-10 mt-[-10vh]  sm:my-[auto]
+ .carousel-arrow-container{
+    @apply  flex items-center px-3 justify-between w-full transform -translate-y-1/2 absolute pb-[25%] mob:inset-y-1/2 sm:pb-[4%] lg:pb-0 lg:mt-[3%] 
   }
+    /*
   .carousel-right-arrow-container{
     @apply relative w-full h-10 mt-[-10vh]  sm:my-[auto]
-  }
+  } */
+
 
   .carousel-left-arrow{
-    @apply border-solid border-2 border-[hsl(var(--Themer-accent-contrast))]  ml-[50%] object-contain mx-1 rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50
+    @apply border-solid border-2 object-contain  border-[hsl(var(--Themer-accent-contrast))] lg:ml-[10%] 2xl:ml-[13%]     rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50
   }
   .carousel-right-arrow{
-    @apply border-solid border-2 border-[hsl(var(--Themer-accent-contrast))]  -ml-[35%] z-10 object-contain mx-1 rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50
+    @apply border-solid border-2 object-contain  border-[hsl(var(--Themer-accent-contrast))] lg:mr-[10%] 2xl:mr-[13%]   z-10   rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50
+  }
+  .carousel-image-container{
+    @apply flex items-center object-contain justify-center lg:w-[75vw] relative w-full mt-[10%] mx-auto -z-10 pt-[1%] pb-[35%] sm:pb-[17%]  md:pb-[14%] lg:pb-[5%] 
   }
   .carousel-image{
-    @apply relative w-full mt-[10%] mx-auto -z-10 pt-[1%] pb-[35%] sm:pb-[17%]  md:pb-[14%] lg:pb-[5%]
+    @apply z-0 object-fill min-w-[90vw] lg:min-w-[70vw] min-h-[20vh] rounded-md cursor-pointer aspect-video sm:min-w-[90vw]  lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70
   }
   .carousel-title-container{
     @apply absolute inset-x-0 top-0 flex justify-center 
@@ -485,7 +492,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .about-us-container {
-    @apply font-bold  mob:justify-around mob:space-x-[0.1em] pb-3 text-[color:hsl(var(--Themer-text))]   xs:px-2 sm:flex xs:grid-cols-2 xs:grid xs:gap-[2vw]
+    @apply font-bold md:text-2xl  mob:justify-around mob:space-x-[0.1em] pb-3 text-[color:hsl(var(--Themer-text))]   xs:px-2 sm:flex xs:grid-cols-2 xs:grid xs:gap-[2vw]
   }
 
   .about-us-attribute {
