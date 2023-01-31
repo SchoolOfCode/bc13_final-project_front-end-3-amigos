@@ -140,15 +140,12 @@ export default function Home() {
       </div>
       {/* conditional rendering so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
-      <ThemeSwitcher />
+
       {apiData.length === 0 ? (
         <Carousel />
       ) : (
         <ApiResultsCardContainer apiData={apiData} />
       )}
-
-
-      <Footer />
 
     </main>
     </div>

@@ -59,7 +59,7 @@ function Favourites() {
   // console.log(filterData);
 
   return (
-    <div className="html-div ">
+    <>
       <DynamicSearchBar   handleSearch={handleSearch} />
       {fav && (
         <FavResultCardContainer
@@ -67,8 +67,7 @@ function Favourites() {
           deleteFavourite={deleteFavourite}
         />
       )}
-      <Footer  />
-    </div>
+    </>
   );
 }
 

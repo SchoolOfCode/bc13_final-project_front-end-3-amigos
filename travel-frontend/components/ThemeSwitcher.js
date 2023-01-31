@@ -41,7 +41,7 @@ const handleClick= ()=>{
 }
 
   return (
-    <aside className='z-10 Themer-wrapper' >
+    <aside className='Themer-wrapper' >
     {
         isColorPicking
         ? (
