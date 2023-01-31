@@ -523,6 +523,6 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   
 
   .fav-card-display {
-    @apply z-10 mt-[50vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+    @apply z-10 mt-[50vh]  mb-[5%]  grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
   }
 }
