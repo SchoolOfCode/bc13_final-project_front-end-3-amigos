@@ -6,7 +6,7 @@ import { app } from "../firebase/firebase";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import Image from "next/image";
-import authBg from "../public/auth.jpg";
+import authBg from "../public/auth.webp";
 
 /**
  * Once a user has reigstered,
