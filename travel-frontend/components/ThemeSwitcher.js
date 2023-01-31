@@ -1,14 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import useLocalStorage from '../hooks/useLocalStorage'
 
-function ThemeSwitcher() {
-    const [hue, setHue] = useLocalStorage('travel-frontend.colour','340')
-    // Check if the users browser theme default is dark, needs to be in useEffect to specidy it runs on client side
-    const defaultdark = useEffect(()=> {
-        window.matchMedia('(prefers-color-scheme:dark)').matches   
-    },[])
-    // If browser default is dark set to dark theme otherwise set to light theme
-    const [theme, setTheme] = useLocalStorage('travel-frontend.theme', defaultdark ? "dark" && stateChanger(false) : "light")
+function ThemeSwitcher({stateChanger}) {
+    const [hue, setHue] = useState('340')
+    const [theme, setTheme] = useState('light')
     const [isColorPicking, setIsColorPicking] = useState(false)
 
 /* Easiest way to handle a change in a piece of state in UI with React is by using a useEffect */
@@ -38,6 +32,8 @@ const xMarkIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 
 const handleClick= ()=>{
     setTheme(theme=== 'light' ? 'dark' : 'light')
+    theme === 'light'?stateChanger(false):stateChanger(true)
+
 }
 
   return (

@@ -34,8 +34,9 @@ function ApiResultCard({
           <p className="card-location">{suburb}</p>
           <p className="card-desc">{description}</p>
 
-          <div className='card-action-container'>
-          
+          <div className='flex mb-1 space-x-14'>
+          {/* <button className="card-btn">See More</button> */}
+
        <button className="card-btn"><a href={wikipedia} target="_blank">See more</a></button>
 
           <FavouritesButton props={newFavourite} />

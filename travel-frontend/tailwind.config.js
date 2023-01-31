@@ -16,7 +16,6 @@ module.exports = {
       screens: {
         'xs': '320px',
         'mob':'370px',
-        'fol4':'1812px',
         ...defaultTheme.screens,
       },
       spacing: {
@@ -63,7 +62,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      courgette: ['Courgette','cursive']
+      explora: ["Explora", "cursive"],
     },
   },
   plugins: [
@@ -71,7 +70,7 @@ module.exports = {
       defaultTheme: {
         extend: {
           backgroundImage: {
-            "main-bg": "url('/Blue-Lagoon.webp')",
+            "main-bg": "url('/Blue-Lagoon-in-Malta-6.png')",
           },
           textColor: {
             skin: {
@@ -98,7 +97,7 @@ module.exports = {
           name: "minimal-theme",
           extend: {
             backgroundImage: {
-              "main-bg": "url('/darkMode.webp')",
+              "main-bg": "url('/minimalistBG.jpg')",
             },
 
             colors: {

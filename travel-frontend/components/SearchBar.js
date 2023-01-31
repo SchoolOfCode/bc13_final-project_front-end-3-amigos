@@ -27,7 +27,7 @@ export default function SearchBar({ handleClick, searchError, errorText }) {
         onKeyDown={(event) => onKeyDown(event)}
         className="search-bar"
         type="text"
-        placeholder="¿Dónde?"
+        placeholder="Donde?"
         // value = {errorText}
       ></input>
       <button

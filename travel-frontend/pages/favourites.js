@@ -59,15 +59,15 @@ function Favourites() {
   // console.log(filterData);
 
   return (
-    <div className="mx-auto search-container">
-      <DynamicSearchBar   handleSearch={handleSearch} />
+    <div>
+      <DynamicSearchBar handleSearch={handleSearch} />
       {fav && (
         <FavResultCardContainer
           fav={filterData && filterData}
           deleteFavourite={deleteFavourite}
         />
       )}
-      <Footer className='absolute inset-0 bottom-' />
+      <Footer />
     </div>
   );
 }
