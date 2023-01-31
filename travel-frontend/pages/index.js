@@ -7,9 +7,9 @@ import Typewriter from "typewriter-effect";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import Image from "next/image";
+
 export default function Home() {
-  // Theme switching state
-  const [isDefault, setIsDefault] = useState(true);
   // useState to hold API data
   const [apiData, setApiData] = useState("");
   // state for the loader
@@ -107,26 +107,28 @@ export default function Home() {
   }
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
+  /*  */
   console.log("apidata length:", apiData.length);
   return (
-    <div
-      className={
-        isDefault
-          ? "background-image-styling  "
-          : "background-image-styling minimal-theme "
-      }
-    >
-      <div className="font-bold typewriter font-explora">
+    <div className= "html-div">
+    <main>
+    {/* <Image
+     className="hero-styling"
+     priority
+     
+      /> */}
+  <div className="hero-styling" ></div>
+  <SearchBar handleClick={getApiData} searchError={searchError} />
+      <div className="typewriter-container">
         <Typewriter
-          className="font-explora"
           options={{
             strings: [
-              "Vamos Amigos!!",
-              `Let's go!!`,
-              "Yallah!!",
-              "Haideee!!",
-              "Andiamo!!",
-              "Vamos lá!!",
+              "Vamos Amigos...",
+              `Let's go...`,
+              "Yallah...",
+              "Haideee...",
+              "Andiamo...",
+              "Vamos lá...",
             ],
             autoStart: true,
             loop: true,
@@ -134,17 +136,21 @@ export default function Home() {
         />
       </div>
       <div>
-        <SearchBar handleClick={getApiData} searchError={searchError} />
+        
       </div>
-      {/* conditional rednring so when the user searches the loader is shown*/}
+      {/* conditional rendering so when the user searches the loader is shown*/}
       {!isLoading && <Loader />}
-      <ThemeSwitcher stateChanger={setIsDefault} />
+      <ThemeSwitcher />
       {apiData.length === 0 ? (
         <Carousel />
       ) : (
         <ApiResultsCardContainer apiData={apiData} />
       )}
+
+
       <Footer />
+
+    </main>
     </div>
   );
 }
