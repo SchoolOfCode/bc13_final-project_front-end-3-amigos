@@ -6,7 +6,7 @@ Amigo is a travel companion app that helps users to connect to the local culture
 
 <p>Have a look<a href="https://amigostravel.netlify.app/"> here</a>!</p>
 
-<img src="./travel-frontend/public/ipad.png" alt="desktop">
+<img src="./public/ipad.png" alt="desktop">
 
 ---
 
@@ -54,4 +54,4 @@ The frontend for Amigo is built using Next.js and JavaScript. For styling we hav
 
 Frontend was deployed using Netlify. The reason for choosing Netlify was because we are using Next.js and they have good support for it.
 
-<img src="./travel-frontend/public/netlify.png" alt="deploy">
+<img src="./public/netlify.png" alt="deploy">
