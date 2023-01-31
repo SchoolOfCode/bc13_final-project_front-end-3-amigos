@@ -414,7 +414,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
     @apply sm:text-3xl font-bold md:text-skin-base xs:text-[color:hsl(var(--Themer-text))] mb-1 align-text-bottom sm:mt-7% mt-[1%]  xs:text-2xl  ;
   }
   .card-city {
-    @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]  opacity-50 transition-opacity duration-300 group-hover:opacity-100 pb-[80%] mob:pb-[70%] sm:mb-12% xs:font-extrabold sm:font-bold;
+    @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]  opacity-50 transition-opacity duration-300 group-hover:opacity-100 pb-[80%] mob:pb-[70%] lg:pb-[1%]  sm:mb-12% xs:font-extrabold sm:font-bold;
   }
   .card-location {
     @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]
