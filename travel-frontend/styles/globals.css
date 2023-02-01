@@ -123,16 +123,16 @@
   /* ThemeSwitcher CSS */
   .Themer-wrapper {
     position: fixed;
-    bottom: 9%;
+    bottom: 0;
     left: 0;
     z-index: 100;
     --wrapperSize: clamp(4em, 3vmax, 7em);
-    padding: 1em 2em;
+    padding: 0.5em 2em;
     width: 100vw;
     display: grid;
     --Themer-size: 1.5rem;
     place-items: center;
-    @apply sm:bottom-[9%]   xs:bottom-[39vw] mob:bottom-[25vw]
+
   }
   .Themer-btns {
     display: flex;
@@ -484,11 +484,11 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .footer {
-  @apply  flex flex-col p-[1em] min-w-full mt-auto  bg-[color:hsl(var(--Themer-nav))] 
+  @apply   p-[1em] min-w-full mt-auto  bg-[color:hsl(var(--Themer-nav))] 
   }
 
   .footer-items-container {
-    @apply flex-row font-bold justify-center p-1 m-2 text-center [color:hsl(var(--Themer-text))] 
+    @apply   flex-row font-bold justify-center p-1 m-2 text-center [color:hsl(var(--Themer-text))] 
   }
 
   .about-us-container {
@@ -496,7 +496,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .about-us-attribute {
-    @apply flex items-center justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]
+    @apply flex items-center z-[1000]  justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]
   }
 
   .Jo-p{
@@ -511,5 +511,18 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
   .search-bar-container {
     @apply  absolute inset-x-0 top-[25vmax]  flex justify-center mx-auto ;
+  }
+
+  .fav-search-bar-container {
+    @apply   mt-[25vmax]   flex justify-center mx-auto ;
+  }
+
+  .fav-search-bar {
+    @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg ;
+  }
+  
+
+  .fav-card-display {
+    @apply z-10 mt-[5vh]  mb-[5%]  grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
   }
 }

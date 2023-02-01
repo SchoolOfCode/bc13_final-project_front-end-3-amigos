@@ -1,11 +1,11 @@
 export default function DynamicSearchBar({ handleSearch }) {
   return (
-    <div className="search-bar-container mt-40">
+    <div className=" fav-search-bar-container">
       <input
         onChange={(e) => {
           handleSearch(e);
         }}
-        className="search-bar border-spacing-2 border-solid border-2 border-coral"
+        className="fav-search-bar"
         type="text"
         placeholder="Browse your Favourites..."
       ></input>

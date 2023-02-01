@@ -19,7 +19,7 @@ export default function SearchBar({ handleClick, searchError, errorText }) {
   };
 
   return (
-    <div className="search-bar-container">
+    <div className="search-bar-container ">
       <input
         onChange={(e) => {
           setSearchTerm(e.target.value);
