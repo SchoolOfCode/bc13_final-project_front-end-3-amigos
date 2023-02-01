@@ -76,7 +76,7 @@ export default function Home() {
               return result.data;
             })
           );
-          console.log("responses:", responses);
+          // console.log("responses:", responses);
           //console.log("batch location response:", responses);
           /**
            *  concatenate the xid data(responses) using the spread operator
@@ -90,7 +90,7 @@ export default function Home() {
             item.wikipedia_extracts && item.preview && item.name && item.address
           );
         });
-        console.log("finalResult", finalResult);
+        // console.log("finalResult", finalResult);
         // setApiData to the final array of 20 places
         setApiData(finalResult);
         //setting the state to true so that loader is not shown
@@ -108,46 +108,43 @@ export default function Home() {
   //console.log(apiData, "final state api");
   // console.log(apiData[0].data, "first try");
   /*  */
-  console.log("apidata length:", apiData.length);
+
   return (
-    <div className= "html-div">
-    <main>
-    {/* <Image
+    <div className="html-div">
+      <main>
+        {/* <Image
      className="hero-styling"
      priority
      
       /> */}
-  <div className="hero-styling" ></div>
-  <SearchBar handleClick={getApiData} searchError={searchError} />
-      <div className="typewriter-container">
-        <Typewriter
-          options={{
-            strings: [
-              "Vamos Amigos...",
-              `Let's go...`,
-              "Yallah...",
-              "Haideee...",
-              "Andiamo...",
-              "Vamos lá...",
-            ],
-            autoStart: true,
-            loop: true,
-          }}
-        />
-      </div>
-      <div>
-        
-      </div>
-      {/* conditional rendering so when the user searches the loader is shown*/}
-      {!isLoading && <Loader />}
+        <div className="hero-styling"></div>
+        <SearchBar handleClick={getApiData} searchError={searchError} />
+        <div className="typewriter-container">
+          <Typewriter
+            options={{
+              strings: [
+                "Vamos Amigos...",
+                `Let's go...`,
+                "Yallah...",
+                "Haideee...",
+                "Andiamo...",
+                "Vamos lá...",
+              ],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </div>
+        <div></div>
+        {/* conditional rendering so when the user searches the loader is shown*/}
+        {!isLoading && <Loader />}
 
-      {apiData.length === 0 ? (
-        <Carousel />
-      ) : (
-        <ApiResultsCardContainer apiData={apiData} />
-      )}
-
-    </main>
+        {apiData.length === 0 ? (
+          <Carousel />
+        ) : (
+          <ApiResultsCardContainer apiData={apiData} />
+        )}
+      </main>
     </div>
   );
 }
