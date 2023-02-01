@@ -357,11 +357,11 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 }
 
 .burger-overlay{
- @apply  md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
+ @apply  lg:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
 }
 
 .burger-overlay-hidden{
-  @apply md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300
+  @apply lg:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300
 }
 
 .burger-overlay-links{
