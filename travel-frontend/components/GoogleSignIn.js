@@ -43,7 +43,7 @@ function GoogleSignIn() {
         }
         await postUserDetails(userDetails);
         // console.log("registration complete");
-
+        // router.reload("/auth");
         router.push("/");
       }
     }
