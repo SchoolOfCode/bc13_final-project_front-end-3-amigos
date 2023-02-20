@@ -341,7 +341,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 }
 
 .nav-bar-hamburger {
-  @apply absolute inset-y-0 right-0 z-10 lg:hidden pb-[1vh]
+  @apply absolute inset-y-0 right-0 z-[100000] lg:hidden pb-[1vh]
 }
 
 .nav-bar-lg-menu {
@@ -357,7 +357,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 }
 
 .burger-overlay{
- @apply  lg:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
+ @apply  lg:hidden z-[10000]  absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
 }
 
 .burger-overlay-hidden{
@@ -389,7 +389,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
     @apply h-10 px-3 m-1 mb-2 cursor-pointer rounded-xl bg-zinc-700 hover:bg-google-dark-red text-skin-base w-52;
   }
   .card-display {
-    @apply z-10 mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+    @apply z-[10] mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
   }
   .card-container {
     @apply relative items-center justify-center mt-10 overflow-hidden transition-shadow rounded-lg cursor-pointer bg-opacity-70 md:bg-none md:bg-opacity-0 ;
@@ -496,7 +496,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .about-us-attribute {
-    @apply flex items-center z-[1000]  justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]
+    @apply flex items-center z-[100]  justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]
   }
 
   .Jo-p{
@@ -523,6 +523,6 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   
 
   .fav-card-display {
-    @apply z-10 mt-[5vh]  mb-[5%]  grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+    @apply   mt-[5vh]  mb-[5%]  grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
   }
 }
