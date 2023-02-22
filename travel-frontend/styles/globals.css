@@ -343,7 +343,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 }
 
 .nav-bar-buttons{
-  @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-contrast))] rounded-lg  my-auto  font-bold  max-h-10 bg-[hsl(var(--Themer-accent-contrast))]
+  @apply w-auto p-2 ml-2 mr-5 text-[color:hsl(var(--Themer-text))] rounded-lg  my-auto  font-bold  max-h-10 bg-[hsl(var(--Themer-accent))]
 }
 
 .burger-overlay{
@@ -379,112 +379,125 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
     @apply h-10 px-3 m-1 mb-2 cursor-pointer rounded-xl bg-zinc-700 hover:bg-google-dark-red text-skin-base w-52;
   }
 
-  /* Cards revamped */
+  /* Cards */
+  /* 
 
-  .card-displayR {
-    @apply grid gap-6 
-  }
+.card-display {
+  @apply z-10 mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+}
+.card-container {
+  @apply relative items-center justify-center mt-10 overflow-hidden transition-shadow rounded-lg cursor-pointer bg-opacity-70 md:bg-none md:bg-opacity-0 ;
+}
+.single-card {
+  @apply mx-auto mt-16 mb-6 sm:mb-0 sm:mt-0 h-96 w-72 ;
+}
+.card-image {
+  @apply mt-35%   md:mt-0  h-50% rounded-xl sm:h-full mx-auto sm:w-full md:object-cover transition-transform duration-500  group-hover:scale-125;
+}
+.card-gradient-bg {
+  @apply absolute inset-0 bg-[color:hsl(var(--Themer-accent)/0.25)] bg-opacity-90 bg-gradient-to-b md:from-transparent via-transparent to-[color:hsl(var(--Themer-accent))]
+}
+.card-info-static {
+  @apply absolute inset-0 flex flex-col items-center justify-center px-9 text-center
+}
+.card-info-transition {
+  @apply absolute inset-0 flex md:translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
+}
+.card-title {
+  @apply sm:text-3xl font-bold md:text-skin-base xs:text-[color:hsl(var(--Themer-text))] mb-1 align-text-bottom sm:mt-7% mt-[1%]  xs:text-2xl  ;
+}
+.card-city {
+  @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]  opacity-50 transition-opacity duration-300 group-hover:opacity-100 pb-[80%] mob:pb-[70%] lg:pb-[1%]  sm:mb-12% xs:font-extrabold sm:font-bold;
+}
+.card-location {
+  @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]
+}
+.card-desc {
+  @apply sm:mt-10 md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]    md:mt-0  text-lg font-normal   text-ellipsis overflow-y-auto
+}
 
-  .card-containerR {
-    @apply relative items-center overflow-hidden md:mb-[5%] 
-  }
+.card-action-container {
+  @apply flex xs:my-[2%] sm:mb-1 space-x-14
+}
 
-  .single-cardR {
-    @apply mx-auto h-[80vh] w-[100%] mob:h-[65vh] transition-shadow rounded-xl mt-[30%] sm:mt-[20%] md:mt-[35%]
-  }
-
-  .card-info-transitionR {
-    @apply absolute inset-0 flex  flex-col items-center justify-center  text-center  
-  }
-
-/* 
-
+.card-btn {
+  @apply Themer-btns font-bold rounded-full xs:mt-[1%]   sm:mt-3 sm:mb-1 py-2 px-3.5  text-sm capitalize text-[color:hsl(var(--Themer-text))] shadow shadow-black/60
+}
 */
 
-  .card-gradient-bgR {
-    @apply  w-full h-full flex flex-col absolute inset-0  text-center   items-center justify-center  bg-[color:hsl(var(--Themer-accent)/0.2)] bg-opacity-90 bg-gradient-to-b overflow-hidden text-ellipsis rounded-xl
-  }
-
-
- 
-  /*     display: -webkit-box;
-      overflow-y:scroll;
-      overflow-x:hidden;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp:   1 ; */
-  .card-titleR {
-    @apply font-bold text-center inset-x-0 pt-[2%] text-lg mob-xl:text-xl sm:text-3xl  
-  }
-  .card-cityR {
-    @apply font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-2xl
-  }
-  
-  /* .card-suburbR {
-    @apply text-center inset-x-0 text-sm
-  } */
-  .card-countryR {
-    @apply text-center inset-x-0   text-sm mob-xl:text-lg sm:text-xl
-  }
-
-  .card-imageR {
-    @apply  z-[2]  inset-x-0    rounded-xl mx-auto  max-h-[40%] min-w-[90%]  sm:min-h-[60%] sm:min-w-[90%]      transition-transform duration-500  
-  }
-
-  .card-descR {
-    @apply text-center  mt-[60%] mob:mt-[68%] sm:mt-[55%]  md:mt-[100%] mb-[3%] inset-x-0 max-w-[98%]   align-middle   mob-xl:text-lg    md:text-xl  overflow-y-auto 
-  }
-
-  .card-action-containerR {
-    @apply   flex  items-center mb-[1%] gap-10 mt-auto
-  }
-  .card-btnR {
-    @apply Themer-btns font-bold rounded-full text-sm capitalize 
-  }
-
-/* Cards */
+  /* Cards revamped */
 
   .card-display {
     @apply z-10 mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
   }
+
   .card-container {
-    @apply relative items-center justify-center mt-10 overflow-hidden transition-shadow rounded-lg cursor-pointer bg-opacity-70 md:bg-none md:bg-opacity-0 ;
+    @apply relative items-center overflow-hidden md:mb-[5%] 
   }
+
   .single-card {
-    @apply mx-auto mt-16 mb-6 sm:mb-0 sm:mt-0 h-96 w-72 ;
+    @apply relative  mx-auto h-[80vh] w-[100%] mob:h-[65vh] md:portrait:h-[40vh]  transition-shadow rounded-xl 
   }
-  .card-image {
-    @apply mt-35%   md:mt-0  h-50% rounded-xl sm:h-full mx-auto sm:w-full md:object-cover transition-transform duration-500  group-hover:scale-125;
-  }
-  .card-gradient-bg {
-    @apply absolute inset-0 bg-[color:hsl(var(--Themer-accent)/0.25)] bg-opacity-90 bg-gradient-to-b md:from-transparent via-transparent to-[color:hsl(var(--Themer-accent))]
-  }
-  /* use below class for mob view no transition */
-  .card-info-static {
-    @apply absolute inset-0 flex flex-col items-center justify-center px-9 text-center
-  }
+  
+  /* 
+  mt-[30%] sm:mt-[20%] md:mt-[35%] md:portrait:mt-[42%] pb-[5%]
+  mt-[65%]   mob:mt-[68%] sm:mt-[55%]   md:mt-[100%] md:portrait:mt-[105%] 
+
+*/
+
   .card-info-transition {
-    @apply absolute inset-0 flex md:translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
+    @apply    inset-0 flex  flex-col items-center justify-center  text-center  
   }
+
+  .card-gradient-bg {
+    @apply  w-full h-full flex flex-col absolute inset-0  text-center   items-center justify-center  bg-[color:hsl(var(--Themer-accent)/0.2)] bg-opacity-90 bg-gradient-to-b overflow-hidden text-ellipsis rounded-xl
+  }
+
   .card-title {
-    @apply sm:text-3xl font-bold md:text-skin-base xs:text-[color:hsl(var(--Themer-text))] mb-1 align-text-bottom sm:mt-7% mt-[1%]  xs:text-2xl  ;
+    display: -webkit-box;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:   1 ;
+    @apply absolute top-[0.1%] font-bold text-center inset-x-0    text-lg mob-xl:text-xl sm:text-3xl  sm:landscape:text-xl md:portrait:text-lg md:portrait:font-extrabold md:landscape:text-2xl
   }
+
+  /* 
+  sm:landscape:mt-[3%] md:landscape:mt-[5rem]
+  */
   .card-city {
-    @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]  opacity-50 transition-opacity duration-300 group-hover:opacity-100 pb-[80%] mob:pb-[70%] lg:pb-[1%]  sm:mb-12% xs:font-extrabold sm:font-bold;
+    @apply absolute top-[7%]  font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-xl
   }
-  .card-location {
-    @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]
+
+  .card-country {
+    @apply text-center absolute top-[12%]   inset-x-0   text-sm mob-xl:text-lg sm:text-xl 
   }
-  .card-desc {
-    @apply sm:mt-10 md:text-skin-base xs:text-[color:hsl(var(--Themer-text))]    md:mt-0  text-lg font-normal   text-ellipsis overflow-y-auto
+
+  .card-image {
+    @apply  z-[2]  inset-x-0 absolute top-[20%]   rounded-xl mx-auto  max-h-[40%] min-w-[90%]         
   }
+
+.desc-div{
+  @apply absolute top-[62%] h-full inset-x-0 overflow-y-auto
+}
+
+.card-desc {
+  @apply text-center   inset-x-0 max-w-[98%]   align-middle   mob-xl:text-lg    md:text-xl  overflow-y-auto 
+  h-[25%]
+  }
+
+/* 
+md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landscape:pt-[-100%]
+*/
 
   .card-action-container {
-    @apply flex xs:my-[2%] sm:mb-1 space-x-14
+    @apply   flex  items-center  gap-10 mt-auto absolute bottom-[1%]
+  }
+  .card-btn {
+    @apply Themer-btns font-bold rounded-full text-sm capitalize 
   }
 
-  .card-btn {
-    @apply Themer-btns font-bold rounded-full xs:mt-[1%]   sm:mt-3 sm:mb-1 py-2 px-3.5  text-sm capitalize text-[color:hsl(var(--Themer-text))] shadow shadow-black/60
-  }
+
   .typewriter-container {
     @apply absolute inset-x-0 top-[10vmax]  text-4xl font-bold text-white font-courgette sm:text-6xl ml-[7%] ;
   }
@@ -569,65 +582,40 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   /* Tailwind method of dealing with devices that support hover */
-  
-/* 
-    @media (hover: hover) and (pointer: fine) {
-    .card-container:hover {
-      @apply   transition-shadow  hover:shadow-black/30
-    }
-    .card-image:hover {
-      @apply  transition-transform duration-500  group-hover:scale-125
-     }
-     .card-gradient-bg:hover {
-      background-color: hsl(var(--Themer-accent)/ 0.3);
-      @apply  from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30
-    }
-    .card-info-transition:hover {
-      @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
-    }
-    .card-city:hover {
-      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%
-    }
-    .card-location:hover {
-      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100
-    }
-    .card-desc:hover {
-      @apply text-lg font-normal text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto
-    }
-    .nav-bar-buttons:hover{
-      @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))]
-    }
-
-}
-*/
 
 @media (hover: hover) and (pointer: fine) {
-  .card-containerR  {
+  .card-container  {
     @apply   transition-shadow  hover:shadow-black/30 duration-500 rounded-xl
   }
-  .card-imageR  {
-    @apply absolute transition-transform group-hover:duration-500  group-hover:scale-125 z-[0] top-0 object-cover opacity-70 md:min-h-[100%] rounded-xl
+  .card-image  {
+    @apply absolute transition-transform group-hover:duration-500  group-hover:scale-125 z-[0] top-0 object-cover opacity-100 group-hover:opacity-60 md:min-h-[100%] rounded-xl
    }
-   .card-info-transitionR  {
-     @apply translate-y-[75%]  group-hover:translate-y-0 group-hover:duration-500 group-hover:transition-all transition-all 
+   .card-info-transition  {
+     @apply absolute  translate-y-[73%]  group-hover:translate-y-0 group-hover:duration-500 group-hover:transition-all transition-all 
    }
-   .card-gradient-bgR  {
-    @apply bg-[color:hsl(var(--Themer-accent)/0.2)]  from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30  overflow-hidden 
+   .card-gradient-bg  {
+    @apply absolute group-hover:bg-[color:hsl(var(--Themer-accent)/0.3)]  from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30  overflow-hidden 
   }
-  /* .card-titleR:hover {
-    @apply  group-hover/effect:
-  } */
-  /* .card-cityR:hover {
-    @apply  transition-opacity duration-300 group-hover/effect:opacity-100 
-  } */
-  /* .card-location:hover {
-    @apply group-hover:translate-y-[-65%] transition-opacity duration-300 group-hover:opacity-100
-  } */
-  .card-descR {
-    @apply  font-normal text-white  transition-opacity duration-500  md:mt-2
+
+  .card-title {
+    @apply absolute top-[10%] py-[2%] group-hover:top-[1%] overflow-hidden line-clamp-none  bg-[hsl(var(--Themer-accent)/0.8)]  rounded-lg px-3 group-hover:bg-transparent
+  }
+  .card-city {
+    @apply hidden  group-hover:block absolute top-[18%]  bg-[hsl(var(--Themer-accent)/0.7)] px-3 pb-1  rounded-lg group-hover:bg-transparent
+  }
+  .card-country {
+    @apply hidden group-hover:block absolute top-[25%]  bg-[hsl(var(--Themer-accent)/0.7)] px-3  rounded-lg group-hover:bg-transparent
+  }
+
+  .desc-div{
+    @apply absolute group-hover:top-[35%] h-full inset-x-0 overflow-y-auto
+  }
+
+  .card-desc {
+    @apply   font-normal text-white  transition-opacity duration-500 h-[50%]
   }
   .nav-bar-buttons{
-    @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))]
+    @apply hover:bg-[hsl(var(--Themer-accent-contrast))] hover:text-[color:hsl(var(--Themer-contrast))] 
   }
 
 }
