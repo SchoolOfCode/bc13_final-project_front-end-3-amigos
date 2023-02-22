@@ -1,4 +1,10 @@
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .fade-anim img {
   animation: fadeAnim 0.5s ease-out;
 }
@@ -123,16 +129,15 @@
   /* ThemeSwitcher CSS */
   .Themer-wrapper {
     position: fixed;
-    bottom: 0;
     left: 0;
     z-index: 100;
     --wrapperSize: clamp(4em, 3vmax, 7em);
-    padding: 0.5em 2em;
+    padding: 1em 2em;
     width: 100vw;
     display: grid;
     --Themer-size: 1.5rem;
     place-items: center;
-
+    @apply  bottom-[27%] mob:bottom-[20%] mob-xl:bottom-[15.5%] sm:bottom-[9%]
   }
   .Themer-btns {
     display: flex;
@@ -221,6 +226,11 @@
     --module-bg-lum-loader: 27%;
     --module-bg-loader: hsl(var(--hue-loader), var(--module-bg-sat-loader), var(--module-bg-lum-loader));
   }
+
+  /* This is here due to tailwind css line-clamp plug-in having property overflow:hidden so have overwritten in components layer */
+  /* .card-descR {
+    @apply  line-clamp-2 mob:line-clamp-3 mob-xl:line-clamp-5 
+  } */
 }
 
 
@@ -280,42 +290,22 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
   /* prefers reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    :root {
+    :root,
+    *,
+    *::before,
+    *::after {
       --Themer-tspeed-slow: 50ms;
       --Themer-tspeed-fast: 50ms;
+      animation-duration: 0.01ms
+        !important;
+        animation-iteration-count: 1
+        !important;
+        transition-duration: 0.01ms
+        !important;
+        scroll-behavior: auto !important; 
+        transition-delay: 0ms !important;
     }
   }
-
-
-  /* Tailwind method of dealing with devices that support hover */
-  
-  @media (hover: hover) and (pointer: fine) {
-    .card-container:hover {
-      @apply   transition-shadow  hover:shadow-black/30
-    }
-    .card-image:hover {
-      @apply  transition-transform duration-500  group-hover:scale-125
-     }
-     .card-gradient-bg:hover {
-      background-color: hsl(var(--Themer-accent)/ 0.3);
-      @apply  from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30
-    }
-    .card-info-transition:hover {
-      @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
-    }
-    .card-city:hover {
-      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%
-    }
-    .card-location:hover {
-      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100
-    }
-    .card-desc:hover {
-      @apply text-lg font-normal text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto
-    }
-    .nav-bar-buttons:hover{
-      @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))]
-    }
-}
 
 .html-div {
   @apply min-w-full min-h-full overflow-x-hidden
@@ -341,7 +331,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 }
 
 .nav-bar-hamburger {
-  @apply absolute inset-y-0 right-0 z-[100000] lg:hidden pb-[1vh]
+  @apply absolute inset-y-0 right-0 z-10 lg:hidden pb-[1vh]
 }
 
 .nav-bar-lg-menu {
@@ -357,11 +347,11 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 }
 
 .burger-overlay{
- @apply  lg:hidden z-[10000]  absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
+ @apply  md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
 }
 
 .burger-overlay-hidden{
-  @apply lg:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300
+  @apply md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300
 }
 
 .burger-overlay-links{
@@ -388,20 +378,85 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   .register-button {
     @apply h-10 px-3 m-1 mb-2 cursor-pointer rounded-xl bg-zinc-700 hover:bg-google-dark-red text-skin-base w-52;
   }
+
+  /* Cards revamped */
+
+  .card-displayR {
+    @apply grid gap-6 
+  }
+
+  .card-containerR {
+    @apply relative items-center overflow-hidden md:mb-[5%] 
+  }
+
+  .single-cardR {
+    @apply mx-auto h-[80vh] w-[100%] mob:h-[65vh] transition-shadow rounded-xl mt-[30%] sm:mt-[20%] md:mt-[35%]
+  }
+
+  .card-info-transitionR {
+    @apply absolute inset-0 flex  flex-col items-center justify-center  text-center  
+  }
+
+/* 
+
+*/
+
+  .card-gradient-bgR {
+    @apply  w-full h-full flex flex-col absolute inset-0  text-center   items-center justify-center  bg-[color:hsl(var(--Themer-accent)/0.2)] bg-opacity-90 bg-gradient-to-b overflow-hidden text-ellipsis rounded-xl
+  }
+
+
+ 
+  /*     display: -webkit-box;
+      overflow-y:scroll;
+      overflow-x:hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp:   1 ; */
+  .card-titleR {
+    @apply font-bold text-center inset-x-0 pt-[2%] text-lg mob-xl:text-xl sm:text-3xl  
+  }
+  .card-cityR {
+    @apply font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-2xl
+  }
+  
+  /* .card-suburbR {
+    @apply text-center inset-x-0 text-sm
+  } */
+  .card-countryR {
+    @apply text-center inset-x-0   text-sm mob-xl:text-lg sm:text-xl
+  }
+
+  .card-imageR {
+    @apply  z-[2]  inset-x-0    rounded-xl mx-auto  max-h-[40%] min-w-[90%]  sm:min-h-[60%] sm:min-w-[90%]      transition-transform duration-500  
+  }
+
+  .card-descR {
+    @apply text-center  mt-[60%] mob:mt-[68%] sm:mt-[55%]  md:mt-[100%] mb-[3%] inset-x-0 max-w-[98%]   align-middle   mob-xl:text-lg    md:text-xl  overflow-y-auto 
+  }
+
+  .card-action-containerR {
+    @apply   flex  items-center mb-[1%] gap-10 mt-auto
+  }
+  .card-btnR {
+    @apply Themer-btns font-bold rounded-full text-sm capitalize 
+  }
+
+/* Cards */
+
   .card-display {
-    @apply z-[10] mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+    @apply z-10 mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
   }
   .card-container {
     @apply relative items-center justify-center mt-10 overflow-hidden transition-shadow rounded-lg cursor-pointer bg-opacity-70 md:bg-none md:bg-opacity-0 ;
   }
   .single-card {
-    @apply mx-auto mt-16 mb-6 sm:mb-0 sm:mt-0 h-96 w-72 sm:h-96;
+    @apply mx-auto mt-16 mb-6 sm:mb-0 sm:mt-0 h-96 w-72 ;
   }
   .card-image {
     @apply mt-35%   md:mt-0  h-50% rounded-xl sm:h-full mx-auto sm:w-full md:object-cover transition-transform duration-500  group-hover:scale-125;
   }
   .card-gradient-bg {
-    @apply absolute inset-0   bg-[color:hsl(var(--Themer-accent)/0.25)] bg-opacity-90 bg-gradient-to-b md:from-transparent via-transparent to-[color:hsl(var(--Themer-accent))]
+    @apply absolute inset-0 bg-[color:hsl(var(--Themer-accent)/0.25)] bg-opacity-90 bg-gradient-to-b md:from-transparent via-transparent to-[color:hsl(var(--Themer-accent))]
   }
   /* use below class for mob view no transition */
   .card-info-static {
@@ -484,11 +539,11 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .footer {
-  @apply   p-[1em] min-w-full mt-auto  bg-[color:hsl(var(--Themer-nav))] 
+  @apply  flex flex-col p-[1em] min-w-full mt-auto  bg-[color:hsl(var(--Themer-nav))]  
   }
 
   .footer-items-container {
-    @apply   flex-row font-bold justify-center p-1 m-2 text-center [color:hsl(var(--Themer-text))] 
+    @apply flex-row font-bold justify-center p-1 m-2 text-center [color:hsl(var(--Themer-text))] 
   }
 
   .about-us-container {
@@ -496,7 +551,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .about-us-attribute {
-    @apply flex items-center z-[100]  justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]
+    @apply flex items-center justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]
   }
 
   .Jo-p{
@@ -513,16 +568,69 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
     @apply  absolute inset-x-0 top-[25vmax]  flex justify-center mx-auto ;
   }
 
-  .fav-search-bar-container {
-    @apply   mt-[25vmax]   flex justify-center mx-auto ;
-  }
-
-  .fav-search-bar {
-    @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg ;
-  }
+  /* Tailwind method of dealing with devices that support hover */
   
+/* 
+    @media (hover: hover) and (pointer: fine) {
+    .card-container:hover {
+      @apply   transition-shadow  hover:shadow-black/30
+    }
+    .card-image:hover {
+      @apply  transition-transform duration-500  group-hover:scale-125
+     }
+     .card-gradient-bg:hover {
+      background-color: hsl(var(--Themer-accent)/ 0.3);
+      @apply  from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30
+    }
+    .card-info-transition:hover {
+      @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0
+    }
+    .card-city:hover {
+      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%
+    }
+    .card-location:hover {
+      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100
+    }
+    .card-desc:hover {
+      @apply text-lg font-normal text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto
+    }
+    .nav-bar-buttons:hover{
+      @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))]
+    }
 
-  .fav-card-display {
-    @apply   mt-[5vh]  mb-[5%]  grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+}
+*/
+
+@media (hover: hover) and (pointer: fine) {
+  .card-containerR  {
+    @apply   transition-shadow  hover:shadow-black/30 duration-500 rounded-xl
   }
+  .card-imageR  {
+    @apply absolute transition-transform group-hover:duration-500  group-hover:scale-125 z-[0] top-0 object-cover opacity-70 md:min-h-[100%] rounded-xl
+   }
+   .card-info-transitionR  {
+     @apply translate-y-[75%]  group-hover:translate-y-0 group-hover:duration-500 group-hover:transition-all transition-all 
+   }
+   .card-gradient-bgR  {
+    @apply bg-[color:hsl(var(--Themer-accent)/0.2)]  from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30  overflow-hidden 
+  }
+  /* .card-titleR:hover {
+    @apply  group-hover/effect:
+  } */
+  /* .card-cityR:hover {
+    @apply  transition-opacity duration-300 group-hover/effect:opacity-100 
+  } */
+  /* .card-location:hover {
+    @apply group-hover:translate-y-[-65%] transition-opacity duration-300 group-hover:opacity-100
+  } */
+  .card-descR {
+    @apply  font-normal text-white  transition-opacity duration-500  md:mt-2
+  }
+  .nav-bar-buttons{
+    @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))]
+  }
+
+}
+
+
 }
