@@ -1,19 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-function JournalForm() {
+function JournalForm({user}) {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({});
 
+
   return (
     <div className="bg-green-200 min-h-screen flex items-center">
       <div className="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
         <form
           onSubmit={handleSubmit((data) => {
-            console.log(data);
+            console.log({...data, uid: user.uid});
           })}
           classNameName="line-height: 1rem;"
         >

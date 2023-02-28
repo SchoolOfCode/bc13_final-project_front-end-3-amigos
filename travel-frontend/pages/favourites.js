@@ -11,7 +11,6 @@ import DynamicSearchBar from "../components/Favourites/DynamicSearch.js";
 function Favourites() {
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
-
   const [fav, setFav] = useState([]);
   const [filterData, setFilterData] = useState([]);
 
