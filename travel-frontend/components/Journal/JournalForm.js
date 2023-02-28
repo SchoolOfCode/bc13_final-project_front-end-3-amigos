@@ -9,12 +9,12 @@ function JournalForm({ user }) {
     formState: { errors },
   } = useForm({});
 
-const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`
+  const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
 
-async function postNewEntry(newJournal){
-  let res = await axios.post(URL, newJournal)
-  return res;
-}
+  async function postNewEntry(newJournal) {
+    let res = await axios.post(URL, newJournal);
+    return res;
+  }
 
   return (
     <div className="bg-green-200 min-h-screen flex items-center">
@@ -22,9 +22,9 @@ async function postNewEntry(newJournal){
         <form
           onSubmit={handleSubmit((data) => {
             let newJournal = { ...data, uid: user.uid };
-  
+
             let res = postNewEntry(newJournal);
-       console.log("AXIOS RESPONSEL", res)
+            console.log("AXIOS RESPONSEL", res);
           })}
           classNameName="line-height: 1rem;"
         >
