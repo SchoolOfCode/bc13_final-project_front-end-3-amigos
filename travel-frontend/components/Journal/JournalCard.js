@@ -1,7 +1,7 @@
 import React from "react";
 
 function JournalCard({ title, location, date, text }) {
-  console.log("DATA AT JOUNRAL CARD:", title, location, date, text);
+  // console.log("DATA AT JOUNRAL CARD:", title, location, date, text);
   return (
     <div class="container my-12 mx-auto px-4 md:px-12">
       <div class="flex flex-wrap -mx-1 lg:-mx-4">
