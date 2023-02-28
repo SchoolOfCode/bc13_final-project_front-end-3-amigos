@@ -29,7 +29,7 @@ const journalData = [
   },
 ];
 
-function JournalDataDisplay() {
+function JournalDataDisplay({ journal }) {
   return (
     <div>
       {journalData.map((data) => {
