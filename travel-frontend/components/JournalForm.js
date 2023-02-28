@@ -10,12 +10,16 @@ function JournalForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="location" />
-        <input type="text" placeholder="title" />
-        <input type="text" placeholder="date" />
-        <input type="text" placeholder="text" />
-
+      <form onSubmit={handleSubmit(data => {
+				console.log(data);})}>
+        <input type="text" placeholder="location" {...register("location", { required: "Location is required" })}/>
+        <p>{errors.location?.message}</p>
+        <input type="text" placeholder="title" {...register("title", { required: "Title is required" })}/>
+        <p>{errors.title?.message}</p>
+        <input type="date" placeholder="date" {...register("date", { required: "Date is required" })}/>
+        <p>{errors.date?.message}</p>
+        <input type="text" placeholder="text" {...register("text", { required: "Text is required" })}/>
+        <p>{errors.title?.message}</p>
         <br />
         <button type="submit">Submit</button>
       </form>
