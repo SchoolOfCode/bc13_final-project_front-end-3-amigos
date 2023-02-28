@@ -6,6 +6,7 @@ const Journal = () => {
   return (
     <div>
       <JournalForm />
+      
     </div>
   );
 };

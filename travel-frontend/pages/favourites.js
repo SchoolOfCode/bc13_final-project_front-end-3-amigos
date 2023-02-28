@@ -8,6 +8,8 @@ import FavResultCardContainer from "../components/Favourites/FavResultsCardConta
 import Footer from "../components/Footer.js";
 import DynamicSearchBar from "../components/Favourites/DynamicSearch.js";
 import JournalForm from "../components/Journal/JournalForm.js";
+import JournalCard from "../components/Journal/JournalCard.js";
+import JournalDataDisplay from "../components/Journal/JournalData.js";
 
 function Favourites() {
   const auth = getAuth(app);
@@ -69,6 +71,8 @@ function Favourites() {
         />
       )}
       <JournalForm />
+      <JournalDataDisplay/>
+
     </>
   );
 }
