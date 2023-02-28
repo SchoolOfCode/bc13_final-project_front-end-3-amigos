@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 function JournalForm({user}) {
   const {
@@ -14,7 +15,8 @@ function JournalForm({user}) {
       <div className="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
         <form
           onSubmit={handleSubmit((data) => {
-            console.log({...data, uid: user.uid});
+            let newJournal = {...data, uid: user.uid}
+            // let res = await axios.post("#", newJournal)
           })}
           classNameName="line-height: 1rem;"
         >
