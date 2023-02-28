@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import FavResultCardContainer from "../components/Favourites/FavResultsCardContainer";
 import Footer from "../components/Footer.js";
 import DynamicSearchBar from "../components/Favourites/DynamicSearch.js";
-import JournalForm from "../components/JournalForm.js";
+import JournalForm from "../components/Journal/JournalForm.js";
 
 function Favourites() {
   const auth = getAuth(app);
