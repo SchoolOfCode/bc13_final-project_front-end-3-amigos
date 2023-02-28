@@ -9,59 +9,58 @@ function JournalForm() {
   } = useForm({});
 
   return (
-    <div class="bg-green-200 min-h-screen flex items-center">
-      <div class="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
+    <div className="bg-green-200 min-h-screen flex items-center">
+      <div className="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
         <form
           onSubmit={handleSubmit((data) => {
             console.log(data);
           })}
-          className="line-height: 1rem;"
+          classNameName="line-height: 1rem;"
         >
-          <div class="flex items-center mb-5">
+          <div className="flex items-center mb-5">
             <input
               type="text"
-              placeholder="location"
+              placeholder="Where did you go?"
               {...register("location", { required: "Location is required" })}
-              lass="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
+              className="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
             />
             <p>{errors.location?.message}</p>
           </div>
 
-          <div class="flex items-center mb-10">
+          <div className="flex items-center mb-10">
             <input
               type="text"
-              placeholder="title"
+              placeholder="Title"
               {...register("title", { required: "Title is required" })}
-              class="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
+              className="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
             />
             <p>{errors.title?.message}</p>
           </div>
 
-          <div class="flex items-center mb-10">
+          <div className="flex items-center mb-10">
             <input
               type="date"
-              placeholder="date"
               {...register("date", { required: "Date is required" })}
-              class="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
+              className="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
             />
             <p>{errors.date?.message}</p>
           </div>
-          <div class="flex items-center mb-10">
+          <div className="flex items-center mb-10">
             <textarea
               type="textarea"
-              placeholder="text"
+              placeholder="Write something about .."
               {...register("text", { required: "Text is required" })}
-              class="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
+              className="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
               rows="4"
               cols="50"
             />
             <p>{errors.title?.message}</p>
           </div>
           <br />
-          <div class="text-right">
+          <div className="text-right">
             <button
               type="submit"
-              class="py-3 px-8 bg-green-500 text-green-100 font-bold rounded"
+              className="py-3 px-8 bg-green-500 text-green-100 font-bold rounded"
             >
               Add New Journal
             </button>
