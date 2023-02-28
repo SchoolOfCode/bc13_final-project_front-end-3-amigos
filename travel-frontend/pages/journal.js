@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import { app } from "../firebase/firebase.js";
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 const Journal = () => {
   const auth = getAuth(app);
   const [user] = useAuthState(auth);
