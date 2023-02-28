@@ -1,11 +1,30 @@
-import Footer from "../components/Footer";
-
+import JournalForm from "../components/Journal/JournalForm";
+import JournalDataDisplay from "../components/Journal/JournalData";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
+import { app } from "../firebase/firebase.js";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Journal = () => {
+  const auth = getAuth(app);
+  const [user] = useAuthState(auth);
+  const [journals, setJournals] = useState([]);
+
+  const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
+
+  useEffect(() => {
+    async function getJournalData() {
+      const entries = await axios.get(URL);
+      setJournals(entries.data.payload);
+      console.log(entries.data.payload, "what are you");
+    }
+    getJournalData();
+  }, []);
+
   return (
-    <div className="min-h-screen ">
-      <h1>Journal your travels</h1>
-      <img  src="https://img.i-scmp.com/cdn-cgi/image/fit=contain,width=1098,format=auto/sites/default/files/styles/1200x800/public/images/methode/2018/04/10/6d76192e-3bdc-11e8-b6d9-57447a4b43e5_1280x720_110114.JPG?itok=gfu_JyUK" />
-      <Footer />
+    <div>
+      <JournalForm user={user} />
+      <JournalDataDisplay dataJournal={journals} />
     </div>
   );
 };
