@@ -10,20 +10,29 @@ const Journal = () => {
   const [user] = useAuthState(auth);
   const [journals, setJournals] = useState([]);
 
-  const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
-
   useEffect(() => {
-    async function getJournalData() {
+      if (user) {
+        getJournalData()   
+     }
+    
+  }, [user]);
+
+  async function getJournalData() {
+      const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
       const entries = await axios.get(URL);
       setJournals(entries.data.payload);
-      console.log(entries.data.payload, "what are you");
-    }
-    getJournalData();
-  }, []);
+    
+  }
+  async function postNewEntry(newJournal) {
+    const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
+    let res = await axios.post(URL, newJournal);
+    await getJournalData()
+    return res;
+  }
 
   return (
     <div>
-      <JournalForm user={user} />
+      {user && <JournalForm user={user} postNewEntry={postNewEntry}/>}
       <JournalDataDisplay dataJournal={journals} />
     </div>
   );
