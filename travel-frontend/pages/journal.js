@@ -10,20 +10,20 @@ const Journal = () => {
   const [user] = useAuthState(auth);
   const [journals, setJournals] = useState([]);
 
-  const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
-
   useEffect(() => {
     async function getJournalData() {
-      const entries = await axios.get(URL);
-      setJournals(entries.data.payload);
-      console.log(entries.data.payload, "what are you");
+      if (user) {
+        const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
+        const entries = await axios.get(URL);
+        setJournals(entries.data.payload);
+      }
     }
     getJournalData();
-  }, []);
+  }, [user]);
 
   return (
     <div>
-      <JournalForm user={user} />
+      {user && <JournalForm user={user} />}
       <JournalDataDisplay dataJournal={journals} />
     </div>
   );
