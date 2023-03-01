@@ -1,30 +1,25 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
-function JournalForm({ user }) {
+import { useRouter } from "next/router";
+function JournalForm({ user, postNewEntry }) {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({});
 
-  const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
+  
 
-  async function postNewEntry(newJournal) {
-    let res = await axios.post(URL, newJournal);
-    return res;
-  }
-
+  
   return (
     <div className="bg-green-200 min-h-screen flex items-center">
       <div className="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
         <form
           onSubmit={handleSubmit((data) => {
             let newJournal = { ...data, uid: user.uid };
-
             let res = postNewEntry(newJournal);
-            console.log("AXIOS RESPONSEL", res);
           })}
           classNameName="line-height: 1rem;"
         >
