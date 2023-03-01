@@ -42,10 +42,7 @@ function ApiResultCard({
                       See more
                     </a>
                   </button>
-                  <button className=" card-btn">
                     <FavouritesButton props={newFavourite}  />
-                  </button>
-                 
           </div>
         </div>
         </div>

@@ -436,7 +436,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .single-card {
-    @apply relative  mx-auto h-[80vh] w-[100%] mob:h-[65vh] md:portrait:h-[40vh]  transition-shadow rounded-xl 
+    @apply relative  mx-auto h-[80vh] w-[100%] max-md:landscape:h-[80vh]  mob:h-[65vh] md:portrait:h-[40vh]  transition-shadow rounded-xl 
   }
   
   /* 
@@ -466,24 +466,24 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   sm:landscape:mt-[3%] md:landscape:mt-[5rem]
   */
   .card-city {
-    @apply absolute top-[7%]  font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-xl
+    @apply absolute top-[7%] max-md:landscape:top-[8%] font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-xl
   }
 
   .card-country {
-    @apply text-center absolute top-[12%]   inset-x-0   text-sm mob-xl:text-lg sm:text-xl 
+    @apply text-center absolute top-[12%] max-md:landscape:top-[15%]  inset-x-0   text-sm mob-xl:text-lg sm:text-xl 
   }
 
   .card-image {
-    @apply  z-[2]  inset-x-0 absolute top-[20%]   rounded-xl mx-auto  max-h-[40%] min-w-[90%]         
+    @apply  z-[2]  inset-x-0 absolute max-md:top-[25%]  sm:top-[20%]   rounded-xl mx-auto max-md:landscape:max-h-[40%] max-md:landscape:min-w-[40%]   portrait:max-h-[40%] portrait:min-w-[90%]       
   }
 
 .desc-div{
-  @apply absolute top-[62%] h-full inset-x-0 overflow-y-auto
+  @apply absolute top-[62%] h-full inset-x-0 overflow-y-auto max-md:landscape:top-[64%]
 }
 
 .card-desc {
   @apply text-center   inset-x-0 max-w-[98%]   align-middle   mob-xl:text-lg    md:text-xl  overflow-y-auto 
-  h-[25%]
+  h-[25%] max-md:landscape:h-[20%]
   }
 
 /* 
@@ -491,10 +491,10 @@ md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landsc
 */
 
   .card-action-container {
-    @apply   flex  items-center  gap-10 mt-auto absolute bottom-[1%]
+    @apply   flex  items-center  gap-20  absolute bottom-[2%] pb-1 max-md:landscape:bottom-[1%] 
   }
   .card-btn {
-    @apply Themer-btns font-bold rounded-full text-sm capitalize 
+    @apply Themer-btns font-bold rounded-full text-sm capitalize px-4 
   }
 
 
