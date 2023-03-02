@@ -35,6 +35,7 @@ const Journal = () => {
   async function deleteJournalEntry(id) {
     const URL = `${process.env.NEXT_PUBLIC_JOURNAL_URL}/${user.uid}/${id}`;
     let res = await axios.delete(URL);
+    await getJournalData();
     return res;
   }
 
