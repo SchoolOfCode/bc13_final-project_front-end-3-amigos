@@ -1,8 +1,5 @@
 import React from "react";
-import { FcEmptyTrash
-} from "react-icons/fc";
-
-
+import { SlTrash } from "react-icons/sl";
 
 function JournalCard({ title, location, date, text, id, deleteEntry }) {
   console.log("DATA AT JOUNRAL CARD:", id);
@@ -15,18 +12,17 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
             <div>
               <header class="flex items-left justify-between leading-tight p-2 md:p-4">
                 <h2 class="text-lg">{title}</h2>
-                <h6>{date.slice(0,10)}</h6>
+                <h6>{date.slice(0, 10)}</h6>
               </header>
               <h3 class="text-lg">{location}</h3>
               <p class="text-grey-darker text-sm">{text}</p>
-              <FcEmptyTrash
+              <SlTrash
                 id={id}
-                onClick={(e, id) => {
+                onClick={(e) => {
                   console.log(e.target.id, "id");
                   deleteEntry(e.target.id);
                 }}
               />
-                
             </div>
           </article>
         </div>
