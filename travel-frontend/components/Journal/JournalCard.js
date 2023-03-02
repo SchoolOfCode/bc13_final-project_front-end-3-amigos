@@ -1,7 +1,8 @@
 import React from "react";
 
-function JournalCard({ title, location, date, text }) {
-  // console.log("DATA AT JOUNRAL CARD:", title, location, date, text);
+function JournalCard({ title, location, date, text, id, deleteEntry }) {
+  console.log("DATA AT JOUNRAL CARD:", id);
+
   return (
     <div class="container my-2 mx-auto px-4 md:px-2">
       <div class="flex flex-wrap mx-1 lg:-mx-4">
@@ -14,6 +15,15 @@ function JournalCard({ title, location, date, text }) {
               </header>
               <h3 class="text-lg">{location}</h3>
               <p class="text-grey-darker text-sm">{text}</p>
+              <button
+                id={id}
+                onClick={(e, id) => {
+                  console.log(e.target.id, "id");
+                  deleteEntry(e.target.id);
+                }}
+              >
+                Delete Me
+              </button>
             </div>
           </article>
         </div>

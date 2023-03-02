@@ -29,7 +29,8 @@ import JournalCard from "./JournalCard";
 //   },
 // ];
 
-function JournalDataDisplay({ dataJournal }) {
+function JournalDataDisplay({ dataJournal, deleteEntry }) {
+  console.log(dataJournal);
   return (
     <div className="grid lg:grid-cols-3 gap-2">
       {dataJournal.map((data) => {
@@ -40,6 +41,8 @@ function JournalDataDisplay({ dataJournal }) {
               location={data.location}
               date={data.date}
               text={data.text}
+              id={data.id}
+              deleteEntry={deleteEntry}
             />
           );
         }
