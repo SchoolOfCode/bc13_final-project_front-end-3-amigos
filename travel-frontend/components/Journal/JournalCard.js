@@ -1,4 +1,7 @@
 import React from "react";
+import { AiOutlineRest} from "react-icons/ai";
+
+
 
 function JournalCard({ title, location, date, text, id, deleteEntry }) {
   console.log("DATA AT JOUNRAL CARD:", id);
@@ -11,19 +14,18 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
             <div>
               <header class="flex items-left justify-between leading-tight p-2 md:p-4">
                 <h2 class="text-lg">{title}</h2>
-                <h6>{date}</h6>
+                <h6>{date.slice(0,10)}</h6>
               </header>
               <h3 class="text-lg">{location}</h3>
               <p class="text-grey-darker text-sm">{text}</p>
-              <button
+              <AiOutlineRest
                 id={id}
                 onClick={(e, id) => {
                   console.log(e.target.id, "id");
                   deleteEntry(e.target.id);
                 }}
-              >
-                Delete Me
-              </button>
+              />
+                
             </div>
           </article>
         </div>
