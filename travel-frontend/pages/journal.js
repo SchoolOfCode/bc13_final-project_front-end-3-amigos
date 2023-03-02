@@ -40,7 +40,7 @@ const Journal = () => {
   }
 
   return (
-    <div className="mt-[10vh]">
+    <div className="mt-[10vh] bg-white">
       {user && <JournalForm user={user} postNewEntry={postNewEntry} />}
       <JournalDataDisplay
         dataJournal={journals}

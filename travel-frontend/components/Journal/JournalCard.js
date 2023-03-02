@@ -1,5 +1,6 @@
 import React from "react";
-import { AiOutlineRest} from "react-icons/ai";
+import { FcEmptyTrash
+} from "react-icons/fc";
 
 
 
@@ -18,7 +19,7 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
               </header>
               <h3 class="text-lg">{location}</h3>
               <p class="text-grey-darker text-sm">{text}</p>
-              <AiOutlineRest
+              <FcEmptyTrash
                 id={id}
                 onClick={(e, id) => {
                   console.log(e.target.id, "id");
