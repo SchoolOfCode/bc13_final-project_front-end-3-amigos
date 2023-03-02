@@ -31,7 +31,7 @@ const Journal = () => {
   }
 
   return (
-    <div>
+    <div className="mt-[10vh]">
       {user && <JournalForm user={user} postNewEntry={postNewEntry}/>}
       <JournalDataDisplay dataJournal={journals} />
     </div>

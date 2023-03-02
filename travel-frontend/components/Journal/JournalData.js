@@ -30,9 +30,8 @@ import JournalCard from "./JournalCard";
 // ];
 
 function JournalDataDisplay({ dataJournal }) {
-  console.log(dataJournal, "this is the journal");
   return (
-    <div>
+    <div className="grid lg:grid-cols-3 gap-2">
       {dataJournal.map((data) => {
         {
           return (

@@ -14,14 +14,14 @@ function JournalForm({ user, postNewEntry }) {
 
   
   return (
-    <div className="bg-green-200 min-h-screen flex items-center">
-      <div className="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
+    <div className="bg-gray-100 max-h-screen lg:max-h-[75vh] flex items-center mx-auto  lg:w-1/2">
+      <div className="bg-white p-10 md:w-2/3 max-h-[80%] mx-auto rounded">
         <form
           onSubmit={handleSubmit((data) => {
             let newJournal = { ...data, uid: user.uid };
             let res = postNewEntry(newJournal);
           })}
-          classNameName="line-height: 1rem;"
+          className="justify-center max-w-[60vw] line-height: 1rem;"
         >
           <div className="flex items-center mb-5">
             <input
@@ -63,14 +63,14 @@ function JournalForm({ user, postNewEntry }) {
             <p>{errors.title?.message}</p>
           </div>
           <br />
-          <div className="text-right">
+          
             <button
               type="submit"
-              className="py-3 px-8 bg-green-500 text-green-100 font-bold rounded"
+              className="py-3 px-8 bg-green-500 text-green-100 font-bold rounded mx-auto"
             >
               Add New Journal
             </button>
-          </div>
+    
         </form>
       </div>
     </div>
