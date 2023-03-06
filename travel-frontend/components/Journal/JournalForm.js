@@ -52,7 +52,7 @@ function JournalForm({ user, postNewEntry }) {
             type="textarea"
             placeholder="Write something about .."
             {...register("text", { required: "Text is required" })}
-            className="text-black border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
+            className="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
             rows="4"
             cols="50"
           />

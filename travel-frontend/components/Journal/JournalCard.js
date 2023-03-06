@@ -2,10 +2,10 @@ import React from "react";
 import { SlTrash } from "react-icons/sl";
 
 function JournalCard({ title, location, date, text, id, deleteEntry }) {
-  console.log("DATA AT JOUNRAL CARD:", id);
+  // console.log("DATA AT JOUNRAL CARD:", id);
 
   return (
-    <div className="bg-red-500 container my-2 px-2 md:px-2">
+    <div className=" card-display bg-red-500 container my-2 px-2 md:px-2">
       {/* <div className="flex flex-wrap mx-1 lg:-mx-4">
         <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-2 lg:w-1/3">
      <article className="overflow-hidden rounded-lg shadow-lg"> */}
@@ -19,7 +19,7 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
         <SlTrash
           id={id}
           onClick={(e) => {
-            console.log(e.target.id, "id");
+            // console.log(e.target.id, "id");
             deleteEntry(e.target.id);
           }}
         />
