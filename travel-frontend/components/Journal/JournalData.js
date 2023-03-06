@@ -32,7 +32,7 @@ import JournalCard from "./JournalCard";
 function JournalDataDisplay({ dataJournal, deleteEntry }) {
   console.log(dataJournal);
   return (
-    <div className="grid lg:grid-cols-3 gap-2">
+    <div className="grid lg:grid-cols-3 gap-2 mt-10">
       {dataJournal.map((data) => {
         {
           return (
