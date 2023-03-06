@@ -58,11 +58,7 @@ function JournalForm({ user, postNewEntry }) {
           />
           <p className="text-black">{errors.title?.message}</p>
         </div>
-        <button
-          type="submit"
-          className="journal-submit-btn text-black"
-          // className="py-3 px-8 bg-green-500 text-green-100 font-bold rounded mx-auto"
-        >
+        <button type="submit" className="journal-submit-btn text-black">
           Add New Journal
         </button>
       </form>

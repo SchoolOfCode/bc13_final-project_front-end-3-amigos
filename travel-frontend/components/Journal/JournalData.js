@@ -37,6 +37,7 @@ function JournalDataDisplay({ dataJournal, deleteEntry }) {
         {
           return (
             <JournalCard
+              key={data.id}
               title={data.title}
               location={data.location}
               date={data.date}
