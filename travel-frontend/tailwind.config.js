@@ -68,8 +68,6 @@ module.exports = {
     },
   },
   plugins: [
-    // allows for line clamps
-    require('@tailwindcss/line-clamp'),
     require("tailwindcss-themer")({
       defaultTheme: {
         extend: {
