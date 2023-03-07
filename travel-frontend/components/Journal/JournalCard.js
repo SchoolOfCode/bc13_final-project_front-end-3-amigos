@@ -21,7 +21,7 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
           {text}
         </p>
         <SlTrash
-          className="justify-between leading-tight ml-auto h-6 w-6"
+          className="justify-between leading-tight ml-auto h-7 w-7 mr-5 mb-5"
           id={id}
           onClick={(e) => {
             // console.log(e.target.id, "id");
