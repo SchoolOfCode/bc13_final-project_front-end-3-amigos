@@ -1,7 +1,7 @@
 import React from "react";
 import { SlTrash } from "react-icons/sl";
 
-function JournalCard({ title, location, date, text, id, deleteEntry }) {
+function JournalCard({ title, location, date, text, id, deleteEntry, user }) {
   // console.log("DATA AT JOUNRAL CARD:", id);
 
   return (
@@ -12,15 +12,7 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
       <div>
         <header className="flex items-left justify-between leading-tight pl-2 md:pl-4 pt-8">
           <h2 className="text-xl font-bold leading-tight ">{title}</h2>
-          <h6 className="italic ">{date.slice(0, 10)}</h6>
-        </header>
-        <h3 className="text-lg font-bold flex items-left justify-between leading-tight pl-2 md:pl-4">
-          {location}
-        </h3>
-        <p className="text-grey-darker text-lg flex items-left justify-between leading-tight p-2 md:p-4 text-justify">
-          {text}
-        </p>
-        <SlTrash
+          <SlTrash
           className="justify-between leading-tight ml-auto h-7 w-7 mr-5 mb-5"
           id={id}
           onClick={(e) => {
@@ -28,6 +20,15 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
             deleteEntry(e.target.id);
           }}
         />
+         
+        </header>
+        <h3 className="text-lg font-bold flex items-left justify-between leading-tight pl-2 md:pl-4">
+          {location}
+        </h3>
+        <p className="text-grey-darker text-lg flex items-left justify-between leading-tight p-2 md:p-4 text-justify">
+          {text}
+        </p>
+        <h6 className="italic text-right pr-10 pb-5">{user.displayName}, {date.slice(0, 10)}</h6>
       </div>
       {/* </article>
         </div>

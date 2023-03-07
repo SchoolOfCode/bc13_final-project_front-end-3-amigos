@@ -9,7 +9,7 @@ function JournalForm({ user, postNewEntry }) {
     handleSubmit,
     formState: { errors },
   } = useForm({});
-
+console.log("USERL", user)
   return (
     <div className="bg-pink-50 drop-shadow-lg  p-10 md:w-2/3 rounded-xl lg:max-h-[55vh] flex items-center justify-center mx-auto  lg:w-1/2 ">
       <form
@@ -19,7 +19,7 @@ function JournalForm({ user, postNewEntry }) {
         })}
         className="justify-center max-w-[60vw] line-height: 1rem;"
       >
-        <h1 className="font-bold text-xl">Fill out your travel journal...</h1>
+        <h1 className="font-bold text-xl">Fill in your journal...</h1>
         <div className="flex items-center mb-5 mt-10">
           <input
             type="text"

@@ -2,7 +2,7 @@ import React from "react";
 
 import JournalCard from "./JournalCard";
 
-function JournalDataDisplay({ dataJournal, deleteEntry }) {
+function JournalDataDisplay({ dataJournal, deleteEntry, user }) {
   // console.log(dataJournal);
   return (
     <div className=" card-display-journal">
@@ -17,6 +17,7 @@ function JournalDataDisplay({ dataJournal, deleteEntry }) {
               text={data.text}
               id={data.id}
               deleteEntry={deleteEntry}
+              user={user}
             />
           );
         }
