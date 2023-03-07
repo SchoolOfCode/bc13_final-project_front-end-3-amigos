@@ -459,22 +459,22 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
     overflow-x:hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp:   1 ;
-    @apply absolute top-[0.1%] font-bold text-center inset-x-0    text-lg mob-xl:text-xl sm:text-3xl  sm:landscape:text-xl md:portrait:text-lg md:portrait:font-extrabold md:landscape:text-2xl
+    @apply absolute top-0 font-bold text-center inset-x-0    text-lg mob-xl:text-2xl sm:text-3xl  sm:landscape:text-xl md:portrait:text-lg md:portrait:font-extrabold md:landscape:text-2xl
   }
 
   /* 
   sm:landscape:mt-[3%] md:landscape:mt-[5rem]
   */
   .card-city {
-    @apply absolute top-[7%] max-md:landscape:top-[8%] font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-xl
+    @apply absolute top-[7%] max-lg:landscape:top-[8%] font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-xl
   }
 
   .card-country {
-    @apply text-center absolute top-[12%] max-md:landscape:top-[15%]  inset-x-0   text-sm mob-xl:text-lg sm:text-xl 
+    @apply text-center absolute top-[12%] max-lg:landscape:top-[15%]  inset-x-0   text-sm mob-xl:text-lg sm:text-xl 
   }
 
   .card-image {
-    @apply  z-[2]  inset-x-0 absolute max-md:top-[25%]  sm:top-[20%]   rounded-xl mx-auto max-md:landscape:max-h-[40%] max-md:landscape:min-w-[40%]   portrait:max-h-[40%] portrait:min-w-[90%]       
+    @apply  z-[2]  inset-x-0 absolute max-lg:top-[20%]  sm:top-[20%] landscape:top-[25%] landscape:xl:top-[20%]  rounded-xl mx-auto landscape:max-h-[40%] max-md:landscape:min-w-[40%]   portrait:max-h-[40%] portrait:min-w-[90%]       
   }
 
 .desc-div{
@@ -483,7 +483,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 
 .card-desc {
   @apply text-center   inset-x-0 max-w-[98%]   align-middle   mob-xl:text-lg    md:text-xl  overflow-y-auto 
-  h-[25%] max-md:landscape:h-[20%]
+  h-[25%] max-lg:landscape:h-[20%]
   }
 
 /* 
