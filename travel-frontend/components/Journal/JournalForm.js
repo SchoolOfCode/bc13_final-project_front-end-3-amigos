@@ -7,6 +7,7 @@ function JournalForm({ user, postNewEntry }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({});
 console.log("USERL", user)
@@ -16,6 +17,7 @@ console.log("USERL", user)
         onSubmit={handleSubmit((data) => {
           let newJournal = { ...data, uid: user.uid };
           let res = postNewEntry(newJournal);
+          reset();
         })}
         className="justify-center max-w-[60vw] line-height: 1rem;"
       >
