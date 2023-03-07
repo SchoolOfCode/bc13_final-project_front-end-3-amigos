@@ -2,10 +2,10 @@ import React from "react";
 
 import JournalCard from "./JournalCard";
 
-function JournalDataDisplay({ dataJournal, deleteEntry }) {
+function JournalDataDisplay({ dataJournal, deleteEntry, user }) {
   // console.log(dataJournal);
   return (
-    <div className="grid lg:grid-cols-3 gap-2 mt-10">
+    <div className=" card-display-journal lg:grid-cols-3">
       {dataJournal.map((data) => {
         {
           return (
@@ -17,6 +17,7 @@ function JournalDataDisplay({ dataJournal, deleteEntry }) {
               text={data.text}
               id={data.id}
               deleteEntry={deleteEntry}
+              user={user}
             />
           );
         }
