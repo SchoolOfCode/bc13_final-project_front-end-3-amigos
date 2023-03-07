@@ -11,7 +11,7 @@ function JournalCard({ title, location, date, text, id, deleteEntry, user }) {
      <article className="overflow-hidden rounded-lg shadow-lg"> */}
       <div>
         <header className="flex items-left justify-between leading-tight pl-2 md:pl-4 pt-8">
-          <h2 className="text-xl font-bold leading-tight ">{title}</h2>
+          <h2 className="text-2xl font-bold leading-tight ">{title}</h2>
           <SlTrash
           className="justify-between leading-tight ml-auto h-7 w-7 mr-5 mb-5"
           id={id}
