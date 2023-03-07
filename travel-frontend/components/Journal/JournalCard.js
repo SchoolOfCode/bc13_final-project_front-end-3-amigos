@@ -5,12 +5,12 @@ function JournalCard({ title, location, date, text, id, deleteEntry, user }) {
   // console.log("DATA AT JOUNRAL CARD:", id);
 
   return (
-    <div className="card-display-journal  bg-pink-200 container rounded-xl my-2 px-2 md:px-2 mx-20">
+    <div className="container px-2 mx-20 my-2 text-black bg-pink-200 card-display-journal rounded-xl md:px-2">
       <div>
-        <header className="flex items-left justify-between leading-tight pl-2 md:pl-4 pt-8">
+        <header className="flex justify-between pt-8 pl-2 leading-tight items-left md:pl-4">
           <h2 className="text-2xl font-bold leading-tight ">{title}</h2>
           <SlTrash
-            className="justify-between leading-tight ml-auto h-7 w-7 mr-5 mb-5"
+            className="justify-between mb-5 ml-auto mr-5 leading-tight h-7 w-7"
             id={id}
             onClick={(e) => {
               // console.log(e.target.id, "id");
@@ -18,13 +18,13 @@ function JournalCard({ title, location, date, text, id, deleteEntry, user }) {
             }}
           />
         </header>
-        <h3 className="text-lg font-bold flex items-left justify-between leading-tight pl-2 md:pl-4">
+        <h3 className="flex justify-between pl-2 text-lg font-bold leading-tight items-left md:pl-4">
           {location}
         </h3>
-        <p className="text-grey-darker text-lg flex items-left justify-between leading-tight p-2 md:p-4 text-justify">
+        <p className="flex justify-between p-2 text-lg leading-tight text-justify items-left md:p-4">
           {text}
         </p>
-        <h6 className="italic text-right pr-10 pb-5">
+        <h6 className="pb-5 pr-10 italic text-right">
           {user.displayName}, {date.slice(0, 10)}
         </h6>
       </div>

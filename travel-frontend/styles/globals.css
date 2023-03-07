@@ -301,10 +301,10 @@
 
   @media (hover: hover) and (pointer: fine) {
     .card-container:hover {
-      @apply transition-shadow  hover:shadow-black/30;
+      @apply transition-shadow hover:shadow-black/30;
     }
     .card-image:hover {
-      @apply transition-transform duration-500  group-hover:scale-125;
+      @apply transition-transform duration-500 group-hover:scale-125;
     }
     .card-gradient-bg:hover {
       background-color: hsl(var(--Themer-accent) / 0.3);
@@ -317,10 +317,10 @@
       @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%;
     }
     .card-location:hover {
-      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100;
+      @apply text-white transition-opacity duration-300 opacity-50 group-hover:opacity-100;
     }
     .card-desc:hover {
-      @apply text-lg font-normal text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto;
+      @apply overflow-y-auto text-lg font-normal text-white transition-opacity duration-300 opacity-0 group-hover:opacity-100 text-ellipsis;
     }
     .nav-bar-buttons:hover {
       @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))];
@@ -365,7 +365,7 @@
   }
 
   .burger-overlay {
-    @apply md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300;
+    @apply absolute top-0 bottom-0 right-0 flex items-center justify-center w-full h-screen text-left duration-300 ease-in bg-black md:hidden;
   }
 
   .burger-overlay-hidden {
@@ -404,7 +404,7 @@
   }
 
   .card-display-journal {
-    @apply z-10 mt-[10vh]   lg:grid-cols-1  grid gap-6  sm:grid-cols-1 place-items-center drop-shadow-md;
+    @apply z-10 mt-[10vh]   lg:grid-cols-1  grid gap-6  sm:grid-cols-1 place-items-center drop-shadow-md text-[color:hsl(var(--Themer-text))] ; 
   }
 
   .card-container {
@@ -416,7 +416,7 @@
   }
 
   .card-info-transition {
-    @apply inset-0 flex  flex-col items-center justify-center  text-center;
+    @apply inset-0 flex flex-col items-center justify-center text-center;
   }
 
   .card-gradient-bg {
@@ -424,7 +424,7 @@
   }
   /* use below class for mob view no transition */
   .card-info-static {
-    @apply absolute inset-0 flex flex-col items-center justify-center px-9 text-center;
+    @apply absolute inset-0 flex flex-col items-center justify-center text-center px-9;
   }
   .card-info-transition {
     @apply absolute inset-0 flex md:translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0;
@@ -436,7 +436,7 @@
     overflow-x: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    @apply absolute top-0 font-bold text-center inset-x-0    text-lg mob-xl:text-2xl sm:text-3xl  sm:landscape:text-xl md:portrait:text-lg md:portrait:font-extrabold md:landscape:text-2xl;
+    @apply absolute inset-x-0 top-0 text-lg font-bold text-center mob-xl:text-2xl sm:text-3xl sm:landscape:text-xl md:portrait:text-lg md:portrait:font-extrabold md:landscape:text-2xl;
   }
 
   .card-city {
@@ -508,7 +508,7 @@
   }
 
   .carousel-recommended-container {
-    @apply absolute inset-x-0   bottom-0;
+    @apply absolute inset-x-0 bottom-0;
   }
 
   .carousel-recommended-desc {
@@ -565,7 +565,7 @@
 
   @media (hover: hover) and (pointer: fine) {
     .card-container {
-      @apply transition-shadow  hover:shadow-black/30 duration-500 rounded-xl;
+      @apply transition-shadow duration-500 hover:shadow-black/30 rounded-xl;
     }
     .card-image {
       @apply absolute transition-transform group-hover:duration-500  group-hover:scale-125 z-[0] top-0 object-cover opacity-100 group-hover:opacity-60 md:min-h-[100%] rounded-xl;
@@ -596,7 +596,7 @@
     }
 
     .journal-submit-btn {
-      @apply py-3 px-8 font-bold rounded mx-auto Themer-btns;
+      @apply px-8 py-3 mx-auto font-bold rounded Themer-btns;
     }
   }
 
