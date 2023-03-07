@@ -16,7 +16,8 @@ module.exports = {
       screens: {
         'xs': '320px',
         'mob':'370px',
-        'fol4':'1812px',
+        'fold4':'768px',
+        'mob-xl':'390px',
         ...defaultTheme.screens,
       },
       spacing: {

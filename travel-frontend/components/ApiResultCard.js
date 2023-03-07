@@ -21,29 +21,35 @@ function ApiResultCard({
     image,
   };
 
-  return (
-    <div className="card-container group">
-      <div className="single-card">
-        <img src={image} className="card-image" />
-      </div>
-      <div className=" card-gradient-bg">
-        <div className=" card-info-transition">
-          <h3 className="card-title">{title}</h3>
-          <p className="card-city">{city}</p>
-          <p className="card-location">{country}</p>
-          <p className="card-location">{suburb}</p>
-          <p className="card-desc">{description}</p>
-
-          <div className='card-action-container'>
-          
-       <button className="card-btn"><a href={wikipedia} target="_blank">See more</a></button>
-
-          <FavouritesButton props={newFavourite} />
+ 
+  
+    return (
+      <div className="group card-container ">
+        <div className="single-card ">
+        <img src={image} className="card-image " />
+        </div>
+            <div className=" card-gradient-bg">
+          <div className=" card-info-transition">
+              <h3 className="card-title ">{title}</h3>
+              <p className="card-city">{suburb +',  ' +city}</p>
+        <p className="card-country">{country}</p>
+        <div className= 'desc-div'>
+              <p className="card-desc">{description}</p>
+        </div>
+                <div className='card-action-container'>
+                  <button className="card-btn">
+                    <a href={wikipedia} target="_blank">
+                      See more
+                    </a>
+                  </button>
+                    <FavouritesButton props={newFavourite}  />
           </div>
         </div>
+        </div>
+        
       </div>
-    </div>
-  );
-}
+    );
+  }
+  
 
 export default ApiResultCard;
