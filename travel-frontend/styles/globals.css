@@ -227,10 +227,7 @@
     --module-bg-loader: hsl(var(--hue-loader), var(--module-bg-sat-loader), var(--module-bg-lum-loader));
   }
 
-  /* This is here due to tailwind css line-clamp plug-in having property overflow:hidden so have overwritten in components layer */
-  /* .card-descR {
-    @apply  line-clamp-2 mob:line-clamp-3 mob-xl:line-clamp-5 
-  } */
+
 }
 
 
@@ -598,7 +595,7 @@ md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landsc
   }
 
   .card-title {
-    @apply absolute top-[10%] py-[2%] group-hover:top-[1%] overflow-hidden line-clamp-none  bg-[hsl(var(--Themer-accent)/0.8)]  rounded-lg px-3 group-hover:bg-transparent
+    @apply absolute top-[10%] py-[2%] group-hover:top-[1%] overflow-hidden  bg-[hsl(var(--Themer-accent)/0.8)]  rounded-lg px-3 group-hover:bg-transparent
   }
   .card-city {
     @apply hidden  group-hover:block absolute top-[18%]  bg-[hsl(var(--Themer-accent)/0.7)] px-3 pb-1  rounded-lg group-hover:bg-transparent
