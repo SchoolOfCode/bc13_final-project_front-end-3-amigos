@@ -45,6 +45,7 @@ const Journal = () => {
       <JournalDataDisplay
         dataJournal={journals}
         deleteEntry={deleteJournalEntry}
+        user={user}
       />
     </div>
   );
