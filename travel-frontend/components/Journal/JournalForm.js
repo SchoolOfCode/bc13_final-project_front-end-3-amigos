@@ -10,7 +10,7 @@ function JournalForm({ user, postNewEntry }) {
     reset,
     formState: { errors },
   } = useForm({});
-console.log("USERL", user)
+
   return (
     <div className="bg-pink-50 drop-shadow-lg  p-10 md:w-2/3 rounded-xl lg:max-h-[55vh] flex items-center justify-center mx-auto mt-10 my-auto lg:w-1/2 ">
       <form
