@@ -11,29 +11,42 @@ const Journal = () => {
   const [journals, setJournals] = useState([]);
 
   useEffect(() => {
-      if (user) {
-        getJournalData()   
-     }
-    
+    if (user) {
+      getJournalData();
+    }
   }, [user]);
 
+  // gets all data from jorunal database by use uid
   async function getJournalData() {
-      const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
-      const entries = await axios.get(URL);
-      setJournals(entries.data.payload);
-    
+    const URL = `${process.env.NEXT_PUBLIC_JOURNAL_URL}/${user.uid}`;
+    const entries = await axios.get(URL);
+    setJournals(entries.data.payload);
   }
+
+  // create a new journal entry
   async function postNewEntry(newJournal) {
-    const URL = `${process.env.NEXT_PUBLIC_POST_JOURNAL_URL}/${user.uid}`;
+    const URL = `${process.env.NEXT_PUBLIC_JOURNAL_URL}/${user.uid}`;
     let res = await axios.post(URL, newJournal);
-    await getJournalData()
+    await getJournalData();
+    return res;
+  }
+
+  // delete a single journal entry by id
+  async function deleteJournalEntry(id) {
+    const URL = `${process.env.NEXT_PUBLIC_JOURNAL_URL}/${user.uid}/${id}`;
+    let res = await axios.delete(URL);
+    await getJournalData();
     return res;
   }
 
   return (
-    <div>
-      {user && <JournalForm user={user} postNewEntry={postNewEntry}/>}
-      <JournalDataDisplay dataJournal={journals} />
+    <div className="mt-[10vh] bg-white">
+      {user && <JournalForm user={user} postNewEntry={postNewEntry} />}
+      <JournalDataDisplay
+        dataJournal={journals}
+        deleteEntry={deleteJournalEntry}
+        user={user}
+      />
     </div>
   );
 };

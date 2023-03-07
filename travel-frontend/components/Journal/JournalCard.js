@@ -1,22 +1,32 @@
 import React from "react";
+import { SlTrash } from "react-icons/sl";
 
-function JournalCard({ title, location, date, text }) {
-  // console.log("DATA AT JOUNRAL CARD:", title, location, date, text);
+function JournalCard({ title, location, date, text, id, deleteEntry, user }) {
+  // console.log("DATA AT JOUNRAL CARD:", id);
+
   return (
-    <div class="container my-12 mx-auto px-4 md:px-12">
-      <div class="flex flex-wrap -mx-1 lg:-mx-4">
-        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-          <article class="overflow-hidden rounded-lg shadow-lg">
-            <div>
-              <header class="flex items-left justify-between leading-tight p-2 md:p-4">
-                <h2 class="text-lg">{title}</h2>
-                <h6>{date}</h6>
-              </header>
-              <h3 class="text-lg">{location}</h3>
-              <p class="text-grey-darker text-sm">{text}</p>
-            </div>
-          </article>
-        </div>
+    <div className="card-display-journal  bg-pink-200 container rounded-xl my-2 px-2 md:px-2 mx-20">
+      <div>
+        <header className="flex items-left justify-between leading-tight pl-2 md:pl-4 pt-8">
+          <h2 className="text-2xl font-bold leading-tight ">{title}</h2>
+          <SlTrash
+            className="justify-between leading-tight ml-auto h-7 w-7 mr-5 mb-5"
+            id={id}
+            onClick={(e) => {
+              // console.log(e.target.id, "id");
+              deleteEntry(e.target.id);
+            }}
+          />
+        </header>
+        <h3 className="text-lg font-bold flex items-left justify-between leading-tight pl-2 md:pl-4">
+          {location}
+        </h3>
+        <p className="text-grey-darker text-lg flex items-left justify-between leading-tight p-2 md:p-4 text-justify">
+          {text}
+        </p>
+        <h6 className="italic text-right pr-10 pb-5">
+          {user.displayName}, {date.slice(0, 10)}
+        </h6>
       </div>
     </div>
   );

@@ -20,28 +20,40 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-  :root   {
-    --color-card-background: #FFFFFF;
-    --color-button-fill: #2C5746;
-    --color-text-muted: #C7D2FE;
-    --color-text-inverted: #4F46E5;
-    --color-fill: #4338CA;
-    --color-accent-accent-hover: #EEF2FF;
-    --color-button-muted: #6366F1;
-    --color-main-dark: #2C5746;
-    --color-main-light: #D9D9D9;
+  :root {
+    --color-card-background: #ffffff;
+    --color-button-fill: #2c5746;
+    --color-text-muted: #c7d2fe;
+    --color-text-inverted: #4f46e5;
+    --color-fill: #4338ca;
+    --color-accent-accent-hover: #eef2ff;
+    --color-button-muted: #6366f1;
+    --color-main-dark: #2c5746;
+    --color-main-light: #d9d9d9;
     /* World SVG CSS */
     --hue-loader: var(--Themer-hue);
     --base-bg-sat-loader: 90%;
     --base-bg-lum-loader: 72%;
-    --base-bg-loader: hsl(var(--hue-loader), var(--base-bg-loader-sat-loader), var(--base-bg-lum-loader));
+    --base-bg-loader: hsl(
+      var(--hue-loader),
+      var(--base-bg-loader-sat-loader),
+      var(--base-bg-lum-loader)
+    );
     --base-fg-sat-loader: 60%;
     --base-fg-lum-loader: 70%;
-    --base-fg-loader: hsl(var(--hue-loader), var(--base-fg-sat-loader), var(--base-fg-lum-loader));
+    --base-fg-loader: hsl(
+      var(--hue-loader),
+      var(--base-fg-sat-loader),
+      var(--base-fg-lum-loader)
+    );
     --filter-fg-loader: saturate(100%) brightness(100%);
     --module-bg-sat-loader: 18%;
     --module-bg-lum-loader: 27%;
-    --module-bg-loader: hsl(var(--hue-loader), var(--module-bg-sat), var(--module-bg-lum-loader));
+    --module-bg-loader: hsl(
+      var(--hue-loader),
+      var(--module-bg-sat),
+      var(--module-bg-lum-loader)
+    );
     /* ThemeSwitcher root */
     --Themer-hue: 233;
     --Themer-size: 1.8rem;
@@ -49,14 +61,14 @@
     --Themer-tspeed-fast: 180ms;
     --Themer-tspeed-slow: 300ms;
     --Themer-ttype-squish: cubic-bezier(0.86, -0.1, 0.27, 1.15);
-      /* ThemeSwitcher Light Mode */
+    /* ThemeSwitcher Light Mode */
     --Themer-bg--light: var(--Themer-hue) 30% 94%;
     --Themer-text--light: var(--Themer-hue) 10% 10%;
     --Themer-accent--light: var(--Themer-hue) 90% 72%;
     /* Button colour */
     --Themer-accent1--light: 10 80% 60%;
     --Themer-muted--light: var(--Themer-hue) 30% 99%;
-    --Themer-nav--light: var(--Themer-hue) 50% 72%;  
+    --Themer-nav--light: var(--Themer-hue) 50% 72%;
     /* ThemeSwitcher Dark Mode */
     --Themer-bg--dark: var(--Themer-hue) 15% 10%;
     --Themer-text--dark: var(--Themer-hue) 30% 88%;
@@ -66,7 +78,7 @@
     --Themer-nav--dark: var(--Themer-hue) 60% 20%;
   }
   /* Themer dark root */
-  :root[color-scheme='dark'] {
+  :root[color-scheme="dark"] {
     --Themer-bg: var(--Themer-bg--dark);
     --Themer-text: var(--Themer-text--dark);
     --Themer-contrast: var(--Themer-text--light);
@@ -76,9 +88,9 @@
     --Themer-muted: var(--Themer-muted--dark);
     --Themer-nav: var(--Themer-nav--dark);
     color-scheme: dark;
-    @apply minimal-theme
+    @apply minimal-theme;
   }
-  :root[color-scheme='light'] {
+  :root[color-scheme="light"] {
     --Themer-bg: var(--Themer-bg--light);
     --Themer-text: var(--Themer-text--light);
     --Themer-contrast: var(--Themer-text--dark);
@@ -88,7 +100,6 @@
     --Themer-muted: var(--Themer-muted--light);
     --Themer-nav: var(--Themer-nav--light);
     color-scheme: light;
- 
   }
   body {
     background-color: hsl(var(--Themer-bg));
@@ -96,13 +107,12 @@
   }
   ::selection {
     background: hsl(var(--Themer-accent) / 0.8);
-    color: hsl(var( --Themer-bg));
+    color: hsl(var(--Themer-bg));
   }
   /* Loader SVG CSS */
   div.notice {
     font-size: 7em;
     text-align: center;
-    
   }
   .world {
     fill: var(--base-fg-loader);
@@ -117,14 +127,19 @@
     background-image: url(#icon-world);
   }
   .world svg {
-    width: 6em; height: 1.5em;
+    width: 6em;
+    height: 1.5em;
     margin-top: calc(-2px + -0.05em);
     display: inline;
     animation: world-scroll 3s linear infinite;
   }
   @keyframes world-scroll {
-    from { margin-left: -2.75em; }
-    to { margin-left: -1em; }
+    from {
+      margin-left: -2.75em;
+    }
+    to {
+      margin-left: -1em;
+    }
   }
   /* ThemeSwitcher CSS */
   .Themer-wrapper {
@@ -137,24 +152,26 @@
     display: grid;
     --Themer-size: 1.5rem;
     place-items: center;
+
     @apply  bottom-[27%] mob:bottom-[20%] mob-xl:bottom-[15.5%] sm:bottom-[9%]
+
   }
   .Themer-btns {
     display: flex;
     gap: 1em;
     max-width: fit-content;
-  display: flex;
-  place-items: center;
-  gap: 0.5em;
-  background-color: hsl(var(--Themer-accent));
-  color: hsl(var(--Themer-text));
-  text-decoration: none;
-  padding: 0.5em;
-  border-radius: var(--Themer-radius);
-  box-shadow: 0.05em 0.1em 0.9em hsl(var(--Themer-accent) / 0.3),
-    0 0 0 -0.1em hsl(var(--Themer-bg)), 0 0 0 -0.2em hsl(var(--Themer-accent));
-  transition: box-shadow var(--Themer-tspeed-fast) var(--Themer-ttype-squish),
-    background-color var(--Themer-tspeed-fast) var(--Themer-ttype-squish);
+    display: flex;
+    place-items: center;
+    gap: 0.5em;
+    background-color: hsl(var(--Themer-accent));
+    color: hsl(var(--Themer-text));
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: var(--Themer-radius);
+    box-shadow: 0.05em 0.1em 0.9em hsl(var(--Themer-accent) / 0.3),
+      0 0 0 -0.1em hsl(var(--Themer-bg)), 0 0 0 -0.2em hsl(var(--Themer-accent));
+    transition: box-shadow var(--Themer-tspeed-fast) var(--Themer-ttype-squish),
+      background-color var(--Themer-tspeed-fast) var(--Themer-ttype-squish);
   }
 
   .Themer-picker:focus {
@@ -169,41 +186,41 @@
     border: 0.2em solid hsl(var(--muted));
     box-shadow: 0 0 0.8em hsl(var(--accent) / 0.4);
     border-radius: 100vmax;
-    background: linear-gradient(to right,
-        hsl(0, 50%, 50%),
-        hsl(25, 50%, 50%),
-        hsl(50, 50%, 50%),
-        hsl(75, 50%, 50%),
-        hsl(100, 50%, 50%),
-        hsl(125, 50%, 50%),
-        hsl(150, 50%, 50%),
-        hsl(175, 50%, 50%),
-        hsl(200, 50%, 50%),
-        hsl(225, 50%, 50%),
-        hsl(250, 50%, 50%),
-        hsl(275, 50%, 50%),
-        hsl(300, 50%, 50%),
-        hsl(325, 50%, 50%),
-        hsl(350, 50%, 50%));
+    background: linear-gradient(
+      to right,
+      hsl(0, 50%, 50%),
+      hsl(25, 50%, 50%),
+      hsl(50, 50%, 50%),
+      hsl(75, 50%, 50%),
+      hsl(100, 50%, 50%),
+      hsl(125, 50%, 50%),
+      hsl(150, 50%, 50%),
+      hsl(175, 50%, 50%),
+      hsl(200, 50%, 50%),
+      hsl(225, 50%, 50%),
+      hsl(250, 50%, 50%),
+      hsl(275, 50%, 50%),
+      hsl(300, 50%, 50%),
+      hsl(325, 50%, 50%),
+      hsl(350, 50%, 50%)
+    );
   }
-  
+
   .Themer-picker::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     height: calc(var(--wrapperSize) * 0.35);
     width: calc(var(--wrapperSize) * 0.35);
     border: none;
-    box-shadow:
-      0 0 0 .25em hsl(var(--Themer-muted)),
-      0 0 0 -.4em hsl(var(--Themer-accent) / 0.8);
+    box-shadow: 0 0 0 0.25em hsl(var(--Themer-muted)),
+      0 0 0 -0.4em hsl(var(--Themer-accent) / 0.8);
     border-radius: 100vmax;
     background-color: hsl(var(--Themer-accent));
     cursor: pointer;
   }
   .Themer-picker:focus::-webkit-slider-thumb {
-    box-shadow:
-      0 0 0 .25em hsl(var(--Themer-muted)),
-      0 0 0 .45em hsl(var(--Themer-accent) / 0.8);
+    box-shadow: 0 0 0 0.25em hsl(var(--Themer-muted)),
+      0 0 0 0.45em hsl(var(--Themer-accent) / 0.8);
   }
   .Themer-close {
     position: absolute;
@@ -212,51 +229,36 @@
     transform: translate(-50%, -50%);
   }
   .minimal-theme {
-
     /* World SVG CSS Dark */
     --hue-loader: var(--Themer-hue);
     --base-bg-sat-loader: 33%;
     --base-bg-lum-loader: 26%;
-    --base-bg-loader: hsl(var(--hue-loader), var(--base-bg-sat-loader), var(--base-bg-lum-loader));
+    --base-bg-loader: hsl(
+      var(--hue-loader),
+      var(--base-bg-sat-loader),
+      var(--base-bg-lum-loader)
+    );
     --base-fg-sat-loader: 100%;
     --base-fg-lum-loader: 20%;
-    --base-fg-loader: hsl(var(--hue-loader), var(--base-fg-sat-loader), var(--base-fg-lum-loader));
+    --base-fg-loader: hsl(
+      var(--hue-loader),
+      var(--base-fg-sat-loader),
+      var(--base-fg-lum-loader)
+    );
     --filter-fg-loader: saturate(100%) brightness(100%);
     --module-bg-sat-loader: 18%;
     --module-bg-lum-loader: 27%;
-    --module-bg-loader: hsl(var(--hue-loader), var(--module-bg-sat-loader), var(--module-bg-lum-loader));
+    --module-bg-loader: hsl(
+      var(--hue-loader),
+      var(--module-bg-sat-loader),
+      var(--module-bg-lum-loader)
+    );
   }
 
 
 }
 
-
-
-/* 
-TODO:  Fix Footer ✅
-TODO:  add minimal theme to hero again ✅
-TODO: Set navbar & footer colours to edited hues ? ✅
-TODO: typewriter left padding and font &...? ✅
-TODO:  Style loader more ✅
-TODO: Style Carousel some more ✅
-TODO: change burger menu colour to theme ✅
-TODO: Move NavBar styling into CSS  ✅
-TODO: Put all CSS in this file ✅
-TODO: Put a coming soon thing on journal
-TODO: Change Sombrero to Amigos logo ✅
-TODO: Save theming preference into local storage ✅
-TODO: If theme is saved as dark in local storage on refresh BG image should also be dark
-TODO:  Change card display on xs: screen Also no hover on all smaller screens 
-
-
-
-*/
-
 @layer components {
-
-
-
-  
   /* Themer media queries */
   @media (prefers-color-scheme: dark) {
     :root {
@@ -282,7 +284,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
   @media screen and (max-width: 768px) {
     :root {
-      --Themer-size: 1.3rem ;
+      --Themer-size: 1.3rem;
     }
   }
   /* prefers reduced motion */
@@ -304,56 +306,88 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
     }
   }
 
+
+
+  @media (hover: hover) and (pointer: fine) {
+    .card-container:hover {
+      @apply transition-shadow  hover:shadow-black/30;
+    }
+    .card-image:hover {
+      @apply transition-transform duration-500  group-hover:scale-125;
+    }
+    .card-gradient-bg:hover {
+      background-color: hsl(var(--Themer-accent) / 0.3);
+      @apply from-transparent/30 group-hover:via-transparent/20 group-hover:to-transparent/30;
+    }
+    .card-info-transition:hover {
+      @apply absolute inset-0 flex translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0;
+    }
+    .card-city:hover {
+      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100 mb-12%;
+    }
+    .card-location:hover {
+      @apply text-white opacity-50 transition-opacity duration-300 group-hover:opacity-100;
+    }
+    .card-desc:hover {
+      @apply text-lg font-normal text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-ellipsis overflow-y-auto;
+    }
+    .nav-bar-buttons:hover {
+      @apply bg-[hsl(var(--Themer-accent))] text-[color:hsl(var(--Themer-text))];
+    }
+  }
+
 .html-div {
   @apply min-w-full min-h-full overflow-x-hidden
 }
 
 
 
-/* hero styling */
-.hero-styling {
- @apply bg-main-bg w-screen bg-no-repeat bg-cover -z-10 xs:min-h-[50vmax]  
-}
+  /* hero styling */
+  .hero-styling {
+    @apply bg-main-bg w-screen bg-no-repeat bg-cover -z-10 xs:min-h-[50vmax];
+  }
 
-.nav-container {
-  @apply fixed top-0 right-0 z-10  items-center w-screen bg-[color:hsl(var(--Themer-nav))]  
-}
+  .nav-container {
+    @apply fixed top-0 right-0 z-10  items-center w-screen bg-[color:hsl(var(--Themer-nav))];
+  }
 
-.nav-bar-item-container {
-  @apply relative flex pb-[1vh] items-center justify-between text-[color:hsl(var(--Themer-text))] 
-}
+  .nav-bar-item-container {
+    @apply relative flex pb-[1vh] items-center justify-between text-[color:hsl(var(--Themer-text))];
+  }
 
-.nav-bar-logo{
-  @apply py-[1vh] ml-10 align-middle  mr-[40vmin] 
-}
+  .nav-bar-logo {
+    @apply py-[1vh] ml-10 align-middle  mr-[40vmin];
+  }
 
-.nav-bar-hamburger {
-  @apply absolute inset-y-0 right-0 z-10 lg:hidden pb-[1vh]
-}
+  .nav-bar-hamburger {
+    @apply absolute inset-y-0 right-0 z-10 lg:hidden pb-[1vh];
+  }
 
-.nav-bar-lg-menu {
-  @apply ml-[10vw] py-2 lg:absolute  lg:top-0 lg:right-0  justify-between w-[30vw] hidden my-auto lg:flex items-center
-}
+  .nav-bar-lg-menu {
+    @apply ml-[10vw] py-2 lg:absolute  lg:top-0 lg:right-0  justify-between w-[30vw] hidden my-auto lg:flex items-center;
+  }
 
-.nav-bar-lg-menu-logged-out{
-  @apply hidden lg:absolute lg:inset-y-0 lg:right-0 lg:flex
-}
+  .nav-bar-lg-menu-logged-out {
+    @apply hidden lg:absolute lg:inset-y-0 lg:right-0 lg:flex;
+  }
 
-.nav-bar-buttons{
-  @apply w-auto p-2 ml-2 mr-5 text-[color:hsl(var(--Themer-text))] rounded-lg  my-auto  font-bold  max-h-10 bg-[hsl(var(--Themer-accent))]
-}
 
-.burger-overlay{
- @apply  md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300
-}
+  .nav-bar-buttons {
+    @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-contrast))] rounded-lg  my-auto  font-bold  max-h-10 bg-[hsl(var(--Themer-accent-contrast))];
+  }
 
-.burger-overlay-hidden{
-  @apply md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300
-}
 
-.burger-overlay-links{
-  @apply text-lg font-semibold text-white
-}
+  .burger-overlay {
+    @apply md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-left ease-in duration-300;
+  }
+
+  .burger-overlay-hidden {
+    @apply md:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300;
+  }
+
+  .burger-overlay-links {
+    @apply text-lg font-semibold text-white;
+  }
 
   /*
   footer class (working?)
@@ -425,7 +459,11 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   /* Cards revamped */
 
   .card-display {
-    @apply z-10 mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1;
+    @apply z-10 mt-[10vh]    grid gap-6 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 ;
+  }
+
+  .card-display-journal {
+    @apply z-10 mt-[10vh]   lg:grid-cols-1  grid gap-6  sm:grid-cols-1 place-items-center drop-shadow-md;
   }
 
   .card-container {
@@ -447,16 +485,25 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   }
 
   .card-gradient-bg {
-    @apply  w-full h-full flex flex-col absolute inset-0  text-center   items-center justify-center  bg-[color:hsl(var(--Themer-accent)/0.2)] bg-opacity-90 bg-gradient-to-b overflow-hidden text-ellipsis rounded-xl
+    @apply absolute inset-0   bg-[color:hsl(var(--Themer-accent)/0.25)] bg-opacity-90 bg-gradient-to-b md:from-transparent via-transparent to-[color:hsl(var(--Themer-accent))];
+  }
+  /* use below class for mob view no transition */
+  .card-info-static {
+    @apply absolute inset-0 flex flex-col items-center justify-center px-9 text-center;
+  }
+  .card-info-transition {
+    @apply absolute inset-0 flex md:translate-y-[65%] flex-col items-center justify-center px-9 text-center transition-all duration-500 group-hover:translate-y-0;
   }
 
   .card-title {
+
     display: -webkit-box;
     overflow-y:scroll;
     overflow-x:hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp:   1 ;
     @apply absolute top-0 font-bold text-center inset-x-0    text-lg mob-xl:text-2xl sm:text-3xl  sm:landscape:text-xl md:portrait:text-lg md:portrait:font-extrabold md:landscape:text-2xl
+
   }
 
   /* 
@@ -465,6 +512,14 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
   .card-city {
     @apply absolute top-[7%] max-lg:landscape:top-[8%] font-semibold text-center inset-x-0   mob-xl:text-lg sm:text-xl
   }
+
+  .card-location {
+    @apply md:text-skin-base xs:text-[color:hsl(var(--Themer-text))];
+  }
+
+  .card-action-container {
+    @apply flex xs:my-[2%] sm:mb-1 space-x-14;
+
 
   .card-country {
     @apply text-center absolute top-[12%] max-lg:landscape:top-[15%]  inset-x-0   text-sm mob-xl:text-lg sm:text-xl 
@@ -481,6 +536,7 @@ TODO:  Change card display on xs: screen Also no hover on all smaller screens
 .card-desc {
   @apply text-center   inset-x-0 max-w-[98%]   align-middle   mob-xl:text-lg    md:text-xl  overflow-y-auto 
   h-[25%] max-lg:landscape:h-[20%]
+
   }
 
 /* 
@@ -491,65 +547,66 @@ md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landsc
     @apply   flex  items-center  gap-20  absolute bottom-[2%] pb-1 max-md:landscape:bottom-[1%] 
   }
   .card-btn {
-    @apply Themer-btns font-bold rounded-full text-sm capitalize px-4 
+    @apply Themer-btns font-bold rounded-full xs:mt-[1%]   sm:mt-3 sm:mb-1 py-2 px-3.5  text-sm capitalize text-[color:hsl(var(--Themer-text))] shadow shadow-black/60;
+
   }
 
 
   .typewriter-container {
-    @apply absolute inset-x-0 top-[10vmax]  text-4xl font-bold text-white font-courgette sm:text-6xl ml-[7%] ;
+    @apply absolute inset-x-0 top-[10vmax]  text-4xl font-bold text-white font-courgette sm:text-6xl ml-[7%];
   }
 
   .carousel-container {
-    @apply relative   flex mt-[30vmax]  items-center justify-center w-full  px-[1%] transform -translate-y-1/2 bg-opacity-50 bg-[hsl(var(--Themer-bg))]
+    @apply relative   flex mt-[30vmax]  items-center justify-center w-full  px-[1%] transform -translate-y-1/2 bg-opacity-50 bg-[hsl(var(--Themer-bg))];
   }
 
- .carousel-arrow-container{
-    @apply  flex items-center px-3 justify-between w-full transform -translate-y-1/2 absolute pb-[25%] mob:inset-y-1/2 sm:pb-[4%] lg:pb-0 lg:mt-[3%] 
+  .carousel-arrow-container {
+    @apply flex items-center px-3 justify-between w-full transform -translate-y-1/2 absolute pb-[25%] mob:inset-y-1/2 sm:pb-[4%] lg:pb-0 lg:mt-[3%];
   }
-    /*
+  /*
   .carousel-right-arrow-container{
     @apply relative w-full h-10 mt-[-10vh]  sm:my-[auto]
   } */
 
+  .carousel-left-arrow {
+    @apply border-solid border-2 object-contain  border-[hsl(var(--Themer-accent-contrast))] lg:ml-[10%] 2xl:ml-[13%]     rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50;
+  }
+  .carousel-right-arrow {
+    @apply border-solid border-2 object-contain  border-[hsl(var(--Themer-accent-contrast))] lg:mr-[10%] 2xl:mr-[13%]   z-10   rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50;
+  }
+  .carousel-image-container {
+    @apply flex items-center object-contain justify-center lg:w-[75vw] relative w-full mt-[10%] mx-auto -z-10 pt-[1%] pb-[35%] sm:pb-[17%]  md:pb-[14%] lg:pb-[5%];
+  }
+  .carousel-image {
+    @apply z-0 object-fill min-w-[90vw] lg:min-w-[70vw] min-h-[20vh] rounded-md cursor-pointer aspect-video sm:min-w-[90vw]  lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70;
+  }
+  .carousel-title-container {
+    @apply absolute inset-x-0 top-0 flex justify-center;
+  }
 
-  .carousel-left-arrow{
-    @apply border-solid border-2 object-contain  border-[hsl(var(--Themer-accent-contrast))] lg:ml-[10%] 2xl:ml-[13%]     rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50
-  }
-  .carousel-right-arrow{
-    @apply border-solid border-2 object-contain  border-[hsl(var(--Themer-accent-contrast))] lg:mr-[10%] 2xl:mr-[13%]   z-10   rounded-full bg-[hsl(var(--Themer-text))] text-[hsl(var(--Themer-accent))] text-2xl transition cursor-pointer  md:text-6xl sm:text-4xl opacity-90 hover:opacity-50
-  }
-  .carousel-image-container{
-    @apply flex items-center object-contain justify-center lg:w-[75vw] relative w-full mt-[10%] mx-auto -z-10 pt-[1%] pb-[35%] sm:pb-[17%]  md:pb-[14%] lg:pb-[5%] 
-  }
-  .carousel-image{
-    @apply z-0 object-fill min-w-[90vw] lg:min-w-[70vw] min-h-[20vh] rounded-md cursor-pointer aspect-video sm:min-w-[90vw]  lg:h-1/5 lg:w-5/12 lg:mx-auto lg:mb-8 hover:opacity-70
-  }
-  .carousel-title-container{
-    @apply absolute inset-x-0 top-0 flex justify-center 
-  }
-
-  .carousel-title{
-    @apply  font-courgette text-3xl md:text-4xl items-center my-[1%]
+  .carousel-title {
+    @apply font-courgette text-3xl md:text-4xl items-center my-[1%];
   }
 
   .carousel-recommended-container {
-    @apply absolute inset-x-0   bottom-0 
+    @apply absolute inset-x-0   bottom-0;
   }
 
   .carousel-recommended-desc {
     --max-lines: 3;
 
     display: -webkit-box;
-    overflow:scroll;
-    
+    overflow: scroll;
+
     -webkit-box-orient: vertical;
     -webkit-line-clamp: var(--max-lines);
-    
-    @apply  my-auto  text-[color:hsl(var(--Themer-text))] text-center text-xl
+
+    @apply my-auto  text-[color:hsl(var(--Themer-text))] text-center text-xl;
   }
 
   .footer {
-  @apply  flex flex-col p-[1em] min-w-full mt-auto  bg-[color:hsl(var(--Themer-nav))]  
+
+    @apply p-[1em] min-w-full mt-auto  bg-[color:hsl(var(--Themer-nav))];
   }
 
   .footer-items-container {
@@ -557,26 +614,36 @@ md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landsc
   }
 
   .about-us-container {
-    @apply font-bold md:text-2xl  mob:justify-around mob:space-x-[0.1em] pb-3 text-[color:hsl(var(--Themer-text))]   xs:px-2 sm:flex xs:grid-cols-2 xs:grid xs:gap-[2vw]
+    @apply font-bold md:text-2xl  mob:justify-around mob:space-x-[0.1em] pb-3 text-[color:hsl(var(--Themer-text))]   xs:px-2 sm:flex xs:grid-cols-2 xs:grid xs:gap-[2vw];
   }
 
   .about-us-attribute {
-    @apply flex items-center justify-around cursor-pointer sm:space-x-1 space-x-[0.1em]
+
+    @apply flex items-center z-[1000]  justify-around cursor-pointer sm:space-x-1 space-x-[0.1em];
+
   }
 
-  .Jo-p{
-    @apply xs:mx-5 mob:mx-0
+  .Jo-p {
+    @apply xs:mx-5 mob:mx-0;
   }
 
   .standard-btn {
-    @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-text))] rounded-lg Themer-btns ;
+    @apply w-auto p-2 ml-2 text-[color:hsl(var(--Themer-text))] rounded-lg Themer-btns;
   }
   .search-bar {
     @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg lg:w-1/3;
   }
   .search-bar-container {
-    @apply  absolute inset-x-0 top-[25vmax]  flex justify-center mx-auto ;
+    @apply absolute inset-x-0 top-[25vmax]  flex justify-center mx-auto;
   }
+
+
+  .fav-search-bar-container {
+    @apply mt-[25vmax]   flex justify-center mx-auto;
+  }
+
+  .fav-search-bar {
+    @apply sticky pl-1 text-black placeholder-black bg-white rounded-lg;
 
   /* Tailwind method of dealing with devices that support hover */
 
@@ -602,6 +669,7 @@ md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landsc
   }
   .card-country {
     @apply hidden group-hover:block absolute top-[25%]  bg-[hsl(var(--Themer-accent)/0.7)] px-3  rounded-lg group-hover:bg-transparent
+
   }
 
   .desc-div{
@@ -611,6 +679,12 @@ md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landsc
   .card-desc {
     @apply   font-normal text-white  transition-opacity duration-500 h-[50%]
   }
+
+  .journal-submit-btn {
+    @apply py-3 px-8 font-bold rounded mx-auto Themer-btns;
+  }
+}
+
   .nav-bar-buttons{
     @apply hover:bg-[hsl(var(--Themer-accent-contrast))] hover:text-[color:hsl(var(--Themer-contrast))] 
   }
@@ -619,3 +693,4 @@ md:mt-[100%] md:portrait:mt-[105%] mt-[60%]   mob:mt-[68%] sm:mt-[55%] sm:landsc
 
 
 }
+
