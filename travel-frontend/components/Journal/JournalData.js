@@ -5,7 +5,7 @@ import JournalCard from "./JournalCard";
 function JournalDataDisplay({ dataJournal, deleteEntry, user }) {
   // console.log(dataJournal);
   return (
-    <div className=" card-display-journal">
+    <div className=" card-display-journal lg:grid-cols-3">
       {dataJournal.map((data) => {
         {
           return (
