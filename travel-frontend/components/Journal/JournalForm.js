@@ -11,7 +11,7 @@ function JournalForm({ user, postNewEntry }) {
   } = useForm({});
 
   return (
-    <div className="bg-gray-300 p-10 md:w-2/3 rounded lg:max-h-[55vh] flex items-center justify-center mx-auto  lg:w-1/2 ">
+    <div className="bg-pink-50 drop-shadow-lg  p-10 md:w-2/3 rounded-xl lg:max-h-[55vh] flex items-center justify-center mx-auto  lg:w-1/2 ">
       <form
         onSubmit={handleSubmit((data) => {
           let newJournal = { ...data, uid: user.uid };
@@ -19,6 +19,7 @@ function JournalForm({ user, postNewEntry }) {
         })}
         className="justify-center max-w-[60vw] line-height: 1rem;"
       >
+        <h1 className="font-bold text-xl">Fill out your travel journal...</h1>
         <div className="flex items-center mb-5 mt-10">
           <input
             type="text"
@@ -32,7 +33,7 @@ function JournalForm({ user, postNewEntry }) {
         <div className="flex items-center mb-10">
           <input
             type="text"
-            placeholder="Title"
+            placeholder="What's the headline?"
             {...register("title", { required: "Title is required" })}
             className="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
           />
@@ -50,7 +51,7 @@ function JournalForm({ user, postNewEntry }) {
         <div className="flex items-center mb-5">
           <textarea
             type="textarea"
-            placeholder="Write something about .."
+            placeholder="Fill in your journal here..."
             {...register("text", { required: "Text is required" })}
             className="border-b-2 border-gray-400 flex-1 py-2 placeholder-gray-300 outline-none focus:border-green-400"
             rows="4"
