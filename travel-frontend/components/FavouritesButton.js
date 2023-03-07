@@ -93,7 +93,7 @@ function FavouritesButton(newFavourite) {
     <Image
       src={fullHeart}
       className="p-1 rounded-full bg-opacity-70 bg-off-white"
-      width={40}
+      width={35}
       alt="a clicked favourite button"
     />
   );
@@ -101,7 +101,7 @@ function FavouritesButton(newFavourite) {
     <Image
       src={emptyHeart}
       className="p-1 rounded-full bg-opacity-70 bg-off-white"
-      width={40}
+      width={35}
       alt="an unclicked favourite button"
     />
   );
