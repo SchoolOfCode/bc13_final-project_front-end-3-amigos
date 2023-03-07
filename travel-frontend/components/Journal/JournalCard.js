@@ -10,14 +10,14 @@ function JournalCard({ title, location, date, text, id, deleteEntry }) {
         <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-2 lg:w-1/3">
      <article className="overflow-hidden rounded-lg shadow-lg"> */}
       <div>
-        <header className="flex items-left justify-between leading-tight p-2 md:p-4">
-          <h2 className="text-lg font-bold leading-tight">{title}</h2>
+        <header className="flex items-left justify-between leading-tight pl-2 md:pl-4 pt-8">
+          <h2 className="text-xl font-bold leading-tight ">{title}</h2>
           <h6 className="italic ">{date.slice(0, 10)}</h6>
         </header>
-        <h3 className="text-lg font-bold flex items-left justify-between leading-tight p-1 md:p-2">
+        <h3 className="text-lg font-bold flex items-left justify-between leading-tight pl-2 md:pl-4">
           {location}
         </h3>
-        <p className="text-grey-darker text-sm flex items-left justify-between leading-tight p-2 md:p-4 text-justify">
+        <p className="text-grey-darker text-lg flex items-left justify-between leading-tight p-2 md:p-4 text-justify">
           {text}
         </p>
         <SlTrash
