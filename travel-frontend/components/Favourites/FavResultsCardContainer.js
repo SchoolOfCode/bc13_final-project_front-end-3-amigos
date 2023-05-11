@@ -6,7 +6,7 @@ import React from "react";
 
 function FavResultCardContainer({ fav, deleteFavourite }) {
   return (
-    <div className="fav-card-display">
+    <div className="card-display">
       {fav &&
         fav.map((item) => {
            
